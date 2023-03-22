@@ -1,5 +1,9 @@
-body {
+body, h1, h2, h3, h4, p, span, div, ul, li {
   margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 1em;
+  font-weight: normal;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;

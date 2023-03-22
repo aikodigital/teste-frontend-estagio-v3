@@ -5,6 +5,7 @@ import eqPositionHistory from './data/equipmentPositionHistory.json';
 import eqState from './data/equipmentState.json';
 import eqStateHistory from './data/equipmentStateHistory.json';
 import { equipments } from './entities/equipment';
+import ShowEquipments from './components/ShowEquipments';
 
 
 /* console.log("equipment", equipment);
@@ -20,9 +21,9 @@ function App() {
 
 
   return (
-    <div className="App">
-      Olá mundo
-    </div>
+    <main className="App">
+      <ShowEquipments equipments={equipments}/>
+    </main>
   );
 }
 

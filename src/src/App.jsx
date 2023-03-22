@@ -6,7 +6,7 @@ function App() {
   return (
     <section className="container">
       <div className="column-left"></div>
-      <div className="column-right"></div>
+      <div className="column-right"><Map/></div>
     </section>
   )
 }

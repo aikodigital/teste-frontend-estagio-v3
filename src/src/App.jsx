@@ -4,9 +4,10 @@ import '../src/css/global.css'
 function App() {
 
   return (
-    <>
-    <Map/>
-    </>
+    <section className="container">
+      <div className="column-left"></div>
+      <div className="column-right"></div>
+    </section>
   )
 }
 

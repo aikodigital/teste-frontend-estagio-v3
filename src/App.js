@@ -1,6 +1,7 @@
 import './App.css';
 import { equipments } from './entities/equipment';
 import Equipment from './components/Equipment';
+import Map from './components/Map';
 
 function App() {
 
@@ -8,11 +9,14 @@ function App() {
 
   
   return (
+    <>
+      <Map/>
     <main>
       <ul>
         {listEquipments}
       </ul>
     </main>
+    </>
   )
 }
 

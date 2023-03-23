@@ -5,13 +5,12 @@ console.log(eqState);
 const Equipment = ({ equipment }) => {
     
     const lastPosition = equipment.lastPosition();
+    console.log(lastPosition);
     const lastState = equipment.lastState();
-    console.log(lastState)
     const stateStatus = eqState.filter(state => state.id === lastState.equipmentStateId)[0];
-    console.log(stateStatus);
 
     return (
-        <li style={{backgroundColor: `${stateStatus.color}`}}>
+        <li className="cards" style={{backgroundColor: `${stateStatus.color}`}}>
             <h2>{equipment.name}</h2>
             <h3>{equipment.modelName}</h3>
             <h3>Posição: </h3>

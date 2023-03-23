@@ -1,0 +1,6 @@
+/* Header da página */
+.--header-container{
+    height: 10%;
+    width: 100%;
+    background-color: var(--header-container);
+}

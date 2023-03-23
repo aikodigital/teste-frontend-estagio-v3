@@ -2,7 +2,7 @@ import './App.css';
 import { equipments } from './entities/equipment';
 import Equipment from './components/Equipment';
 import Map from './components/Map';
-import SideBar from './components/SideBar';
+import SideMenu from './components/SideMenu';
 
 function App() {
    
@@ -12,7 +12,7 @@ function App() {
       <h2>Monitor de equipamentos</h2>
     </header>
     <main className='container main'>
-      <SideBar equipments={equipments}/>
+      <SideMenu equipments={equipments}/>
       <Map equipments={equipments} />
       
     </main>

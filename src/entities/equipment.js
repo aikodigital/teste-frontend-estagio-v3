@@ -67,7 +67,8 @@ import eqStateHistory from '../data/equipmentStateHistory.json';
   }
 
   export {
-    equipments
+    equipments,
+    eqState
   }
 
 

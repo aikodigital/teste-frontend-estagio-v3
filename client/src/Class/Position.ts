@@ -21,8 +21,5 @@ export class Position {
   get longitude(): number {
     return this._lon;
   }
-
-
-
   
 }

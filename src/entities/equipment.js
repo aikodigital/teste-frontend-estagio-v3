@@ -24,15 +24,24 @@ import eqStateHistory from '../data/equipmentStateHistory.json';
       return position;
     }
 
+    findPositionAt(date){
+    const previousDate = this.stateHistory
+                          .map(position => position.date)
+                          .reduce((acc, next) => acc < date? next: acc);
+    const position = this.positionHistory
+                      .filter(position => position.date == previousDate)[0];
+    }
+    
     lastState(){
       const date =  this.stateHistory
                     .map(state => state.date)
                     .reduce((acc, next) => next > acc? next : acc);
       const state = this.stateHistory
-      .filter(state => state.date === date)[0];
+                    .filter(state => state.date === date)[0];
 
       return state;
     }
+
 
   }
 

@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
-import Map from "./Components/Displays/Map/Map";
-import Panel from "./Components/Displays/Panel/Panel";
+import Map from "./Components/Map/Map";
+import Panel from "./Components/Panel/Panel";
 
 function App() {
   return (

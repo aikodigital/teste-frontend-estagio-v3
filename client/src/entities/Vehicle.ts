@@ -1,20 +1,20 @@
 import { VehicleType } from "./VehicleType";
 
 export class Vehicle {
-    private id: string;
-    private name: string;
-    private modelId: string;
+    private _id: string;
+    private _name: string;
+    private _modelId: string;
     private type: VehicleType;
   
     constructor(id: string, name: string, modelId: string) {
-      this.id = id;
-      this.name = name;
-      this.modelId = modelId;
+      this._id = id;
+      this._name = name;
+      this._modelId = modelId;
       this.type = new VehicleType(modelId);
     }
   
     get typeId(): string {
-      return this.modelId;
+      return this._modelId;
     }
   
     get typeName(): string {

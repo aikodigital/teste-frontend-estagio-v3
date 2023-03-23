@@ -4,7 +4,7 @@ export enum NameEnum {
   Claw = "9c3d009e-0d42-4a6e-9036-193e9bca3199",
 }
 
-export class VehicleType {
+export class EquipamentType {
   private _id: string;
   private _name: string;
 
@@ -30,7 +30,7 @@ export class VehicleType {
       case NameEnum.Claw:
         return "Garra traçadora";
       default:
-        throw new Error(`Invalid vehicle type ID: ${id}`);
+        throw new Error(`Invalid Equipament type ID: ${id}`);
     }
   }
 }

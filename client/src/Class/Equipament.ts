@@ -1,18 +1,22 @@
-import { VehicleType } from "./VehicleType";
+import { EquipamentType } from "./EquipamentType";
+import { Position } from "./Position";
 
-export class Vehicle {
+export class Equipament {
     private _id: string;
     private _name: string;
     private _modelId: string;
-    private type: VehicleType;
+    private type: EquipamentType;
+    private _positions: Position[];
   
-    constructor(id: string, name: string, modelId: string) {
+    constructor(id: string, name: string, modelId: string, positions: Position[]) {
       this._id = id;
       this._name = name;
       this._modelId = modelId;
-      this.type = new VehicleType(modelId);
+      this.type = new EquipamentType(modelId);
+      this._positions = positions;
     }
   
+
     get typeId(): string {
       return this._id;
     }
@@ -27,6 +31,10 @@ export class Vehicle {
   
     get typeName(): string {
       return this.type.name;
+    }
+
+    get positions(): Position[] {
+      return [...this._positions]; 
     }
 
 

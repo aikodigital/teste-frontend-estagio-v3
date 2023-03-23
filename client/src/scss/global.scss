@@ -1,5 +1,5 @@
 //@import "../components/Map/Map";
-
+@import "../components/Sidebar/sidebar";
 
 body {
   margin: 0;
@@ -14,7 +14,7 @@ body {
 
 
   color-scheme: light dark;
-  background-color: #242424;
+ // background-color: #3a3a3a;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -27,15 +27,8 @@ body {
 
 .container {
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 25% 75%;
   width: 100vw; /* set container width to full viewport width */
   height: 100vh; /* set container height to full viewport height */
 }
 
-.column-left {
-  background-color: lightblue; /* replace with your desired color */
-}
-
-.column-right {
-  background-color: lightgray; /* replace with your desired color */
-}

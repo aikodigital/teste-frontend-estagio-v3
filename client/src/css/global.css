@@ -1,3 +1,9 @@
+.sidebar {
+  height: 100%;
+  width: 100%;
+  background-color: rgb(175, 175, 175);
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -8,7 +14,6 @@ body {
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light dark;
-  background-color: #242424;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -18,15 +23,7 @@ body {
 
 .container {
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 25% 75%;
   width: 100vw; /* set container width to full viewport width */
   height: 100vh; /* set container height to full viewport height */
-}
-
-.column-left {
-  background-color: lightblue; /* replace with your desired color */
-}
-
-.column-right {
-  background-color: lightgray; /* replace with your desired color */
 }/*# sourceMappingURL=global.css.map */

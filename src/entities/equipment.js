@@ -3,9 +3,9 @@ import eqModel from '../data/equipmentModel.json';
 import eqPositionHistory from '../data/equipmentPositionHistory.json';
 import eqState from '../data/equipmentState.json';
 import eqStateHistory from '../data/equipmentStateHistory.json';
-import moment from 'moment';
 
   class Equipment{
+
     constructor(name, id, modelId, modelName, positionHistory, stateHistory){
       this.name = name;
       this.id = id;
@@ -14,6 +14,7 @@ import moment from 'moment';
       this.positionHistory = positionHistory;
       this.stateHistory = stateHistory;
     }
+
     lastPosition(){
       const date =  this.positionHistory
                     .map(position => position.date)
@@ -22,6 +23,17 @@ import moment from 'moment';
                         .filter(position => position.date == date)[0];
       return position;
     }
+
+    lastState(){
+      const date =  this.stateHistory
+                    .map(state => state.date)
+                    .reduce((acc, next) => next > acc? next : acc);
+      const state = this.stateHistory
+      .filter(state => state.date === date)[0];
+
+      return state;
+    }
+
   }
 
   const equipments = [];
@@ -53,15 +65,6 @@ import moment from 'moment';
     const stateHistory = eqStateHistory.filter(eq => eq.equipmentId === id).map(eq => eq.states)[0];
     return stateHistory;
   }
-
-  equipments[0].stateHistory.forEach( position =>{
-    console.log(position);
-  })
-
-  const date = equipments[0].stateHistory
-  .map(state => state.date)
-  .reduce((acc, next) => next > acc? next : acc);
-  console.log(date);
 
   export {
     equipments

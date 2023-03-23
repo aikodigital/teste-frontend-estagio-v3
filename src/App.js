@@ -2,19 +2,19 @@ import './App.css';
 import { equipments } from './entities/equipment';
 import Equipment from './components/Equipment';
 import Map from './components/Map';
+import SideBar from './components/SideBar';
 
 function App() {
-
-  const listEquipments = equipments.map(equipment => <Equipment key={equipment.id} equipment={equipment} />)
-
-  
+   
   return (
     <>
-      <Map/>
-    <main>
-      <ul>
-        {listEquipments}
-      </ul>
+    <header className='container header'>
+      <h2>Monitor de equipamentos</h2>
+    </header>
+    <main className='container main'>
+      <SideBar equipments={equipments}/>
+      <Map equipments={equipments} />
+      
     </main>
     </>
   )

@@ -20,4 +20,9 @@ export class Vehicle {
     get typeName(): string {
       return this.type.name;
     }
+
+
+    honk() {
+        console.log(this.type.name)
+    }
   }

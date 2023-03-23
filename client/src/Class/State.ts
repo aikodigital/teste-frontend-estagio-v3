@@ -7,6 +7,7 @@ export enum StateEnum {
 export class State {
   private _id: string;
   private _stateName: string;
+  private _date: string;
 
   get typeId(): string {
     return this._id;
@@ -16,8 +17,9 @@ export class State {
     return this._stateName;
   }
 
-  constructor(id: string) {
+  constructor(id: string, date: string) {
     this._id = id;
+    this._date = date;
     this._stateName = this.getNameStateId(id);
   }
 

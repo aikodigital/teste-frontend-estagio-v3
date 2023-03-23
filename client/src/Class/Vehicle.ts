@@ -14,6 +14,14 @@ export class Vehicle {
     }
   
     get typeId(): string {
+      return this._id;
+    }
+
+    get name(): string {
+      return this._name;
+    }
+
+    get modelId(): string {
       return this._modelId;
     }
   
@@ -23,6 +31,6 @@ export class Vehicle {
 
 
     honk() {
-        console.log(this.type.name)
+        console.log(this.type.name + " " + this.type.name)
     }
   }

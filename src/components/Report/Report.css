@@ -1,0 +1,5 @@
+.report{
+    flex-direction: column;
+    background-color: gray;
+    flex-grow: 1;
+}

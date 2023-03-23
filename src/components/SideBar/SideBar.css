@@ -1,0 +1,9 @@
+.side-bar{
+    flex-direction: column;
+    width: 20vw;
+}
+
+.side-bar__title{
+    font-size: 1.5em;
+    font-weight: 700;
+}

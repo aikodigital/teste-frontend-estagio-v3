@@ -1,0 +1,10 @@
+.container{
+    display: flex;
+}
+
+.header{
+    justify-content: center;
+}
+.header h2{
+    font-size: 48px;
+}

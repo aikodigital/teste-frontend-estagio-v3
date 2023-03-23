@@ -14,12 +14,12 @@ import moment from 'moment';
       this.positionHistory = positionHistory;
       this.stateHistory = stateHistory;
     }
-    LastPosition(){
-      const date = this.positionHistory
+    lastPosition(){
+      const date =  this.positionHistory
                     .map(position => position.date)
                     .reduce((acc, next) => next > acc? next : acc);
       const position =  this.positionHistory
-      .filter(position => position.date == date)[0];
+                        .filter(position => position.date == date)[0];
       return position;
     }
   }

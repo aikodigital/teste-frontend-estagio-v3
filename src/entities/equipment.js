@@ -4,12 +4,6 @@ import eqPositionHistory from '../data/equipmentPositionHistory.json';
 import eqState from '../data/equipmentState.json';
 import eqStateHistory from '../data/equipmentStateHistory.json';
 
-console.log("equipment", equipment);
-  console.log("eqModel", eqModel);//id == equipament model id de equipment
-  console.log("eqPositionHistory", eqPositionHistory);
-  console.log("eqState", eqState);
-  console.log("eqStateHistory ",eqStateHistory);
-
   class Equipment{
     constructor(name, id, modelId, modelName, positionHistory, stateHistory){
       this.name = name;
@@ -47,7 +41,6 @@ console.log("equipment", equipment);
 
   function findStateHistory(id){
     const stateHistory = eqStateHistory.filter(eq => eq.equipmentId === id).map(eq => eq.states)[0];
-    console.log("state Position:",stateHistory);
     return stateHistory;
   }
 

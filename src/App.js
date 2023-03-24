@@ -1,3 +1,4 @@
+import React from "react"
 import Header from "./componentes/Header"
 import Map from "./componentes/Map"
 

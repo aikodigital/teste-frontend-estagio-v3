@@ -22,7 +22,7 @@ L.Icon.Default.mergeOptions({
 
 //- data.find(item => item.id === itemId);
 
-function Map({ equipment, equipmentPositionHistory }) {
+function Map({ equipment, equipmentModel, equipmentPositionHistory, equipmentState, equipmentStateHistory }) {
     const position = [-19.126536, -45.947756]
 
     // posiciona os equipamentos existentes no mapa, em sua ultima localização
@@ -31,8 +31,11 @@ function Map({ equipment, equipmentPositionHistory }) {
             <NewMarker
                 key={i}
                 eqpId={item.id}
-                eqpName={item.name}
+                eqpNameId={item.name}
+                equipmentModel={equipmentModel}
                 allPosHistory={equipmentPositionHistory}
+                equipmentState={equipmentState}
+                allStateHistory={equipmentStateHistory}
             />
         )
     });

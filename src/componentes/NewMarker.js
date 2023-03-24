@@ -1,13 +1,23 @@
+import React from "react"
 import { Marker, Popup } from 'react-leaflet';
+import NewPopup from './NewPopup';
 
-function NewMarker({ key, eqpId, eqpName }) {
+function NewMarker({ key, eqpId, eqpNameId, allPosHistory }) {
+    function getLastPosition() {
+        // encontra o id do equipamento la lista
+        const item = allPosHistory.find(item => item.equipmentId === eqpId);
+        // retorna a ultima posição salva, caso exista
+        if (item) {
+            const lastPosition = item.positions[item.positions.length - 1];
+            return [lastPosition.lat, lastPosition.lon];
+        }
+        return null;
+    }
+
     return (
-        <Marker key={key} position={[(Math.random() * (90 * 2) - 90).toFixed(6), (Math.random() * (180 * 2) - 180).toFixed(6)]} riseOnHover={true}>
-            {/* <Popup>
-                Nome: {eqpName} <br />
-                Id: {eqpId}<br />
-            </Popup> */}
-        </Marker>
+        <Marker Marker key={key} riseOnHover={true} >
+            <NewPopup />
+        </Marker >
     )
 }
 

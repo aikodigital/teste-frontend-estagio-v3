@@ -21,5 +21,10 @@ export class Position {
   get longitude(): number {
     return this._lon;
   }
+
+
+  positionInfo() {
+   return `${this._date} - [${this._lat} ${this._lon}]`
+  }
   
 }

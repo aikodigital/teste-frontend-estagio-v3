@@ -41,6 +41,12 @@ export class Equipament {
     return [...this._positions];
   }
 
+  equipamentPositionInfo() {
+    this._positions.forEach(position => {
+     console.log(`${this._name} AT ${position.positionInfo()}`)
+    })
+  }
+
   honk() {
     console.log(this.name + " " + this.type.name);
   }

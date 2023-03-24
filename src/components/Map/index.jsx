@@ -2,32 +2,36 @@ import { MapContainer, TileLayer, Marker, Popup} from 'react-leaflet';
 import './Map.css';
 import Report from '../Report';
 import { eqState } from '../../entities/equipment';
-import { DivIcon, Icon, divIcon } from 'leaflet';
+import { DivIcon, Icon } from 'leaflet';
+
+console.log(eqState)
 
 const position = [-19, -46];
 
-const icon = new Icon({
-  iconUrl: 'https://cdn-icons-png.flaticon.com/512/25/25613.png',
-  iconSize:[50,50]
-})
 
-const newIcon = new DivIcon({
-  className: 'equipment-icon',
-})
 
 const Map = ({equipments}) => {
 
     const markers = equipments.map( equipment => {
-        const color = eqState.filter( state =>{
+        const state = eqState.filter( state =>{
           if(state.id === equipment.lastState().equipmentStateId){
             return state;
           }
-        })[0].color;
+        })[0].name;
 
         const coordinates = equipment.lastPosition();
+
+        const icon = new Icon({
+          iconUrl: `./marker_${state}.svg`,
+          iconSize: [50,90],
+          className: `${state}`,
+          
+        })
+        console.log(state)
         return (
+
         <Marker
-          icon={newIcon}
+          icon={icon}
           key={equipment.id} 
           position={[coordinates.lat, coordinates.lon]}
           >

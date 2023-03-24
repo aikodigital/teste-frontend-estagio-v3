@@ -4,8 +4,5 @@
     border: .25em solid black;
 }
 
-.equipment-icon{
-    width: 5vh;
-    height: 5vh;
-    background-color: black;
+.Parado, .Operando, .Manutenção{
 }

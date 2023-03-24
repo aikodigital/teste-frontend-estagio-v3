@@ -1,7 +1,7 @@
 import { useState, useEffect, createContext } from "react";
 import { IProps } from "./EquipmentsContext";
 
-interface IEquipmentsStateHistory {
+export interface IEquipmentsStateHistory {
   equipmentId: string;
   states: [
     {
@@ -15,7 +15,7 @@ export const EquipmentsStateHistoryContext = createContext<
   IEquipmentsStateHistory[] | null
 >([]);
 
-export function EquipmentsStateHistoryProvider({ children }: IProps) {
+export function EquipmentsStateHistoryProvider ({ children }: IProps) {
   const [equipmentsStateHistory, setEquipmentsStateHistory] = useState<
     IEquipmentsStateHistory[]
   >([]);

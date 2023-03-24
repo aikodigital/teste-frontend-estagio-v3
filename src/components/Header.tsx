@@ -7,8 +7,8 @@ function Header() {
       <div className="flex">
         <NavLink
           className={({ isActive }) =>
-            `p-2 font-bold opacity-60 transition-opacity ${
-              isActive && 'opacity-100'
+            `p-2 font-bold transition-opacity ${isActive && 'opacity-100'} ${
+              !isActive && 'opacity-60'
             }`
           }
           to="/"
@@ -17,8 +17,8 @@ function Header() {
         </NavLink>
         <NavLink
           className={({ isActive }) =>
-            `p-2 font-bold opacity-60 transition-opacity ${
-              isActive && 'opacity-100'
+            `p-2 font-bold transition-opacity ${isActive && 'opacity-100'} ${
+              !isActive && 'opacity-60'
             }`
           }
           to="/maps"

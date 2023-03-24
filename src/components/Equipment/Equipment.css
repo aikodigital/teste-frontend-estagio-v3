@@ -1,5 +1,12 @@
 .card{
     flex-direction: column;
     border: 1px solid;
-    padding: 1vh 0;
+    padding: 1vh 1vh;
+}
+
+.card h2{
+    font-size: .8em;
+}
+.card h3{
+    font-size: .75em;
 }

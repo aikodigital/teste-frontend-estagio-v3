@@ -2,10 +2,22 @@ import './SideMenu.css'
 import Report from '../Report';
 import Equipment from '../Equipment';
 
-const SideMenu = ({ equipments }) => {
+const SideMenu = (props) => {
+    
+    const setEqPreview = (equipment) =>{
+        const position = equipment.lastPosition();
+        props.setZoomIn(13);
+        props.setPosition([position.lat, position.lon]);
+    }
+
+    const equipments = props.equipments;
 
     const listEquipments =  equipments
-                            .map( equipment => <Equipment key={equipment.id} equipment={equipment}/> );
+                            .map( equipment => <Equipment 
+                                                    key={equipment.id} 
+                                                    equipment={equipment}
+                                                    setEqPreview={setEqPreview}
+                                                    set/> );
 
     return (
         <>

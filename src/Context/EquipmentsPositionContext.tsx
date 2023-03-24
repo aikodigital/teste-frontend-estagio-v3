@@ -1,15 +1,17 @@
 import { useState, useEffect, createContext } from "react";
 import { IProps } from "./EquipmentsContext";
+import { LatLngExpression, LatLngTuple } from "leaflet";
 
 interface IEquipmentsPosition {
   equipmentId: string;
-  positions: {
-    date: string;
-    lat: number;
-    lon: number;
-  };
+  positions: [
+    {
+      date: string;
+      lat: number;
+      lon: number;
+    }
+  ];
 }
-
 export const EquipmentsPositionContext = createContext<
   IEquipmentsPosition[] | null
 >([]);

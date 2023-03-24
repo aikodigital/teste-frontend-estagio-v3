@@ -4,10 +4,12 @@ import { IProps } from "./EquipmentsContext";
 interface IEquipmentsModel {
   id: string;
   name: string;
-  hourlyEarnings: {
-    equipmentStateId: string;
-    value: number;
-  };
+  hourlyEarnings: [
+    {
+      equipmentStateId: string;
+      value: number;
+    }
+  ];
 }
 
 export const EquipmentsModelContext = createContext<IEquipmentsModel[] | null>(
@@ -15,7 +17,9 @@ export const EquipmentsModelContext = createContext<IEquipmentsModel[] | null>(
 );
 
 export function EquipmentsModelProvider({ children }: IProps) {
-  const [equipmentsModel, setEquipmentsModel] = useState<IEquipmentsModel[]>([]);
+  const [equipmentsModel, setEquipmentsModel] = useState<IEquipmentsModel[]>(
+    []
+  );
 
   useEffect(() => {
     fetch("data/equipmentModel.json", {

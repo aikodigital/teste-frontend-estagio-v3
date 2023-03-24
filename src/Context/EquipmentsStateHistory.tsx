@@ -3,10 +3,12 @@ import { IProps } from "./EquipmentsContext";
 
 interface IEquipmentsStateHistory {
   equipmentId: string;
-  states: {
-    date: string;
-    equipmentStateId: string;
-  };
+  states: [
+    {
+      date: string;
+      equipmentStateId: string;
+    }
+  ];
 }
 
 export const EquipmentsStateHistoryContext = createContext<

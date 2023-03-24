@@ -13,7 +13,7 @@ interface QueryModifier<T, R> {
 class Query<T> {
   data: T[];
   constructor(data: T[]) {
-    this.data = data;
+    this.data = new Array(...data);
   }
 
   where(callback: (item: T) => boolean) {
@@ -28,9 +28,17 @@ class Query<T> {
       if (typeof aVal === 'number' && typeof bVal === 'number') {
         return order === 'asc' ? aVal - bVal : bVal - aVal;
       }
+      const aValStr = String(aVal);
+      const bValStr = String(bVal);
+      const aDate = new Date(aValStr).getTime();
+      const bDate = new Date(bValStr).getTime();
+      if (!isNaN(aDate) && !isNaN(bDate)) {
+        return order === 'asc' ? aDate - bDate : bDate - aDate;
+      }
+
       return order === 'asc'
-        ? String(aVal).localeCompare(String(bVal))
-        : String(bVal).localeCompare(String(aVal));
+        ? aValStr.localeCompare(bValStr)
+        : bValStr.localeCompare(aValStr);
     });
     return this;
   }

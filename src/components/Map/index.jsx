@@ -9,7 +9,6 @@ const Map = ({equipments}) => {
 
     const markers = equipments.map( equipment => {
         const coordinates = equipment.lastPosition();
-        console.log(coordinates)
         return (
         <Marker key={equipment.id} position={[coordinates.lat, coordinates.lon]}>
             <Popup key={equipment.id}>

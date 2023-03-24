@@ -2,10 +2,8 @@ import './Report.css'
 import { eqState } from "../../entities/equipment";
 
 const Report = ({ equipment }) => {
-    console.log(equipment)
 
     const lastPosition = equipment.lastPosition();
-    console.log(lastPosition);
     const lastState = equipment.lastState();
     const stateStatus = eqState.filter(state => state.id === lastState.equipmentStateId)[0];
 

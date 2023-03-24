@@ -1,8 +1,13 @@
-interface QueryModifier<T> {
+interface QueryModifier<T, R> {
   sortBy?: keyof T;
   order?: 'asc' | 'desc';
   where?: (item: T) => boolean;
   limit?: number;
+  relation?: {
+    data: R[];
+    key: keyof R;
+    relation: keyof T;
+  };
 }
 
 class Query<T> {
@@ -35,11 +40,12 @@ class Query<T> {
     return this;
   }
 
-  get(query?: QueryModifier<T>) {
+  get<R>(query?: QueryModifier<T, R>): (T & { relation: R[] })[] {
+    const data = this.data.map((a) => ({ ...a, relation: [] }));
     if (!query) {
-      return this.data;
+      return data;
     }
-    const { sortBy, order, where, limit } = query;
+    const { sortBy, order, where, limit, relation } = query;
     if (where) {
       this.where(where);
     }
@@ -49,23 +55,28 @@ class Query<T> {
     if (limit) {
       this.limit(limit);
     }
-    return this.data;
+    if (relation) {
+      return this.relation<R>(relation.data, relation.key, relation.relation);
+    }
+    return data;
   }
 
-  relation<R>(data: R[], key: keyof R, relation: keyof T, name?: string) {
-    this.data = this.data.map((a) => {
+  relation<R>(
+    data: R[],
+    key: keyof R,
+    relation: keyof T,
+  ): (T & { relation: R[] })[] {
+    return this.data.map((a) => {
       const id = a[relation] as unknown;
       const related: R[] = data.filter((b) => b[key] === id);
-      const field = name || relation;
       return {
         ...a,
-        [field]: related,
+        relation: related,
       };
     });
-    return this;
   }
 }
 
 export function query<T>(data: T[]) {
-  return new Query(data);
+  return new Query<T>(data);
 }

@@ -1,6 +1,5 @@
 import React from "react";
 import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
-import { Icon } from "leaflet";
 import { MarkerComponent } from "../Marker/Marker";
 
 interface MapProps {

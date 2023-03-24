@@ -41,10 +41,20 @@ export class Equipament {
     return [...this._positions];
   }
 
-  equipamentPositionInfo() {
+
+  //show all positions
+  equipamentPositionsInfo() {
     this._positions.forEach(position => {
      console.log(`${this._name} AT ${position.positionInfo()}`)
     })
+  }
+
+  //show the most recent position
+  getMostRecentPosition(): Position | null {
+    if (this._positions.length === 0) {
+      return null;
+    }
+    return this._positions[0];
   }
 
   honk() {

@@ -1,4 +1,4 @@
-export enum NameEnum {
+export enum TypeEnum {
   CargoTruck = "a3540227-2f0e-4362-9517-92f41dabbfdf",
   Harvester = "a4b0c114-acd8-4151-9449-7d12ab9bf40f",
   Claw = "9c3d009e-0d42-4a6e-9036-193e9bca3199",
@@ -23,11 +23,11 @@ export class EquipamentType {
 
   private getNameFromId(id: string): string {
     switch (id) {
-      case NameEnum.CargoTruck:
+      case TypeEnum.CargoTruck:
         return "Caminhão de carga";
-      case NameEnum.Harvester:
+      case TypeEnum.Harvester:
         return "Harvester";
-      case NameEnum.Claw:
+      case TypeEnum.Claw:
         return "Garra traçadora";
       default:
         throw new Error(`Invalid Equipament type ID: ${id}`);

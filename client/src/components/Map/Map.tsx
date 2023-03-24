@@ -1,5 +1,5 @@
 import React from "react";
-import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
 import { createEquipmentArray } from "../../utils/equipmentList";
 import { MarkerComponent } from "../Marker/Marker";
 
@@ -11,14 +11,14 @@ interface MapProps {
 }
 
 export const Map: React.FC<MapProps> = ({ lat, lon }) => {
-  const position: [number, number] = [lat, lon];
+  const mapPosition: [number, number] = [lat, lon];
 
   return (
     <div className="mapDiv">
       <MapContainer
         className="MapContainer"
-        center={position}
-        zoom={13}
+        center={mapPosition}
+        zoom={10.4}
         scrollWheelZoom={true}
         style={{ height: "100%", width: "100%", display: "flex" }}
       >
@@ -36,9 +36,9 @@ export const Map: React.FC<MapProps> = ({ lat, lon }) => {
 
           return (
             <MarkerComponent
-              key={equipment.modelId}
-              position={[position[0], position[1]]}
-             
+              key={equipment.modelId + equipment.typeId}
+              position={[position[0], position[1]]} 
+              equipType={equipment.modelId}             
             />
           );
         })}

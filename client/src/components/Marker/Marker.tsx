@@ -1,17 +1,19 @@
 import { Icon } from "leaflet";
 import { Marker, Popup } from "react-leaflet";
-
-export const pinIcon = new Icon({
-  iconUrl: "../../../public/harverster.png",
-  iconSize: [40, 40],
-  iconAnchor: [12, 41],
-});
+import { setIcon } from "../../utils/setIcon";
 
 interface MarkerProps {
   position: [number, number];
+  equipType: string;
 }
 
-export const MarkerComponent: React.FC<MarkerProps> = ({ position }) => {
+export const MarkerComponent: React.FC<MarkerProps> = ({ position, equipType }) => {
+  const pinIcon = new Icon({
+    iconUrl: setIcon(equipType),
+    iconSize: [40, 40],
+    iconAnchor: [12, 41],
+  });
+
   return (
     <Marker position={position} icon={pinIcon}>
       <Popup offset={[10, -35]}>

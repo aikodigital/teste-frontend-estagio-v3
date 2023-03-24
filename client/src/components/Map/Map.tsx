@@ -1,7 +1,7 @@
 import React from "react";
 import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
 import { Icon } from "leaflet";
-import { MarkerComponent, pinIcon } from "../Marker/Marker";
+import { MarkerComponent } from "../Marker/Marker";
 
 interface MapProps {
   lat: number;
@@ -25,7 +25,8 @@ export const Map: React.FC<MapProps> = ({ lat, lon }) => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        <MarkerComponent />
+       <MarkerComponent position={[-19.192595, -46.061072]} />
+       
       </MapContainer>
     </div>
   );

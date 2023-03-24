@@ -7,9 +7,13 @@ export const pinIcon = new Icon({
   iconAnchor: [12, 41],
 });
 
-export const MarkerComponent = () => {
+interface MarkerProps {
+  position: [number, number];
+}
+
+export const MarkerComponent: React.FC<MarkerProps> = ({ position }) => {
   return (
-    <Marker position={[-19.192595, -46.061072]} icon={pinIcon}>
+    <Marker position={position} icon={pinIcon}>
       <Popup offset={[10, -35]}>
         <div>
           <h2>My Custom Popup</h2>

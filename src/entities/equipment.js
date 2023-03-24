@@ -6,6 +6,8 @@ import eqStateHistory from '../data/equipmentStateHistory.json';
 import moment from 'moment';
 moment.locale('pt-br');
 
+console.log(eqState)
+
 class Equipment {
 
   constructor(name, id, modelId, modelName, positionHistory, stateHistory) {
@@ -19,6 +21,10 @@ class Equipment {
 
   showDate(date){
     return moment(date).format("DD/MM/YY [às] HH:mm");
+  }
+
+  showState(stateId){
+    return eqState.filter(state => state.id === stateId)[0].name;
   }
 
   lastPosition() {

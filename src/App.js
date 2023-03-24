@@ -1,10 +1,27 @@
+import Header from "./componentes/Header"
+import Map from "./componentes/Map"
+
+import equipment from "./data/equipment.json"
+import equipmentModel from "./data/equipmentModel.json"
+import equipmentPositionHistory from "./data/equipmentPositionHistory.json"
+import equipmentState from "./data/equipmentState.json"
+import equipmentStateHistory from "./data/equipmentStateHistory.json"
+
+
 import "./style/App.css";
-import MainContent from "./MainContent";
 
 function App() {
+
   return (
     <div className="App">
-      <MainContent />
+      <Header />
+      <Map
+        equipment={equipment}
+        equipmentModel={equipmentModel}
+        equipmentPositionHistory={equipmentPositionHistory}
+        equipmentState={equipmentState}
+        equipmentStateHistory={equipmentStateHistory}
+      />
     </div>
   );
 }

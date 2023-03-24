@@ -3,4 +3,10 @@
     height: 10%;
     width: 100%;
     background-color: var(--header-container);
+    margin-bottom: 2%;
+}
+
+.header--logo{
+    margin: 5px;
+    max-width: 150px;
 }

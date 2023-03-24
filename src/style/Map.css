@@ -1,0 +1,9 @@
+.map--container {
+    margin: auto;
+    width: 55vw;
+    height: 100vh;
+}
+
+.rounded{
+    border-radius: 10px;
+}

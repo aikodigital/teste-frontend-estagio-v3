@@ -7,7 +7,7 @@ function App() {
   return (
     <section className="container">
       <Sidebar />
-      <Map />
+      <Map lat={-19.192595} lon={-46.061072} />
     </section>
   );
 }

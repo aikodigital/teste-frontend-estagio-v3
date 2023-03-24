@@ -1,4 +1,4 @@
-import { EquipamentType } from "./EquipamentType";
+import { EquipamentType } from "./EquipmentType";
 import { Position } from "./Position";
 
 export class Equipament {

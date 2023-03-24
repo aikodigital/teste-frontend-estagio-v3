@@ -1,5 +1,5 @@
 import * as equipmentData from "../../../data/equipment.json";
-import { Equipament } from "../class/Equipament";
+import { Equipament } from "../class/Equipment";
 import { getPositionsForEquipment } from "./setPosition";
 
 const equipmentList: Equipament[] = [];

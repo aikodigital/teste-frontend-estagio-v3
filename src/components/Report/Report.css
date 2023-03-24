@@ -15,6 +15,8 @@
 
 .report__state-history{
     flex-direction: column;
+    overflow-y: scroll;
+    height: 33vh;
 }
 .report__state-history p{
     text-transform: lowercase;

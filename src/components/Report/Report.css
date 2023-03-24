@@ -1,49 +1,14 @@
 .report{
-    display: grid;
+    flex-direction: column;
     background-color: white;
     flex-grow: 1;
-    grid-template-areas:
-    'name name'
-    'model model'
-    'position position'
-    'lat latValue'
-    'lon lonValue'
-    'positionUpdated positionUpdatedValue'
-    'state actualstate'
-    'stateDate dateState';
+    row-gap: .25vh;
 }
 
 .report p{
     margin: 0;
 }
-
-.report-name{
-    grid-area: name;
-}
-
-.report-model{
-    grid-area: model;
-}
-
-.report-position{
-    grid-area: position;
-}
-
-.report-lat{
-    grid-area: lat;
-}
-.report-lon{
-    grid-area: lon;
-}
-
-.report-lat-value{
-    grid-area: latValue;
-}
-
-.report-lon-value{
-    grid-area: lonValue;
-}
-
-.report-position-updated{
-    grid-area: ;
+.report-position, .report-state, .report-equipment{
+    flex-direction: column;
+    background-color: rgb(228, 228, 228);
 }

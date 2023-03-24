@@ -11,20 +11,23 @@ const Report = ({ equipment }) => {
     return (
         <>
             <li className='container report'>
-                
-                <h2 className='report-name'>{equipment.name}</h2>
-                <h3 className='report-model'>{equipment.modelName}</h3>
-                <h3 className='report-position'>Posição: </h3>
-                <h4 className='report-lat'>lat:</h4>
-                <p className='report-lat-value'>{lastPosition.lat}</p>
-                <h4 className='report-lon'>lon:</h4>
-                <p className='report-lon-value'>{lastPosition.lon}</p>
-                <h3 className='report-position-updated'>atualizado em:</h3>
-                <p className='report-position-updated-value'>{lastDatePosition}</p>
-                <h3 className='report-state'>Estado:</h3>
-                <p className='report-state-value'>{stateStatus.name}</p>
-                <h3 className='report-state-updated'>atualizado em:</h3>
-                <p className='report-state-updated-value'>{lastDateState}</p>
+                <div className='container report-equipment'>
+                <h3 className='report-name'>Equipamento: {equipment.name}</h3>
+                <h3 className='report-model'>Tipo: {equipment.modelName}</h3>
+                </div>
+
+                <div className='container report-position'>
+                    <h3 className='report-position-title'>Posição: </h3>
+                    <h4 className='report-lat'>latitude:{lastPosition.lat}</h4>
+                    <h4 className='report-lon'>longitude:{lastPosition.lon}</h4>
+                    <h3 className='report-position-updated'>atualizado em:</h3>
+                    <p>{lastDatePosition}</p>
+                </div>
+                <div className='cotainer report-state'>
+                    <h3 className='report-state'>Estado: {stateStatus.name}</h3>
+                    <h3 className='report-state-updated'>atualizado em:</h3>
+                    <p className='report-state-updated-value'>{lastDateState}</p>
+                </div>
             </li>
         </>
     )

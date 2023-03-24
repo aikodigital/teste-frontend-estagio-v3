@@ -23,7 +23,8 @@ const Map = ({equipments}) => {
 
         const icon = new Icon({
           iconUrl: `./marker_${state}.svg`,
-          iconSize: [50,90],
+          iconSize: [25,41],
+          iconAnchor: [12, 41],
           className: `${state}`,
           
         })

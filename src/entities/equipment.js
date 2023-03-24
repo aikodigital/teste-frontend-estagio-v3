@@ -3,6 +3,8 @@ import eqModel from '../data/equipmentModel.json';
 import eqPositionHistory from '../data/equipmentPositionHistory.json';
 import eqState from '../data/equipmentState.json';
 import eqStateHistory from '../data/equipmentStateHistory.json';
+import moment from 'moment';
+moment.locale('pt-br');
 
 class Equipment {
 
@@ -13,6 +15,10 @@ class Equipment {
     this.modelName = modelName;
     this.positionHistory = positionHistory;
     this.stateHistory = stateHistory;
+  }
+
+  showDate(date){
+    return moment(date).format("DD/MM/YY [às] HH:mm");
   }
 
   lastPosition() {
@@ -84,31 +90,6 @@ function findStateHistory(id) {
   const stateHistory = eqStateHistory.filter(eq => eq.equipmentId === id).map(eq => eq.states)[0];
   return stateHistory;
 }
-/* test */
-
-console.log(equipments[0].positionHistory)
-
-const date = '2021-02-28T16:00:00.000Z'
-
-
-const previousDate = equipments[0].positionHistory
-  .map(position => position.date)
-  .reduce((acc, next) => {
-    if (date > acc) {
-      if (date > next) {
-        return next;
-      } else {
-        return acc;
-      }
-    }
-  });
-
-const position = equipments[0].positionHistory
-  .filter(position => position.date == previousDate);
-
-
-console.log(previousDate);
-console.log(position);
 
 export {
   equipments,

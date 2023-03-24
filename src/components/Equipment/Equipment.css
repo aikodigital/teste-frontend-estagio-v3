@@ -1,12 +1,43 @@
 .card{
-    flex-direction: column;
+    display: grid;
     border: 1px solid;
-    padding: 1vh 1vh;
+    padding: .2vh 1vh;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-areas: 
+    'name lat state'
+    'model lon empty';
 }
 
-.card h2{
-    font-size: .8em;
+.card:hover{
+    cursor: pointer;
+    background-color: rgb(186, 223, 240);
 }
+
+.card:focus-visible {
+    background-color: rgb(186, 223, 240);
+}
+
 .card h3{
     font-size: .75em;
+}
+
+.card_name{
+    font-size: .8em;
+    grid-area: name;
+}
+.card_model{
+    grid-area: model;
+}
+.card_lat{
+    grid-area: lat;
+}
+.card_lon{
+    grid-area: lon;
+}
+.card_state{
+    display: block;
+    width: 1em;
+    height: 1em;
+    grid-area: state;
+    justify-self: flex-end;
 }

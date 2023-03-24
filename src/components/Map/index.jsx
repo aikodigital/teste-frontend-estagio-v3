@@ -1,5 +1,4 @@
 import Report from '../Report';
-import { useEffect } from 'react';
 
 import { eqState } from '../../entities/equipment';
 

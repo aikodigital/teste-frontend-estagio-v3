@@ -1,6 +1,7 @@
 .side-menu{
     flex-direction: column;
     width: 20vw;
+    flex-basis: 20em;
 }
 
 .side-menu__title{

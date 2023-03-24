@@ -1,5 +1,7 @@
 
-import * as equipmentData from "../../../data/equipment.json";
+import equipmentDataJson from "../../../data/equipment.json";
+const equipmentData: any[] = equipmentDataJson;
+
 import { Equipament } from "../class/Equipment";
 import { getPositionsForEquipment } from "./setPosition";
 

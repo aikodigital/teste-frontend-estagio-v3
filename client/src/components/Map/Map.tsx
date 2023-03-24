@@ -1,11 +1,9 @@
 import React from "react";
 import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
+import { createEquipmentArray } from "../../utils/equipmentList";
 import { MarkerComponent } from "../Marker/Marker";
 
-
-
-
-
+const equipmentArray = createEquipmentArray();
 
 interface MapProps {
   lat: number;
@@ -29,10 +27,22 @@ export const Map: React.FC<MapProps> = ({ lat, lon }) => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-       <MarkerComponent position={[-19.192595, -46.061072]} />
-       
+        {equipmentArray.map((equipment) => {
+          const position = equipment.getMostRecentPosition();
+
+          if (!position) {
+            return null;
+          }
+
+          return (
+            <MarkerComponent
+              key={equipment.modelId}
+              position={[position[0], position[1]]}
+             
+            />
+          );
+        })}
       </MapContainer>
     </div>
   );
 };
- 

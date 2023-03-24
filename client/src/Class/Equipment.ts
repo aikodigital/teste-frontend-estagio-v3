@@ -50,7 +50,7 @@ export class Equipament {
   }
 
   //show the most recent position
-  getMostRecentPosition(): Number[] | null {
+  getMostRecentPosition(): number[] | null {
     if (this._positions.length === 0) {
       return null;
     }

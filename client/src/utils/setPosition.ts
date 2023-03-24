@@ -1,6 +1,7 @@
 import { Position } from "../class/Position";
 
-import * as positionData from "../../../data/equipmentPositionHistory.json";
+import positionDataJson from "../../../data/equipmentPositionHistory.json";
+const positionData: any[] = positionDataJson;
 
 export function getPositionsForEquipment(equipmentId: string): Position[] {
   const equipment = positionData.find(

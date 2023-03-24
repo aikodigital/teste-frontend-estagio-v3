@@ -1,13 +1,7 @@
 import React from "react";
 import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
 import { Icon } from "leaflet";
-import harvester from "../../../public/harverster.png";
-
-const pinIcon = new Icon({
-  iconUrl: "../../../public/harverster.png",
-  iconSize: [30, 32],
-  iconAnchor: [12, 41],
-});
+import { MarkerComponent, pinIcon } from "../Marker/Marker";
 
 interface MapProps {
   lat: number;
@@ -31,14 +25,7 @@ export const Map: React.FC<MapProps> = ({ lat, lon }) => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        <Marker position={[-19.192595, -46.061072]} icon={pinIcon}>
-          <Popup offset={[5, -35]}>
-            <div>
-              <h2>My Custom Popup</h2>
-              <p>This is some custom content for my popup!</p>
-            </div>
-          </Popup>
-        </Marker>
+        <MarkerComponent />
       </MapContainer>
     </div>
   );

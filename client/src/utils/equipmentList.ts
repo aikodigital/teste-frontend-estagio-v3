@@ -1,26 +1,16 @@
+
 import * as equipmentData from "../../../data/equipment.json";
 import { Equipament } from "../class/Equipment";
 import { getPositionsForEquipment } from "./setPosition";
 
-export function getEquipments(): Equipament[] {
-  const equipmentList: Equipament[] = [];
+export function createEquipmentArray(): Equipament[] {
+  const equipmentArray: Equipament[] = [];
 
-  equipmentData.forEach((item: any) => {
-    const equipmentId = item.id;
-    const equipmentName = item.name;
-    const equipmentModelId = item.equipmentModelId;
-
-    const positonList = getPositionsForEquipment(equipmentId);
-
-    const equipment = new Equipament(
-      equipmentId,
-      equipmentName,
-      equipmentModelId,
-      positonList
-    );
-    equipmentList.push(equipment);
+  equipmentData.forEach((eq: any) => {
+    const positions = getPositionsForEquipment(eq.id);
+    const equipment = new Equipament(eq.id, eq.name, eq.equipmentModelId, positions);
+    equipmentArray.push(equipment);
   });
 
-  return equipmentList;
+  return equipmentArray;
 }
-

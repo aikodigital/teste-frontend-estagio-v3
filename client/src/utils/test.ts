@@ -1,12 +1,7 @@
-import { getEquipments } from "./equipmentList";
+import { createEquipmentArray } from "./equipmentList";
 
-const equipments = getEquipments();
+const equipmentArray = createEquipmentArray();
 
-equipments.forEach((equipment) => {
-  const mostRecentPosition = equipment.getMostRecentPosition();
-  if (mostRecentPosition) {
-    console.log(`Equipment ${equipment.name} most recent position: ${mostRecentPosition.positionInfo()}`);
-  } else {
-    console.log(`Equipment ${equipment.name} has no positions.`);
-  }
+equipmentArray.forEach(equipment => {
+  equipment.honk();
 });

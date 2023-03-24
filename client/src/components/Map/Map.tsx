@@ -2,6 +2,11 @@ import React from "react";
 import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
 import { MarkerComponent } from "../Marker/Marker";
 
+
+
+
+
+
 interface MapProps {
   lat: number;
   lon: number;
@@ -30,3 +35,4 @@ export const Map: React.FC<MapProps> = ({ lat, lon }) => {
     </div>
   );
 };
+ 

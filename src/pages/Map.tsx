@@ -10,8 +10,10 @@ import 'leaflet/dist/leaflet.css';
 
 import { EquipmentModelRelation } from '../types';
 import equipment from '../assets/data/equipment.json';
-import equipmentPositionHistory from '../assets/data/equipmentPositionHistory.json';
 import equipmentModel from '../assets/data/equipmentModel.json';
+import equipmentPositionHistory from '../assets/data/equipmentPositionHistory.json';
+import equipmentStateHistory from '../assets/data/equipmentStateHistory.json';
+import equipmentState from '../assets/data/equipmentState.json';
 import { query } from '../utils/query';
 import { Fragment } from 'react';
 
@@ -19,15 +21,13 @@ function Map() {
   const equipments = query(
     query(equipment).relation(equipmentModel, 'id', 'equipmentModelId'),
   ).rename<EquipmentModelRelation>('relation', 'model');
-  const equipmentsPositionHistory = query(equipments).relation(
+  const positionHistory = query(equipments).relation(
     equipmentPositionHistory,
     'equipmentId',
     'id',
   );
 
-  const firstPosition = query(
-    equipmentsPositionHistory[0].relation.first().positions,
-  )
+  const firstPosition = query(positionHistory[0].relation.first().positions)
     .sort('date', 'desc')
     .first();
 
@@ -43,7 +43,15 @@ function Map() {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {equipmentsPositionHistory.map((equipment) => {
+          {positionHistory.map((equipment) => {
+            const firstState = query(
+              query(equipmentStateHistory)
+                .where(({ equipmentId }) => equipment.id === equipmentId)
+                .first().states,
+            )
+              .sort('date', 'desc')
+              .relation(equipmentState, 'id', 'equipmentStateId')[0]
+              .relation.first();
             const positionHistory = query(
               equipment.relation.first().positions,
             ).sort('date', 'desc');
@@ -63,7 +71,9 @@ function Map() {
                   position={[lastPosition.lat, lastPosition.lon]}
                 >
                   <Popup>
-                    <p className="font-bold">{equipment.name}</p>
+                    <p className="font-bold">
+                      {equipment.name} - {firstState.name}
+                    </p>
                     <p className="font-bold opacity-70">
                       {equipment.model.first().name}
                     </p>
@@ -71,7 +81,15 @@ function Map() {
                       Ver mais
                     </button>
                   </Popup>
-                  <Tooltip>{equipment.name}</Tooltip>
+                  <Tooltip>
+                    <div className="flex items-center">
+                      {equipment.name} - {firstState.name}
+                      <div
+                        className="m-2 h-3 w-3 rounded-full"
+                        style={{ backgroundColor: firstState.color }}
+                      />
+                    </div>
+                  </Tooltip>
                 </Marker>
               </Fragment>
             );

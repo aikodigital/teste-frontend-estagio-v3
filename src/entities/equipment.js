@@ -27,11 +27,21 @@ import eqStateHistory from '../data/equipmentStateHistory.json';
     findPositionAt(date){
     const previousDate = this.stateHistory
                           .map(position => position.date)
-                          .reduce((acc, next) => acc < date? next: acc);
+                          .reduce((acc, next) => {
+                            if(date > acc){
+                              if(date > next){
+                                acc = next;
+                              }else{
+                                return acc;
+                              }
+                            }
+
+                          });
     const position = this.positionHistory
                       .filter(position => position.date == previousDate)[0];
+      return position
     }
-    
+
     lastState(){
       const date =  this.stateHistory
                     .map(state => state.date)

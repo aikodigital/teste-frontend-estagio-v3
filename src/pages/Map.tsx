@@ -1,4 +1,11 @@
-import { MapContainer, Marker, Popup, TileLayer, Tooltip } from 'react-leaflet';
+import {
+  MapContainer,
+  Marker,
+  Polyline,
+  Popup,
+  TileLayer,
+  Tooltip,
+} from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import { EquipmentModelRelation } from '../types';
@@ -41,8 +48,16 @@ function Map() {
               equipment.relation.first().positions,
             ).sort('date', 'desc');
             const lastPosition = positionHistory.first();
+            const polyline = positionHistory
+              .get()
+              .map((position) => [position.lat, position.lon])
+              .splice(0, 3) as [number, number][];
             return (
               <Fragment key={equipment.id}>
+                <Polyline
+                  pathOptions={{ color: '#1c1c1c32' }}
+                  positions={polyline}
+                />
                 <Marker
                   key={equipment.id}
                   position={[lastPosition.lat, lastPosition.lon]}

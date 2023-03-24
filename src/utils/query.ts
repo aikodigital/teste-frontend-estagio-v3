@@ -40,8 +40,8 @@ class Query<T> {
     return this;
   }
 
-  get<R>(query?: QueryModifier<T, R>): (T & { relation: R[] })[] {
-    const data = this.data.map((a) => ({ ...a, relation: [] }));
+  get<R>(query?: QueryModifier<T, R>): (T & { relation: Query<R> })[] {
+    const data = this.data.map((a) => ({ ...a, relation: new Query([]) }));
     if (!query) {
       return data;
     }
@@ -65,15 +65,29 @@ class Query<T> {
     data: R[],
     key: keyof R,
     relation: keyof T,
-  ): (T & { relation: R[] })[] {
+  ): (T & { relation: Query<R> })[] {
     return this.data.map((a) => {
       const id = a[relation] as unknown;
       const related: R[] = data.filter((b) => b[key] === id);
       return {
         ...a,
-        relation: related,
+        relation: new Query(related),
       };
     });
+  }
+
+  first<R>(query?: QueryModifier<T, R>): T & { relation: Query<R> } {
+    return this.get(query)[0];
+  }
+
+  rename<D>(key: keyof T, newKey: string): D[] {
+    return this.data.map((a) => {
+      const { [key]: old, ...rest } = a;
+      return {
+        ...rest,
+        [newKey]: old,
+      };
+    }) as D[];
   }
 }
 

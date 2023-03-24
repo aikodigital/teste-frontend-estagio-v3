@@ -17,7 +17,7 @@ function Equipments() {
         <Card key={equipment.id}>
           <p className="opacity-70">{equipment.id}</p>
           <h2 className="text-xl">{equipment.name}</h2>
-          <p className="opacity-70">{equipment.relation[0].name}</p>
+          <p className="opacity-70">{equipment.relation.first()?.name}</p>
         </Card>
       ))}
     </div>

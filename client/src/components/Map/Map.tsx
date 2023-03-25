@@ -5,6 +5,11 @@ import { MarkerComponent } from "../Marker/Marker";
 
 const equipmentArray = createEquipmentArray();
 
+equipmentArray.forEach(equipment => {
+  equipment.honk();
+});
+
+
 interface MapProps {
   lat: number;
   lon: number;
@@ -36,9 +41,9 @@ export const Map: React.FC<MapProps> = ({ lat, lon }) => {
 
           return (
             <MarkerComponent
-              key={equipment.modelId + equipment.typeId}
+              key={equipment.equipId + equipment.typeId}
               position={[position[0], position[1]]} 
-              equipType={equipment.modelId}             
+              equipType={equipment.typeId}             
             />
           );
         })}

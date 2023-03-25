@@ -1,40 +1,44 @@
 import { EquipamentType } from "./EquipmentType";
 import { Position } from "./Position";
+import { State } from "./State";
 
 export class Equipament {
-  private _id: string;
-  private _name: string;
-  private _modelId: string;
-  private type: EquipamentType;
+  private _equipId: string;
+  private _equipName: string;
+  private _typeId: string;
+  private _typeName: EquipamentType;
   private _positions: Position[];
+  private _states?: State[];
 
   constructor(
     id: string,
     name: string,
     modelId: string,
-    positions: Position[]
+    positions: Position[],
+    states?: State[]
   ) {
-    this._id = id;
-    this._name = name;
-    this._modelId = modelId;
-    this.type = new EquipamentType(modelId);
+    this._equipId = id;
+    this._equipName = name;
+    this._typeId = modelId;
+    this._typeName = new EquipamentType(modelId);
     this._positions = positions;
+    this._states = states
+  }
+
+  get equipId(): string {
+    return this._equipId;
+  }
+
+  get equipName(): string {
+    return this._equipName;
   }
 
   get typeId(): string {
-    return this._id;
-  }
-
-  get name(): string {
-    return this._name;
-  }
-
-  get modelId(): string {
-    return this._modelId;
+    return this._typeId;
   }
 
   get typeName(): string {
-    return this.type.name;
+    return this._typeName.name;
   }
 
   get positions(): Position[] {
@@ -45,7 +49,7 @@ export class Equipament {
   //show all positions
   equipamentPositionsInfo() {
     this._positions.forEach(position => {
-     console.log(`${this._name} AT ${position.positionInfo()}`)
+     console.log(`${this._equipName} AT ${position.positionInfo()}`)
     })
   }
 
@@ -58,6 +62,6 @@ export class Equipament {
   }
 
   honk() {
-    console.log(this.name + " " + this.type.name);
+    console.log(this._equipName + " " + this._typeName.name);
   }
 }

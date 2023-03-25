@@ -8,27 +8,48 @@ import "../style/Map.css"
 
 //- data.find(item => item.id === itemId);
 
-function Map({ equipment, equipmentModel, equipmentPositionHistory, equipmentState, equipmentStateHistory }) {
-    const position = [-19.126536, -45.947756]
+function Map({ equipment, getEquipmentModelName, equipmentPositionHistory, getEquipmentLastState, getEquipmentName, getLastPosition, customIcon }) {
+    // const [showModal, setShowModal] = useState(false);
+
+    function calcularMediaUltimasPosicoes() {
+        // última posição de cada equipamento
+        const ultimasPosicoes = {};
+        equipmentPositionHistory.forEach((equipamento) => {
+            const ultimaPosicao = equipamento.positions[equipamento.positions.length - 1];
+            ultimasPosicoes[equipamento.equipmentId] = [ultimaPosicao.lat, ultimaPosicao.lon];
+        });
+
+        // Calcula a média das últimas posições
+        const mediaUltimasPosicoes = Object.values(ultimasPosicoes)
+            .reduce((acc, curr) => {
+                acc[0] += curr[0];
+                acc[1] += curr[1];
+                return acc;
+            }, [0, 0])
+            .map((coordenada) => coordenada / Object.keys(ultimasPosicoes).length);
+
+        return mediaUltimasPosicoes;
+    }
 
     // posiciona os equipamentos existentes no mapa, em sua ultima localização
     const equipTotal = equipment.map((item, i) => {
         return (
             <NewMarker
+                getEquipmentModelName={getEquipmentModelName}
+                getEquipmentLastState={getEquipmentLastState}
+                getEquipmentName={getEquipmentName}
+                getLastPosition={getLastPosition}
+                customIcon={customIcon}
                 key={i}
                 eqpId={item.id}
                 eqpNameId={item.name}
-                equipmentModel={equipmentModel}
-                allPosHistory={equipmentPositionHistory}
-                equipmentState={equipmentState}
-                allStateHistory={equipmentStateHistory}
             />
         )
     });
 
     return (
         <div className="map--container">
-            <MapContainer className='rounded' center={position} zoom={10} style={{ height: '80vh' }} scrollWheelZoom={true}>
+            <MapContainer className='rounded' center={calcularMediaUltimasPosicoes()} zoom={11} style={{ height: '80vh' }} scrollWheelZoom={true}>
                 <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                 {equipTotal}
             </MapContainer>

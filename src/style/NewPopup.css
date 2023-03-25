@@ -1,0 +1,9 @@
+h3{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+h3 span{
+    font-weight: 300;
+}

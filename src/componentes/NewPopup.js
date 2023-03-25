@@ -1,36 +1,11 @@
 import React from "react"
 import { Popup } from 'react-leaflet';
 
-function NewPopup({ allStateHistory, equipmentState, eqpId }) {
-    function getEquipmentLastState() {
-        let lastState = {}
+import '../style/NewPopup.css'
 
-        // encontra o id do equipamento na lista
-        const item = allStateHistory.find(item => item.equipmentId === eqpId);
-
-        // retorna a ultima posição salva, caso exista
-        if (item) {
-            lastState = item.states[item.states.length - 1];
-            const item2 = equipmentState.find(item => item.id === lastState.equipmentStateId);
-            lastState = {
-                ...lastState,
-                props: {
-                    ...item2, style: {
-                        color: item2.color
-                    }
-                }
-            }
-
-            return lastState;
-        }
-        else {
-            return null;
-        }
-    }
-
+function NewPopup({ getEquipmentLastState, getEquipmentModelName, getEquipmentName }) {
     function getFormatedDate() {
-        const date = new Date(getEquipmentLastState().date);
-        // const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const date = new Date(getEquipmentLastState.date);
         const options = {
             year: 'numeric',
             month: 'long',
@@ -46,8 +21,9 @@ function NewPopup({ allStateHistory, equipmentState, eqpId }) {
 
     return (
         <Popup riseOnHover={true} autoPanOnFocus={false} keyboard={true}>
+            <h3><strong>{getEquipmentName}</strong> - <span>{getEquipmentModelName}</span></h3>
             <p><strong>Dia: </strong> <span>{getFormatedDate()}</span></p>
-            <p><strong>Estado: </strong> <span style={getEquipmentLastState().props.style}>{getEquipmentLastState().props.name}</span></p>
+            <p><strong>Estado: </strong> <span style={getEquipmentLastState.props.style}>{getEquipmentLastState.props.name}</span></p>
         </Popup>
     );
 }

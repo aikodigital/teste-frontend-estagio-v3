@@ -15,9 +15,12 @@ import equipmentPositionHistory from '../assets/data/equipmentPositionHistory.js
 import equipmentStateHistory from '../assets/data/equipmentStateHistory.json';
 import equipmentState from '../assets/data/equipmentState.json';
 import { query } from '../utils/query';
-import { Fragment } from 'react';
+import { Fragment, useContext } from 'react';
+import { ModalContext } from '../context/ModalContext';
 
 function Map() {
+  const { openModal } = useContext(ModalContext);
+
   const equipments = query(
     query(equipment).relation(equipmentModel, 'id', 'equipmentModelId'),
   ).rename<EquipmentModelRelation>('relation', 'model');
@@ -77,7 +80,10 @@ function Map() {
                     <p className="font-bold opacity-70">
                       {equipment.model.first().name}
                     </p>
-                    <button className="w-full rounded bg-blue-500 p-2 text-white">
+                    <button
+                      className="w-full rounded bg-blue-500 p-2 text-white"
+                      onClick={() => openModal(equipment.id)}
+                    >
                       Ver mais
                     </button>
                   </Popup>

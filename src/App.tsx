@@ -4,6 +4,7 @@ import equipmentState from './data/equipmentState.json';
 import equipmentStateHistory from './data/equipmentStateHistory.json';
 import equipmentModel from './data/equipmentModel.json';
 import equipmentPositionHistory from './data/equipmentPositionHistory.json';
+import MapPage from './pages/mapPage';
 
 const App = () => {
 
@@ -167,6 +168,7 @@ const App = () => {
     :
     <></>
     }
+    <MapPage/>
   </main>
   </>
 }

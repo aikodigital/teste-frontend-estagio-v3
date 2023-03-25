@@ -3,6 +3,8 @@ import L from 'leaflet';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 
 import Header from "./componentes/Header"
+import Filter from "./componentes/Filter"
+import FilteredMap from "./componentes/FilteredMaps"
 import Map from "./componentes/Map"
 import MoreInfoPage from "./componentes/MoreInfoPage"
 
@@ -19,8 +21,23 @@ import paradoImg from './img/parado.svg'
 import "./style/App.css";
 
 function App() {
+  const [filter, setFilter] = useState(0)
+  const [filterStates, setFilterStates] = useState(0)
   const [idToShow, setIdToShow] = useState(null);
   const [showMoreInfo, setShowMoreInfo] = useState(false);
+
+  function changeFilter(num) {
+    if (filter !== num) {
+      setFilter(num)
+      setFilterStates(0)
+    }
+  }
+
+  function handleChangeStates(num) {
+    if (filterStates !== num) {
+      setFilterStates(num)
+    }
+  }
 
   const handleClick = (id) => {
     setIdToShow(id)
@@ -39,7 +56,6 @@ function App() {
       day: 'numeric',
       hour: 'numeric',
       minute: 'numeric',
-      // second: 'numeric',
       hour12: false,
       timeZone: 'UTC'
     };
@@ -137,35 +153,61 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {!showMoreInfo && (<Map
-        handleClick={handleClick}
-        equipment={equipment}
-        getFormatedDate={getFormatedDate}
-        equipmentPositionHistory={allPosHistory}
-        equipmentState={equipmentState}
-        equipmentStateHistory={allStateHistory}
-        getEquipmentModelName={getEquipmentModelName}
-        getEquipmentLastState={getEquipmentLastState}
-        getEquipmentName={getEquipmentName}
-        getLastPosition={getLastPosition}
-        customIcon={customIcon}
-      />)}
-      {showMoreInfo && (
-        <MoreInfoPage
-          id={idToShow}
-          handleClose={handleClose}
-          getEquipmentName={getEquipmentName}
-          getLastPosition={getLastPosition}
+
+      <Filter
+        filter={filter}
+        handleChange={changeFilter}
+        handleChangeStates={handleChangeStates}
+        filterStates={filterStates}
+      />
+
+      {!showMoreInfo && filter !== 0 &&
+        <FilteredMap
+          filter={filter}
+          filterStates={filterStates}
+          handleClick={handleClick}
+          equipment={equipment}
+          getFormatedDate={getFormatedDate}
+          equipmentPositionHistory={allPosHistory}
+          equipmentState={equipmentState}
+          equipmentStateHistory={allStateHistory}
           getEquipmentModelName={getEquipmentModelName}
           getEquipmentLastState={getEquipmentLastState}
-          equipmentStateHistory={allStateHistory}
-          getFormatedDate={getFormatedDate}
-          equipment={equipment}
-          equipmentModel={equipmentModel}
-          equipmentState={equipmentState}
-          getEquipmentLastStateColor={getEquipmentLastStateColor}
+          getEquipmentName={getEquipmentName}
+          getLastPosition={getLastPosition}
+          customIcon={customIcon}
         />
-      )}
+      }
+
+      {!showMoreInfo && !filter &&
+        (
+          <Map
+            handleClick={handleClick}
+            equipment={equipment}
+            getFormatedDate={getFormatedDate}
+            equipmentPositionHistory={allPosHistory}
+            equipmentState={equipmentState}
+            equipmentStateHistory={allStateHistory}
+            getEquipmentModelName={getEquipmentModelName}
+            getEquipmentLastState={getEquipmentLastState}
+            getEquipmentName={getEquipmentName}
+            getLastPosition={getLastPosition}
+            customIcon={customIcon}
+          />)}
+      {showMoreInfo &&
+        (
+          <MoreInfoPage
+            id={idToShow}
+            handleClose={handleClose}
+            getEquipmentName={getEquipmentName}
+            getEquipmentModelName={getEquipmentModelName}
+            getEquipmentLastState={getEquipmentLastState}
+            equipmentStateHistory={allStateHistory}
+            getFormatedDate={getFormatedDate}
+            equipmentState={equipmentState}
+            getEquipmentLastStateColor={getEquipmentLastStateColor}
+          />
+        )}
     </div>
   );
 }

@@ -4,6 +4,10 @@
     width: 100%;
     background-color: var(--header-container);
     margin-bottom: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
 }
 
 .header--logo{

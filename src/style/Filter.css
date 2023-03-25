@@ -1,0 +1,54 @@
+.--filter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.--filter-nav {
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.--filter-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.--filter-item {
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.--filter-item:hover {
+    color: #fff;
+}
+
+.--filter-item-active:hover {
+    color: #000;
+}
+
+.--filter-item-active {
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    background-color: #fff;
+    color: #000;
+    font-weight: bold;
+    border-bottom: 2px solid #000;
+}

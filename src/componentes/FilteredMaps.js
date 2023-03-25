@@ -6,7 +6,33 @@ import NewMarker from './NewMarker';
 import 'leaflet/dist/leaflet.css'
 import "../style/Map.css"
 
-function Map({ handleClick, equipment, getEquipmentModelName, equipmentPositionHistory, getEquipmentLastState, getEquipmentName, getLastPosition, getFormatedDate, customIcon }) {
+function FilteredMaps({ filter, filterStates, handleClick, equipment, getEquipmentModelName, equipmentPositionHistory, getEquipmentLastState, getEquipmentName, getLastPosition, getFormatedDate, customIcon }) {
+    let filteredEquipments = []
+
+    if (filter === 1) {
+        filterStatesArray()
+    }
+
+    function getFilterStateName() {
+        switch (filterStates) {
+            case 0:
+                return 'Operando';
+            case 1:
+                return 'Parado';
+            case 2:
+                return 'Manutenção';
+            default:
+                return null
+        }
+    }
+
+    function filterStatesArray() {
+        equipment.forEach(item => {
+            if (getEquipmentLastState(item.id).props.name === getFilterStateName()) {
+                filteredEquipments.push(item)
+            }
+        });
+    }
 
     function calcularMediaUltimasPosicoes() {
         // última posição de cada equipamento
@@ -29,7 +55,7 @@ function Map({ handleClick, equipment, getEquipmentModelName, equipmentPositionH
     }
 
     // posiciona os equipamentos existentes no mapa, em sua ultima localização
-    const equipTotal = equipment.map((item, i) => {
+    const equipTotal = filteredEquipments.map((item, i) => {
         return (
             <NewMarker
                 handleClick={handleClick}
@@ -56,4 +82,4 @@ function Map({ handleClick, equipment, getEquipmentModelName, equipmentPositionH
     );
 }
 
-export default Map
+export default FilteredMaps

@@ -1,13 +1,7 @@
-interface QueryModifier<T, R> {
+interface QueryModifier<T> {
   sortBy?: keyof T;
   order?: 'asc' | 'desc';
   where?: (item: T) => boolean;
-  limit?: number;
-  relation?: {
-    data: R[];
-    key: keyof R;
-    relation: keyof T;
-  };
 }
 
 class Query<T> {
@@ -43,59 +37,22 @@ class Query<T> {
     return this;
   }
 
-  limit(limit: number) {
-    this.data.splice(limit);
-    return this;
-  }
-
-  get<R>(query?: QueryModifier<T, R>): (T & { relation: Query<R> })[] {
-    const data = this.data.map((a) => ({ ...a, relation: new Query([]) }));
+  get(query?: QueryModifier<T>): T[] {
     if (!query) {
-      return data;
+      return this.data;
     }
-    const { sortBy, order, where, limit, relation } = query;
+    const { sortBy, order, where } = query;
     if (where) {
       this.where(where);
     }
     if (sortBy) {
       this.sort(sortBy, order);
     }
-    if (limit) {
-      this.limit(limit);
-    }
-    if (relation) {
-      return this.relation<R>(relation.data, relation.key, relation.relation);
-    }
-    return data;
+    return this.data;
   }
 
-  relation<R>(
-    data: R[],
-    key: keyof R,
-    relation: keyof T,
-  ): (T & { relation: Query<R> })[] {
-    return this.data.map((a) => {
-      const id = a[relation] as unknown;
-      const related: R[] = data.filter((b) => b[key] === id);
-      return {
-        ...a,
-        relation: new Query(related),
-      };
-    });
-  }
-
-  first<R>(query?: QueryModifier<T, R>): T & { relation: Query<R> } {
+  first(query?: QueryModifier<T>): T {
     return this.get(query)[0];
-  }
-
-  rename<D>(key: keyof T, newKey: string): D[] {
-    return this.data.map((a) => {
-      const { [key]: old, ...rest } = a;
-      return {
-        ...rest,
-        [newKey]: old,
-      };
-    }) as D[];
   }
 }
 

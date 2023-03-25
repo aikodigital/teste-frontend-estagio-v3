@@ -8,7 +8,7 @@ import "../style/Map.css"
 
 //- data.find(item => item.id === itemId);
 
-function Map({ equipment, getEquipmentModelName, equipmentPositionHistory, getEquipmentLastState, getEquipmentName, getLastPosition, customIcon }) {
+function Map({ handleClick, equipment, getEquipmentModelName, equipmentPositionHistory, getEquipmentLastState, getEquipmentName, getLastPosition, getFormatedDate, customIcon }) {
     // const [showModal, setShowModal] = useState(false);
 
     function calcularMediaUltimasPosicoes() {
@@ -35,10 +35,12 @@ function Map({ equipment, getEquipmentModelName, equipmentPositionHistory, getEq
     const equipTotal = equipment.map((item, i) => {
         return (
             <NewMarker
+                handleClick={handleClick}
                 getEquipmentModelName={getEquipmentModelName}
                 getEquipmentLastState={getEquipmentLastState}
                 getEquipmentName={getEquipmentName}
                 getLastPosition={getLastPosition}
+                getFormatedDate={getFormatedDate}
                 customIcon={customIcon}
                 key={i}
                 eqpId={item.id}

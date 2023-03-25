@@ -3,24 +3,24 @@ import { Marker } from 'react-leaflet';
 
 import NewPopup from './NewPopup';
 
-function NewMarker({ eqpId, getEquipmentModelName, getEquipmentLastState, getEquipmentName, getLastPosition, customIcon }) {
-    function createIcon(){
+function NewMarker({ handleClick, eqpId, getEquipmentModelName, getEquipmentLastState, getEquipmentName, getLastPosition, customIcon ,getFormatedDate}) {
+    function createIcon() {
         return customIcon(eqpId)
     }
-    
-    function lastPos(){
+
+    function lastPos() {
         return getLastPosition(eqpId)
     }
 
-    function getModel(){
+    function getModel() {
         return getEquipmentModelName(eqpId)
     }
 
-    function getState(){
+    function getState() {
         return getEquipmentLastState(eqpId)
     }
 
-    function getName (){
+    function getName() {
         return getEquipmentName(eqpId)
     }
 
@@ -33,9 +33,11 @@ function NewMarker({ eqpId, getEquipmentModelName, getEquipmentLastState, getEqu
                 // abre os popups com mouseover
                 mouseover: (event) => event.target.openPopup(),
                 mouseout: (event) => event.target.closePopup(),
+                click: (event) => handleClick(eqpId),
             }}>
             <NewPopup
                 eqpId={eqpId}
+                getFormatedDate={getFormatedDate}
                 getEquipmentModelName={getModel()}
                 getEquipmentLastState={getState()}
                 getEquipmentName={getName()}

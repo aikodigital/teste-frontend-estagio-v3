@@ -1,0 +1,109 @@
+.moreInfoPage-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.moreInfoPage {
+    top: 0;
+    left: 0;
+    width: 80%;
+    max-width: 800px;
+    max-height: 80%;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    position: relative;
+    overflow-y: auto;
+}
+
+.upTop {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.closeButton-container {
+    padding: 4px;
+    cursor: pointer;
+}
+
+.allInfo-container {
+    margin: 15px;
+    border: 1px solid var(--base-font-color);
+    border-radius: 10px;
+}
+
+.title-font-color {
+    color: var(--base-title-font-color);
+}
+
+.indicator {
+    font-weight: 600;
+}
+
+.base-data {
+    margin-left: 15px;
+    margin-right: 15px;
+    gap: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.history-container {
+    padding: 40px 80px 0 80px;
+    margin: 15px;
+    border: 1px solid var(--base-font-color);
+    border-radius: 10px;
+}
+
+.container-line {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 0.5px solid var(--base-font-color);
+}
+
+.flex-align {
+    display: flex;
+    align-items: center;
+}
+
+.pagination-container {
+    color: var(--base-title-font-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    gap: 20px;
+}
+
+.pagination-button {
+    padding: 0.5rem 1rem;
+    margin: 0 0.25rem;
+    background-color: #fff;
+    border: 1px solid var(--base-title-font-color);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pagination-button:hover {
+    background-color: #f1f1f1;
+}
+
+.pagination-page {
+    font-weight: bold;
+}

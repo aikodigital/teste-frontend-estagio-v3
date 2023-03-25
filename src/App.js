@@ -1,9 +1,10 @@
-import React from "react"
+import React, { useState } from 'react';
 import L from 'leaflet';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 
 import Header from "./componentes/Header"
 import Map from "./componentes/Map"
+import MoreInfoPage from "./componentes/MoreInfoPage"
 
 import equipment from "./data/equipment.json"
 import equipmentModel from "./data/equipmentModel.json"
@@ -18,6 +19,33 @@ import paradoImg from './img/parado.svg'
 import "./style/App.css";
 
 function App() {
+  const [idToShow, setIdToShow] = useState(null);
+  const [showMoreInfo, setShowMoreInfo] = useState(false);
+
+  const handleClick = (id) => {
+    setIdToShow(id)
+    setShowMoreInfo(true);
+  }
+
+  const handleClose = () => {
+    setShowMoreInfo(false);
+  }
+
+  function getFormatedDate(getEquipmentLastState) {
+    const date = new Date(getEquipmentLastState.date);
+    const options = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      // second: 'numeric',
+      hour12: false,
+      timeZone: 'UTC'
+    };
+    return date.toLocaleDateString('pt-BR', options);
+  }
+
   function getEquipmentName(eqpNameId) {
     const eqpName = equipment.find(item => item.id === eqpNameId);
 
@@ -86,7 +114,6 @@ function App() {
           }
         }
       }
-
       return lastState;
     }
     else {
@@ -110,8 +137,10 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Map
+      {!showMoreInfo && (<Map
+        handleClick={handleClick}
         equipment={equipment}
+        getFormatedDate={getFormatedDate}
         equipmentPositionHistory={allPosHistory}
         equipmentState={equipmentState}
         equipmentStateHistory={allStateHistory}
@@ -120,7 +149,23 @@ function App() {
         getEquipmentName={getEquipmentName}
         getLastPosition={getLastPosition}
         customIcon={customIcon}
-      />
+      />)}
+      {showMoreInfo && (
+        <MoreInfoPage
+          id={idToShow}
+          handleClose={handleClose}
+          getEquipmentName={getEquipmentName}
+          getLastPosition={getLastPosition}
+          getEquipmentModelName={getEquipmentModelName}
+          getEquipmentLastState={getEquipmentLastState}
+          equipmentStateHistory={allStateHistory}
+          getFormatedDate={getFormatedDate}
+          equipment={equipment}
+          equipmentModel={equipmentModel}
+          equipmentState={equipmentState}
+          getEquipmentLastStateColor={getEquipmentLastStateColor}
+        />
+      )}
     </div>
   );
 }

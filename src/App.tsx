@@ -4,7 +4,7 @@ import equipmentState from './data/equipmentState.json';
 import equipmentStateHistory from './data/equipmentStateHistory.json';
 import equipmentModel from './data/equipmentModel.json';
 import equipmentPositionHistory from './data/equipmentPositionHistory.json';
-import MapPage from './pages/mapPage';
+import MapPage from './pages/MapPage';
 
 const App = () => {
 
@@ -16,6 +16,8 @@ const App = () => {
   const [equipmentModelValue, setEquipmentModelValue] = useState([])
   const [equipmentHistoryArray, setEquipmentHistoryArray] = useState([])
   const [equipmentPositionState, setEquipmentPositionHistory] = useState([])
+  const [selectedLat, setSelectedLat] = useState(null);
+  const [selectedLon, setSelectedLon] = useState(null);
 
   const getEquipmentInfo = () => {
     for (let key of equipments) {
@@ -107,11 +109,15 @@ const App = () => {
             lon: lastPositionsArray[j].lon,
           }
           returnedValuesArray.push(newObject)
-          console.log(equipmentPositionState)
         }
       }
     }
     setEquipmentPositionHistory(returnedValuesArray)
+  }
+
+  const getGoogleMapPosition = (lat: any, lon: any) => {
+    setSelectedLat(lat);
+    setSelectedLon(lon);
   }
 
   return <>
@@ -159,7 +165,7 @@ const App = () => {
             Data: {item['date']} {'\n'}
             Local: {item['lat']} {'\n'} {item['lon']}
             {'\n'}
-            <button>Ver no mapa</button>
+            <button onClick={() => getGoogleMapPosition(item['lat'], item['lon'])}>Ver no mapa</button>
           </li>
         ))}
       </ul>
@@ -168,7 +174,7 @@ const App = () => {
     :
     <></>
     }
-    <MapPage/>
+    <MapPage lat={selectedLat} lon={selectedLon}/>
   </main>
   </>
 }

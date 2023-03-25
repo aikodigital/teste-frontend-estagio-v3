@@ -3,5 +3,9 @@
 @tailwind utilities;
 
 *:focus-visible {
-  @apply ring-2 ring-offset-2 ring-offset-gray-100 ring-white ring-opacity-60 outline-none rounded;
+  @apply ring-2 ring-offset-2 ring-offset-slate-400 ring-slate-400 ring-opacity-60 outline-none rounded;
+}
+
+* {
+  transition: all 0.2s ease-in-out;
 }

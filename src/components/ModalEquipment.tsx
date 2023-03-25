@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { ModalContext } from '../context/ModalContext';
 import {
   getEquipmentById,
@@ -8,13 +8,21 @@ import {
 
 function ModalEquipment() {
   const { closeModal, modalId } = useContext(ModalContext);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        closeModal();
+      }
+    }
+    window.addEventListener('mousedown', handleClickOutside);
     document.body.style.overflow = 'hidden';
     return () => {
+      window.removeEventListener('mousedown', handleClickOutside);
       document.body.style.overflow = 'unset';
     };
-  }, []);
+  }, [closeModal]);
 
   if (!modalId) return null;
 
@@ -24,7 +32,7 @@ function ModalEquipment() {
 
   return (
     <div className="fixed inset-0 z-[99999] flex h-screen w-screen items-center justify-center bg-black/50">
-      <div className="w-96 rounded bg-white p-5 shadow">
+      <div className="w-96 rounded bg-white p-5 shadow" ref={ref}>
         <div className="flex justify-end">
           <button
             className="rounded bg-red-500 px-2 py-1 text-white"

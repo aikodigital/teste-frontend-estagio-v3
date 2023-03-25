@@ -16,7 +16,7 @@ export const MarkerComponent: React.FC<MarkerProps> = ({ position, equipType, st
   });
 
   return (
-    <Marker position={position} icon={pinIcon}>
+    <Marker position={position} icon={pinIcon} >
       <Popup offset={[10, -35]}>
         <div>
           <h2>My Custom Popup</h2>

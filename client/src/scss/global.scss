@@ -2,6 +2,7 @@
 @import "../components/Sidebar/sidebar";
 @import "../components/Search/search";
 @import "../components/Card/card";
+@import "../components/Scroll/scroll";
 
 body {
   margin: 0;
@@ -33,4 +34,5 @@ body {
   width: 100vw; /* set container width to full viewport width */
   height: 100vh; /* set container height to full viewport height */
 }
+
 

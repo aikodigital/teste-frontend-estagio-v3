@@ -6,7 +6,10 @@ function Card({
   onClick?: () => void;
 }) {
   return (
-    <button className="m-3 w-96 p-5 text-left shadow" onClick={onClick}>
+    <button
+      className="m-3 w-96 bg-white p-5 text-left shadow"
+      onClick={onClick}
+    >
       {children}
     </button>
   );

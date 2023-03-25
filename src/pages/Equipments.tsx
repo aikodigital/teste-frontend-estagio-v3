@@ -1,29 +1,32 @@
-import { query } from '../utils/query';
-import equipment from '../assets/data/equipment.json';
-import equipmentModel from '../assets/data/equipmentModel.json';
 import Card from '../components/Card';
-import { getStatesByEquipmentId } from '../utils/api';
+import { getAllEquipment, getStatesByEquipmentId, search } from '../utils/api';
 import { ModalContext } from '../context/ModalContext';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
+import FilterBar from '../components/FilterBar';
 
 function Equipments() {
   const { openModal } = useContext(ModalContext);
-  const equipments = query(equipment).get({
-    relation: {
-      data: equipmentModel,
-      key: 'id',
-      relation: 'equipmentModelId',
-    },
+  const [searchQuery, setSearchQuery] = useState('');
+  const [state, setState] = useState('all');
+  const equipments = getAllEquipment();
+  const equipmentsFilter = equipments.filter((equipment) => {
+    return (
+      (search(equipment.name, searchQuery) ||
+        search(equipment.model.name, searchQuery)) &&
+      (state === 'all' || equipment.states[0].name === state)
+    );
   });
+
   return (
     <div className="flex flex-wrap justify-center">
-      {equipments.map((equipment) => {
+      <FilterBar onSearch={setSearchQuery} onFilter={setState} />
+      {equipmentsFilter.map((equipment) => {
         const states = getStatesByEquipmentId(equipment.id);
         return (
           <Card key={equipment.id} onClick={() => openModal(equipment.id)}>
             <p className="opacity-70">{equipment.id}</p>
             <h2 className="text-xl">{equipment.name}</h2>
-            <p className="opacity-70">{equipment.relation.first()?.name}</p>
+            <p className="opacity-70">{equipment.model.name}</p>
             <p className="flex items-center text-xs font-bold opacity-70">
               {states[0].name}{' '}
               <div

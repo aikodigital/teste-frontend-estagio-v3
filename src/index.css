@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*:focus-visible {
+  @apply ring-2 ring-offset-2 ring-offset-gray-100 ring-white ring-opacity-60 outline-none rounded;
+}

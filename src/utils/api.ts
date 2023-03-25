@@ -4,6 +4,14 @@ import equipmentState from '../assets/data/equipmentState.json';
 import equipmentStateHistory from '../assets/data/equipmentStateHistory.json';
 import { query } from './query';
 
+export function getAllEquipment() {
+  return equipment.map((e) => ({
+    ...e,
+    model: getEquipmentModelById(e.equipmentModelId),
+    states: getStatesByEquipmentId(e.id),
+  }));
+}
+
 export function getEquipmentById(id: string) {
   return query(equipment)
     .where((e) => e.id === id)
@@ -34,4 +42,8 @@ export function getEquipmentStateById(id: string) {
   return query(equipmentState)
     .where((e) => e.id === id)
     .first();
+}
+
+export function search(text: string, query: string) {
+  return text.toLowerCase().includes(query.toLowerCase());
 }

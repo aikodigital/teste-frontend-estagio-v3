@@ -32,6 +32,11 @@ function MoreInfoPage({ id, handleClose, getEquipmentName, getEquipmentLastState
         return stateDetailed;
     }
 
+    function getStatesLength() {
+        const total = equipmentStateHistory.find(item => item.equipmentId === id);
+        return Math.ceil(total.states.length/perPage);
+    }
+
     function getStateStyle(name) {
         switch (name) {
             case "Manutenção":
@@ -56,6 +61,7 @@ function MoreInfoPage({ id, handleClose, getEquipmentName, getEquipmentLastState
 
     function listHistory() {
         const history = equipmentStateHistory.find(item => item.equipmentId === id);
+
         const list = [];
         const start = (page - 1) * perPage;
         const end = start + perPage;
@@ -111,9 +117,9 @@ function MoreInfoPage({ id, handleClose, getEquipmentName, getEquipmentLastState
                             <div className="pagination-button" onClick={handlePrevPage} disabled={page === 1}>
                                 <span>Página Anterior</span>
                             </div>}
-                        <p className="pagination-page">{page}</p>
-                        {page < equipmentStateHistory.length &&
-                            <div className="pagination-button" onClick={handleNextPage} disabled={page * perPage >= equipmentStateHistory.length}>
+                        <p className="pagination-page">{page}/{getStatesLength()}</p>
+                        {page < getStatesLength() &&
+                            <div className="pagination-button" onClick={handleNextPage} disabled={page * perPage >= getStatesLength()}>
                                 <span>Próxima página</span>
                             </div>}
                     </div>

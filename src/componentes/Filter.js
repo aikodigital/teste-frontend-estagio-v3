@@ -2,7 +2,7 @@ import React from "react"
 
 import "../style/Filter.css"
 
-function Filter({ handleChange, handleChangeStates, filter, filterStates }) {
+function Filter({ equipment, handleChange, handleChangeStates, handleFilterTraj, filter, filterStates, filterTraj }) {
     function getClasses(item) {
         return `--filter-item ${filter === item ? "--filter-item-active" : ""}`
     }
@@ -11,6 +11,19 @@ function Filter({ handleChange, handleChangeStates, filter, filterStates }) {
         return `--filter-item ${filterStates === item ? "--filter-item-active" : ""}`
     }
 
+    function getEquipments() {
+        const list = []
+
+        equipment.forEach((eqp, key) => {
+            list.push(
+                <option key={key} value={eqp.id} className={getClassesEstados(eqp.id)}>{eqp.name}</option>
+            );
+        });
+
+        return list;
+    }
+
+
     return (
         <div className="--filter-container">
             <nav className="--filter-nav">
@@ -18,6 +31,7 @@ function Filter({ handleChange, handleChangeStates, filter, filterStates }) {
                     <ul className="--filter-list">
                         <li className={getClasses(0)} onClick={() => handleChange(0)}>Todos</li>
                         <li className={getClasses(1)} onClick={() => handleChange(1)}>Estado</li>
+                        <li className={getClasses(2)} onClick={() => handleChange(2)}>Trajetória</li>
                     </ul>
                 </div>
                 <div>
@@ -28,6 +42,14 @@ function Filter({ handleChange, handleChangeStates, filter, filterStates }) {
                             <li className={getClassesEstados(2)} onClick={() => handleChangeStates(2)}>Manutenção</li>
                         </ul>
                     }
+                    {filter === 2 &&
+                        <div className="--filter-dropdown">
+                            <select value={filterTraj} onChange={(e) => handleFilterTraj(e.target.value)}>
+                                {getEquipments()}
+                            </select>
+                        </div>
+                    }
+
                 </div>
             </nav>
         </div>

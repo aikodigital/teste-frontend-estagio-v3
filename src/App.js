@@ -23,6 +23,7 @@ import "./style/App.css";
 function App() {
   const [filter, setFilter] = useState(0)
   const [filterStates, setFilterStates] = useState(0)
+  const [filterTraj, setFilterTraj] = useState(equipment[0].id)
   const [idToShow, setIdToShow] = useState(null);
   const [showMoreInfo, setShowMoreInfo] = useState(false);
 
@@ -37,6 +38,10 @@ function App() {
     if (filterStates !== num) {
       setFilterStates(num)
     }
+  }
+
+  function handleFilterTraj(id) {
+    setFilterTraj(id)
   }
 
   const handleClick = (id) => {
@@ -155,16 +160,22 @@ function App() {
       <Header />
 
       <Filter
+        equipment={equipment}
+
         filter={filter}
+        filterStates={filterStates}
+        filterTraj={filterTraj}
+
         handleChange={changeFilter}
         handleChangeStates={handleChangeStates}
-        filterStates={filterStates}
+        handleFilterTraj={handleFilterTraj}
       />
 
       {!showMoreInfo && filter !== 0 &&
         <FilteredMap
           filter={filter}
           filterStates={filterStates}
+          filterTraj={filterTraj}
           handleClick={handleClick}
           equipment={equipment}
           getFormatedDate={getFormatedDate}

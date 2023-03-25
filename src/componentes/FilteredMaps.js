@@ -1,16 +1,20 @@
 import React from 'react';
-import { MapContainer, TileLayer } from 'react-leaflet';
+import { MapContainer, TileLayer, Polyline } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import NewMarker from './NewMarker';
 
 import 'leaflet/dist/leaflet.css'
 import "../style/Map.css"
 
-function FilteredMaps({ filter, filterStates, handleClick, equipment, getEquipmentModelName, equipmentPositionHistory, getEquipmentLastState, getEquipmentName, getLastPosition, getFormatedDate, customIcon }) {
+function FilteredMaps({ filter, filterStates, filterTraj, handleClick, equipment, getEquipmentModelName, equipmentPositionHistory, getEquipmentLastState, getEquipmentName, getLastPosition, getFormatedDate, customIcon }) {
     let filteredEquipments = []
+    let filteredPositions = []
 
     if (filter === 1) {
         filterStatesArray()
+    }
+    else if (filter === 2) {
+        filterTrajectoryArray()
     }
 
     function getFilterStateName() {
@@ -32,6 +36,18 @@ function FilteredMaps({ filter, filterStates, handleClick, equipment, getEquipme
                 filteredEquipments.push(item)
             }
         });
+    }
+
+    function filterTrajectoryArray() {
+        let allPos = equipmentPositionHistory.find(item => item.equipmentId === filterTraj)
+
+        // allPos.positions.forEach(element => {
+        //     filteredPositions.push([element.lat, element.lon])
+        // });
+
+        filteredPositions.push([allPos.positions[0].lat, allPos.positions[0].lon])
+        filteredPositions.push([allPos.positions[allPos.positions.length - 1].lat, allPos.positions[allPos.positions.length - 1].lon])
+
     }
 
     function calcularMediaUltimasPosicoes() {
@@ -74,10 +90,28 @@ function FilteredMaps({ filter, filterStates, handleClick, equipment, getEquipme
 
     return (
         <div className="map--container">
-            <MapContainer className='rounded' center={calcularMediaUltimasPosicoes()} zoom={11} style={{ height: '80vh' }} scrollWheelZoom={true}>
-                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                {equipTotal}
-            </MapContainer>
+            {filter !== 2 &&
+                <MapContainer className='rounded' center={calcularMediaUltimasPosicoes()} zoom={11} style={{ height: '80vh' }} scrollWheelZoom={true}>
+                    <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                    {equipTotal}
+                </MapContainer>}
+            {filter === 2 &&
+                <MapContainer className='rounded' center={filteredPositions[1]} zoom={10} style={{ height: '80vh' }} scrollWheelZoom={true}>
+                    <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                    <Polyline positions={filteredPositions} />
+                    <NewMarker
+                        handleClick={handleClick}
+                        getEquipmentModelName={getEquipmentModelName}
+                        getEquipmentLastState={getEquipmentLastState}
+                        getEquipmentName={getEquipmentName}
+                        getLastPosition={getLastPosition}
+                        getFormatedDate={getFormatedDate}
+                        customIcon={customIcon}
+                        key={filterTraj}
+                        eqpId={filterTraj}
+                        eqpNameId={"a3540227-2f0e-4362-9517-92f41dabbfdf"}
+                    />
+                </MapContainer>}
         </div>
     );
 }

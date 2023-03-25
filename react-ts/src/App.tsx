@@ -1,7 +1,6 @@
 import "./App.css";
 
 import { HelmetProvider, Helmet } from "react-helmet-async";
-import L from "leaflet";
 import List from "./components/List";
 
 function App() {

@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import { LatLngExpression } from "leaflet";
 import { useContext } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
@@ -19,7 +19,9 @@ function Map() {
     );
 
     if (filteredEquipment != null) {
-      const equipmentStateId = filteredEquipment[0].states[0].equipmentStateId;
+      const equipmentStateId =
+        filteredEquipment[0].states[filteredEquipment[0].states.length - 1]
+          .equipmentStateId;
       const stateInfo = getStateInfo(equipmentStateId);
       return stateInfo;
     }
@@ -48,7 +50,9 @@ function Map() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {equipmentsPositions?.map((equipmentPosition, index) => {
-          const equipmentState = getStateByEquipmentId(equipmentPosition.equipmentId) 
+          const equipmentState = getStateByEquipmentId(
+            equipmentPosition.equipmentId
+          );
 
           return (
             <Marker
@@ -58,7 +62,11 @@ function Map() {
                 equipmentPosition.positions[equipmentsPositions.length - 1].lon,
               ]}
             >
-              <Popup>{equipmentState?.name}</Popup>
+              <Popup>
+                <Text as="span" color={equipmentState?.color}>
+                  {equipmentState?.name}
+                </Text>
+              </Popup>
             </Marker>
           );
         })}

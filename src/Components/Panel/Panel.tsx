@@ -6,7 +6,7 @@ function Panel() {
   const equipments = useContext(EquipmentsContext);
 
   return (
-    <Box bg="#e0d8c7" h="100vh" w="20%">
+    <Box bg="#f1eee8" h="100vh" w="20%" borderRight="solid 1px black">
       Panel
     </Box>
   );

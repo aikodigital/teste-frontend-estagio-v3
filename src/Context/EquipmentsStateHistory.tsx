@@ -12,10 +12,11 @@ export interface IEquipmentsStateHistory {
 }
 
 export const EquipmentsStateHistoryContext = createContext<
-  IEquipmentsStateHistory[] | null
+  IEquipmentsStateHistory[]
 >([]);
 
-export function EquipmentsStateHistoryProvider ({ children }: IProps) {
+export function EquipmentsStateHistoryProvider({ children }: IProps) {
+  const [equipmentId, setEquipmentId] = useState<string>("");
   const [equipmentsStateHistory, setEquipmentsStateHistory] = useState<
     IEquipmentsStateHistory[]
   >([]);

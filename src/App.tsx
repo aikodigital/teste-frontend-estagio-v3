@@ -8,7 +8,6 @@ import MapPage from './pages/MapPage';
 
 const App = () => {
 
-  const [selectedValue, setSelectedValue] = useState('');
   const [returnedValue, setReturnedValue] = useState({});
   const [valueArray] = useState([]);
   const [equipmentStateValue, setEquipmentState] = useState('')
@@ -16,8 +15,18 @@ const App = () => {
   const [equipmentModelValue, setEquipmentModelValue] = useState([])
   const [equipmentHistoryArray, setEquipmentHistoryArray] = useState([])
   const [equipmentPositionState, setEquipmentPositionHistory] = useState([])
+  const [selectedValue, setSelectedValue] = useState(equipments[0].name);
   const [selectedLat, setSelectedLat] = useState(null);
   const [selectedLon, setSelectedLon] = useState(null);
+
+  useEffect(() => {
+    const equipmentId: any = Object.values(returnedValue)[0]
+    const equipmentModelId: any = Object.values(returnedValue)[1]
+    getEquipmentState(equipmentId)
+    getEquipmentModelPrices(equipmentModelId)
+    getEquipmentHistory(equipmentId)
+    getEquipmentPositionHistory(equipmentId)
+  }, [stateName, equipmentModelValue, equipmentHistoryArray, equipmentPositionState]);
 
   const getEquipmentInfo = () => {
     for (let key of equipments) {
@@ -25,12 +34,6 @@ const App = () => {
         setReturnedValue(key)
       }
     }
-    const equipmentId: any = Object.values(returnedValue)[0]
-    const equipmentModelId: any = Object.values(returnedValue)[1]
-    getEquipmentState(equipmentId)
-    getEquipmentModelPrices(equipmentModelId)
-    getEquipmentHistory(equipmentId)
-    getEquipmentPositionHistory(equipmentId)
   }
 
   const getEquipmentState = (equipmentId: string) => {
@@ -128,45 +131,49 @@ const App = () => {
   <main className='flex mt-[150px] justify-between'>
     <div>
     <h2>Equipments:</h2>
-    <select className="text-black" onChange={(e) => 
+    <select className="text-black h-[30px] w-[190px] my-5" onChange={(e) => 
       setSelectedValue(e.target.value)
       }>
     {equipments.map(item => (
-        <option key={item.id} className="text-black">{item.name}</option>
+        <option
+        key={item.id} 
+        value={item.name} 
+        className="text-black"
+        selected={item.name === selectedValue}>{item.name}</option>
       ))}
     </select>
     <button onClick={getEquipmentInfo} className="block h-[50px] w-[190px] bg-[#006404] rounded text-white">Search</button>
     {Object.keys(returnedValue).length != 0 ?
     <div>
-      <h2>Informações do equipamento:</h2>
+      <h2 className='text-2xl'>Informações do equipamento:</h2>
       {stateName.length > 0 ?
-        <p>Status: {stateName}</p>
+        <p>Status: <span className='text-[#CAB8FD]'>{stateName}</span></p>
         :
         <p>Status:</p>
       }
-      <p>Nome: {selectedValue}</p>
-      <h2>Preço por estado:</h2>
-      <p>Operando:{equipmentModelValue[0]}</p>
-      <p>Parado:{equipmentModelValue[1]}</p>
-      <p>Manutenção:{equipmentModelValue[2]}</p>
+      <p>Nome: <span className='text-[#2E80CC]'>{selectedValue}</span></p>
+      <h2 className='text-2xl'>Preço por estado:</h2>
+      <p><span className='text-[#2ECC71]'>Operando:</span> {equipmentModelValue[0]} $</p>
+      <p><span className='text-[#F1C40F]'>Parado:</span> {equipmentModelValue[1]} $</p>
+      <p><span className='text-[#E74C3C]'>Manutenção:</span> {equipmentModelValue[2]} $</p>
 
-      <h2>Histórico de estado do equipamento:</h2>
+      <h2 className='text-2xl'>Histórico de estado do equipamento:</h2>
       <ul>
         {equipmentHistoryArray.map((item,index) => (
           <li key={index}>
-            Data: {item['date']} {'\n'}
-            Estado: {item['name']}
+            <span className='text-[#2E80CC]'>Data:</span> {item['date']} {'\n'}
+            <span className='text-[#2E80CC]'>Estado:</span> {item['name']}
           </li>
         ))}
       </ul>
-      <h2>Posição mais recente do equipamento:</h2>
+      <h2 className='text-2xl'>Posição mais recente do equipamento:</h2>
       <ul>
         {equipmentPositionState.map((item,index) => (
           <li key={index}>
-            Data: {item['date']} {'\n'}
-            Local: {item['lat']} {'\n'} {item['lon']}
+            <span className='text-[#2E80CC]'>Data:</span> {item['date']} {'\n'}
+            <span className='text-[#2E80CC]'>Local:</span> {item['lat']} {'\n'} {item['lon']}
             {'\n'}
-            <button onClick={() => getGoogleMapPosition(item['lat'], item['lon'])}>Ver no mapa</button>
+            <button className="text-[#5AB0FF]"onClick={() => getGoogleMapPosition(item['lat'], item['lon'])}>Ver no mapa</button>
           </li>
         ))}
       </ul>

@@ -8,37 +8,36 @@ import {
 } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
-import { EquipmentModelRelation } from '../types';
-import equipment from '../assets/data/equipment.json';
-import equipmentModel from '../assets/data/equipmentModel.json';
-import equipmentPositionHistory from '../assets/data/equipmentPositionHistory.json';
-import equipmentStateHistory from '../assets/data/equipmentStateHistory.json';
-import equipmentState from '../assets/data/equipmentState.json';
-import { query } from '../utils/query';
-import { Fragment, useContext } from 'react';
+import { Fragment, useContext, useState } from 'react';
 import { ModalContext } from '../context/ModalContext';
+import { getAllEquipment, search } from '../utils/api';
+import FilterBar from '../components/FilterBar';
 
 function Map() {
   const { openModal } = useContext(ModalContext);
-
-  const equipments = query(
-    query(equipment).relation(equipmentModel, 'id', 'equipmentModelId'),
-  ).rename<EquipmentModelRelation>('relation', 'model');
-  const positionHistory = query(equipments).relation(
-    equipmentPositionHistory,
-    'equipmentId',
-    'id',
-  );
-
-  const firstPosition = query(positionHistory[0].relation.first().positions)
-    .sort('date', 'desc')
-    .first();
-
+  const [searchQuery, setSearchQuery] = useState('');
+  const [stateFilter, setStateFilter] = useState('all');
+  const [modelFilter, setModelFilter] = useState('all');
+  const equipments = getAllEquipment();
+  const equipmentsFilter = equipments.filter((equipment) => {
+    return (
+      (search(equipment.name, searchQuery) ||
+        search(equipment.model.name, searchQuery)) &&
+      (stateFilter === 'all' || equipment.states[0].name === stateFilter) &&
+      (modelFilter === 'all' || equipment.model.name === modelFilter)
+    );
+  });
+  const lastPosition = equipments[0].positions[0];
   return (
     <>
-      <div className="h-[calc(100vh-4.5rem)] w-screen">
+      <div className="h-[calc(100vh-8rem)] w-screen">
+        <FilterBar
+          onSearch={setSearchQuery}
+          onStateFilter={setStateFilter}
+          onModelFilter={setModelFilter}
+        />
         <MapContainer
-          center={[firstPosition.lat, firstPosition.lon]}
+          center={[lastPosition.lat, lastPosition.lon]}
           zoom={10}
           className="h-full w-full"
         >
@@ -46,21 +45,11 @@ function Map() {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {positionHistory.map((equipment) => {
-            const firstState = query(
-              query(equipmentStateHistory)
-                .where(({ equipmentId }) => equipment.id === equipmentId)
-                .first().states,
-            )
-              .sort('date', 'desc')
-              .relation(equipmentState, 'id', 'equipmentStateId')[0]
-              .relation.first();
-            const positionHistory = query(
-              equipment.relation.first().positions,
-            ).sort('date', 'desc');
-            const lastPosition = positionHistory.first();
+          {equipmentsFilter.map((equipment) => {
+            const firstState = equipment.states[0];
+            const positionHistory = equipment.positions;
+            const lastPosition = positionHistory[0];
             const polyline = positionHistory
-              .get()
               .map((position) => [position.lat, position.lon])
               .splice(0, 3) as [number, number][];
             return (
@@ -78,7 +67,7 @@ function Map() {
                       {equipment.name} - {firstState.name}
                     </p>
                     <p className="font-bold opacity-70">
-                      {equipment.model.first().name}
+                      {equipment.model.name}
                     </p>
                     <button
                       className="w-full rounded bg-blue-500 p-2 text-white"

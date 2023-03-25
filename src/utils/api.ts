@@ -2,6 +2,7 @@ import equipment from '../assets/data/equipment.json';
 import equipmentModel from '../assets/data/equipmentModel.json';
 import equipmentState from '../assets/data/equipmentState.json';
 import equipmentStateHistory from '../assets/data/equipmentStateHistory.json';
+import equipmentPositionHistory from '../assets/data/equipmentPositionHistory.json';
 import { query } from './query';
 
 export function getAllEquipment() {
@@ -9,6 +10,7 @@ export function getAllEquipment() {
     ...e,
     model: getEquipmentModelById(e.equipmentModelId),
     states: getStatesByEquipmentId(e.id),
+    positions: getPositionsByEquipmentId(e.id),
   }));
 }
 
@@ -22,6 +24,16 @@ export function getEquipmentModelById(id: string) {
   return query(equipmentModel)
     .where((e) => e.id === id)
     .first();
+}
+
+export function getPositionsByEquipmentId(id: string) {
+  return query(
+    query(equipmentPositionHistory)
+      .where((e) => e.equipmentId === id)
+      .first().positions,
+  )
+    .sort('date', 'desc')
+    .get();
 }
 
 export function getStatesByEquipmentId(id: string) {

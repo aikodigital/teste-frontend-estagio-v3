@@ -1,5 +1,6 @@
 import React from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
+import { Equipament } from "../../class/Equipment";
 import { createEquipmentArray } from "../../utils/equipmentList";
 import { MarkerComponent } from "../Marker/Marker";
 
@@ -12,9 +13,10 @@ equipmentArray.forEach((equipment) => {
 interface MapProps {
   lat: number;
   lon: number;
+  equipments: Equipament[];
 }
 
-export const Map: React.FC<MapProps> = ({ lat, lon }) => {
+export const Map: React.FC<MapProps> = ({ lat, lon, equipments }) => {
   const mapPosition: [number, number] = [lat, lon];
 
   return (
@@ -31,7 +33,7 @@ export const Map: React.FC<MapProps> = ({ lat, lon }) => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        {equipmentArray.map((equipment) => {
+        {equipments.map((equipment) => {
           const position = equipment.getMostRecentPosition();
           const state = equipment.getMostRecentState();
 

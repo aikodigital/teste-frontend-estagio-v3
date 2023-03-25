@@ -7,6 +7,7 @@
 body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 :root {
@@ -17,7 +18,7 @@ body {
 
 
   color-scheme: light dark;
- // background-color: #3a3a3a;
+  // background-color: #3a3a3a;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -27,12 +28,25 @@ body {
 }
 
 
-
 .container {
   display: grid;
   grid-template-columns: 25% 75%;
-  width: 100vw; /* set container width to full viewport width */
-  height: 100vh; /* set container height to full viewport height */
+  width: 100vw;
+  /* set container width to full viewport width */
+  height: 100vh;
+  /* set container height to full viewport height */
 }
 
+@media screen and (min-width: 1501px) {
+  .container {
+    grid-template-columns: 20% 80%;
+    /* for big monitors, make columns 20% and 80% */
+  }
+}
 
+@media screen and (max-width: 1500px) {
+  .container {
+    grid-template-columns: 22% 78%;
+    /* for smaller screens, make columns 25% and 75% */
+  }
+}

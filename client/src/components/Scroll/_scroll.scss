@@ -1,12 +1,29 @@
 .ScrollAreaViewport {
-    height: 80vh;
     border-radius: inherit;
     margin-bottom: 2rem;
     box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.219);
-    
+
 }
 
 
+
+@media screen and (min-width: 1501px) {
+    .ScrollAreaViewport {
+        height: 85vh;
+
+
+    }
+
+}
+
+@media screen and (max-width: 1500px) {
+    .ScrollAreaViewport {
+        height: 80vh;
+
+
+    }
+
+}
 
 .ScrollAreaScrollbar {
     display: flex;

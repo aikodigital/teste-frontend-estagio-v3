@@ -44,23 +44,33 @@ button {
 }
 
 .card {
-  background-color: #9e9e9e;
+  background-color: rgb(196, 196, 196);
   border-radius: 10px;
   padding: 20px;
   height: 170px;
   box-sizing: border-box;
   width: calc(100% - 40px);
   margin: 20px;
-  border: 2px solid rgba(99, 99, 99, 0.5803921569);
+  border: 1px solid rgb(156, 156, 156);
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.185);
 }
 
 .ScrollAreaViewport {
-  height: 80vh;
   border-radius: inherit;
   margin-bottom: 2rem;
   box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.219);
 }
 
+@media screen and (min-width: 1501px) {
+  .ScrollAreaViewport {
+    height: 85vh;
+  }
+}
+@media screen and (max-width: 1500px) {
+  .ScrollAreaViewport {
+    height: 80vh;
+  }
+}
 .ScrollAreaScrollbar {
   display: flex;
   /* ensures no selection */
@@ -75,6 +85,7 @@ button {
 body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 :root {
@@ -92,6 +103,21 @@ body {
 .container {
   display: grid;
   grid-template-columns: 25% 75%;
-  width: 100vw; /* set container width to full viewport width */
-  height: 100vh; /* set container height to full viewport height */
+  width: 100vw;
+  /* set container width to full viewport width */
+  height: 100vh;
+  /* set container height to full viewport height */
+}
+
+@media screen and (min-width: 1501px) {
+  .container {
+    grid-template-columns: 20% 80%;
+    /* for big monitors, make columns 20% and 80% */
+  }
+}
+@media screen and (max-width: 1500px) {
+  .container {
+    grid-template-columns: 22% 78%;
+    /* for smaller screens, make columns 25% and 75% */
+  }
 }/*# sourceMappingURL=global.css.map */

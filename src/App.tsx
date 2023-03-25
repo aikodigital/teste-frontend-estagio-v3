@@ -3,6 +3,7 @@ import equipments from './data/equipment.json';
 import equipmentState from './data/equipmentState.json';
 import equipmentStateHistory from './data/equipmentStateHistory.json';
 import equipmentModel from './data/equipmentModel.json';
+import equipmentPositionHistory from './data/equipmentPositionHistory.json';
 
 const App = () => {
 
@@ -13,7 +14,7 @@ const App = () => {
   const [stateName, setStateName] = useState('')
   const [equipmentModelValue, setEquipmentModelValue] = useState([])
   const [equipmentHistoryArray, setEquipmentHistoryArray] = useState([])
-  const [equipmentDateHistory, setEquipmentDateHistory] = useState([])
+  const [equipmentPositionState, setEquipmentPositionHistory] = useState([])
 
   const getEquipmentInfo = () => {
     for (let key of equipments) {
@@ -26,6 +27,7 @@ const App = () => {
     getEquipmentState(equipmentId)
     getEquipmentModelPrices(equipmentModelId)
     getEquipmentHistory(equipmentId)
+    getEquipmentPositionHistory(equipmentId)
   }
 
   const getEquipmentState = (equipmentId: string) => {
@@ -89,6 +91,28 @@ const App = () => {
     setEquipmentHistoryArray(returnedValuesArray)
   }
 
+  const getEquipmentPositionHistory = (equipmentId: any) => {
+    let returnedValuesArray: any = []
+    for(let i = 0; i < equipmentPositionHistory.length; i++) {
+      if(equipmentPositionHistory[i].equipmentId == equipmentId) {
+        let lastPositions = Object.values(equipmentPositionHistory[i])[1]
+        let lastPositionsArray: any = lastPositions.slice(lastPositions.length - 2);
+        for(let j = 0; j < lastPositionsArray.length; j++) {
+          const formatedDate = new Date(lastPositionsArray[j].date);
+          const dateBr = formatedDate.toLocaleDateString('pt-BR') + ' ' + formatedDate.toLocaleTimeString('pt-BR');
+          let newObject: any = {
+            date: dateBr,
+            lat: lastPositionsArray[j].lat,
+            lon: lastPositionsArray[j].lon,
+          }
+          returnedValuesArray.push(newObject)
+          console.log(equipmentPositionState)
+        }
+      }
+    }
+    setEquipmentPositionHistory(returnedValuesArray)
+  }
+
   return <>
   <header>
     <h1>ForestFinder</h1>
@@ -127,6 +151,18 @@ const App = () => {
           </li>
         ))}
       </ul>
+      <h2>Posição mais recente do equipamento:</h2>
+      <ul>
+        {equipmentPositionState.map((item,index) => (
+          <li key={index}>
+            Data: {item['date']} {'\n'}
+            Local: {item['lat']} {'\n'} {item['lon']}
+            {'\n'}
+            <button>Ver no mapa</button>
+          </li>
+        ))}
+      </ul>
+
     </div>
     :
     <></>

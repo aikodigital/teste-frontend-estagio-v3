@@ -6,7 +6,7 @@ export const Sidebar = () => {
   return (
     <div className='sidebar'>
       <Search />
-      <Card/>
+      {/* <Card/> */}
      
     </div>
   );

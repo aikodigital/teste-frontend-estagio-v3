@@ -16,11 +16,11 @@ export const Search = () => {
   return (
     <div className="search">
       <TextInput
-        placeholder="Enter some text"
+        placeholder="Search..."
         value={text}
         onChange={handleTextChange}
       />
-      <SubmitButton onClick={handleSubmit} />
+      {/* <SubmitButton onClick={handleSubmit} /> */}
     </div>
   );
 };

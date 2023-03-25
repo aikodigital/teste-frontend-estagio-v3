@@ -19,14 +19,15 @@ const App = () => {
   const [selectedLat, setSelectedLat] = useState(null);
   const [selectedLon, setSelectedLon] = useState(null);
 
-  useEffect(() => {
+  const render = () => {
     const equipmentId: any = Object.values(returnedValue)[0]
     const equipmentModelId: any = Object.values(returnedValue)[1]
     getEquipmentState(equipmentId)
     getEquipmentModelPrices(equipmentModelId)
     getEquipmentHistory(equipmentId)
     getEquipmentPositionHistory(equipmentId)
-  }, [stateName, equipmentModelValue, equipmentHistoryArray, equipmentPositionState]);
+    getEquipmentInfo()
+  }
 
   const getEquipmentInfo = () => {
     for (let key of equipments) {
@@ -142,7 +143,7 @@ const App = () => {
         selected={item.name === selectedValue}>{item.name}</option>
       ))}
     </select>
-    <button onClick={getEquipmentInfo} className="block h-[50px] w-[190px] bg-[#006404] rounded text-white">Search</button>
+    <button onClick={render} className="block h-[50px] w-[190px] bg-[#006404] rounded text-white">Search</button>
     {Object.keys(returnedValue).length != 0 ?
     <div>
       <h2 className='text-2xl'>Informações do equipamento:</h2>

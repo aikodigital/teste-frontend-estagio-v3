@@ -20,7 +20,7 @@ export default function MapPage(props: any) {
           lng: props.lon
       }
       }
-      zoom={15}
+      zoom={10}
     >
     <Marker position={{
           lat: props.lat, 

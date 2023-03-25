@@ -51,9 +51,9 @@ function ModalEquipment() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-300">
-              {states.map((state) => (
+              {states.map((state, i) => (
                 <tr
-                  key={state.id}
+                  key={i}
                   className="divide-x divide-gray-300 odd:bg-gray-200"
                 >
                   <td>{new Date(state.date).toLocaleDateString()}</td>

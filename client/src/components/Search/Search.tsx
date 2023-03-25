@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { SubmitButton } from "../Button/Button";
 import { TextInput } from "../Input/Input";
-import { Funnel } from "@phosphor-icons/react";
+import { PopoverComp } from "../PopOver/PopOver";
 
 export const Search = () => {
   const [text, setText] = useState("");
@@ -17,7 +16,9 @@ export const Search = () => {
         value={text}
         onChange={handleTextChange}
       />
-      <Funnel className="funnel" size={38} weight="fill" />
+      {/* <Funnel className="funnel" size={38} weight="fill" /> */}
+
+      <PopoverComp />
     </div>
   );
 };

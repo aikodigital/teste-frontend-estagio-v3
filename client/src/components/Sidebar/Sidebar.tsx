@@ -4,7 +4,7 @@ import { Search } from "../Search/Search";
 
 export const Sidebar = () => {
   return (
-    <div className="sidebar">
+    <div className="sidebar" >
       <Search />
       <ScrollAreaComp />
     </div>

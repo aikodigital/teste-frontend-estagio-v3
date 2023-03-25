@@ -1,16 +1,13 @@
 import React, { useState } from "react";
 import { SubmitButton } from "../Button/Button";
 import { TextInput } from "../Input/Input";
+import { Funnel } from "@phosphor-icons/react";
 
 export const Search = () => {
   const [text, setText] = useState("");
 
   const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setText(event.target.value);
-  };
-
-  const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
-    console.log(text);
   };
 
   return (
@@ -20,7 +17,7 @@ export const Search = () => {
         value={text}
         onChange={handleTextChange}
       />
-      {/* <SubmitButton onClick={handleSubmit} /> */}
+      <Funnel className="funnel" size={38} weight="fill" />
     </div>
   );
 };

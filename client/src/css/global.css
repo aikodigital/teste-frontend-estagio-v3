@@ -44,7 +44,7 @@ button {
 }
 
 .card {
-  background-color: rgb(196, 196, 196);
+  background-color: rgb(211, 209, 209);
   border-radius: 10px;
   padding: 20px;
   height: 170px;
@@ -80,6 +80,15 @@ button {
   /* disable browser handling of all panning and zooming gestures on touch devices */
   touch-action: none;
   padding: 2px;
+}
+
+.funnel {
+  color: rgb(102, 101, 101);
+  border: 2px solid rgb(156, 156, 156);
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.096);
 }
 
 body {

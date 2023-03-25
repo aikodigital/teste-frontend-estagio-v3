@@ -7,19 +7,25 @@ import FilterBar from '../components/FilterBar';
 function Equipments() {
   const { openModal } = useContext(ModalContext);
   const [searchQuery, setSearchQuery] = useState('');
-  const [state, setState] = useState('all');
+  const [stateFilter, setStateFilter] = useState('all');
+  const [modelFilter, setModelFilter] = useState('all');
   const equipments = getAllEquipment();
   const equipmentsFilter = equipments.filter((equipment) => {
     return (
       (search(equipment.name, searchQuery) ||
         search(equipment.model.name, searchQuery)) &&
-      (state === 'all' || equipment.states[0].name === state)
+      (stateFilter === 'all' || equipment.states[0].name === stateFilter) &&
+      (modelFilter === 'all' || equipment.model.name === modelFilter)
     );
   });
 
   return (
     <div className="flex flex-wrap justify-center">
-      <FilterBar onSearch={setSearchQuery} onFilter={setState} />
+      <FilterBar
+        onSearch={setSearchQuery}
+        onStateFilter={setStateFilter}
+        onModelFilter={setModelFilter}
+      />
       {equipmentsFilter.map((equipment) => {
         const states = getStatesByEquipmentId(equipment.id);
         return (

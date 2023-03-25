@@ -120,21 +120,22 @@ const App = () => {
     setSelectedLon(lon);
   }
 
-  return <>
-  <header>
-    <h1>ForestFinder</h1>
+  return <div className='px-[190px]  bg-[#161616] text-white font-extrabold'>
+  <header className=''>
+    <h1 className='text-4xl text-white pt-[60px]'><span className='text-[#006404]'>Forest</span>Finder</h1>
     <p>Your forest equipment geolocation app</p>
   </header>
-  <main>
-    <h2>Equipments List</h2>
-    <select onChange={(e) => 
+  <main className='flex mt-[150px] justify-between'>
+    <div>
+    <h2>Equipments:</h2>
+    <select className="text-black" onChange={(e) => 
       setSelectedValue(e.target.value)
       }>
     {equipments.map(item => (
-        <option key={item.id}>{item.name}</option>
+        <option key={item.id} className="text-black">{item.name}</option>
       ))}
     </select>
-    <button onClick={getEquipmentInfo}>Search</button>
+    <button onClick={getEquipmentInfo} className="block h-[50px] w-[190px] bg-[#006404] rounded text-white">Search</button>
     {Object.keys(returnedValue).length != 0 ?
     <div>
       <h2>Informações do equipamento:</h2>
@@ -174,9 +175,12 @@ const App = () => {
     :
     <></>
     }
-    <MapPage lat={selectedLat} lon={selectedLon}/>
+    </div>
+    <div className='w-2/4'>
+      <MapPage lat={selectedLat} lon={selectedLon}/>
+    </div>
   </main>
-  </>
+  </div>
 }
 
 export default App;

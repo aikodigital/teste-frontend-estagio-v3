@@ -6,7 +6,7 @@ import { Sidebar } from "./components/Sidebar/Sidebar";
 function App() {
   return (
     <section className="container">
-      <Sidebar />
+      <Sidebar/>
       <Map lat={-19.192595} lon={-46.061072} />
     </section>
   );

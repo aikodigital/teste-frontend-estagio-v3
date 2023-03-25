@@ -2,8 +2,7 @@ import { NavLink } from 'react-router-dom';
 
 function Header() {
   return (
-    <header className="flex items-center justify-around bg-slate-600 p-4 px-20 text-white">
-      <h1 className="w-full text-2xl font-bold">Status de equipamentos</h1>
+    <header className="flex items-center justify-end bg-slate-600 p-4 px-20 text-white">
       <div className="flex">
         <NavLink
           className={({ isActive }) =>

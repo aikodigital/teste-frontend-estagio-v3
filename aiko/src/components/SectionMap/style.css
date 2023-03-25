@@ -1,0 +1,20 @@
+.section-map {
+  width: 100%;
+  display: flex;
+  height: 88vh;
+}
+
+.section-map .map {
+  background: green;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-map .subtitle {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

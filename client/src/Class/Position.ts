@@ -24,7 +24,7 @@ export class Position {
 
 
   positionDateInfo() {
-   return `${this._date} - [${this._lat} ${this._lon}]`
+   return [this._date , this._lat, this._lon]
   }
 
   positionInfo() {

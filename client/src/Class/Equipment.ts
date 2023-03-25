@@ -49,22 +49,22 @@ export class Equipament {
     return [...this._states];
   }
 
- 
-  //show the most recent position
+  //get the most recent position
   getMostRecentPosition(): number[] | null {
     if (this._positions.length === 0) {
       return null;
     }
     return this._positions[this._positions.length - 1].positionInfo();
-}
+  }
 
-  //show the most recent state
- /*  getMostRecentState(): number[] | null {
-    if (this._positions.length === 0) {
-      return null;
+  //get the most recent state
+  getMostRecentState(): string[] | string {
+    if (this._states.length === 0) {
+      return "default";
     }
-    return this._positions[0].positionInfo();
-  } */
+    return this._states[this._states.length - 1].positionDateInfo();
+  }
+
 
   honk() {
     console.log(this._equipName + " " + this._typeName.name);

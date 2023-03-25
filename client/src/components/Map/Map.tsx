@@ -6,7 +6,7 @@ import { MarkerComponent } from "../Marker/Marker";
 const equipmentArray = createEquipmentArray();
 
 equipmentArray.forEach((equipment) => {
-  console.log(equipment.getMostRecentPosition());
+  console.log(equipment.getMostRecentState());
 });
 
 interface MapProps {
@@ -33,6 +33,7 @@ export const Map: React.FC<MapProps> = ({ lat, lon }) => {
 
         {equipmentArray.map((equipment) => {
           const position = equipment.getMostRecentPosition();
+          const state = equipment.getMostRecentState();
 
           if (!position) {
             return null;
@@ -42,8 +43,9 @@ export const Map: React.FC<MapProps> = ({ lat, lon }) => {
             <MarkerComponent
               key={equipment.equipId + equipment.typeId}
               position={[position[0], position[1]]}
-              equipType={equipment.typeId}
-            />
+              equipType={equipment.typeId} 
+              state={state[2]}
+              />
           );
         })}
       </MapContainer>

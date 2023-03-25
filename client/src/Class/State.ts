@@ -21,6 +21,10 @@ export class State {
     return this._date;
   }
 
+  positionDateInfo() {
+    return [this._date , this._stateName, this._id]
+   }
+
   constructor(id: string, date: string) {
     this._id = id;
     this._date = date;

@@ -5,11 +5,12 @@ import { setIcon } from "../../utils/setIcon";
 interface MarkerProps {
   position: [number, number];
   equipType: string;
+  state?: string
 }
 
-export const MarkerComponent: React.FC<MarkerProps> = ({ position, equipType }) => {
+export const MarkerComponent: React.FC<MarkerProps> = ({ position, equipType, state }) => {
   const pinIcon = new Icon({
-    iconUrl: setIcon(equipType),
+    iconUrl: setIcon(equipType, state),
     iconSize: [40, 40],
     iconAnchor: [12, 41],
   });

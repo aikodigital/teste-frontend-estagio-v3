@@ -15,7 +15,7 @@ function NewMarker({ key, eqpId, eqpNameId, allPosHistory }) {
     }
 
     return (
-        <Marker Marker key={key} riseOnHover={true} >
+        <Marker Marker key={key} riseOnHover={true} position={getLastPosition()}>
             <NewPopup />
         </Marker >
     )

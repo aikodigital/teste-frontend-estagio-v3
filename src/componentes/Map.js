@@ -42,7 +42,7 @@ function Map({ equipment, equipmentModel, equipmentPositionHistory, equipmentSta
 
     return (
         <div className="map--container">
-            <MapContainer className='rounded' center={position} zoom={2} style={{ height: '80vh' }} scrollWheelZoom={true}>
+            <MapContainer className='rounded' center={position} zoom={10} style={{ height: '80vh' }} scrollWheelZoom={true}>
                 <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                 {equipTotal}
             </MapContainer>

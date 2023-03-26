@@ -10,7 +10,7 @@ export const PopoverComp = () => (
     </Popover.Trigger>
     <Popover.Portal style={{ zIndex: 0 }}>
       <Popover.Content className="PopoverContent" sideOffset={5}>
-        <FilterPannel />
+        <FilterPannel/>
         <Popover.Arrow className="PopoverArrow" />
       </Popover.Content>
     </Popover.Portal>

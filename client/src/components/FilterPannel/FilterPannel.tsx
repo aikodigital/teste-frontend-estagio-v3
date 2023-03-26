@@ -1,7 +1,22 @@
 import React from "react";
 import { CheckBox } from "../Checkbox/Checkbox";
+import { useState } from "react";
+
+
 
 export const FilterPannel = () => {
+  const [allChecked, setAllChecked] = useState(false);
+  const [caminhaoChecked, setCaminhaoChecked] = useState(false);
+  const [harvesterChecked, setHarvesterChecked] = useState(false);
+  const [garraChecked, setGarraChecked] = useState(false);
+
+  const handleAllCheckboxClick = () => {
+    setAllChecked(!allChecked);
+    setCaminhaoChecked(!allChecked);
+    setHarvesterChecked(!allChecked);
+    setGarraChecked(!allChecked);
+  };
+
   return (
     <div className="filterpannel">
       <div className="header">
@@ -10,15 +25,34 @@ export const FilterPannel = () => {
       <div className="columns">
         <div className="column">
           <p>Model</p>
-          <ul><CheckBox text={"Caminhão "}/></ul>
-          <ul><CheckBox text={"Harvester"}/></ul>
-          <ul><CheckBox text={"Garra"}/></ul>
-        </div>
-        <div className="column">
-          <p>State</p>
-          <ul><CheckBox text={"Operando"}/></ul>
-          <ul><CheckBox text={"Parado"}/></ul>
-          <ul><CheckBox text={"Manutenção"}/></ul>
+          <ul>
+            <CheckBox
+              text={"All"}
+              isChecked={allChecked}
+              onClick={handleAllCheckboxClick}
+            />
+          </ul>
+          <ul>
+            <CheckBox
+              text={"Caminhão "}
+              isChecked={caminhaoChecked}
+              onClick={() => setCaminhaoChecked(!caminhaoChecked)}
+            />
+          </ul>
+          <ul>
+            <CheckBox
+              text={"Harvester"}
+              isChecked={harvesterChecked}
+              onClick={() => setHarvesterChecked(!harvesterChecked)}
+            />
+          </ul>
+          <ul>
+            <CheckBox
+              text={"Garra"}
+              isChecked={garraChecked}
+              onClick={() => setGarraChecked(!garraChecked)}
+            />
+          </ul>
         </div>
       </div>
     </div>

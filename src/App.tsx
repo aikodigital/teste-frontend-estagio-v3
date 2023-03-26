@@ -8,28 +8,24 @@ import MapPage from './pages/MapPage';
 
 const App = () => {
 
-  const [returnedValue, setReturnedValue] = useState({});
+  const [returnedValue, setReturnedValue] = useState<any>({});
   const [valueArray] = useState([]);
   const [equipmentStateValue, setEquipmentState] = useState('')
   const [stateName, setStateName] = useState('')
-  const [equipmentModelValue, setEquipmentModelValue] = useState([])
+  const [equipmentModelValue, setEquipmentModelValue] = useState<any>([]);
   const [equipmentHistoryArray, setEquipmentHistoryArray] = useState([])
   const [equipmentPositionState, setEquipmentPositionHistory] = useState([])
   const [selectedValue, setSelectedValue] = useState(equipments[0].name);
   const [selectedLat, setSelectedLat] = useState(null);
   const [selectedLon, setSelectedLon] = useState(null);
+  const [searchClicked, setSearchClicked] = useState(false)
+  const [lastNameState, setLastName] = useState('')
 
+  useEffect(() => {
+    render()
+  }, [])
+  
   const render = () => {
-    const equipmentId: any = Object.values(returnedValue)[0]
-    const equipmentModelId: any = Object.values(returnedValue)[1]
-    getEquipmentState(equipmentId)
-    getEquipmentModelPrices(equipmentModelId)
-    getEquipmentHistory(equipmentId)
-    getEquipmentPositionHistory(equipmentId)
-    getEquipmentInfo()
-  }
-
-  const getEquipmentInfo = () => {
     for (let key of equipments) {
       if(key.name === selectedValue) {
         setReturnedValue(key)
@@ -37,22 +33,21 @@ const App = () => {
     }
   }
 
-  const getEquipmentState = (equipmentId: string) => {
-    for(let key of equipmentStateHistory) {
-      if (key.equipmentId == equipmentId) {
-        let StateOf = Object.values(key.states)
-        let lastKeyOf: any = StateOf[StateOf.length-1]
-        setEquipmentState(lastKeyOf)
-      }
-    }
-    let equipmentIdStory: any = Object.values(equipmentState)
-    for(let state of equipmentIdStory) {
-      let equipmentStateStory: any = Object.values(equipmentStateValue)[1]
-      if(equipmentStateStory == state.id) {
-        setStateName(state.name)
-      }
-    }
+  const getEquipmentInfo = () => {
+    render()
+    setSearchClicked(true)
+    const equipmentId: any = Object.values(returnedValue)[0]
+    const equipmentModelId: any = Object.values(returnedValue)[1]
+    getEquipmentModelPrices(equipmentModelId)
+    getEquipmentHistory(equipmentId)
+    getEquipmentPositionHistory(equipmentId)
+    getEquipmentStatus(equipmentId)
   }
+
+  const getEquipmentStatus = (equipmentId: string) => {
+    console.log(equipmentId)
+  };
+  
 
   const getEquipmentModelPrices = (equipmentModelId: string) => {
     let myValuesArr: any = []
@@ -72,7 +67,7 @@ const App = () => {
     // let lastValuesArray: Array<object> | string = []
     let lastValuesArray: any = []
     let returnedValuesArray: any = []
-    let dateValuesArray: any = []
+    let lastKeyOf: any = ''
     for(let key of equipmentStateHistory) {
       if(key.equipmentId == equipmentId) {
         let lastStates = Object.values(key)[1]
@@ -95,6 +90,13 @@ const App = () => {
         }
       }
     }
+
+    for(let key of equipmentStateHistory) {
+      if (key.equipmentId == equipmentId) {
+        lastKeyOf = key.states[key.states.length - 1]
+      }
+    }
+    setEquipmentState(lastKeyOf)
     setEquipmentHistoryArray(returnedValuesArray)
   }
 
@@ -143,16 +145,16 @@ const App = () => {
         selected={item.name === selectedValue}>{item.name}</option>
       ))}
     </select>
-    <button onClick={render} className="block h-[50px] w-[190px] bg-[#006404] rounded text-white">Search</button>
-    {Object.keys(returnedValue).length != 0 ?
+    <button onClick={getEquipmentInfo} className="block h-[50px] w-[190px] bg-[#006404] rounded text-white">Search</button>
+    {searchClicked ?
     <div>
       <h2 className='text-2xl'>Informações do equipamento:</h2>
-      {stateName.length > 0 ?
-        <p>Status: <span className='text-[#CAB8FD]'>{stateName}</span></p>
-        :
-        <p>Status:</p>
-      }
       <p>Nome: <span className='text-[#2E80CC]'>{selectedValue}</span></p>
+      {stateName.length == 0 ?
+        <p>Status: <span className='text-[#CAB8FD]'>{lastNameState}</span></p>
+        :
+        <p>Status: <span className='text-[#CAB8FD]'>{lastNameState}</span></p>
+      }
       <h2 className='text-2xl'>Preço por estado:</h2>
       <p><span className='text-[#2ECC71]'>Operando:</span> {equipmentModelValue[0]} $</p>
       <p><span className='text-[#F1C40F]'>Parado:</span> {equipmentModelValue[1]} $</p>

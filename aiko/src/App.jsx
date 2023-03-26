@@ -1,15 +1,20 @@
+import React from "react";
 import "./App.css";
+
+import { BrowserRouter } from "react-router-dom";
+import Content from "./components/Content/Content";
 
 // Components
 import Header from "./components/Header/Header";
 //import Footer from "./components/Footer/Footer";
-import SectionMap from "./components/SectionMap/SectionMap";
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <SectionMap />
+      <BrowserRouter>
+        <Header />
+        <Content />
+      </BrowserRouter>
     </div>
   );
 }

@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from "react";
 import "./style.css";
 
 import nameEquipment from "../../data/equipment.json";
-import locationEquipments from "../../data/equipmentPositionHistory.json";
 import statusHistory from "../../data/equipmentStateHistory.json";
 import status from "../../data/equipmentState.json";
 
@@ -11,12 +10,9 @@ function Subtitle() {
   const [equip, setEquip] = useState([]);
 
   useEffect(() => {
-    function capturedatesEqps() {
+    function captureStatusEqps() {
       nameEquipment.forEach((eqp, i) => {
-        const lastIndexPos = locationEquipments[i].positions.length - 1;
         const lastIndexStatus = statusHistory[i].states.length - 1;
-        nameEquipment[i].position =
-          locationEquipments[i].positions[lastIndexPos];
         nameEquipment[i].status = statusHistory[i].states[lastIndexStatus];
         status.forEach((status) => {
           if (status.id == nameEquipment[i].status.equipmentStateId) {
@@ -28,7 +24,7 @@ function Subtitle() {
     }
 
     setEquip(nameEquipment);
-    capturedatesEqps();
+    captureStatusEqps();
   }, []);
 
   return (

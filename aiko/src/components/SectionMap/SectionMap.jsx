@@ -31,7 +31,7 @@ function SectionMap() {
   });
 
   useEffect(() => {
-    function capturedatesEqps() {
+    function captureDatesEqps() {
       nameEquipment.forEach((eqp, i) => {
         const lastIndexPos = locationEquipments[i].positions.length - 1;
         const lastIndexStatus = statusHistory[i].states.length - 1;
@@ -48,7 +48,7 @@ function SectionMap() {
     }
 
     setEquip(nameEquipment);
-    capturedatesEqps();
+    captureDatesEqps();
   }, []);
 
   L.Marker.prototype.options.icon = markerIcon;

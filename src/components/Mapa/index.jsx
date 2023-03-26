@@ -1,12 +1,13 @@
 import React from 'react'
 import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
-import Equipamentos from '../../../../data/equipment.json'
-import ModeloEquipamentos from '../../../../data/equipmentModel.json'
-import PosicaoDosEquipamentos from '../../../../data/equipmentPositionHistory.json'
-import EstadoEqupamentos from '../../../../data/equipmentState.json'
-import HistEstadoEqupamentos from '../../../../data/equipmentStateHistory.json'
+import Equipamentos from '../../../data/equipment.json'
+import ModeloEquipamentos from '../../../data/equipmentModel.json'
+import PosicaoDosEquipamentos from '../../../data/equipmentPositionHistory.json'
+import EstadoEquipamentos from '../../../data/equipmentState.json'
+import HistEstadoEqupamentos from '../../../data/equipmentStateHistory.json'
 
 const Mapa = () => {
+
   const fullEquipment = []
 
   Equipamentos.forEach(item => {
@@ -17,7 +18,8 @@ const Mapa = () => {
         Equipamentos = {
           name: item.name,
           modelName: equip.name,
-          state: {},
+          mostRecentState: {},
+          stateData: {},
           id: item.id,
           modelId: item.equipmentModelId,
           location: {},
@@ -29,7 +31,7 @@ const Mapa = () => {
     HistEstadoEqupamentos.forEach(history => {
       if (history.equipmentId === item.id) {
         Equipamentos.historyState.push(history)
-        Equipamentos.state = (history.states[history.states.length - 1])
+        Equipamentos.mostRecentState = (history.states[history.states.length - 1])
       }
     })
 
@@ -40,12 +42,20 @@ const Mapa = () => {
       }
     })
 
+    const mostRecentStateId = Equipamentos.mostRecentState.equipmentStateId
+
+    EstadoEquipamentos.forEach(equipamento => {
+      if (equipamento.id === mostRecentStateId) {
+        Equipamentos.stateData = equipamento;
+      }
+    })
+
     fullEquipment.push(Equipamentos)
 
     return fullEquipment.values
   })
 
-  console.log(fullEquipment);
+  console.log(fullEquipment)
 
   return (
     <div className='mapDiv'>
@@ -68,7 +78,7 @@ const Mapa = () => {
             <Popup>
               <h3>{equipamento.name}</h3>
               <h4>{equipamento.modelName}</h4>
-              <p>descrição da máquina</p>
+              <p>Estado atual do equipamento: {equipamento.stateData.name}</p>
             </Popup>
           </Marker>
         ))}

@@ -20,7 +20,7 @@ function Filter({ equipment, handleChange, handleChangeStates, handleFilterTraj,
         } else {
             setSearchItens(filteredObj);
         }
-    }, [searchValue]);
+    }, [searchValue, equipment]);
 
     function handleSearchClick(id) {
         setSearchItens([])

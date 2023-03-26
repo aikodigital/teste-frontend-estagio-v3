@@ -31,7 +31,7 @@ function Map() {
   const lastPosition = equipments[0].positions[0];
   return (
     <>
-      <div className="h-[calc(100vh-8.3rem)] w-screen">
+      <div className="h-[calc(100vh-4.72rem)] w-screen">
         <FilterBar
           onSearch={setSearchQuery}
           onStateFilter={setStateFilter}

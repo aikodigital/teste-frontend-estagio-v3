@@ -1,4 +1,3 @@
-import Header from './components/Header';
 import { Outlet } from 'react-router-dom';
 import ModalEquipment from './components/ModalEquipment';
 import { ModalContext } from './context/ModalContext';
@@ -10,7 +9,6 @@ function App() {
 
   return (
     <div>
-      <Header />
       <Outlet />
       <AnimatePresence>{isModalOpen && <ModalEquipment />}</AnimatePresence>
     </div>

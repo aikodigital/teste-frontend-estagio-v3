@@ -113,7 +113,7 @@ function MoreInfoPage({ id, handleClose, getEquipmentName, getEquipmentLastState
                 <div className="history-container">
                     {listHistory()}
                     <div className="pagination-container">
-                        {page != 1 &&
+                        {page !== 1 &&
                             <div className="pagination-button" onClick={handlePrevPage} disabled={page === 1}>
                                 <span>Página Anterior</span>
                             </div>}

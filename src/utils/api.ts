@@ -5,6 +5,10 @@ import equipmentStateHistory from '../assets/data/equipmentStateHistory.json';
 import equipmentPositionHistory from '../assets/data/equipmentPositionHistory.json';
 import { query } from './query';
 
+import CargoTruck from '../assets/cargotruck.png';
+import Harvester from '../assets/harvester.png';
+import LogLoader from '../assets/logloader.png';
+
 export function getAllEquipment() {
   return equipment.map((e) => ({
     ...e,
@@ -58,4 +62,17 @@ export function getEquipmentStateById(id: string) {
 
 export function search(text: string, query: string) {
   return text.toLowerCase().includes(query.toLowerCase());
+}
+
+export function getIconByModelName(name: string) {
+  switch (name) {
+    case 'Caminhão de carga':
+      return CargoTruck;
+    case 'Harvester':
+      return Harvester;
+    case 'Garra traçadora':
+      return LogLoader;
+    default:
+      return CargoTruck;
+  }
 }

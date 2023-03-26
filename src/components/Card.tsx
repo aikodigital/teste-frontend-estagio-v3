@@ -7,7 +7,7 @@ function Card({
 }) {
   return (
     <button
-      className="m-3 w-96 bg-white p-5 text-left shadow"
+      className="m-3 flex h-32 w-96 items-center bg-white p-5 text-left shadow"
       onClick={onClick}
     >
       {children}

@@ -6,11 +6,12 @@ import {
   TileLayer,
   Tooltip,
 } from 'react-leaflet';
+import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import { Fragment, useContext, useState } from 'react';
 import { ModalContext } from '../context/ModalContext';
-import { getAllEquipment, search } from '../utils/api';
+import { getAllEquipment, getIconByModelName, search } from '../utils/api';
 import FilterBar from '../components/FilterBar';
 
 function Map() {
@@ -61,6 +62,12 @@ function Map() {
                 <Marker
                   key={equipment.id}
                   position={[lastPosition.lat, lastPosition.lon]}
+                  icon={
+                    new L.Icon({
+                      iconUrl: getIconByModelName(equipment.model.name),
+                      iconSize: [50, 50],
+                    })
+                  }
                 >
                   <Popup>
                     <p className="font-bold">

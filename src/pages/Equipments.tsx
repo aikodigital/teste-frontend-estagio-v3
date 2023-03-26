@@ -1,5 +1,10 @@
 import Card from '../components/Card';
-import { getAllEquipment, getStatesByEquipmentId, search } from '../utils/api';
+import {
+  getAllEquipment,
+  getIconByModelName,
+  getStatesByEquipmentId,
+  search,
+} from '../utils/api';
 import { ModalContext } from '../context/ModalContext';
 import { useContext, useState } from 'react';
 import FilterBar from '../components/FilterBar';
@@ -30,16 +35,24 @@ function Equipments() {
         const states = getStatesByEquipmentId(equipment.id);
         return (
           <Card key={equipment.id} onClick={() => openModal(equipment.id)}>
-            <p className="opacity-70">{equipment.id}</p>
-            <h2 className="text-xl">{equipment.name}</h2>
-            <p className="opacity-70">{equipment.model.name}</p>
-            <p className="flex items-center text-xs font-bold opacity-70">
-              {states[0].name}{' '}
-              <div
-                className="m-1 h-3 w-3 rounded-full"
-                style={{ backgroundColor: states[0].color }}
+            <div className="h-full">
+              <img
+                src={getIconByModelName(equipment.model.name)}
+                alt={equipment.model.name}
+                className="h-full"
               />
-            </p>
+            </div>
+            <div className="h-full">
+              <h2 className="text-xl">{equipment.name}</h2>
+              <p className="opacity-70">{equipment.model.name}</p>
+              <p className="flex items-center text-xs font-bold opacity-70">
+                {states[0].name}{' '}
+                <span
+                  className="m-1 h-3 w-3 rounded-full"
+                  style={{ backgroundColor: states[0].color }}
+                />
+              </p>
+            </div>
           </Card>
         );
       })}

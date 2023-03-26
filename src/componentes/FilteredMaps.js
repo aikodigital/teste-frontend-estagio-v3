@@ -18,7 +18,7 @@ function FilteredMaps({ filter, filterStates, filterTraj, handleClick, equipment
     }
 
     function getFilterStateName() {
-        switch (filterStates) {
+        switch (parseInt(filterStates)) {
             case 0:
                 return 'Operando';
             case 1:
@@ -109,7 +109,6 @@ function FilteredMaps({ filter, filterStates, filterTraj, handleClick, equipment
                         customIcon={customIcon}
                         key={filterTraj}
                         eqpId={filterTraj}
-                        eqpNameId={"a3540227-2f0e-4362-9517-92f41dabbfdf"}
                     />
                 </MapContainer>}
         </div>

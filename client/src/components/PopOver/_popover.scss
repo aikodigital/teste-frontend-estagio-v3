@@ -8,17 +8,20 @@ input {
 .PopoverContent {
     border: 2px solid rgb(114, 114, 114);
     border-radius: 4px;
-    height: 120px;
+    height: 140px;
     padding: 10px;
-    width: 170px;
+    width: 190px;
     background-color: rgba(224, 221, 221, 0.897);
-    box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+    box-shadow:
+        hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
+        hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
     animation-duration: 400ms;
     animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform, opacity;
-
     display: flex;
+    flex-direction: column;
 }
+
 
 .PopoverContent:focus {
     outline: none !important;

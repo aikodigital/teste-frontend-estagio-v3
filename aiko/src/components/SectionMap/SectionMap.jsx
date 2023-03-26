@@ -13,6 +13,8 @@ import Subtitle from "../Subtitle/Subtitle";
 
 import nameEquipment from "../../data/equipment.json";
 import locationEquipments from "../../data/equipmentPositionHistory.json";
+import statusHistory from "../../data/equipmentStateHistory.json";
+import status from "../../data/equipmentState.json";
 
 function SectionMap() {
   const [center, setCenter] = useState({ lat: -19.151801, lng: -46.007759 });
@@ -29,15 +31,24 @@ function SectionMap() {
   });
 
   useEffect(() => {
-    function capturePositionEqp() {
+    function capturedatesEqps() {
       nameEquipment.forEach((eqp, i) => {
-        const lastIndex = locationEquipments[i].positions.length - 1;
-        nameEquipment[i].position = locationEquipments[i].positions[lastIndex];
+        const lastIndexPos = locationEquipments[i].positions.length - 1;
+        const lastIndexStatus = statusHistory[i].states.length - 1;
+        nameEquipment[i].position =
+          locationEquipments[i].positions[lastIndexPos];
+        nameEquipment[i].status = statusHistory[i].states[lastIndexStatus];
+        status.forEach((status) => {
+          if (status.id == nameEquipment[i].status.equipmentStateId) {
+            nameEquipment[i].status.name = status.name;
+            nameEquipment[i].status.color = status.color;
+          }
+        });
       });
     }
 
     setLocEquip(nameEquipment);
-    capturePositionEqp();
+    capturedatesEqps();
   }, []);
   console.log(locEquip);
 
@@ -64,7 +75,9 @@ function SectionMap() {
               key={equip.id}
             >
               <Popup>
-                <b>{equip.name}</b>
+                <b>
+                  Nome: {equip.name} <br /> Status: {equip.status.name}
+                </b>
               </Popup>
             </Marker>
           ))}

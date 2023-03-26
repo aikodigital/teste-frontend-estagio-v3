@@ -5,16 +5,16 @@ import { useState } from "react";
 
 
 export const FilterPannel = () => {
-  const [allChecked, setAllChecked] = useState(false);
-  const [caminhaoChecked, setCaminhaoChecked] = useState(false);
-  const [harvesterChecked, setHarvesterChecked] = useState(false);
-  const [garraChecked, setGarraChecked] = useState(false);
+  const [allModelChecked, setAllModelChecked] = useState(true);
+  const [caminhaoChecked, setCaminhaoChecked] = useState(true);
+  const [harvesterChecked, setHarvesterChecked] = useState(true);
+  const [garraChecked, setGarraChecked] = useState(true);
 
   const handleAllCheckboxClick = () => {
-    setAllChecked(!allChecked);
-    setCaminhaoChecked(!allChecked);
-    setHarvesterChecked(!allChecked);
-    setGarraChecked(!allChecked);
+    setAllModelChecked(!allModelChecked);
+    setCaminhaoChecked(!allModelChecked);
+    setHarvesterChecked(!allModelChecked);
+    setGarraChecked(!allModelChecked);
   };
 
   return (
@@ -28,7 +28,7 @@ export const FilterPannel = () => {
           <ul>
             <CheckBox
               text={"All"}
-              isChecked={allChecked}
+              isChecked={allModelChecked}
               onClick={handleAllCheckboxClick}
             />
           </ul>
@@ -54,7 +54,9 @@ export const FilterPannel = () => {
             />
           </ul>
         </div>
+        
       </div>
+      
     </div>
   );
 };

@@ -1,29 +1,50 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import "./style.css";
 
-import equipments from "../../data/equipment.json";
-import statusEquipments from "../../data/equipmentState.json";
+import nameEquipment from "../../data/equipment.json";
+import locationEquipments from "../../data/equipmentPositionHistory.json";
+import statusHistory from "../../data/equipmentStateHistory.json";
+import status from "../../data/equipmentState.json";
 
 function Subtitle() {
-  function getRandom(max) {
-    return Math.floor(Math.random() * max + 1);
-  }
+  const [equip, setEquip] = useState([]);
+
+  useEffect(() => {
+    function capturedatesEqps() {
+      nameEquipment.forEach((eqp, i) => {
+        const lastIndexPos = locationEquipments[i].positions.length - 1;
+        const lastIndexStatus = statusHistory[i].states.length - 1;
+        nameEquipment[i].position =
+          locationEquipments[i].positions[lastIndexPos];
+        nameEquipment[i].status = statusHistory[i].states[lastIndexStatus];
+        status.forEach((status) => {
+          if (status.id == nameEquipment[i].status.equipmentStateId) {
+            nameEquipment[i].status.name = status.name;
+            nameEquipment[i].status.color = status.color;
+          }
+        });
+      });
+    }
+
+    setEquip(nameEquipment);
+    capturedatesEqps();
+  }, []);
 
   return (
     <aside className="subtitle">
       <p className="title">Equipamentos:</p>
-      {equipments.map((equipment, index) => {
+      {equip.map((equip) => {
         return (
-          <div className="information" key={equipment.id}>
+          <div className="information" key={equip.id}>
             <div className="equipment-name">
               <span
                 className="point"
                 style={{
-                  backgroundColor: `${statusEquipments[index % 3].color}`,
+                  backgroundColor: `${equip.status.color}`,
                 }}
               ></span>
-              {equipment.name}
+              {equip.name}
             </div>
             <div className="line"></div>
           </div>

@@ -18,9 +18,9 @@ import status from "../../data/equipmentState.json";
 
 function SectionMap() {
   const [center, setCenter] = useState({ lat: -19.151801, lng: -46.007759 });
-  const [locEquip, setLocEquip] = useState([]);
+  const [equip, setEquip] = useState([]);
   const mapRef = useRef();
-  const ZOOM_LEVEL = 10;
+  const ZOOM_LEVEL = 8.5;
 
   const markerIcon = new L.Icon({
     iconUrl: icon,
@@ -47,10 +47,9 @@ function SectionMap() {
       });
     }
 
-    setLocEquip(nameEquipment);
+    setEquip(nameEquipment);
     capturedatesEqps();
   }, []);
-  console.log(locEquip);
 
   L.Marker.prototype.options.icon = markerIcon;
 
@@ -68,7 +67,7 @@ function SectionMap() {
             attribution={osm.maptiler.attribution}
           />
 
-          {locEquip.map((equip, i) => (
+          {equip.map((equip, i) => (
             <Marker
               position={[equip.position.lat, equip.position.lon]}
               icon={markerIcon}

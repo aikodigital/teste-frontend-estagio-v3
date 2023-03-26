@@ -1,4 +1,5 @@
-import { useContext, useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 import { ModalContext } from '../context/ModalContext';
 import {
   getEquipmentById,
@@ -24,15 +25,25 @@ function ModalEquipment() {
     };
   }, [closeModal]);
 
-  if (!modalId) return null;
-
-  const equipment = getEquipmentById(modalId);
-  const model = getEquipmentModelById(equipment.equipmentModelId);
-  const states = getStatesByEquipmentId(modalId);
+  const [equipment] = useState(getEquipmentById(modalId));
+  const [model] = useState(getEquipmentModelById(equipment?.equipmentModelId));
+  const [states] = useState(getStatesByEquipmentId(modalId));
 
   return (
-    <div className="fixed inset-0 z-[99999] flex h-screen w-screen items-center justify-center bg-black/50">
-      <div className="w-96 rounded bg-white p-5 shadow" ref={ref}>
+    <motion.div
+      className="fixed inset-0 z-[99999] flex h-screen w-screen items-center justify-center bg-black/50"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+    >
+      <motion.div
+        className="w-96 rounded bg-white p-5 shadow"
+        ref={ref}
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        exit={{ scale: 0 }}
+      >
         <div className="flex justify-end">
           <button
             className="rounded bg-red-500 px-2 py-1 text-white"
@@ -41,8 +52,8 @@ function ModalEquipment() {
             Fechar
           </button>
         </div>
-        <h1 className="text-2xl font-bold">{equipment.name}</h1>
-        <p className="font-bold opacity-70">{model.name}</p>
+        <h1 className="text-2xl font-bold">{equipment?.name}</h1>
+        <p className="font-bold opacity-70">{model?.name}</p>
         <div className="flex items-center">
           <p className="text-sm font-bold opacity-80">{states[0].name}</p>
           <div
@@ -71,8 +82,8 @@ function ModalEquipment() {
             </tbody>
           </table>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 

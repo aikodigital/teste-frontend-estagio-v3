@@ -23,9 +23,9 @@ function Map() {
   const equipmentsFilter = equipments.filter((equipment) => {
     return (
       (search(equipment.name, searchQuery) ||
-        search(equipment.model.name, searchQuery)) &&
+        search(equipment?.model?.name, searchQuery)) &&
       (stateFilter === 'all' || equipment.states[0].name === stateFilter) &&
-      (modelFilter === 'all' || equipment.model.name === modelFilter)
+      (modelFilter === 'all' || equipment?.model?.name === modelFilter)
     );
   });
   const lastPosition = equipments[0].positions[0];
@@ -64,7 +64,7 @@ function Map() {
                   position={[lastPosition.lat, lastPosition.lon]}
                   icon={
                     new L.Icon({
-                      iconUrl: getIconByModelName(equipment.model.name),
+                      iconUrl: getIconByModelName(equipment.model?.name),
                       iconSize: [50, 50],
                     })
                   }
@@ -74,7 +74,7 @@ function Map() {
                       {equipment.name} - {firstState.name}
                     </p>
                     <p className="font-bold opacity-70">
-                      {equipment.model.name}
+                      {equipment.model?.name}
                     </p>
                     <button
                       className="w-full rounded bg-blue-500 p-2 text-white"

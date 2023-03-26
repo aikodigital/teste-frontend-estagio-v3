@@ -2,17 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
+import ModalProvider from './context/ModalContext';
 import './index.css';
 import Equipments from './pages/Equipments';
 import Map from './pages/Map';
 
 const router = createBrowserRouter([
   {
-    path: '/',
     element: <App />,
     children: [
       {
-        path: '/',
+        index: true,
         element: <Equipments />,
       },
       { path: '/maps', element: <Map /> },
@@ -22,6 +22,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ModalProvider>
+      <RouterProvider router={router} />
+    </ModalProvider>
   </React.StrictMode>,
 );

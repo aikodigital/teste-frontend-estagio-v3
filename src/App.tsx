@@ -1,19 +1,18 @@
 import Header from './components/Header';
-
 import { Outlet } from 'react-router-dom';
 import ModalEquipment from './components/ModalEquipment';
-import ModalProvider, { ModalConsumer } from './context/ModalContext';
+import { ModalContext } from './context/ModalContext';
+import { AnimatePresence } from 'framer-motion';
+import { useContext } from 'react';
 
 function App() {
+  const { isModalOpen } = useContext(ModalContext);
+
   return (
     <div>
       <Header />
-      <ModalProvider>
-        <Outlet />
-        <ModalConsumer>
-          {({ isModalOpen }) => isModalOpen && <ModalEquipment />}
-        </ModalConsumer>
-      </ModalProvider>
+      <Outlet />
+      <AnimatePresence>{isModalOpen && <ModalEquipment />}</AnimatePresence>
     </div>
   );
 }

@@ -18,13 +18,19 @@ export function getAllEquipment() {
   }));
 }
 
-export function getEquipmentById(id: string) {
+export function getEquipmentById(id: string | null) {
+  if (!id) {
+    return null;
+  }
   return query(equipment)
     .where((e) => e.id === id)
     .first();
 }
 
-export function getEquipmentModelById(id: string) {
+export function getEquipmentModelById(id: string | undefined) {
+  if (!id) {
+    return null;
+  }
   return query(equipmentModel)
     .where((e) => e.id === id)
     .first();
@@ -40,7 +46,10 @@ export function getPositionsByEquipmentId(id: string) {
     .get();
 }
 
-export function getStatesByEquipmentId(id: string) {
+export function getStatesByEquipmentId(id: string | null) {
+  if (!id) {
+    return [];
+  }
   const history = query(
     query(equipmentStateHistory)
       .where((e) => e.equipmentId === id)
@@ -60,11 +69,14 @@ export function getEquipmentStateById(id: string) {
     .first();
 }
 
-export function search(text: string, query: string) {
+export function search(text: string | undefined, query: string) {
+  if (!text) {
+    return false;
+  }
   return text.toLowerCase().includes(query.toLowerCase());
 }
 
-export function getIconByModelName(name: string) {
+export function getIconByModelName(name: string | undefined) {
   switch (name) {
     case 'Caminhão de carga':
       return CargoTruck;

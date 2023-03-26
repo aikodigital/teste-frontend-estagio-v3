@@ -1,3 +1,4 @@
+import { useContext, useState } from 'react';
 import Card from '../components/Card';
 import {
   getAllEquipment,
@@ -6,7 +7,6 @@ import {
   search,
 } from '../utils/api';
 import { ModalContext } from '../context/ModalContext';
-import { useContext, useState } from 'react';
 import FilterBar from '../components/FilterBar';
 
 function Equipments() {
@@ -18,9 +18,9 @@ function Equipments() {
   const equipmentsFilter = equipments.filter((equipment) => {
     return (
       (search(equipment.name, searchQuery) ||
-        search(equipment.model.name, searchQuery)) &&
+        search(equipment.model?.name, searchQuery)) &&
       (stateFilter === 'all' || equipment.states[0].name === stateFilter) &&
-      (modelFilter === 'all' || equipment.model.name === modelFilter)
+      (modelFilter === 'all' || equipment.model?.name === modelFilter)
     );
   });
 
@@ -37,14 +37,14 @@ function Equipments() {
           <Card key={equipment.id} onClick={() => openModal(equipment.id)}>
             <div className="h-full">
               <img
-                src={getIconByModelName(equipment.model.name)}
-                alt={equipment.model.name}
+                src={getIconByModelName(equipment.model?.name)}
+                alt={equipment.model?.name}
                 className="h-full"
               />
             </div>
             <div className="h-full">
               <h2 className="text-xl">{equipment.name}</h2>
-              <p className="opacity-70">{equipment.model.name}</p>
+              <p className="opacity-70">{equipment.model?.name}</p>
               <p className="flex items-center text-xs font-bold opacity-70">
                 {states[0].name}{' '}
                 <span

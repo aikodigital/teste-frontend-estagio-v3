@@ -17,7 +17,12 @@ import statusHistory from "../../data/equipmentStateHistory.json";
 import status from "../../data/equipmentState.json";
 
 function SectionMap() {
-  const [center, setCenter] = useState({ lat: -19.151801, lng: -46.007759 });
+  const refPos = locationEquipments[1].positions.length - 1;
+
+  const [center, setCenter] = useState({
+    lat: locationEquipments[1].positions[refPos].lat,
+    lng: locationEquipments[1].positions[refPos].lon,
+  });
   const [equip, setEquip] = useState([]);
   const mapRef = useRef();
   const ZOOM_LEVEL = 8.5;

@@ -1,0 +1,29 @@
+.App {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#root {
+    height: 100vh;
+}
+
+.leaflet-container {
+    height: 100vh;
+}
+
+.leaflet-popup-content {
+    width: 230px;
+    max-height: 400px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.history-content {
+    padding: 12px 0;
+}

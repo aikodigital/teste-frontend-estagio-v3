@@ -9,13 +9,13 @@ interface FilterBarProps {
 
 function FilterBar({ onSearch, onStateFilter, onModelFilter }: FilterBarProps) {
   return (
-    <section className="flex w-full items-center bg-slate-600 p-2 px-20 text-white">
+    <section className="flex w-full flex-col items-center bg-slate-600 p-2 px-5 text-white sm:px-20 lg:flex-row">
       <input
-        className="m-1 h-9 rounded bg-slate-500 p-1 px-2"
+        className="m-1 h-9 w-full rounded bg-slate-500 p-1 px-2 lg:w-auto"
         placeholder="Pesquisar"
         onChange={(e) => onSearch(e.target.value)}
       />
-      <label className="mx-1 h-9 rounded bg-slate-500 px-2">
+      <label className="m-1 h-9 w-full rounded bg-slate-500 px-2 lg:w-auto">
         Stado:
         <select
           name="state-filter"
@@ -31,7 +31,7 @@ function FilterBar({ onSearch, onStateFilter, onModelFilter }: FilterBarProps) {
           ))}
         </select>
       </label>
-      <label className="mx-1 h-9 rounded bg-slate-500 px-2">
+      <label className="m-1 h-9 w-full rounded bg-slate-500 px-2 lg:w-auto">
         Modelo:
         <select
           name="model-filter"

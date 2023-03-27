@@ -70,7 +70,7 @@ export const PopUpComponent: React.FC<PopUpProps> = ({model,name,date,position,s
         </div>
 
         <div className="position">
-          <MapPinLine size={20} />
+          <MapPinLine size={20} weight="duotone" />
           <p>{position}</p>
         </div>
       </div>

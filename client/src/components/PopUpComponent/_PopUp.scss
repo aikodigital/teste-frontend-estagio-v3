@@ -22,7 +22,7 @@
 
 
         h2 {
-            font-weight: 500;
+            font-weight: 600;
             font-size: 1.2rem;
             text-transform: uppercase;
             margin: 0px 15px 0px 0px !important;
@@ -57,9 +57,14 @@
     .position {
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
 
         p {
-            margin: 0px 0px 0px 0px !important;
+            border-radius: 6px;
+            padding-left: 5px;
+            padding-right: 5px;
+
+            background-color: rgb(211, 208, 208);
         }
     }
 }

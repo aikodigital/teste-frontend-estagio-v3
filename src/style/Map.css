@@ -4,6 +4,22 @@
     height: 100vh;
 }
 
-.rounded{
+.rounded {
     border-radius: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+    .map--container {
+        margin: auto;
+        width: 95vw;
+        height: 100vh;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .map--container {
+        margin: auto;
+        width: 90vw;
+        height: 100vh;
+    }
 }

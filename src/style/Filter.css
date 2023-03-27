@@ -71,7 +71,6 @@
     background-color: var(--primary-color);
     color: #fff;
     cursor: pointer;
-    transition: all 0.3s ease;
 }
 
 .--filter-dropdown select:hover {
@@ -139,4 +138,58 @@
 
 .search-bar-traj li:hover {
     background-color: #ccc;
+}
+
+@media screen and (max-width: 1024px) {}
+
+@media screen and (max-width: 320px) {
+    .--filter-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1.5rem;
+    }
+
+    .--filter-item {
+        width: 60px;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        color: #666;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+    .traj-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+    }
+
+    .traj-container .--filter-dropdown {
+        max-width: 70%;
+    }
+
+    .--filter-dropdown select {
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+        border-radius: 10px;
+        border: none;
+        background-color: var(--primary-color);
+        color: #fff;
+        cursor: pointer;
+
+    }
+
+    .search-bar-traj input[type="text"] {
+        padding: 0.5rem;
+        border-radius: 10px;
+        border: 1px solid #fff;
+        background-color: var(--primary-color);
+        color: #fff;
+        font-size: 0.9rem;
+        max-width: 70%;
+        margin-bottom: 10px;
+    }
 }

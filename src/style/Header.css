@@ -1,5 +1,5 @@
 /* Header da página */
-.--header-container{
+.--header-container {
     height: 10%;
     width: 100%;
     background-color: var(--header-container);
@@ -10,7 +10,21 @@
     gap: 30px;
 }
 
-.header--logo{
+.header--logo {
     margin: 5px;
     max-width: 150px;
+}
+
+@media screen and (max-width: 1024px) {
+    .header--logo {
+        margin: 5px;
+        max-width: 130px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .header--logo {
+        margin: 5px;
+        max-width: 100px;
+    }
 }

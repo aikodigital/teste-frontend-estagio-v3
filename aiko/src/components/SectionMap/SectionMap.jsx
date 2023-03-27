@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import "./style.css";
 import "leaflet/dist/leaflet.css";
@@ -73,9 +74,11 @@ function SectionMap() {
               key={equip.id}
             >
               <Popup>
-                <b>
-                  Nome: {equip.name} <br /> Status: {equip.status.name}
-                </b>
+                <Link to={`/equip/${equip.id}`}>
+                  <b>
+                    Nome: {equip.name} <br /> Status: {equip.status.name}
+                  </b>
+                </Link>
               </Popup>
             </Marker>
           ))}

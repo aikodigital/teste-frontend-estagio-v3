@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 
@@ -37,7 +37,7 @@ export default function MapDisplay(props: any) {
     center={posicoes[0]}
     zoom={13}
     scrollWheelZoom={false}
-    style={{ height: "500px" }}
+    style={{ height: "400px" }}
   >
     <TileLayer
       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

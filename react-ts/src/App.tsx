@@ -7,7 +7,7 @@ function App() {
   return (
     <HelmetProvider>
       <Helmet>
-        <title>teste</title>
+        <title>Teste Frontend Aiko</title>
         <link
           rel="stylesheet"
           href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"

@@ -2,10 +2,6 @@ import React from "react";
 import ListItem from "./ListItem";
 
 import Equipamentos from "../../../data/equipment.json";
-import Estados from "../../../data/equipmentState.json";
-import Modelo from "../../../data/equipmentModel.json";
-import HistEstados from "../../../data/equipmentStateHistory.json";
-import HistPosicao from "../../../data/equipmentPositionHistory.json";
 
 export default function List() {
   return (

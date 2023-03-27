@@ -48,7 +48,7 @@ button {
   display: flex;
   flex-direction: column;
   margin: 22px;
-  background-color: #eee9e9;
+  background-color: #d6d2d2;
   border: 2px dashed rgb(87, 86, 86);
   color: rgb(87, 86, 86);
   border-radius: 6px;

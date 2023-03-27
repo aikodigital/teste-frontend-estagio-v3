@@ -8,9 +8,12 @@ interface SidebarProps {
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({equipments}) => {
-  const componentsArray = [<Card equipment={equipments[0]}  />];
+  const componentsArray = equipments.map((equipment) => (
+    <Card key={equipment.equipId + equipment.typeId} equipment={equipment} />
+  ));
+
   return (
-    <div className="sidebar" >
+    <div className="sidebar">
       <Search />
       <ScrollAreaComp components={componentsArray} />
     </div>

@@ -2,7 +2,6 @@ import React from "react";
 import { Equipament } from "../../class/Equipment";
 import { Accordeon } from "../Accordeon/Accordeon";
 import { InnerCard } from "../InnerCard/InnerCard";
-import { PopUpComponent } from "../PopUpComponent/PopUpComponent";
 
 interface CardProps {
   equipment: Equipament;

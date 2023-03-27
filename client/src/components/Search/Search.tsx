@@ -16,8 +16,6 @@ export const Search = () => {
         value={text}
         onChange={handleTextChange}
       />
-      {/* <Funnel className="funnel" size={38} weight="fill" /> */}
-
       <PopoverComp />
     </div>
   );

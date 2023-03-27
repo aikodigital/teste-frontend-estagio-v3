@@ -13,8 +13,6 @@ import { CheckFat, MapPinLine, Pause, Wrench } from "@phosphor-icons/react";
 import React from "react";
 import { Popup } from "react-leaflet";
 import { Equipament } from "../../class/Equipment";
-import { EquipamentType } from "../../class/EquipmentType";
-import { State, StateEnum } from "../../class/State";
 import { InnerCard } from "../InnerCard/InnerCard";
 
 

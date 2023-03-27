@@ -25,7 +25,7 @@ interface PopUpProps {
 
 export const PopUpComponent: React.FC<PopUpProps> = ({model,name,date,position,state}) => {
   const tempDate = new Date(date);
-  const formattedDate = tempDate.toLocaleString("en-US", {
+  const formattedDate = tempDate.toLocaleString("pt-br", {
     year: "numeric",
     month: "2-digit",
     day: "2-digit",

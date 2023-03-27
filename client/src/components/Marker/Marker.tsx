@@ -28,7 +28,7 @@ export const MarkerComponent: React.FC<MarkerProps> = ({equipment}) => {
 
   return (
     <Marker position={[position[0] , position[1]]} icon={pinIcon} >
-      <PopUpComponent model={equipment.typeId} name={equipment.equipName} date={equipment.getMostRecentDate()} position={position}/>
+      <PopUpComponent model={equipment.typeId} name={equipment.equipName} date={equipment.getMostRecentDate()} position={position} state={state[2]}/>
     </Marker>
   );
 };

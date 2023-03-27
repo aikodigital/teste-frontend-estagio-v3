@@ -13,15 +13,17 @@ import { CheckFat, MapPinLine } from "@phosphor-icons/react";
 import React from "react";
 import { Popup } from "react-leaflet";
 import { EquipamentType } from "../../class/EquipmentType";
+import { State } from "../../class/State";
 
 interface PopUpProps {
     model: string;
     name: string;
     date: string;
     position: number[];
+    state: string;
 }
 
-export const PopUpComponent: React.FC<PopUpProps> = ({model,name,date,position}) => {
+export const PopUpComponent: React.FC<PopUpProps> = ({model,name,date,position,state}) => {
   const tempDate = new Date(date);
   const formattedDate = tempDate.toLocaleString("en-US", {
     year: "numeric",
@@ -44,7 +46,7 @@ export const PopUpComponent: React.FC<PopUpProps> = ({model,name,date,position})
         </div>
 
         <div className="body">
-          <p className="state">Operando</p>
+          <p className="state">{State.getNameStateId(state)}</p>
           <p className="thisDate">{formattedDate}</p>
         </div>
 

@@ -28,10 +28,10 @@ export class State {
   constructor(id: string, date: string) {
     this._id = id;
     this._date = date;
-    this._stateName = this.getNameStateId(id);
+    this._stateName = State.getNameStateId(id);
   }
 
-  private getNameStateId(id: string): string {
+  static getNameStateId(id: string): string {
     switch (id) {
       case StateEnum.Working:
         return "Operando";

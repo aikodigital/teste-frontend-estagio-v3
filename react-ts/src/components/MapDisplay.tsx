@@ -45,9 +45,6 @@ export default function MapDisplay(props: any) {
     />
     {posicoes.map((posicao: L.LatLngExpression, index: React.Key | null | undefined) => (
       <Marker key={index} position={posicao} icon={markerIconColor}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
       </Marker>
     ))}
   </MapContainer>

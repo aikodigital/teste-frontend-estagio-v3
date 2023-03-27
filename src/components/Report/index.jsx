@@ -14,18 +14,28 @@ const Report = ({ equipment }) => {
     const lastDatePosition = equipment.showDate(lastPosition.date);
     const lastDateState = equipment.showDate(lastState.date);
 
-    console.log(lastState)
-    console.log("state",equipment.showState('0808344c-454b-4c36-89e8-d7687e692d57'));
-
+    
     const stateHistory = equipment.stateHistory
                             .sort(descendingOrder).map(state =>{
                                 return (
                                     <p key={state.date}>
                                         {equipment.showDate(state.date)}:&#160;
                                         {equipment.showState(state.equipmentStateId)}
-                                        </p>
+                                    </p>
                                 )
                             })
+    
+    const calcProductivity = () =>{
+        let totalOperation = 0
+        equipment.dayStatesTotal.forEach(day =>{
+            totalOperation += day.stateHours.totalOperando
+        })
+        return totalOperation / (24 * equipment.dayStatesTotal.length) * 100;
+    }
+
+    const productivity = calcProductivity();
+
+    
 
     return (
         <>
@@ -44,12 +54,14 @@ const Report = ({ equipment }) => {
                         <h3 className='report-state'>Estado: {stateStatus.name}</h3>
                         <h3 className='report-state-updated'>atualizado em: {lastDateState}</h3>
                     </div>
+                    <div className='cotainer report-data'>
+                        <h3 className='report-data'>Produtividade: {productivity.toFixed(1)}%</h3>
+                        <h3 className='report-data'>Produtividade: {productivity.toFixed(1)}%</h3>
+                    </div>
+
+
                 </div>
             </li>
-                    <h3>histórico de estado do equimento:</h3>
-                <div className='container report__state-history'>
-                    {stateHistory}
-                </div>
         </>
     )
 }

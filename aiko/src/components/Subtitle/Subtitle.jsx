@@ -6,6 +6,8 @@ import nameEquipment from "../../data/equipment.json";
 import statusHistory from "../../data/equipmentStateHistory.json";
 import status from "../../data/equipmentState.json";
 
+import { Link } from "react-router-dom";
+
 function Subtitle() {
   const [equip, setEquip] = useState([]);
 
@@ -40,7 +42,7 @@ function Subtitle() {
                   backgroundColor: `${equip.status.color}`,
                 }}
               ></span>
-              {equip.name}
+              <Link to={`equip/${equip.id}`}>{equip.name}</Link>
             </div>
             <div className="line"></div>
           </div>

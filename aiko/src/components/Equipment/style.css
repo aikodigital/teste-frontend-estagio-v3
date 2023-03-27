@@ -1,0 +1,92 @@
+.container-equip {
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.container-equip .title {
+  height: 15%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 5%;
+}
+
+.container-equip .title h1 {
+  font-size: 90%;
+  margin-top: 1rem;
+}
+
+.container-equip .title p {
+  font-size: 0.75rem;
+  width: 100%;
+}
+
+.container-equip .title a {
+  height: 55%;
+  width: 20%;
+  margin-top: -0.5rem;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.container-equip .title a svg {
+  height: 90%;
+  color: red;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: #dddddd;
+}
+
+.container-equip .history {
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-equip .history h1 {
+  font-size: 90%;
+  margin: 1rem 0;
+}
+
+.container-equip .history .table {
+  background: #fff;
+  border-radius: 8px;
+  height: 70%;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  overflow: scroll;
+  position: relative;
+}
+
+.container-equip .history .table table {
+  margin: 1rem;
+  border: 1px solid #fff;
+  background: #6ab7f5;
+  position: absolute;
+  top: 5%;
+}
+
+.container-equip .history .table table thead tr th {
+  padding: 0.25rem;
+  font-size: 1rem;
+}
+
+.container-equip .history .table table tbody tr td {
+  padding: 0.25rem;
+  font-size: 0.75rem;
+}
+
+.container-equip .history .line {
+  margin-top: 0.75rem;
+}

@@ -40,6 +40,10 @@
   gap: 0.25rem;
 }
 
+.subtitle .information .equipment-name a {
+  color: #000;
+}
+
 .subtitle .information .equipment-name .point {
   width: 0.5rem;
   height: 0.5rem;

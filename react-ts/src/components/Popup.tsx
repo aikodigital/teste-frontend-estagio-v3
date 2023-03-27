@@ -81,16 +81,16 @@ export default function Popup(props: any) {
         <div className="w-full text-center grow">
           <MapDisplay posicoes={posicoes} />
         </div>
-        <div className="w-full grid place-items-center text-xl">
+        <div className="w-full grid place-items-center text-xl pb-2">
           Estado Atual: {estadoAtual?.name}
         </div>
         <div className="w-full grid place-items-center text-xl">
           Historico de Estados
-          <ul className="border-2 rounded-xl px-5 py-2 border-slate-600">
+          <ul className="border-2 rounded-xl px-20 py-2 border-slate-600 list-decimal">
             {HistEstados[equipmentIndex].states.map((estado) => (
-              <li className="text-lg">
+              <li className="text-base lg:text-lg">
                 <div className="">
-                  <p>{formatDate(estado.date)} o estado do equipamento era {traduzEstado(estado.equipmentStateId)?.name}</p>
+                  <p>{formatDate(estado.date)} - {traduzEstado(estado.equipmentStateId)?.name}</p>
                 </div>
               </li>
             ))}

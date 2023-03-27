@@ -24,7 +24,7 @@ export function getAllEquipment(): Equipment[] {
   }));
 }
 
-export function getEquipmentById(id: string | null) {
+export function getEquipmentById(id: string | null): Equipment | undefined {
   const e = equipment.find((e) => e.id === id);
   if (!e) {
     return undefined;

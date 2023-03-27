@@ -1,5 +1,6 @@
 import './SideMenu.css'
 import Report from '../Report';
+import History from '../History';
 import Equipment from '../Equipment';
 import { useState } from 'react';
 
@@ -27,13 +28,16 @@ const SideMenu = (props) => {
 
     return (
         <>
-            <section className='container side-menu'>
+            <section className='container side-menuA'>
                 <ul>
                     <li className='side-menu__title'>equipamentos:</li>
                     {listEquipments}
                 </ul>
                 <h2 className='side-menu__title'>relatório:</h2>
                 <Report equipment={report} />
+            </section>
+            <section className='container side-menuB'>
+                <History equipment = {report}/>
             </section>
         </>
     )

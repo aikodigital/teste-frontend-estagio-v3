@@ -16,8 +16,7 @@ function App() {
     </header>
     <main className='container main'>
       <SideMenu equipments={equipments} setZoomIn={setZoomIn} setPosition={setPosition}/>
-      <Map equipments={equipments} zoom={zoomIn} position={position} />
-      
+      <Map equipments={equipments} zoom={zoomIn} position={position}/>
     </main>
     </>
   )

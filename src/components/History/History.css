@@ -1,0 +1,12 @@
+.state-history{
+    flex-direction: column;
+    padding: .5em;
+    overflow-y: scroll;
+    position: relative;
+    bottom: -.45vh;
+}
+
+.state-history p{
+    text-transform: lowercase;
+    font-size: .9em;
+}

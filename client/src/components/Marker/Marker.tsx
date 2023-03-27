@@ -1,28 +1,34 @@
 import { Icon } from "leaflet";
-import { Marker, Popup } from "react-leaflet";
+import { Marker } from "react-leaflet";
+import { Equipament } from "../../class/Equipment";
 import { setIcon } from "../../utils/setIcon";
+import { PopUp } from "../PopUp/Popup";
 
 interface MarkerProps {
-  position: [number, number];
-  equipType: string;
-  state?: string
+  equipment: Equipament;
 }
 
-export const MarkerComponent: React.FC<MarkerProps> = ({ position, equipType, state }) => {
+export const MarkerComponent: React.FC<MarkerProps> = ({equipment}) => {
+  const state = equipment.getMostRecentState();
+  const position = equipment.getMostRecentPosition();
+
+  if (!position) {
+    return null;
+  }
+
   const pinIcon = new Icon({
-    iconUrl: setIcon(equipType, state),
+    iconUrl: setIcon(equipment.typeId, state[2]),
     iconSize: [40, 40],
     iconAnchor: [12, 41],
   });
 
+
+  
+
   return (
-    <Marker position={position} icon={pinIcon} >
-      <Popup offset={[10, -35]}>
-        <div>
-          <h2>My Custom Popup</h2>
-          <p>This is some custom content for my popup!</p>
-        </div>
-      </Popup>
+    <Marker position={[position[0] , position[1]]}
+    icon={pinIcon} >
+      <PopUp/>
     </Marker>
   );
 };

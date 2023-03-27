@@ -34,19 +34,10 @@ export const Map: React.FC<MapProps> = ({ lat, lon, equipments }) => {
         />
 
         {equipments.map((equipment) => {
-          const position = equipment.getMostRecentPosition();
-          const state = equipment.getMostRecentState();
-
-          if (!position) {
-            return null;
-          }
-
           return (
             <MarkerComponent
+              equipment={equipment}
               key={equipment.equipId + equipment.typeId}
-              position={[position[0], position[1]]}
-              equipType={equipment.typeId} 
-              state={state[2]}
               />
           );
         })}

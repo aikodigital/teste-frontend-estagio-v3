@@ -12,20 +12,32 @@
 import { CheckFat, MapPinLine, Pause, Wrench } from "@phosphor-icons/react";
 import React from "react";
 import { Popup } from "react-leaflet";
+import { Equipament } from "../../class/Equipment";
 import { EquipamentType } from "../../class/EquipmentType";
 import { State, StateEnum } from "../../class/State";
 
 
 interface PopUpProps {
-    model: string;
+  /*   model: string;
     name: string;
     date: string;
     position: number[];
-    state: string;
+    state: string; */
+    equipment: Equipament;
 }
 
-export const PopUpComponent: React.FC<PopUpProps> = ({model,name,date,position,state}) => {
-  const tempDate = new Date(date);
+export const PopUpComponent: React.FC<PopUpProps> = ({/* model,name,date,position,state,  */equipment}) => {
+
+  const state = equipment.getMostRecentState();
+  const position = equipment.getMostRecentPosition();
+
+  if (!position) {
+    return null;
+  }
+
+
+
+  const tempDate = new Date(equipment.getMostRecentDate());
   const formattedDate = tempDate.toLocaleString("pt-br", {
     year: "numeric",
     month: "2-digit",
@@ -38,7 +50,7 @@ export const PopUpComponent: React.FC<PopUpProps> = ({model,name,date,position,s
 
   let iconComponent;
 
-  switch (state) {
+  switch (state[2]) {
     case StateEnum.Working:
       iconComponent = <CheckFat size={32} style={{ color: '#2ecc71' }} weight='fill' />;
       break;
@@ -57,15 +69,15 @@ export const PopUpComponent: React.FC<PopUpProps> = ({model,name,date,position,s
       <div>
         <div className="header">
           <div className="model">
-            <p>{EquipamentType.getNameFromId(model)}</p>
-            <h2>{name}</h2>
+            <p>{EquipamentType.getNameFromId(equipment.typeId)}</p>
+            <h2>{equipment.equipName}</h2>
           </div>
 
           {iconComponent}
         </div>
 
         <div className="body">
-          <p className="state">{State.getNameStateId(state)}</p>
+          <p className="state">{State.getNameStateId(state[2])}</p>
           <p className="thisDate">{formattedDate}</p>
         </div>
 

@@ -4,11 +4,7 @@ import { Equipament } from "../../class/Equipment";
 import { createEquipmentArray } from "../../utils/equipmentList";
 import { MarkerComponent } from "../Marker/Marker";
 
-const equipmentArray = createEquipmentArray();
 
-equipmentArray.forEach((equipment) => {
-  console.log(equipment.getMostRecentState());
-});
 
 interface MapProps {
   lat: number;

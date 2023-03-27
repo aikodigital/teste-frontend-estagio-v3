@@ -21,7 +21,10 @@ function Table({ states }: Props) {
         <tbody className="divide-y divide-gray-300">
           {states.map((state, i) => (
             <tr key={i} className="divide-x divide-gray-300 odd:bg-gray-200">
-              <td>{new Date(state.date).toLocaleDateString()}</td>
+              <td>
+                {new Date(state.date).toLocaleDateString()}{' '}
+                {new Date(state.date).toLocaleTimeString()}
+              </td>
               <td>{state.name}</td>
             </tr>
           ))}

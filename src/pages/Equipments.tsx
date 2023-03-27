@@ -52,6 +52,12 @@ function Equipments() {
                   style={{ backgroundColor: states[0].color }}
                 />
               </p>
+              <p className="text-xs font-bold opacity-70">
+                Produtividade: {equipment.productivity.toFixed()}%
+              </p>
+              <p className="text-xs font-bold opacity-70">
+                Ganho: R$ {equipment.gain.toFixed(2)}
+              </p>
             </div>
           </Card>
         );

@@ -13,15 +13,33 @@ export type Equipment = (typeof equipment)[0] & {
   model: (typeof equipmentModel)[0] | null;
   states: Array<(typeof equipmentState)[0] & { date: string }>;
   positions: Array<(typeof equipmentPositionHistory)[0]['positions'][0]>;
+  productivity: number;
+  gain: number;
 };
 
 export function getAllEquipment(): Equipment[] {
-  return equipment.map((e) => ({
-    ...e,
-    model: getEquipmentModelById(e.equipmentModelId),
-    states: getStatesByEquipmentId(e.id),
-    positions: getPositionsByEquipmentId(e.id),
-  }));
+  return equipment.map((e) => {
+    const model = getEquipmentModelById(e.equipmentModelId);
+    const states = getStatesByEquipmentId(e.id);
+    const positions = getPositionsByEquipmentId(e.id);
+    const productivity = (getStateTime(states, 'Operando') * 100) / 24;
+    const gain = calculateEquipmentGain({
+      ...e,
+      model,
+      states,
+      positions,
+      productivity,
+      gain: 0,
+    });
+    return {
+      ...e,
+      model,
+      states,
+      positions,
+      productivity,
+      gain,
+    };
+  });
 }
 
 export function getEquipmentById(id: string | null): Equipment | undefined {
@@ -29,11 +47,25 @@ export function getEquipmentById(id: string | null): Equipment | undefined {
   if (!e) {
     return undefined;
   }
+  const model = getEquipmentModelById(e.equipmentModelId);
+  const states = getStatesByEquipmentId(e.id);
+  const positions = getPositionsByEquipmentId(e.id);
+  const productivity = (getStateTime(states, 'Operando') * 100) / 24;
+  const gain = calculateEquipmentGain({
+    ...e,
+    model,
+    states,
+    positions,
+    productivity,
+    gain: 0,
+  });
   return {
     ...e,
-    model: getEquipmentModelById(e.equipmentModelId),
-    states: getStatesByEquipmentId(e.id),
-    positions: getPositionsByEquipmentId(e.id),
+    model,
+    states,
+    positions,
+    productivity,
+    gain,
   };
 }
 
@@ -97,4 +129,47 @@ export function getIconByModelName(name: string | undefined) {
     default:
       return CargoTruck;
   }
+}
+
+function getStateTime(states: Equipment['states'], stateName: string) {
+  const statesWithIndex = states.map((item, index) => ({ ...item, index }));
+  const operatingStates = statesWithIndex.filter(
+    (item) => item.name === stateName,
+  );
+  const firstDay = new Date(operatingStates[0].date).getDay();
+  let operatingTime = 0;
+  let day = firstDay;
+  let index = 0;
+  while (day === firstDay) {
+    const state = operatingStates[index];
+    const nextState = states[state.index + 1];
+    if (!nextState) {
+      break;
+    }
+    operatingTime +=
+      new Date(state.date).getTime() - new Date(nextState.date).getTime();
+    day = new Date(state.date).getDay();
+    index++;
+  }
+  return operatingTime / 1000 / 60 / 60;
+}
+
+function calculateEquipmentGain(equipment: Equipment | undefined) {
+  if (!equipment) {
+    return 0;
+  }
+  const hourlyEarnings = equipment.model?.hourlyEarnings;
+  if (!hourlyEarnings) {
+    return 0;
+  }
+  const states = equipment.states;
+  return hourlyEarnings
+    .map((earning) => ({
+      ...earning,
+      state: getEquipmentStateById(earning.equipmentStateId),
+    }))
+    .reduce((acc, earning) => {
+      const stateTime = getStateTime(states, earning.state.name);
+      return acc + earning.value * stateTime;
+    }, 0);
 }

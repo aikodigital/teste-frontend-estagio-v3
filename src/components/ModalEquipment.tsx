@@ -61,6 +61,12 @@ function ModalEquipment() {
             style={{ backgroundColor: equipment?.states[0].color }}
           />
         </div>
+        <p className="text-sm font-bold opacity-70">
+          Produtividade: {equipment?.productivity.toFixed()}%
+        </p>
+        <p className="text-sm font-bold opacity-70">
+          Ganho: R$ {equipment?.gain.toFixed(2)}
+        </p>
         <div className="flex justify-center">
           <button
             className={`w-full border-b-2 p-2 ${

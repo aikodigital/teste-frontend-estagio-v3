@@ -1,7 +1,7 @@
 .sidebar {
   height: 100%;
   width: 100%;
-  background-color: rgb(209, 208, 208);
+  background-color: rgb(211, 208, 208);
   border-right: 2px solid rgb(156, 156, 156);
   box-sizing: border-box;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -44,23 +44,28 @@ button {
 }
 
 .card {
+  width: 250px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* push card content to the top and bottom of the card */
-  background-color: rgb(211, 209, 209);
-  border-radius: 10px;
-  box-sizing: border-box;
-  width: calc(100% - 40px);
-  margin: 20px;
-  border: 1px solid rgb(156, 156, 156);
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.185);
+  margin: 22px;
+  background-color: #eee9e9;
+  border: 2px dashed rgb(87, 86, 86);
+  color: rgb(87, 86, 86);
+  border-radius: 6px;
+}
+
+.card-header {
+  padding: 10px 10px 0px 10px;
+  margin-bottom: 10px;
 }
 
 .card-content {
   display: flex;
-  flex: 1; /* take up all available vertical space in the card */
+  flex: 1;
+  /* take up all available vertical space in the card */
   flex-direction: column;
-  justify-content: flex-end; /* push accordion to the bottom of the card content */
+  justify-content: flex-end;
+  /* push accordion to the bottom of the card content */
 }
 
 .ScrollAreaViewport {
@@ -316,48 +321,6 @@ button {
   display: flex;
   flex-direction: column;
 }
-.leaflet-popup-content p {
-  margin: 0px 0px 0px 0px !important;
-  font-size: 0.88rem;
-}
-.leaflet-popup-content .header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 5px;
-}
-.leaflet-popup-content .header h2 {
-  font-weight: 600;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  margin: 0px 15px 0px 0px !important;
-}
-.leaflet-popup-content .body {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 8px;
-}
-.leaflet-popup-content .body .state {
-  margin: 0px 5px 0px 0px !important;
-}
-.leaflet-popup-content .body .thisDate {
-  border-radius: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  background-color: rgb(211, 208, 208);
-}
-.leaflet-popup-content .position {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.leaflet-popup-content .position p {
-  border-radius: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  background-color: rgb(211, 208, 208);
-}
 
 /* reset */
 button,
@@ -460,6 +423,49 @@ h3 {
     height: 0;
   }
 }
+.innerCard p {
+  margin: 0px 0px 0px 0px !important;
+  font-size: 0.88rem;
+}
+.innerCard .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.innerCard .header h2 {
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  margin: 0px 15px 0px 0px !important;
+}
+.innerCard .body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.innerCard .body .state {
+  margin: 0px 5px 0px 0px !important;
+}
+.innerCard .body .thisDate {
+  border-radius: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: rgb(211, 208, 208);
+}
+.innerCard .position {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.innerCard .position p {
+  border-radius: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: rgb(211, 208, 208);
+}
+
 body {
   font-family: "Nunito", sans-serif;
   margin: 0;

@@ -1,0 +1,84 @@
+.mapa {
+  height: 470px;
+  box-shadow: 0px 10px 10px #F2EFE9;
+}
+
+.header-equipment {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.title {
+  padding-right: 30px;
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgba(0, 0, 0, 0.774);
+}
+
+.filter {
+  background-color: white;
+  border-width: 0px;
+  cursor: pointer;
+}
+
+.model {
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgba(0, 0, 0, 0.774);
+}
+
+.state-name {
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.text {
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: gray;
+}
+
+.button {
+  background-color: lightgray;
+  border-width: 0;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgba(175, 175, 175, 0.911);
+  transition: 500ms;
+}
+
+.title-button {
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgba(0, 0, 0, 0.774);
+}
+
+.header-modal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.title-modal {
+  font-size: 22px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgba(0, 0, 0, 0.774);
+}
+
+.close {
+  font-size: 22px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.774);
+}
+
+.image-close {
+  height: 25px;
+  width: 25px;
+}

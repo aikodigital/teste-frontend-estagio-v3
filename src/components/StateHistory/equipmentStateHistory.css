@@ -1,0 +1,20 @@
+.title-equipment {
+  font-size: 22px;
+  font-weight: 400;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgba(0, 0, 0, 0.774);
+  margin-bottom: 30px;
+}
+
+.equipment-state {
+  font-size: 18px;
+  border-bottom: 1px solid gray;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.date-equipment {
+  font-family: Arial, Helvetica, sans-serif;
+  color: gray;
+  font-weight: 400;
+}

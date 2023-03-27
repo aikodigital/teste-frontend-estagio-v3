@@ -20,7 +20,7 @@ export const Map: React.FC<MapProps> = ({ lat, lon, equipments }) => {
   const mapPosition: [number, number] = [lat, lon];
 
   return (
-    <div className="mapDiv" style={{ zIndex: 0 }} >
+    <div className="mapDiv" style={{ zIndex: 0 }}>
       <MapContainer
         className="MapContainer"
         center={mapPosition}
@@ -38,7 +38,7 @@ export const Map: React.FC<MapProps> = ({ lat, lon, equipments }) => {
             <MarkerComponent
               equipment={equipment}
               key={equipment.equipId + equipment.typeId}
-              />
+            />
           );
         })}
       </MapContainer>

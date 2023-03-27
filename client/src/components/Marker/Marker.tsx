@@ -1,8 +1,9 @@
 import { Icon } from "leaflet";
-import { Marker } from "react-leaflet";
+import { Marker, Popup } from "react-leaflet";
 import { Equipament } from "../../class/Equipment";
 import { setIcon } from "../../utils/setIcon";
-import { PopUp } from "../PopUp/Popup";
+import { Card } from "../Card/Card";
+import { PopUpComponent } from "../PopUpComponent/PopUpComponent";
 
 interface MarkerProps {
   equipment: Equipament;
@@ -26,9 +27,8 @@ export const MarkerComponent: React.FC<MarkerProps> = ({equipment}) => {
   
 
   return (
-    <Marker position={[position[0] , position[1]]}
-    icon={pinIcon} >
-      <PopUp/>
+    <Marker position={[position[0] , position[1]]} icon={pinIcon} >
+      <PopUpComponent model={equipment.typeId} name={equipment.equipName} date={equipment.getMostRecentDate()} position={position}/>
     </Marker>
   );
 };

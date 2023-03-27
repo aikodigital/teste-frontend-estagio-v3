@@ -23,10 +23,6 @@ export class Position {
   }
 
 
-  positionDateInfo() {
-   return [this._date , this._lat, this._lon]
-  }
-
   positionInfo() {
     return [this._lat , this._lon]
    }

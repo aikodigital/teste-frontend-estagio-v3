@@ -10,7 +10,7 @@ export class EquipamentType {
 
   constructor(id: string) {
     this._id = id;
-    this._name = this.getNameFromId(id);
+    this._name = EquipamentType.getNameFromId(id);
   }
 
   get id(): string {
@@ -21,7 +21,7 @@ export class EquipamentType {
     return this._name;
   }
 
-  private getNameFromId(id: string): string {
+  static  getNameFromId(id: string): string {
     switch (id) {
       case TypeEnum.CargoTruck:
         return "Caminhão de carga";

@@ -299,6 +299,54 @@ button {
   line-height: 1;
 }
 
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  background-color: rgb(238, 233, 233);
+}
+
+.leaflet-popup-content {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+}
+.leaflet-popup-content p {
+  margin: 0px 0px 0px 0px !important;
+  font-size: 0.88rem;
+}
+.leaflet-popup-content .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.leaflet-popup-content .header h2 {
+  font-weight: 500;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  margin: 0px 15px 0px 0px !important;
+}
+.leaflet-popup-content .body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.leaflet-popup-content .body .state {
+  margin: 0px 5px 0px 0px !important;
+}
+.leaflet-popup-content .body .thisDate {
+  border-radius: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: rgb(211, 208, 208);
+}
+.leaflet-popup-content .position {
+  display: flex;
+  flex-direction: row;
+}
+.leaflet-popup-content .position p {
+  margin: 0px 0px 0px 0px !important;
+}
+
 body {
   font-family: "Nunito", sans-serif;
   margin: 0;

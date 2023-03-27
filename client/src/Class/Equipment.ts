@@ -65,6 +65,15 @@ export class Equipament {
     return this._states[this._states.length - 1].positionDateInfo();
   }
 
+  //get the most recent date
+  getMostRecentDate(): string  {
+    if (this._states.length === 0) {
+      return "default";
+    }
+    return this._states[this._states.length - 1].stateDate;
+  }
+
+
 
   honk() {
     console.log(this._equipName + " " + this._typeName.name);

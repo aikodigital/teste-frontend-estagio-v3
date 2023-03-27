@@ -9,9 +9,29 @@ import locationEquipments from "../../data/equipmentPositionHistory.json";
 import statusHistory from "../../data/equipmentStateHistory.json";
 import status from "../../data/equipmentState.json";
 
+import "leaflet/dist/leaflet.css";
+
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import L from "leaflet";
+import icon from "leaflet/dist/images/marker-icon.png";
+
+import osm from "../Content/osm-provider";
+
 function Equipment() {
   const equip = useParams();
   const [equipDates, setEquipDates] = useState({});
+
+  const ZOOM_LEVEL = 8.5;
+
+  const markerIcon = new L.Icon({
+    iconUrl: icon,
+    iconSize: [25, 30],
+    iconAnchor: [17, 45],
+    popupAnchor: [3, -46],
+    popupSize: [20, 30],
+  });
+
+  L.Marker.prototype.options.icon = markerIcon;
 
   useEffect(() => {
     function captureDatesEqps() {
@@ -75,7 +95,12 @@ function Equipment() {
     <div className="container-equip">
       <div className="title">
         <div>
-          <h1>Nome: {equipDates.name}</h1>
+          <h1>
+            Nome: {equipDates.name} -{" "}
+            {equipDates.status
+              ? equipDates.status[equipDates.status.length - 1].name
+              : false}
+          </h1>
           <p>Modelo: {equipDates.equipmentModelId}</p>
         </div>
 
@@ -109,7 +134,6 @@ function Equipment() {
               </tr>
             </thead>
             <tbody>
-              {console.log(equipDates)}
               {equipDates.status && equipDates.status.length > 0
                 ? equipDates.status.map((equipStatus) => {
                     return (
@@ -126,11 +150,39 @@ function Equipment() {
         <div className="line"></div>
       </div>
 
-      {/* <div className="mapAndDates">
+      <div className="mapAndDates">
         <div className="map">
-          <h1>Mapa</h1>
+          <h1>Mapa:</h1>
+          {console.log(equipDates)}
+          {equipDates.position ? (
+            <MapContainer
+              center={[equipDates.position.lat, equipDates.position.lon]}
+              zoom={ZOOM_LEVEL}
+            >
+              <TileLayer
+                url={osm.maptiler.url}
+                attribution={osm.maptiler.attribution}
+              />
+
+              <Marker
+                position={[equipDates.position.lat, equipDates.position.lon]}
+                icon={markerIcon}
+                key={equip.id}
+              >
+                <Popup>
+                  <b>Nome: {equipDates.name}</b>
+                </Popup>
+              </Marker>
+
+              {/* 
+           
+          */}
+            </MapContainer>
+          ) : (
+            false
+          )}
         </div>
-      </div> */}
+      </div>
     </div>
   );
 }

@@ -90,3 +90,25 @@
 .container-equip .history .line {
   margin-top: 0.75rem;
 }
+
+.container-equip .mapAndDates {
+  display: flex;
+  position: relative;
+  height: 45vh;
+}
+
+.container-equip .mapAndDates .map {
+  margin: 5% 5%;
+}
+
+.container-equip .mapAndDates .map h1 {
+  font-size: 90%;
+}
+
+.leaflet-container {
+  height: 70%;
+  width: 60%;
+  position: absolute;
+  top: 20%;
+  left: 2%;
+}

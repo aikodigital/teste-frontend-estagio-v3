@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./style.css";
 import "leaflet/dist/leaflet.css";
@@ -7,7 +7,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import icon from "leaflet/dist/images/marker-icon.png";
 
-import osm from "./osm-provider";
+import osm from "../Content/osm-provider";
 
 import Subtitle from "../Subtitle/Subtitle";
 
@@ -24,7 +24,6 @@ function SectionMap() {
     lng: locationEquipments[1].positions[refPos].lon,
   });
   const [equip, setEquip] = useState([]);
-  const mapRef = useRef();
   const ZOOM_LEVEL = 8.5;
 
   const markerIcon = new L.Icon({
@@ -61,12 +60,7 @@ function SectionMap() {
   return (
     <section className="section-map">
       <div className="conatainer-map">
-        <MapContainer
-          center={center}
-          zoom={ZOOM_LEVEL}
-          ref={mapRef}
-          scrollWheelZoom={false}
-        >
+        <MapContainer center={center} zoom={ZOOM_LEVEL}>
           <TileLayer
             url={osm.maptiler.url}
             attribution={osm.maptiler.attribution}

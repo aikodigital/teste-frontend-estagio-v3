@@ -2,18 +2,6 @@ import React from "react";
 import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 
-const markerIcon = L.icon({
-  iconUrl:
-    "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyLDJDOC4xNCwyLDUsNS4xNCw5LDVMOSwzNmMwLDQuMTQtMy45NSw4LjA0LTguMDQsOC4wNEw5LDguNjlMOSw5Yy00LjE0LDAtNS4yLDEuNDEtNS4xNCw5LjI1UzE5LDUuMTQsMTUsMTIsMTJaIiBmaWxsPSIjMDAwMDAwIi8+PC9zdmc+",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowUrl:
-    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
-  shadowSize: [41, 41],
-  shadowAnchor: [12, 41],
-});
-
 export default function MapDisplay(props: any) {
   const posicoes = props.posicoes;
   const color = props.color || "magenta";

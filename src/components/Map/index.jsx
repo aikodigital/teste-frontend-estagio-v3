@@ -53,8 +53,6 @@ const Map = (props) => {
         </Popup>
       </Marker>);
   })
-  console.log(zoom)
-  console.log(position)
   return (
     <MapContainer center={[-19, -46]} zoom={11} scrollWheelZoom={false}>
       <TileLayer

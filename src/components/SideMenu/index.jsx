@@ -27,12 +27,14 @@ const SideMenu = (props) => {
 
     return (
         <>
-            <ul className='container side-menu'>
-                <li className='side-menu__title'>equipamentos:</li>
-                {listEquipments}
-                <li className='side-menu__title'>relatório:</li>
+            <section className='container side-menu'>
+                <ul>
+                    <li className='side-menu__title'>equipamentos:</li>
+                    {listEquipments}
+                </ul>
+                <h2 className='side-menu__title'>relatório:</h2>
                 <Report equipment={report} />
-            </ul>
+            </section>
         </>
     )
 }

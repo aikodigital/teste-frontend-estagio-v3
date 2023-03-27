@@ -2,7 +2,7 @@
 
 ## Descrição
 
-O projeto consiste em desenvolver uma aplicação web que gerencie equipamentos de operação florestal. Essa aplicação foi desenvolvida utilizando react, react-router e tailwind.
+O projeto consiste em desenvolver uma aplicação web que gerencie equipamentos de operação florestal. Essa aplicação foi desenvolvida utilizando react, framer-motion, react-router e tailwind.
 
 ## Rodando o projeto
 

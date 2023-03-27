@@ -5,6 +5,8 @@ import Modelo from "../../../data/equipmentModel.json";
 import HistEstados from "../../../data/equipmentStateHistory.json";
 import HistPosicao from "../../../data/equipmentPositionHistory.json";
 
+let estadosArr :string[] = []
+
 const idMap = {
   "a7c53eb1-4f5e-4eba-9764-ad205d0891f9": 0,
   "1c7e9615-cc1c-4d72-8496-190fe5791c8b": 1,
@@ -15,10 +17,16 @@ const idMap = {
   "c79ef1de-92f3-4edd-bd55-553056640449": 6,
   "b7aaba00-13f7-44a0-8bf1-bc163afcf9d8": 7,
   "fe2a2e11-bfa6-46b6-990b-fd8175946b7e": 8,
+  "Ronaldinho" : 10 
 };
 
-function traduzEstado(estadoid: string) {
-  return Estados.find((status) => status.id === estadoid);
+function traduzEstado(estadoId: string) {
+  const estadoNoTimeFrame =  Estados.find((status) => status.id === estadoId);
+  if (estadoNoTimeFrame?.name) {
+    estadosArr.push(estadoNoTimeFrame.name);
+    return estadoNoTimeFrame.name;
+  }
+  return "Estado não encontrado";
 }
 
 function formatDate(dateString : string) {
@@ -79,18 +87,18 @@ export default function Popup(props: any) {
           </div>
         </button>
         <div className="w-full text-center grow">
-          <MapDisplay posicoes={posicoes} />
+          <MapDisplay posicoes={posicoes} estadosArr={estadosArr} />
         </div>
         <div className="w-full grid place-items-center text-xl pb-2">
           Estado Atual: {estadoAtual?.name}
         </div>
         <div className="w-full grid place-items-center text-xl">
           Historico de Estados
-          <ul className="border-2 rounded-xl px-20 py-2 border-slate-600 list-decimal">
+          <ul className="border-2 rounded-xl px-20 py-2 border-slate-600 list-decimal mb-5">
             {HistEstados[equipmentIndex].states.map((estado) => (
               <li className="text-base lg:text-lg">
                 <div className="">
-                  <p>{formatDate(estado.date)} - {traduzEstado(estado.equipmentStateId)?.name}</p>
+                  <p>{formatDate(estado.date)} - {traduzEstado(estado.equipmentStateId)}</p>
                 </div>
               </li>
             ))}

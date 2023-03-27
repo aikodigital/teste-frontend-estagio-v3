@@ -2,17 +2,16 @@ import React from "react";
 import * as ScrollArea from "@radix-ui/react-scroll-area";
 import { Card } from "../Card/Card";
 
-export const ScrollAreaComp = () => (
+interface Props {
+  components: React.ReactNode[];
+}
+
+export const ScrollAreaComp: React.FC<Props> = ({ components }) => (
   <ScrollArea.Root className="ScrollAreaRoot">
     <ScrollArea.Viewport className="ScrollAreaViewport">
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      {components.map((component, index) => (
+        <React.Fragment key={index}>{component}</React.Fragment>
+      ))}
     </ScrollArea.Viewport>
     <ScrollArea.Scrollbar
       className="ScrollAreaScrollbar"

@@ -74,7 +74,6 @@ export class Equipament {
   }
 
 
-
   honk() {
     console.log(this._equipName + " " + this._typeName.name);
   }

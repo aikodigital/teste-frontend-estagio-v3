@@ -9,7 +9,13 @@ import CargoTruck from '../assets/cargotruck.png';
 import Harvester from '../assets/harvester.png';
 import LogLoader from '../assets/logloader.png';
 
-export function getAllEquipment() {
+export type Equipment = (typeof equipment)[0] & {
+  model: (typeof equipmentModel)[0] | null;
+  states: Array<(typeof equipmentState)[0] & { date: string }>;
+  positions: Array<(typeof equipmentPositionHistory)[0]['positions'][0]>;
+};
+
+export function getAllEquipment(): Equipment[] {
   return equipment.map((e) => ({
     ...e,
     model: getEquipmentModelById(e.equipmentModelId),
@@ -19,12 +25,16 @@ export function getAllEquipment() {
 }
 
 export function getEquipmentById(id: string | null) {
-  if (!id) {
-    return null;
+  const e = equipment.find((e) => e.id === id);
+  if (!e) {
+    return undefined;
   }
-  return query(equipment)
-    .where((e) => e.id === id)
-    .first();
+  return {
+    ...e,
+    model: getEquipmentModelById(e.equipmentModelId),
+    states: getStatesByEquipmentId(e.id),
+    positions: getPositionsByEquipmentId(e.id),
+  };
 }
 
 export function getEquipmentModelById(id: string | undefined) {

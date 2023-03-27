@@ -1,11 +1,9 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ModalContext } from '../context/ModalContext';
-import {
-  getEquipmentById,
-  getEquipmentModelById,
-  getStatesByEquipmentId,
-} from '../utils/api';
+import { getEquipmentById } from '../utils/api';
+import Table from './Table';
+import ModalMap from './ModalMap';
 
 function ModalEquipment() {
   const { closeModal, modalId } = useContext(ModalContext);
@@ -26,8 +24,8 @@ function ModalEquipment() {
   }, [closeModal]);
 
   const [equipment] = useState(getEquipmentById(modalId));
-  const [model] = useState(getEquipmentModelById(equipment?.equipmentModelId));
-  const [states] = useState(getStatesByEquipmentId(modalId));
+
+  const [nav, setNav] = useState('table');
 
   return (
     <motion.div
@@ -38,7 +36,7 @@ function ModalEquipment() {
       transition={{ duration: 0.2 }}
     >
       <motion.div
-        className="w-96 rounded bg-white p-5 shadow"
+        className="w-full bg-white p-5 shadow sm:w-[640px] sm:rounded"
         ref={ref}
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
@@ -53,35 +51,38 @@ function ModalEquipment() {
           </button>
         </div>
         <h1 className="text-2xl font-bold">{equipment?.name}</h1>
-        <p className="font-bold opacity-70">{model?.name}</p>
+        <p className="font-bold opacity-70">{equipment?.model?.name}</p>
         <div className="flex items-center">
-          <p className="text-sm font-bold opacity-80">{states[0].name}</p>
+          <p className="text-sm font-bold opacity-80">
+            {equipment?.states[0].name}
+          </p>
           <div
             className="m-2 h-3 w-3 rounded-full"
-            style={{ backgroundColor: states[0].color }}
+            style={{ backgroundColor: equipment?.states[0].color }}
           />
         </div>
-        <div className="h-60 overflow-y-auto">
-          <table className="w-full">
-            <thead className="sticky top-0 bg-white">
-              <tr>
-                <th className="text-left">Data</th>
-                <th className="text-left">Estado</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-300">
-              {states.map((state, i) => (
-                <tr
-                  key={i}
-                  className="divide-x divide-gray-300 odd:bg-gray-200"
-                >
-                  <td>{new Date(state.date).toLocaleDateString()}</td>
-                  <td>{state.name}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="flex justify-center">
+          <button
+            className={`w-full border-b-2 p-2 ${
+              nav === 'table' ? 'border-slate-500' : 'border-transparent'
+            }`}
+            onClick={() => setNav('table')}
+          >
+            Histórico
+          </button>
+          <button
+            className={`w-full border-b-2 p-2 ${
+              nav === 'map' ? 'border-slate-500' : 'border-transparent'
+            }`}
+            onClick={() => setNav('map')}
+          >
+            Mapa
+          </button>
         </div>
+        {nav === 'table' && (
+          <Table states={equipment ? equipment.states : []} />
+        )}
+        {nav === 'map' && <ModalMap equipment={equipment} />}
       </motion.div>
     </motion.div>
   );

@@ -83,12 +83,16 @@ function Equipment() {
   }, []);
 
   function convertData(data) {
-    var arrData = data.split("-");
-
-    var newData =
+    // Dia Mês Anos
+    let arrData = data.split("-");
+    let newData =
       arrData[2].substring(0, 2) + "/" + arrData[1] + "/" + arrData[0];
 
-    return newData;
+    //Horas
+    let time = data.substring(11, 19);
+    const newFormateData = newData + " - " + time;
+
+    return newFormateData;
   }
 
   return (
@@ -129,7 +133,7 @@ function Equipment() {
           <table border="1">
             <thead>
               <tr>
-                <th>Data</th>
+                <th>Data e Hora</th>
                 <th>Status</th>
               </tr>
             </thead>
@@ -153,7 +157,6 @@ function Equipment() {
       <div className="mapAndDates">
         <div className="map">
           <h1>Mapa:</h1>
-          {console.log(equipDates)}
           {equipDates.position ? (
             <MapContainer
               center={[equipDates.position.lat, equipDates.position.lon]}
@@ -173,14 +176,21 @@ function Equipment() {
                   <b>Nome: {equipDates.name}</b>
                 </Popup>
               </Marker>
-
-              {/* 
-           
-          */}
             </MapContainer>
           ) : (
             false
           )}
+        </div>
+        <div className="calcDates">
+          <div className="prod">
+            <label htmlFor="">Produtividade</label>
+            <input type="text" />
+          </div>
+
+          <div className="win">
+            <label htmlFor="">Ganho</label>
+            <input type="text" />
+          </div>
         </div>
       </div>
     </div>

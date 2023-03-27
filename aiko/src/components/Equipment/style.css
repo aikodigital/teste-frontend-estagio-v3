@@ -11,7 +11,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 0 5%;
+  margin: 0 1rem;
 }
 
 .container-equip .title h1 {
@@ -20,7 +20,7 @@
 }
 
 .container-equip .title p {
-  font-size: 0.75rem;
+  font-size: 80%;
   width: 100%;
 }
 
@@ -70,19 +70,23 @@
 }
 
 .container-equip .history .table table {
-  margin: 1rem;
+  margin: 0.5rem;
   border: 1px solid #fff;
   background: #6ab7f5;
   position: absolute;
   top: 5%;
+  width: 90%;
+  border-radius: 8px;
 }
 
 .container-equip .history .table table thead tr th {
   padding: 0.25rem;
   font-size: 1rem;
+  text-align: center;
 }
 
 .container-equip .history .table table tbody tr td {
+  text-align: center;
   padding: 0.25rem;
   font-size: 0.75rem;
 }
@@ -93,22 +97,209 @@
 
 .container-equip .mapAndDates {
   display: flex;
-  position: relative;
   height: 45vh;
+  width: 100%;
 }
 
 .container-equip .mapAndDates .map {
-  margin: 5% 5%;
+  position: relative;
+  margin: 1rem;
+  width: 60%;
 }
 
 .container-equip .mapAndDates .map h1 {
   font-size: 90%;
 }
 
-.leaflet-container {
+.container-equip .mapAndDates .map .leaflet-container {
   height: 70%;
-  width: 60%;
+  width: 100%;
   position: absolute;
   top: 20%;
   left: 2%;
+}
+
+.container-equip .mapAndDates .calcDates {
+  width: 30%;
+  margin-right: 0.25rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.container-equip .mapAndDates .calcDates .prod,
+.container-equip .mapAndDates .calcDates .win {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-equip .mapAndDates .calcDates .prod label,
+.container-equip .mapAndDates .calcDates .win label {
+  font-size: 0.75rem;
+}
+
+.container-equip .mapAndDates .calcDates .prod input,
+.container-equip .mapAndDates .calcDates .win input {
+  width: 80%;
+  height: 50%;
+  border-radius: 8px;
+  padding: 0.25rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .container-equip .title p {
+    margin-top: 0.25rem;
+  }
+
+  .container-equip .history h1 {
+    font-size: 1.25rem;
+  }
+
+  .container-equip .history .table table thead tr th {
+    font-size: 1.25rem;
+  }
+
+  .container-equip .history .table table tbody tr td {
+    font-size: 1rem;
+  }
+
+  .container-equip .mapAndDates .map {
+    width: 90%;
+  }
+
+  .container-equip .mapAndDates .map h1 {
+    font-size: 1.25rem;
+  }
+
+  .container-equip .mapAndDates .calcDates .prod label,
+  .container-equip .mapAndDates .calcDates .win label {
+    font-size: 1rem;
+  }
+
+  .container-equip .mapAndDates .calcDates .prod input,
+  .container-equip .mapAndDates .calcDates .win input {
+    height: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-equip .title h1 {
+    font-size: 1.75rem;
+  }
+
+  .container-equip .title p {
+    margin-top: 0.25rem;
+    font-size: 1.25rem;
+  }
+
+  .container-equip .history h1 {
+    font-size: 1.75rem;
+  }
+
+  .container-equip .history .table table thead tr th {
+    font-size: 1.5rem;
+  }
+
+  .container-equip .history .table table tbody tr td {
+    font-size: 1.25rem;
+  }
+
+  .container-equip .mapAndDates .map {
+    width: 90%;
+  }
+
+  .container-equip .mapAndDates .map h1 {
+    font-size: 1.75rem;
+  }
+
+  .container-equip .mapAndDates .calcDates .prod label,
+  .container-equip .mapAndDates .calcDates .win label {
+    font-size: 1.5rem;
+  }
+
+  .container-equip .mapAndDates .calcDates .prod input,
+  .container-equip .mapAndDates .calcDates .win input {
+    height: 4rem;
+    width: 12rem;
+    margin-top: 0.5rem;
+    border-radius: 12px;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container-equip .title h1 {
+    font-size: 2rem;
+  }
+
+  .container-equip .title p {
+    font-size: 1.5rem;
+  }
+
+  .container-equip .history h1 {
+    font-size: 2rem;
+  }
+
+  .container-equip .history .table table thead tr th {
+    font-size: 1.75rem;
+  }
+
+  .container-equip .history .table table tbody tr td {
+    font-size: 1.5rem;
+  }
+
+  .container-equip .mapAndDates .map h1 {
+    font-size: 2rem;
+  }
+
+  .container-equip .mapAndDates .calcDates .prod label,
+  .container-equip .mapAndDates .calcDates .win label {
+    font-size: 1.75rem;
+    margin-top: 0.75rem;
+  }
+}
+
+@media (min-width: 2560px) {
+  .container-equip .title h1 {
+    font-size: 4rem;
+  }
+
+  .container-equip .title p {
+    font-size: 3.25rem;
+  }
+
+  .container-equip .history h1 {
+    font-size: 4rem;
+  }
+
+  .container-equip .history .table table thead tr th {
+    font-size: 3.5rem;
+  }
+
+  .container-equip .history .table table tbody tr td {
+    font-size: 3.25rem;
+  }
+
+  .container-equip .mapAndDates .map h1 {
+    font-size: 4rem;
+  }
+
+  .container-equip .mapAndDates .calcDates .prod label,
+  .container-equip .mapAndDates .calcDates .win label {
+    font-size: 3.75rem;
+    margin-top: 2rem;
+  }
+
+  .container-equip .mapAndDates .calcDates .prod input,
+  .container-equip .mapAndDates .calcDates .win input {
+    height: 6rem;
+    width: 24rem;
+  }
 }

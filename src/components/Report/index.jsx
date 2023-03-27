@@ -25,17 +25,31 @@ const Report = ({ equipment }) => {
                                 )
                             })
     
-    const calcProductivity = () =>{
+    const calcProductivity = (statesTotal = equipment.dayStatesTotal) =>{
         let totalOperation = 0
-        equipment.dayStatesTotal.forEach(day =>{
+        statesTotal.forEach(day =>{
             totalOperation += day.stateHours.totalOperando
         })
-        return totalOperation / (24 * equipment.dayStatesTotal.length) * 100;
+        return totalOperation / (24 * statesTotal.length) * 100;
     }
 
     const productivity = calcProductivity();
 
-    
+    const calcEarning = (statesTotal = equipment.dayStatesTotal) => {
+        
+        const total = {operando: 0, manutencao: 0, parado: 0};
+        statesTotal.forEach(day =>{
+            total.operando += day.stateHours.totalOperando;
+            total.manutencao += day.stateHours.totalManutencao;
+            total.parado += day.stateHours.totalParado;
+        })
+        
+        const{operando, manutencao, parado} = equipment.hourlyEarnings;
+        console.log(operando,total.operando, manutencao, total.manutencao,parado , total.parado)
+        return (operando * total.operando) + (manutencao * total.manutencao) + (parado * total.parado);
+    }
+
+    const earning = calcEarning();
 
     return (
         <>
@@ -56,7 +70,7 @@ const Report = ({ equipment }) => {
                     </div>
                     <div className='cotainer report-data'>
                         <h3 className='report-data'>Produtividade: {productivity.toFixed(1)}%</h3>
-                        <h3 className='report-data'>Produtividade: {productivity.toFixed(1)}%</h3>
+                        <h3 className='report-data'>Ganho: R$ {earning.toFixed(2)}</h3>
                     </div>
 
 

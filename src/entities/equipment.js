@@ -10,13 +10,16 @@ const parado = 'baff9783-84e8-4e01-874b-6fd743b875ad'
 const manutencao = '03b2d446-e3ba-4c82-8dc2-a5611fea6e1f'
 const operando = '0808344c-454b-4c36-89e8-d7687e692d57'
 
+console.log(eqModel)
+
 class Equipment {
 
-  constructor(name, id, modelId, modelName, positionHistory, stateHistory) {
+  constructor(name, id, modelId, modelName, hourlyEarnings, positionHistory, stateHistory) {
     this.name = name;
     this.id = id;
     this.modelId = modelId;
     this.modelName = modelName;
+    this.hourlyEarnings = hourlyEarnings;
     this.positionHistory = positionHistory;
     this.stateHistory = stateHistory;
     this.dayStatesTotal = calcHourStates(stateHistory);
@@ -77,16 +80,36 @@ equipment.forEach(eq => {
       eq.name,
       eq.id,
       eq.equipmentModelId,
-      findModelName(eq.equipmentModelId),
+      findModelNameAndEarning(eq.equipmentModelId)[0],
+      findModelNameAndEarning(eq.equipmentModelId)[1],
       findPositionHistory(eq.id),
       findStateHistory(eq.id)
     ))
 })
 
 
-function findModelName(modelId) {
+function findModelNameAndEarning(modelId) {
   const modelName = eqModel.filter(model => model.id == modelId).map(model => model.name)[0];
-  return modelName;
+  const hourlyEarnings = eqModel
+    .filter(model => model.id == modelId)
+    .map(model => model.hourlyEarnings)[0];
+
+    const earnings = {operando: 0, manutencao: 0, parado: 0}
+
+    hourlyEarnings.forEach(he => {
+        if (he.equipmentStateId === operando){
+          earnings.operando = he.value
+        }
+        if (he.equipmentStateId === manutencao){
+          earnings.manutencao = he.value
+        }
+        if (he.equipmentStateId === parado){
+          earnings.parado = he.value
+        }
+      })
+    
+
+  return [modelName, earnings];
 }
 
 function findPositionHistory(id) {

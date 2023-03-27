@@ -2,6 +2,9 @@ import './Report.css'
 import { eqState, descendingOrder } from "../../entities/equipment";
 
 const Report = ({ equipment }) => {
+
+    console.log(equipment);
+
     if (equipment == null){
         return <li></li>;
     }
@@ -17,7 +20,7 @@ const Report = ({ equipment }) => {
     const stateHistory = equipment.stateHistory
                             .sort(descendingOrder).map(state =>{
                                 return (
-                                    <p>
+                                    <p key={state.date}>
                                         {equipment.showDate(state.date)}:&#160;
                                         {equipment.showState(state.equipmentStateId)}
                                         </p>

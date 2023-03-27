@@ -19,6 +19,8 @@ class Equipment {
     this.modelName = modelName;
     this.positionHistory = positionHistory;
     this.stateHistory = stateHistory;
+    this.dayStatesTotal = calcHourStates(stateHistory);
+    /* this.hoursStateHistory =  */
   }
 
   showDate(date) {
@@ -65,8 +67,6 @@ class Equipment {
 
     return state;
   }
-
-
 }
 
 const equipments = [];
@@ -100,7 +100,7 @@ function findStateHistory(id) {
   return stateHistory;
 }
 
-const descendingOrder = (a, b) => {
+function descendingOrder(a, b){
   if (a.date > b.date) {
     return -1;
   }
@@ -110,7 +110,7 @@ const descendingOrder = (a, b) => {
   return 0;
 }
 
-const ascendingOrder = (a, b) => {
+function ascendingOrder(a, b){
   if (a.date < b.date) {
     return -1;
   }
@@ -121,135 +121,105 @@ const ascendingOrder = (a, b) => {
 }
 
 
+function calcHourStates(stateHistory) {
 
+  class Day {
 
-/* teste */
-
-
-class Day {
-
-  constructor(day, hoursState = []) {
-    this.day = day;
-    this.hoursState = hoursState;
-    this.dayHours = [];
-  }
-  operatingHours(lastState = 'parado') {
-    for (let i = 0; i < 24; i++) {
-      this.dayHours.push({ hour: `${i < 10 ? '0' + i : i}:00` })
+    constructor(day, hoursState = []) {
+      this.day = day;
+      this.hoursState = hoursState;
+      this.dayHours = [];
     }
-    this.hoursState.forEach((sh) => {
-      if (this.dayHours.map(h => h.hour).indexOf(sh.hour) != -1) {
-        this.dayHours[this.dayHours.map(h => h.hour).indexOf(sh.hour)].state = sh.state;
+    operatingHours(lastState = 'parado') {
+      for (let i = 0; i < 24; i++) {
+        this.dayHours.push({ hour: `${i < 10 ? '0' + i : i}:00` })
       }
-    })
-
-    this.dayHours.forEach((hour, index) => {
-      if (index == 0 && !hour.state) {
-        hour.state = lastState;
-      }
-
-      if (!hour.state && index > 0) {
-        hour.state = this.dayHours[index - 1].state;
-      }
-    })
-  }
-}
-
-const teste = equipments[0].stateHistory.filter(state => state.date.format('DD') == '28');
-
-const teste2 = [];
-
-equipments[0].stateHistory
-  .sort(ascendingOrder)
-  .forEach(state => {
-    if (teste2.indexOf(state.date.format('DD/MM/YYYY')) == -1) {
-      teste2.push(state.date.format('DD/MM/YYYY'));
-    }
-  })
-  ;
-
-const teste3 = teste2.map(day => {
-  return new Day(day);
-});
-
-
-for (let i in equipments[0].stateHistory) {
-  const SH = equipments[0].stateHistory[i]
-  if (teste2.indexOf(SH.date.format('DD/MM/YYYY')) != -1) {
-    teste3[teste2.indexOf(SH.date.format('DD/MM/YYYY'))].hoursState
-      .push({
-        hour: SH.date.format('HH:mm'), state: SH.equipmentStateId == parado ? 'parado'
-          : SH.equipmentStateId == manutencao ? 'manutencao' : 'operando'
+      this.hoursState.forEach((sh) => {
+        if (this.dayHours.map(h => h.hour).indexOf(sh.hour) != -1) {
+          this.dayHours[this.dayHours.map(h => h.hour).indexOf(sh.hour)].state = sh.state;
+        }
       })
-  }
-}
-
-for (let i in teste3) {
-  const lastState = i > 0 ? teste3[i - 1].hoursState[teste3[i - 1].hoursState.length - 1].state : 'parado';
-  teste3[i].operatingHours(lastState);
-}
-
-/* teste3.forEach((teste,index) =>{
-  const lastState = index > 0? teste3[index].hoursState[teste3[index].hoursState.length -1].state : 'parado';
-  teste.operatingHours(lastState);
   
-  }) */
-
-console.log(teste3)
-
-const totalStates = teste3
-  .map(day => day.dayHours.map(hour => hour.state))
-  .flatMap(state => state)
-/* teste */
-
-function contarHorasDia(day) {
-  console.log(day)
-
-  const totalStates = day
-        .map(hour => hour.state)
-        .flatMap(state => state);
-
-  let totalParado = 0;
-  let totalManutencao = 0;
-  let totalOperando = 0;
-
-  totalStates.forEach(state => {
-    if (state === 'parado') {
-      totalParado += 1;
+      this.dayHours.forEach((hour, index) => {
+        if (index == 0 && !hour.state) {
+          hour.state = lastState;
+        }
+  
+        if (!hour.state && index > 0) {
+          hour.state = this.dayHours[index - 1].state;
+        }
+      })
     }
-    if (state === 'manutencao') {
-      totalManutencao += 1;
+  }
+
+  const stateHistory2 = [];
+
+  stateHistory
+    .sort(ascendingOrder)
+    .forEach(state => {
+      if (stateHistory2.indexOf(state.date.format('DD/MM/YYYY')) == -1) {
+        stateHistory2.push(state.date.format('DD/MM/YYYY'));
+      }
+    })
+    ;
+
+  const stateHistory3 = stateHistory2.map(day => {
+    return new Day(day);
+  });
+
+
+  for (let i in stateHistory) {
+    const SH = stateHistory[i]
+    if (stateHistory2.indexOf(SH.date.format('DD/MM/YYYY')) != -1) {
+      stateHistory3[stateHistory2.indexOf(SH.date.format('DD/MM/YYYY'))].hoursState
+        .push({
+          hour: SH.date.format('HH:mm'), state: SH.equipmentStateId == parado ? 'parado'
+            : SH.equipmentStateId == manutencao ? 'manutencao' : 'operando'
+        })
     }
-    if (state === 'operando') {
-      totalOperando += 1;
-    }
+  }
+
+  for (let i in stateHistory3) {
+    const lastState = i > 0 ? stateHistory3[i - 1].hoursState[stateHistory3[i - 1].hoursState.length - 1].state : 'parado';
+    stateHistory3[i].operatingHours(lastState);
+  }
+
+  function countStatesHour(day) {
+
+    const totalStates = day
+      .map(hour => hour.state)
+      .flatMap(state => state);
+
+    let totalParado = 0;
+    let totalManutencao = 0;
+    let totalOperando = 0;
+
+    totalStates.forEach(state => {
+      if (state === 'parado') {
+        totalParado += 1;
+      }
+      if (state === 'manutencao') {
+        totalManutencao += 1;
+      }
+      if (state === 'operando') {
+        totalOperando += 1;
+      }
+    })
+
+    return { totalParado: totalParado, totalManutencao: totalManutencao, totalOperando: totalOperando }
+  }
+
+  const dayStatesTotal = []
+
+  stateHistory3.forEach(day =>{
+    dayStatesTotal.push({day: day.day, stateHours: countStatesHour(day.dayHours)});
   })
 
-  return { totalParado: totalParado, totalManutencao: totalManutencao, totalOperando: totalOperando }
+  return dayStatesTotal;
+
 }
 
-let totalParado = 0;
-let totalManutencao = 0;
-let totalOperando = 0;
 
-totalStates.forEach(state => {
-  if (state === 'parado') {
-    totalParado += 1;
-  }
-  if (state === 'manutencao') {
-    totalManutencao += 1;
-  }
-  if (state === 'operando') {
-    totalOperando += 1;
-  }
-})
-
-console.log(totalStates)
-console.log(totalParado)
-console.log(totalManutencao)
-console.log(totalOperando)
-
-console.log(contarHorasDia(teste3[0].dayHours))
 
 export {
   equipments,

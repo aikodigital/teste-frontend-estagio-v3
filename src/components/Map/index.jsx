@@ -6,10 +6,6 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import { useMap } from 'react-leaflet';
 import './Map.css';
-console.log(eqState)
-
-
-
 
 const Map = (props) => {
   const position = props.position;

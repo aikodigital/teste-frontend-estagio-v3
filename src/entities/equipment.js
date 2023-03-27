@@ -6,8 +6,6 @@ import eqStateHistory from '../data/equipmentStateHistory.json';
 import moment from 'moment';
 moment.locale('pt-br');
 
-console.log(eqState)
-
 const parado = 'baff9783-84e8-4e01-874b-6fd743b875ad'
 const manutencao = '03b2d446-e3ba-4c82-8dc2-a5611fea6e1f'
 const operando = '0808344c-454b-4c36-89e8-d7687e692d57'
@@ -23,11 +21,11 @@ class Equipment {
     this.stateHistory = stateHistory;
   }
 
-  showDate(date){
+  showDate(date) {
     return moment(date).format("DD/MM/YY [às] HH:mm");
   }
 
-  showState(stateId){
+  showState(stateId) {
     return eqState.filter(state => state.id === stateId)[0].name;
   }
 
@@ -102,22 +100,22 @@ function findStateHistory(id) {
   return stateHistory;
 }
 
-const descendingOrder = (a, b) =>{
-  if(a.date > b.date){
-      return -1;
+const descendingOrder = (a, b) => {
+  if (a.date > b.date) {
+    return -1;
   }
-  if(a.date < b.date){
-      return 1;
+  if (a.date < b.date) {
+    return 1;
   }
   return 0;
 }
 
-const ascendingOrder = (a, b) =>{
-  if(a.date < b.date){
-      return -1;
+const ascendingOrder = (a, b) => {
+  if (a.date < b.date) {
+    return -1;
   }
-  if(a.date > b.date){
-      return 1;
+  if (a.date > b.date) {
+    return 1;
   }
   return 0;
 }
@@ -127,59 +125,131 @@ const ascendingOrder = (a, b) =>{
 
 /* teste */
 
+
 class Day {
-  constructor(day, hoursState = []){
+
+  constructor(day, hoursState = []) {
     this.day = day;
-    this.hoursState= hoursState;
+    this.hoursState = hoursState;
+    this.dayHours = [];
+  }
+  operatingHours(lastState = 'parado') {
+    for (let i = 0; i < 24; i++) {
+      this.dayHours.push({ hour: `${i < 10 ? '0' + i : i}:00` })
+    }
+    this.hoursState.forEach((sh) => {
+      if (this.dayHours.map(h => h.hour).indexOf(sh.hour) != -1) {
+        this.dayHours[this.dayHours.map(h => h.hour).indexOf(sh.hour)].state = sh.state;
+      }
+    })
+
+    this.dayHours.forEach((hour, index) => {
+      if (index == 0 && !hour.state) {
+        hour.state = lastState;
+      }
+
+      if (!hour.state && index > 0) {
+        hour.state = this.dayHours[index - 1].state;
+      }
+    })
   }
 }
 
 const teste = equipments[0].stateHistory.filter(state => state.date.format('DD') == '28');
 
-const teste2 =  [];
+const teste2 = [];
 
 equipments[0].stateHistory
-                .sort(ascendingOrder)
-                .forEach(state =>{
-                  if(teste2.indexOf(state.date.format('DD/MM/YYYY')) == -1){
-                    teste2.push(state.date.format('DD/MM/YYYY'));
-                  }
-                })
-                ;
+  .sort(ascendingOrder)
+  .forEach(state => {
+    if (teste2.indexOf(state.date.format('DD/MM/YYYY')) == -1) {
+      teste2.push(state.date.format('DD/MM/YYYY'));
+    }
+  })
+  ;
 
 const teste3 = teste2.map(day => {
   return new Day(day);
 });
 
 
-for(let i in equipments[0].stateHistory){
+for (let i in equipments[0].stateHistory) {
   const SH = equipments[0].stateHistory[i]
-  console.log(SH)
-  if(teste2.indexOf(SH.date.format('DD/MM/YYYY')) != -1){
+  if (teste2.indexOf(SH.date.format('DD/MM/YYYY')) != -1) {
     teste3[teste2.indexOf(SH.date.format('DD/MM/YYYY'))].hoursState
-    .push({hour: SH.date.format('HH:mm'), state: SH.equipmentStateId == parado? 'parado'
-    :SH.equipmentStateId == manutencao? 'manutencao': 'operando'})
+      .push({
+        hour: SH.date.format('HH:mm'), state: SH.equipmentStateId == parado ? 'parado'
+          : SH.equipmentStateId == manutencao ? 'manutencao' : 'operando'
+      })
   }
 }
 
+for (let i in teste3) {
+  const lastState = i > 0 ? teste3[i - 1].hoursState[teste3[i - 1].hoursState.length - 1].state : 'parado';
+  teste3[i].operatingHours(lastState);
+}
 
+/* teste3.forEach((teste,index) =>{
+  const lastState = index > 0? teste3[index].hoursState[teste3[index].hoursState.length -1].state : 'parado';
+  teste.operatingHours(lastState);
+  
+  }) */
 
-/* 
-teste2
-                .forEach(date =>{
-                  equipments[0].stateHistory.forEach((state, index) =>{
-                    if(state.date.format('DD/MM/YYYY') == date){
-                      teste3.push({date: date});
+console.log(teste3)
 
-                    }
-                  })
-                }); */
-
-
-console.log(teste3);
-
-
+const totalStates = teste3
+  .map(day => day.dayHours.map(hour => hour.state))
+  .flatMap(state => state)
 /* teste */
+
+function contarHorasDia(day) {
+  console.log(day)
+
+  const totalStates = day
+        .map(hour => hour.state)
+        .flatMap(state => state);
+
+  let totalParado = 0;
+  let totalManutencao = 0;
+  let totalOperando = 0;
+
+  totalStates.forEach(state => {
+    if (state === 'parado') {
+      totalParado += 1;
+    }
+    if (state === 'manutencao') {
+      totalManutencao += 1;
+    }
+    if (state === 'operando') {
+      totalOperando += 1;
+    }
+  })
+
+  return { totalParado: totalParado, totalManutencao: totalManutencao, totalOperando: totalOperando }
+}
+
+let totalParado = 0;
+let totalManutencao = 0;
+let totalOperando = 0;
+
+totalStates.forEach(state => {
+  if (state === 'parado') {
+    totalParado += 1;
+  }
+  if (state === 'manutencao') {
+    totalManutencao += 1;
+  }
+  if (state === 'operando') {
+    totalOperando += 1;
+  }
+})
+
+console.log(totalStates)
+console.log(totalParado)
+console.log(totalManutencao)
+console.log(totalOperando)
+
+console.log(contarHorasDia(teste3[0].dayHours))
 
 export {
   equipments,

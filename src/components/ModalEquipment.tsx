@@ -36,7 +36,7 @@ function ModalEquipment() {
       transition={{ duration: 0.2 }}
     >
       <motion.div
-        className="w-full bg-white p-5 shadow sm:w-[640px] sm:rounded"
+        className="h-full w-full bg-white p-5 shadow sm:h-auto sm:w-[640px] sm:rounded"
         ref={ref}
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}

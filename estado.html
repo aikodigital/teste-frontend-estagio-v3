@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Aiko - Gestão de frotas eficientes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <script src="router.js"></script>
+    <script src="script.js"></script>
+    <nav class="navbar col-12 position-fixed navbar-expand-lg bg-body-tertiary" style="z-index: 999;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <td> <img src="img/logo.png" width="100" style="z-index: 999;" /> </td>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Soluções</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Equipamentos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="estado.html">Posições dos equipamentos</a></li>
+                            <li><a class="dropdown-item" href="#"></a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Sobre Nós</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Procurar</button>
+                </form>
+            </div>
+        </div>
+
+    </nav>
+    <br><br><br><br>
+    <div id="slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 align-self-center">
+                    <h1>A sua operação mais eficiente e inovadora com a solução da Aiko</h1>
+                    <h6>Gestão de frotas de maneira rápida e 100% digital! Para gestores, que sabem como é a rotina de
+                        trabalho neste meio, trazemos uma solução única e personalizável, tudo para simplificar o seu
+                        dia a dia.</h6>
+                    <a href="index.html" class="btn button-primary btn-primary button d-md-inline-block">Soluções</a>
+                </div>
+                <div class="col-md-8 align-self-center">
+                    <img src="img/banner.1.png" width="600" class="img-fluid" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!---VUEJS--->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!---//VUEJS--->
+
+    <!---AXIOS--->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!---AXIOS--->
+    
+    <pre><code class="language-javascript">
+
+    <div id="map" style="height: 500px;"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"
+        integrity="sha512-DtwjK4jr4JUh4pU6bubqlEecJU6ypaU6oq3X9OeQ+TG1OJLgdjKHHlNTEfNwVWLo+syI2eS9IZCweDmZnVG+ng=="
+        crossorigin=""></script>
+
+    <script>
+
+        const equipamentos = [
+            {
+                nome: "Equipamento 1",
+                modelo: "Modelo 1",
+                lat: -23.5489,
+                lng: -46.6388,
+                status: "Em operação",
+            },
+            {
+                nome: "Equipamento 2",
+                modelo: "Modelo 2",
+                lat: -23.5505,
+                lng: -46.6362,
+                status: "Em manutenção",
+            },
+            {
+                nome: "Equipamento 3",
+                modelo: "Modelo 3",
+                lat: -23.5531,
+                lng: -46.6342,
+                status: "Fora de operação",
+            },
+        ];
+
+
+        const map = L.map("map").setView([-23.5489, -46.6388], 14);
+
+
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution:
+                'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+        }).addTo(map);
+
+
+        equipamentos.forEach((equipamento) => {
+            const marker = L.marker([equipamento.lat, equipamento.lng]).addTo(map);
+        })
+
+
+
+    </script>
+
+    <script>
+        import Vue from 'vue'
+        import Vuex from 'vuex'
+
+        Vue.use(Vuex)
+
+        export default new Vuex.Store({
+            state: {
+                filters: {
+                    model: '',
+                    state: '',
+                    position: '',
+                },
+                equipments: [
+                    {
+                        id: 1,
+                        name: 'Equipamento 1',
+                        model: 'Modelo A',
+                        state: 'Operacional',
+                        position: {
+                            latitude: -23.5629,
+                            longitude: -46.6544,
+                        },
+                    },
+                    {
+                        id: 2,
+                        name: 'Equipamento 2',
+                        model: 'Modelo B',
+                        state: 'Inoperante',
+                        position: {
+                            latitude: -23.5489,
+                            longitude: -46.6388,
+                        },
+                    },
+
+                ],
+            },
+            mutations: {
+                SET_FILTERS(state, filters) {
+                    state.filters = filters
+                },
+            },
+            actions: {
+                setFilters({ commit }, filters) {
+                    commit('SET_FILTERS', filters)
+                },
+            },
+        })
+
+    </script>
+
+
+    <template>
+        <div>
+            <div class="form-group">
+                <label for="model">Modelo:</label>
+                <input type="text" id="model" v-model="model" @input="updateFilters">
+            </div>
+            <div class="form-group">
+                <label for="state">Estado:</label>
+                <select id="state" v-model="state" @change="updateFilters">
+                    <option value="">Todos</option>
+                    <option value="Operacional">Operacional</option>
+                    <option value="Inoperante">Inoperante</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="position">Posição:</label>
+                <input type="text" id="position" v-model="position" @input="updateFilters">
+            </div>
+        </div>
+    </template>
+    </code></pre>
+
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css"
+        integrity="sha512-r/qkvrcTN8I+eD7vQ3zqkOVY2K1zzyOoj7vGJd9XKjZZi8aycFVlH/fq3zBILmEMjCEAbA8PTnl+AtgJX9jRLw=="
+        crossorigin="" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+</body>
+
+</html>

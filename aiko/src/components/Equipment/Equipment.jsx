@@ -110,7 +110,6 @@ function Equipment() {
               ? equipDates.status[equipDates.status.length - 1].name
               : false}
           </h1>
-          <p>Modelo: {equipDates.equipmentModelId}</p>
         </div>
 
         <Link to="/">

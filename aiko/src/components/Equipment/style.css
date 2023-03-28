@@ -60,7 +60,7 @@
   background: #fff;
   border-radius: 8px;
   height: 70%;
-  width: 80%;
+  width: 60%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,7 +75,7 @@
   background: #6ab7f5;
   position: absolute;
   top: 5%;
-  width: 90%;
+  width: 60%;
   border-radius: 8px;
 }
 
@@ -112,10 +112,10 @@
 }
 
 .container-equip .map-container .map .leaflet-container {
-  height: 70%;
+  height: 60%;
   width: 100%;
   position: absolute;
-  top: 25%;
+  top: 24%;
   left: 6%;
 }
 

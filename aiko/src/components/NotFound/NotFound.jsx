@@ -24,7 +24,7 @@ function NotFound() {
         </svg>
 
         <div>
-          <p>Página não encontrada</p>
+          <p>Equipamento não encontrada</p>
           <p>Clique aqui para voltar a home</p>
         </div>
       </Link>

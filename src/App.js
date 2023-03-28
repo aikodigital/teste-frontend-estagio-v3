@@ -3,15 +3,22 @@ import equipment from "./data/equipment.json";
 
 import styled from "styled-components";
 
-import logo from "./assets/aiko.png"
+import logo from "./assets/aiko.png";
 
 export default function App() {
   return (
     <AppContainer>
-      <a href="https://aiko.digital"><img alt="aiko-logo" src={logo}/></a>
+      <a href="https://aiko.digital">
+        <img alt="aiko-logo" src={logo} />
+      </a>
       <EquipmentsContainer>
-        {equipment.map((e)=>(
-          <Equipamento eqID={e.id} modelID={e.equipmentModelId} name={e.name}/>
+        {equipment.map((e) => (
+          <Equipamento
+            key={e.id}
+            eqID={e.id}
+            modelID={e.equipmentModelId}
+            name={e.name}
+          />
         ))}
       </EquipmentsContainer>
     </AppContainer>
@@ -27,11 +34,17 @@ const AppContainer = styled.div`
   margin-top: 50px;
   margin-bottom: 50px;
   background-color: #003184;
-  img{
+  img {
     width: 260px;
     height: 129px;
   }
-`
+  @media (max-width: 768px) {
+    img {
+      width: 180px;
+      height: 90px;
+    }
+  }
+`;
 
 const EquipmentsContainer = styled.div`
   margin-top: 50px;
@@ -40,4 +53,4 @@ const EquipmentsContainer = styled.div`
   column-gap: 100px;
   row-gap: 100px;
   flex-wrap: wrap;
-`
+`;

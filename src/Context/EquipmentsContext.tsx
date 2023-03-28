@@ -7,7 +7,7 @@ interface IEquipments {
 }
 
 export interface IProps {
-  children: JSX.Element | JSX.Element[] | React.ReactNode;
+  children: React.ReactNode;
 }
 
 export const EquipmentsContext = createContext<IEquipments[] | null>([]);

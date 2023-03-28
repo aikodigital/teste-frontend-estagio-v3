@@ -1,0 +1,40 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  margin: 22px;
+  background-color: #d6d2d2;
+  border: 2px dashed rgb(87, 86, 86);
+  color: rgb(87, 86, 86);
+  border-radius: 6px;
+}
+
+.card-header {
+  padding: 10px 10px 0px 10px;
+  margin-bottom: 10px;
+}
+
+.card-content {
+  display: flex;
+  flex: 1;
+  /* take up all available vertical space in the card */
+  flex-direction: column;
+  justify-content: flex-end;
+  /* push accordion to the bottom of the card content */
+}
+
+
+@media screen and (min-width: 1501px) {
+  .card {
+    width: 330px;
+
+  }
+
+}
+
+@media screen and (max-width: 1500px) {
+  .card {
+    width: 320px;
+
+  }
+
+}

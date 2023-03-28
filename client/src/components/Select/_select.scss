@@ -1,0 +1,26 @@
+select {
+  color: rgb(85, 84, 84);
+  height: 2.6rem;
+  background-color: rgb(209, 208, 208);
+
+  padding: 5px;
+  border: 2px solid rgb(156, 156, 156);
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.096);
+  padding-left: 10px;
+
+
+}
+
+select:focus {
+  outline: none;
+  
+}
+
+.icon {
+  max-width: 80px;
+  background-color: rgb(194, 193, 193);
+  border: 2px dashed;
+}

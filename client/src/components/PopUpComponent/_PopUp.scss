@@ -1,0 +1,9 @@
+.leaflet-popup-content-wrapper,.leaflet-popup-tip {
+    background-color: rgb(238, 233, 233);
+}
+
+.leaflet-popup-content {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,61 @@
+//@import "../components/Map/Map";
+@import "../components/Sidebar/sidebar";
+@import "../components/Card/card";
+@import "../components/Scroll/scroll";
+@import "../components/PopOver/popover";
+@import "../components/FilterPannel/filterpannel";
+@import "../components/Checkbox/checkbox";
+@import "../components/PopUpComponent/PopUp";
+@import "../components/Accordeon/Accordeon";
+@import "../components/InnerCard/innerCard";
+@import "../components/PositionComp/positioncomp";
+@import "../components/Alert/alert";
+@import "../components/Select/select";
+
+body {
+  font-family: 'Nunito', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+
+
+  color-scheme: light dark;
+  // background-color: #3a3a3a;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+
+.container {
+  display: grid;
+  grid-template-columns: 25% 75%;
+  width: 100vw;
+  /* set container width to full viewport width */
+  height: 100vh;
+  /* set container height to full viewport height */
+}
+
+@media screen and (min-width: 1501px) {
+  .container {
+    grid-template-columns: 20% 80%;
+    /* for big monitors, make columns 20% and 80% */
+  }
+}
+
+@media screen and (max-width: 1500px) {
+  .container {
+    grid-template-columns: 27% 73%;
+    /* for smaller screens, make columns 25% and 75% */
+  }
+}

@@ -1,0 +1,73 @@
+.DialogOverlay {
+  backdrop-filter: blur(0.5rem);
+  position: fixed;
+  inset: 0;
+}
+
+.DialogContent {
+  width: 300px;
+  background: #b1afaf;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(19.5px);
+  -webkit-backdrop-filter: blur(19.5px);
+
+ 
+  border-radius: 0.5rem;
+  border-radius: 6px;
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 55px 0px 0px 0px;
+  animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  border: 3px dashed #666565;
+}
+
+.DialogContent:focus {
+  outline: none;
+}
+
+.DialogTitle {
+  margin: 0;
+  font-weight: 500;
+  font-size: 25px;
+}
+
+
+.closeButton {
+  color: #666565;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+
+
+  &:hover {
+    color: #585858;
+    cursor: pointer;
+  }
+}
+
+.trigger {
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  display: flex;
+  align-items: center;
+
+  p {
+    color: #575656;
+
+    margin: 0px 10px 00px 10px !important;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+}

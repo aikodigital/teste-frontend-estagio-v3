@@ -5,8 +5,10 @@ import Equipment from '../Equipment';
 import { useState } from 'react';
 
 const SideMenu = (props) => {
+    
+    const report = props.report;
+    const setReport = props.setReport;
 
-    const [report, setReport] = useState(null);
     const [history, setHistory] = useState(false);
 
     const showHistory = () => {

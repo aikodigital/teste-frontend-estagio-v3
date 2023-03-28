@@ -90,7 +90,7 @@ const Report = props => {
                         <h3 className='report-data'>Ganho: R$ {formatMoneyBR(earning)}</h3>
                     </div>
                     <div className='container report-buttons'>
-                        <p>histórico:<Button showHistory={props.showHistory} >{buttonHistory}</Button></p>
+                        <p>histórico:<Button event={props.showHistory}>{buttonHistory}</Button></p>
                     </div>
             </li>
         </>

@@ -8,6 +8,7 @@ function App() {
 
   const [position, setPosition] = useState([-19.1000, -46.1000]);
   const [zoomIn, setZoomIn] = useState(11.5);
+  const [report, setReport] = useState(null);
 
   return (
     <>
@@ -15,8 +16,13 @@ function App() {
         <h2>Monitor de equipamentos</h2>
       </header>
       <main className='container main'>
-        <SideMenu equipments={equipments} setZoomIn={setZoomIn} setPosition={setPosition} />
-        <Map equipments={equipments} zoom={zoomIn} position={position} />
+        <SideMenu 
+          equipments={equipments} 
+          setZoomIn={setZoomIn} 
+          setPosition={setPosition} 
+          report={report} 
+          setReport={setReport}/>
+        <Map equipments={equipments} zoom={zoomIn} position={position} setReport={setReport} />
       </main>
     </>
   )

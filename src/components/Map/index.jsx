@@ -1,27 +1,31 @@
-import Report from '../Report';
-
+import Button from '../Button';
 import { eqState } from '../../entities/equipment';
-
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
 import { Icon } from 'leaflet';
-import { useMap } from 'react-leaflet';
 import './Map.css';
 
 const Map = (props) => {
   const position = props.position;
   const zoom = props.zoom;
-  
+  const setReport= props.setReport;
+
   function SetPreview (){
     const map = useMap();
     map.setView(position, zoom)
 
     return ;
   }
+
+  function SetEquipment({children}){
+    const map = useMap();
+    map.addEventListener('click', () => setReport(children))
+  }
+
   
   
   const equipments = props.equipments;
   const markers = equipments.map(equipment => {
-
+    
     const state = eqState.filter(state => {
       if (state.id === equipment.lastState().equipmentStateId) {
         return state;
@@ -39,17 +43,17 @@ const Map = (props) => {
       className: `${state}`,
 
     })
+    
     return (
+        <Marker
+          icon={icon}
+          key={equipment.id}
+          position={[coordinates.lat, coordinates.lon]}
+        >
+          <SetEquipment>{equipment}</SetEquipment>
+        </Marker>
+      );
 
-      <Marker
-        icon={icon}
-        key={equipment.id}
-        position={[coordinates.lat, coordinates.lon]}
-      >
-        <Popup key={equipment.id}>
-          <Report key={equipment.id} equipment={equipment} />
-        </Popup>
-      </Marker>);
   })
   return (
       <MapContainer center={[-19, -46]} zoom={11} scrollWheelZoom={false}>

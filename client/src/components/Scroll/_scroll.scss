@@ -5,13 +5,14 @@
 
 }
 
+.ScrollAreaChild {
+   
+}
 
 
 @media screen and (min-width: 1501px) {
     .ScrollAreaViewport {
         height: 85vh;
-
-
     }
 
 }
@@ -19,8 +20,6 @@
 @media screen and (max-width: 1500px) {
     .ScrollAreaViewport {
         height: 80vh;
-
-
     }
 
 }

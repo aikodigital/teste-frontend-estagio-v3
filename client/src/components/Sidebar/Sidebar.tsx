@@ -15,7 +15,7 @@ export const Sidebar: React.FC<SidebarProps> = ({equipments}) => {
   return (
     <div className="sidebar">
       <Search />
-      <ScrollAreaComp components={componentsArray} />
+      <ScrollAreaComp components={componentsArray} isChild={false} />
     </div>
   );
 };

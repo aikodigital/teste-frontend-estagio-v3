@@ -15,7 +15,7 @@ export const Card: React.FC<CardProps> = ({ equipment }) => {
       </div>
 
       <div className="card-content">
-        <Accordeon />
+        <Accordeon equipment={equipment} />
       </div>
     </div>
   );

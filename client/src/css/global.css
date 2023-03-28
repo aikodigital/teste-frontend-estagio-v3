@@ -328,11 +328,6 @@ h3 {
   all: unset;
 }
 
-.AccordionRoot {
-  border-radius: 6px;
-  background-color: rgb(165, 161, 161);
-}
-
 .AccordionItem {
   overflow: hidden;
   margin-top: 1px;
@@ -394,12 +389,8 @@ h3 {
   animation: slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1);
 }
 
-.AccordionContentText {
-  padding: 15px 20px;
-}
-
 .AccordionChevron {
-  color: rgb(177, 170, 170);
+  color: rgb(143, 137, 137);
   transition: transform 300ms cubic-bezier(0.87, 0, 0.13, 1);
 }
 
@@ -464,6 +455,21 @@ h3 {
   padding-left: 5px;
   padding-right: 5px;
   background-color: rgb(211, 208, 208);
+}
+
+.positioncomp {
+  font-family: inherit;
+  background-color: transparent;
+  padding: 0 20px;
+  height: 45px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 15px;
+  line-height: 1;
+  color: rgb(158, 156, 156);
+  background-color: rgb(235, 233, 233);
 }
 
 body {

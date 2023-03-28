@@ -1,21 +1,35 @@
-// @ts-nocheck
+//@ts-nocheck
 
 import React from 'react';
 import * as Accordion from '@radix-ui/react-accordion';
 import classNames from 'classnames';
 import { CaretDown } from '@phosphor-icons/react';
+import { ScrollAreaComp } from '../Scroll/Scroll';
+import { PositionComp } from '../PositionComp/PositionComp';
+import { State } from '../../class/State';
+import { Equipament } from '../../class/Equipment';
 
 
-export const Accordeon = () => (
-  <Accordion.Root className="AccordionRoot" type="single" collapsible>
-    <Accordion.Item className="AccordionItem" value="item-1">
-      <AccordionTrigger>Is it accessible?</AccordionTrigger>
-      <AccordionContent>
-        aaaaaaa
-      </AccordionContent>
-    </Accordion.Item>
-  </Accordion.Root>
-);
+
+interface AccordeonProps {
+  equipment: Equipament;
+}
+export const Accordeon: React.FC<AccordeonProps> = ({ equipment }) => {
+  const positionComps = equipment.states.map((state) => (
+    <PositionComp position={state.positionDateInfo()} key={state.id} />
+  ));
+
+  return (
+    <Accordion.Root className="AccordionRoot" type="single" collapsible>
+      <Accordion.Item className="AccordionItem" value="item-1">
+        <AccordionTrigger>Position History</AccordionTrigger>
+        <AccordionContent>
+          <ScrollAreaComp components={positionComps} isChild={true} />
+        </AccordionContent>
+      </Accordion.Item>
+    </Accordion.Root>
+  );
+};
 
 const AccordionTrigger = React.forwardRef(({ children, className, ...props }, forwardedRef) => (
   <Accordion.Header className="AccordionHeader">

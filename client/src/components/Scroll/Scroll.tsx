@@ -4,11 +4,12 @@ import { Card } from "../Card/Card";
 
 interface Props {
   components: React.ReactNode[];
+  isChild: boolean;
 }
 
-export const ScrollAreaComp: React.FC<Props> = ({ components }) => (
+export const ScrollAreaComp: React.FC<Props> = ({ components, isChild }) => (
   <ScrollArea.Root className="ScrollAreaRoot">
-    <ScrollArea.Viewport className="ScrollAreaViewport">
+    <ScrollArea.Viewport className={ isChild ? "ScrollAreaChild" : "ScrollAreaViewport"}>
       {components.map((component, index) => (
         <React.Fragment key={index}>{component}</React.Fragment>
       ))}

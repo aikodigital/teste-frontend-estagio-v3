@@ -77,13 +77,13 @@ main{
     color: var(--gray);
 }
 
-.dashboard-nav{
+.sidebar-nav{
     width: 100%;
     display: flex;
     align-items: center;
 }
 
-.dashboard-nav ul {
+.sidebar-nav ul {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -91,7 +91,7 @@ main{
     padding-top: 3rem;
 }
 
-.dashboard-nav ul li{
+.sidebar-nav ul li{
     width: 100%;
     display: flex;
     align-items: center;
@@ -102,23 +102,23 @@ main{
     border-left: 3px solid transparent;
 }
 
-.dashboard-nav ul li:hover{
+.sidebar-nav ul li:hover{
     color: var(--light-green);
     border-left: 3px solid var(--light-green);
 }
 
-.dashboard-nav ul li span{
+.sidebar-nav ul li span{
     margin-right: .5rem;
 }
 
 /* main => dashboard */
 
-.dashboard{
+.dashboard-wrapper{
     background-color: #f5f3f3;
     grid-area: dashboard;
 }
 
-.dashboard h2{
+.dashboard-wrapper h2{
     padding: 6rem 3rem;
     color: var(--gray);
     display: flex;
@@ -126,7 +126,7 @@ main{
     font-size: 2rem;
 }
 
-.dashboard h2 span{
+.dashboard-wrapper h2 span{
     font-size: 1.75rem;
     padding-right: .5rem;
     color: var(--light-green);
@@ -154,6 +154,7 @@ main{
     font-weight: 500;
     opacity: 0;
     animation: cardDrop 1s ease-out 300ms forwards;
+    flex-wrap: wrap;
 }
 
 .card:nth-child(2){
@@ -188,7 +189,7 @@ main{
     gap: 1rem;
 }
 
-.machine-info img{
+.machine-img{
     width: 70px;
     height: 70px;
 }
@@ -196,6 +197,41 @@ main{
 .card-location{
     display: flex;
     flex-direction: column;
+}
+
+.card-btns button{
+    background-color: var(--light-green);
+    padding: .5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 90%;
+    transition: background-color 200ms;
+}
+
+.card-btns button:hover{
+    background-color: var(--green);
+}
+
+.card-state{
+    padding: .5rem;
+    width: 150px;
+    border-radius: 5px;
+    text-align: center;
+    color: black;
+}
+
+.Operando{
+    background-color: #2ecc71;
+}
+
+.Manutenção{
+    background-color: #e74c3c;
+}
+
+.Parado{
+    background-color: #f1c40f;
 }
 
 @keyframes cardDrop{
@@ -208,4 +244,53 @@ main{
         transform: translateY(0px);
         opacity: 1;
     }
+}
+
+/* map */
+
+#map { 
+    height: 600px; 
+    width: 90%;
+}
+
+.popup{
+    text-align: center;
+}
+
+/* history */
+
+.history-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    border-radius: 5px;
+    padding: 1rem;
+    color: var(--gray);
+}
+
+.history-wrapper h3{
+    color: var(--green);
+    font-weight: 700;
+}
+
+.location{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    flex: 1;
+    max-height: 500px;
+    overflow: auto;
+    gap: 1.5rem;
+}
+
+.state{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    flex-direction: column;
+    align-items: center;
+    max-height: 500px;
+    overflow: auto;
+    gap: 1.5rem;
 }

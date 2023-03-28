@@ -71,6 +71,7 @@ const createElementsGroup = async () => {
                     name: item.name,
                     modelName: equip.name,
                     state: state[ramdomStateNumber()],
+                    states:state,
                     id: item.id,
                     modelId: item.equipmentModelId,
                     location: {

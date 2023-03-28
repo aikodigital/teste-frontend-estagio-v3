@@ -49,6 +49,10 @@ export class Equipament {
     return [...this._states];
   }
 
+  get lastState() {
+    return this._states[this._states.length - 1].stateId;
+  }
+
   //get the most recent position
   getMostRecentPosition(): number[] | null {
     if (this._positions.length === 0) {

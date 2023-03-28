@@ -10,7 +10,6 @@ import { createEquipmentArray } from "./utils/equipmentList";
 const equipmentArray = createEquipmentArray();
 
 function App() {
-  
 
   return (
     <section className="container">

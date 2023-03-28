@@ -95,6 +95,35 @@ export const Sidebar: React.FC<SidebarProps> = ({ equipments }) => {
     }
   };
 
+  const handleStateSelectChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    const selectedState = event.target.value;
+    console.log(selectedState)
+    const selectedEquips = equipments.filter(
+      (equip) => equip.lastState === selectedState
+    );
+    if (selectedEquips.length > 0) {
+      setSelectedEquipment(null);
+      const equipCards = selectedEquips.map((equipment) => (
+        <Card
+          key={equipment.equipId + equipment.typeId}
+          equipment={equipment}
+        />
+      ));
+      setComponentsArray(equipCards);
+    } else {
+      setSelectedEquipment(null);
+      const equipCards = equipments.map((equipment) => (
+        <Card
+          key={equipment.equipId + equipment.typeId}
+          equipment={equipment}
+        />
+      ));
+      setComponentsArray(equipCards);
+    }
+  };
+
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedEquipName = event.target.value;
     const selectedEquip =
@@ -126,6 +155,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ equipments }) => {
   }
 
   const modelsArray = [TypeEnum.CargoTruck, TypeEnum.Harvester, TypeEnum.Claw];
+  const StatesArray = [StateEnum.Working, StateEnum.Idle, StateEnum.Maintenance];
+
 
   return (
     <div className="sidebar">
@@ -134,6 +165,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ equipments }) => {
           placeholder="Select equipment"
           options={namesArray}
           onChange={handleSelectChange}
+        />
+        <Select
+          placeholder={"State:"}
+          options={StatesArray}
+          onChange={handleStateSelectChange}
+          selectType={"state"}
         />
         <Select
           placeholder={"Model:"}

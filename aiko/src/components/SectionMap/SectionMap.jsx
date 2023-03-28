@@ -54,7 +54,7 @@ function SectionMap() {
           }
         });
         status.forEach((status) => {
-          if (status.id == nameEquipment[i].status.equipmentStateId) {
+          if (status.id == eqp.status.equipmentStateId) {
             eqp.status.name = status.name;
             eqp.status.color = status.color;
           }

@@ -36,8 +36,8 @@ function SectionMap() {
   });
 
   useEffect(() => {
-    function captureDatesEqps() {
-      nameEquipment.forEach((eqp, i) => {
+    function captureDatesAllEqps() {
+      nameEquipment.forEach((eqp) => {
         // Adiciona a última posição
         locationEquipments.forEach((loc) => {
           const lastIndexPos = loc.positions.length - 1;
@@ -63,7 +63,7 @@ function SectionMap() {
     }
 
     setEquip(nameEquipment);
-    captureDatesEqps();
+    captureDatesAllEqps();
   }, []);
 
   L.Marker.prototype.options.icon = markerIcon;
@@ -77,7 +77,7 @@ function SectionMap() {
             attribution={osm.maptiler.attribution}
           />
 
-          {equip.map((equip, i) => (
+          {equip.map((equip) => (
             <Marker
               position={[equip.position.lat, equip.position.lon]}
               icon={markerIcon}

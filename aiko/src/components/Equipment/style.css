@@ -95,61 +95,28 @@
   margin-top: 0.75rem;
 }
 
-.container-equip .mapAndDates {
+.container-equip .map-container {
   display: flex;
   height: 45vh;
-  width: 100%;
-}
-
-.container-equip .mapAndDates .map {
+  width: 90%;
   position: relative;
-  margin: 1rem;
-  width: 60%;
 }
 
-.container-equip .mapAndDates .map h1 {
+.container-equip .map-container .map {
+  margin: 1rem;
+  width: 80%;
+}
+
+.container-equip .map-container .map h1 {
   font-size: 90%;
 }
 
-.container-equip .mapAndDates .map .leaflet-container {
+.container-equip .map-container .map .leaflet-container {
   height: 70%;
   width: 100%;
   position: absolute;
-  top: 20%;
-  left: 2%;
-}
-
-.container-equip .mapAndDates .calcDates {
-  width: 30%;
-  margin-right: 0.25rem;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
-.container-equip .mapAndDates .calcDates .prod,
-.container-equip .mapAndDates .calcDates .win {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.container-equip .mapAndDates .calcDates .prod label,
-.container-equip .mapAndDates .calcDates .win label {
-  font-size: 0.75rem;
-}
-
-.container-equip .mapAndDates .calcDates .prod input,
-.container-equip .mapAndDates .calcDates .win input {
-  width: 80%;
-  height: 50%;
-  border-radius: 8px;
-  padding: 0.25rem;
-  text-align: center;
+  top: 25%;
+  left: 6%;
 }
 
 @media (min-width: 768px) {
@@ -169,22 +136,12 @@
     font-size: 1rem;
   }
 
-  .container-equip .mapAndDates .map {
+  .container-equip .map-container .map {
     width: 90%;
   }
 
-  .container-equip .mapAndDates .map h1 {
+  .container-equip .map-container .map h1 {
     font-size: 1.25rem;
-  }
-
-  .container-equip .mapAndDates .calcDates .prod label,
-  .container-equip .mapAndDates .calcDates .win label {
-    font-size: 1rem;
-  }
-
-  .container-equip .mapAndDates .calcDates .prod input,
-  .container-equip .mapAndDates .calcDates .win input {
-    height: 2rem;
   }
 }
 
@@ -210,27 +167,12 @@
     font-size: 1.25rem;
   }
 
-  .container-equip .mapAndDates .map {
+  .container-equip .map-container .map {
     width: 90%;
   }
 
-  .container-equip .mapAndDates .map h1 {
+  .container-equip .map-container .map h1 {
     font-size: 1.75rem;
-  }
-
-  .container-equip .mapAndDates .calcDates .prod label,
-  .container-equip .mapAndDates .calcDates .win label {
-    font-size: 1.5rem;
-  }
-
-  .container-equip .mapAndDates .calcDates .prod input,
-  .container-equip .mapAndDates .calcDates .win input {
-    height: 4rem;
-    width: 12rem;
-    margin-top: 0.5rem;
-    border-radius: 12px;
-    font-size: 2rem;
-    font-weight: 700;
   }
 }
 
@@ -255,14 +197,8 @@
     font-size: 1.5rem;
   }
 
-  .container-equip .mapAndDates .map h1 {
+  .container-equip .map-container .map h1 {
     font-size: 2rem;
-  }
-
-  .container-equip .mapAndDates .calcDates .prod label,
-  .container-equip .mapAndDates .calcDates .win label {
-    font-size: 1.75rem;
-    margin-top: 0.75rem;
   }
 }
 
@@ -287,19 +223,7 @@
     font-size: 3.25rem;
   }
 
-  .container-equip .mapAndDates .map h1 {
+  .container-equip .map-container .map h1 {
     font-size: 4rem;
-  }
-
-  .container-equip .mapAndDates .calcDates .prod label,
-  .container-equip .mapAndDates .calcDates .win label {
-    font-size: 3.75rem;
-    margin-top: 2rem;
-  }
-
-  .container-equip .mapAndDates .calcDates .prod input,
-  .container-equip .mapAndDates .calcDates .win input {
-    height: 6rem;
-    width: 24rem;
   }
 }

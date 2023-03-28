@@ -159,7 +159,7 @@ function Equipment() {
         <div className="line"></div>
       </div>
 
-      <div className="mapAndDates">
+      <div className="map-container">
         <div className="map">
           <h1>Mapa:</h1>
           {equipDates.position ? (
@@ -185,17 +185,6 @@ function Equipment() {
           ) : (
             false
           )}
-        </div>
-        <div className="calcDates">
-          <div className="prod">
-            <label htmlFor="">Produtividade</label>
-            <input type="text" />
-          </div>
-
-          <div className="win">
-            <label htmlFor="">Ganho</label>
-            <input type="text" />
-          </div>
         </div>
       </div>
     </div>

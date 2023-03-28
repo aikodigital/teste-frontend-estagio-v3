@@ -38,16 +38,20 @@ function Equipment() {
       nameEquipment.forEach((eqp) => {
         // Adciona a localização
         locationEquipments.forEach((loc) => {
-          // Captura a última posição no array, no caso a mais atual
+          // Captura a última posição no array de localização, no caso a mais atual
           const lastIndexPos = loc.positions.length - 1;
 
-          // Captura essa última posição para o array de nomes
-          eqp.position = loc.positions[lastIndexPos];
+          // Verifica qual localização é de qual equipamento
+          if (loc.equipmentId == eqp.id) {
+            eqp.position = loc.positions[lastIndexPos];
+          }
         });
 
-        // Adciona o de histótico de status no array de nomes
+        // Adciona o de histótico de status no respectivo equipamento
         statusHistory.forEach((hist) => {
-          eqp.status = hist.states;
+          if (eqp.id == hist.equipmentId) {
+            eqp.status = hist.states;
+          }
         });
 
         // Acrescenta em cada posição no array de histótico de status o nome e a cor do status
@@ -70,6 +74,7 @@ function Equipment() {
       });
     }
 
+    // Captura o equipamento selecionado pelo usuário
     function getOneEquip(id) {
       nameEquipment.forEach((equip) => {
         if (equip.id === id) {

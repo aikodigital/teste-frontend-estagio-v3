@@ -38,15 +38,25 @@ function SectionMap() {
   useEffect(() => {
     function captureDatesEqps() {
       nameEquipment.forEach((eqp, i) => {
-        const lastIndexPos = locationEquipments[i].positions.length - 1;
-        const lastIndexStatus = statusHistory[i].states.length - 1;
-        nameEquipment[i].position =
-          locationEquipments[i].positions[lastIndexPos];
-        nameEquipment[i].status = statusHistory[i].states[lastIndexStatus];
+        // Adiciona a última posição
+        locationEquipments.forEach((loc) => {
+          const lastIndexPos = loc.positions.length - 1;
+          if (loc.equipmentId == eqp.id) {
+            eqp.position = loc.positions[lastIndexPos];
+          }
+        });
+
+        // Adiciona o último status
+        statusHistory.forEach((history) => {
+          const lastIndexStatus = history.states.length - 1;
+          if (history.equipmentId == eqp.id) {
+            eqp.status = history.states[lastIndexStatus];
+          }
+        });
         status.forEach((status) => {
           if (status.id == nameEquipment[i].status.equipmentStateId) {
-            nameEquipment[i].status.name = status.name;
-            nameEquipment[i].status.color = status.color;
+            eqp.status.name = status.name;
+            eqp.status.color = status.color;
           }
         });
       });

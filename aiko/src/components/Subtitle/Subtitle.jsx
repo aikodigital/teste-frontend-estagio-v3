@@ -13,13 +13,18 @@ function Subtitle() {
 
   useEffect(() => {
     function captureStatusEqps() {
-      nameEquipment.forEach((eqp, i) => {
-        const lastIndexStatus = statusHistory[i].states.length - 1;
-        nameEquipment[i].status = statusHistory[i].states[lastIndexStatus];
+      nameEquipment.forEach((eqp) => {
+        statusHistory.forEach((history) => {
+          if (history.equipmentId == eqp.id) {
+            const lastIndexStatus = history.states.length - 1;
+            eqp.status = history.states[lastIndexStatus];
+          }
+        });
+
         status.forEach((status) => {
-          if (status.id == nameEquipment[i].status.equipmentStateId) {
-            nameEquipment[i].status.name = status.name;
-            nameEquipment[i].status.color = status.color;
+          if (status.id == eqp.status.equipmentStateId) {
+            eqp.status.name = status.name;
+            eqp.status.color = status.color;
           }
         });
       });

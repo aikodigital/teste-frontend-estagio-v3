@@ -1,7 +1,7 @@
 .positioncomp {
     font-family: inherit;
     background-color: transparent;
-    padding: 0 20px;
+    padding: 0 10px;
     height: 45px;
     flex: 1;
     display: flex;
@@ -11,4 +11,14 @@
     line-height: 1;
     color: rgb(158, 156, 156);
     background-color: rgb(235, 233, 233);
+
+    margin-top: 0;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom: 1px solid rgb(177, 175, 175);
+
+    &:hover {
+        background-color: rgba(235, 233, 233, 0.651);
+        transition: background-color 0.2s ease-in-out;
+    }
 }

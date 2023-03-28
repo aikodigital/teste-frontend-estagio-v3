@@ -43,21 +43,18 @@ h3 {
   justify-content: space-between;
   font-size: 15px;
   line-height: 1;
-  color: rgb(158, 156, 156);
+  color: white;
   box-shadow: 0 1px 0 black;
-  background-color: white;
+  background-color: rgb(146, 144, 144);
 }
 
 .AccordionTrigger:hover {
-  background-color: rgb(240, 240, 240);
+  background-color: rgb(114, 111, 111);
+  transition: background-color 0.4s ease-in-out;
+  cursor: pointer;
 }
 
-.AccordionContent {
-  overflow: hidden;
-  font-size: 15px;
-  color: rgb(170, 165, 165);
-  background-color: rgb(206, 201, 201);
-}
+
 
 .AccordionContent[data-state='open'] {
   animation: slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1);
@@ -69,7 +66,7 @@ h3 {
 
 
 .AccordionChevron {
-  color: rgb(143, 137, 137);
+  color: white;
   transition: transform 300ms cubic-bezier(0.87, 0, 0.13, 1);
 }
 .AccordionTrigger[data-state='open'] > .AccordionChevron {

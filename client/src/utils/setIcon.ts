@@ -41,39 +41,3 @@ export function setIcon(equipmentType: string, state?: string) {
   }
 }
 
-/* 
-switch (equipmentType) {
-  case TypeEnum.CargoTruck:
-    switch (state) {
-      case StateEnum.Idle:
-        return "./idleTruck.png";
-      case StateEnum.Maintenance:
-        return "./maitanceTruck.png";
-      case StateEnum.Working:
-        return "./workingTruck.png";
-      default:
-        return "./truck.png";
-    }
-  case TypeEnum.Harvester:
-    switch (state) {
-      case StateEnum.Idle:
-        return "./idleHarvester.png";
-      case StateEnum.Maintenance:
-        return "./maitanceHarvester.png";
-      case StateEnum.Working:
-        return "./workingHarvester.png";
-      default:
-        return "./harvester.png";
-    }
-  case TypeEnum.Claw:
-    switch (state) {
-      case StateEnum.Idle:
-        return "./idleClaw.png";
-      case StateEnum.Maintenance:
-        return "./maitanceClaw.png";
-      case StateEnum.Working:
-        return "./workingClaw.png";
-      default:
-        return "./claw.png";
-    }
-} */

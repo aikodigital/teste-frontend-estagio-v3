@@ -20,8 +20,8 @@ export const PositionComp : React.FC<PositionProps> = ({ position }) => {
   
   return (
     <div className='positioncomp'>
-      <p>{formattedDate}</p>
-      <p>{position[1]}</p>
+      <p className='state' >{position[1]}</p>
+      <p className='date' >{formattedDate}</p>
     </div>
   )
 }

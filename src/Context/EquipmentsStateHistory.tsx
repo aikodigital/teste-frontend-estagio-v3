@@ -5,7 +5,7 @@ export interface IEquipmentsStateHistory {
   equipmentId: string;
   states: [
     {
-      date: string;
+      date: Date;
       equipmentStateId: string;
     }
   ];

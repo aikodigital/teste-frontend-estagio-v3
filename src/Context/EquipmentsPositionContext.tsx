@@ -6,7 +6,7 @@ interface IEquipmentsPosition {
   equipmentId: string;
   positions: [
     {
-      date: string;
+      date: Date;
       lat: number;
       lon: number;
     }

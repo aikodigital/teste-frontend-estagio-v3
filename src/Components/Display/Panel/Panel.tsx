@@ -34,15 +34,36 @@ function Panel() {
     : null;
 
   return (
-    <Box bg="#f1eee8" h="100vh" w="20%" borderRight="solid 1px black">
+    <Box
+      bg="#f1eee8"
+      h="100vh"
+      w="25%"
+      borderRight="1px solid black"
+      display="flex"
+      flexDirection="column"
+      alignItems="stretch"
+      overflowY="scroll"
+    >
+      <Text
+        as="h1"
+        fontSize="20"
+        borderBottom="1px solid black"
+        alignSelf="center"
+      >
+        Histórico de Estados
+      </Text>
       {selectedEquipmentProvider?.selectedEquipmentId
         ? statesHistory?.map((stateHistory, index) => {
             const stateInfo = getStateInfo(stateHistory.equipmentStateId);
 
+            const formattedDate = new Date(stateHistory.date).toLocaleString(
+              "pt-BR"
+            );
+
             return (
-              <Box key={index}>
-                <Text as="span">{stateHistory.date}</Text>
-                <Text as="p">{stateInfo?.name}</Text>
+              <Box key={index} borderBottom="1px solid black" p="2">
+                <Text as="span">Data: {formattedDate}</Text>
+                <Text as="p">Estado: {stateInfo?.name}</Text>
               </Box>
             );
           })

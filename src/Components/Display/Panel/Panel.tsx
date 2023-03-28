@@ -42,7 +42,7 @@ function Panel() {
       display="flex"
       flexDirection="column"
       alignItems="stretch"
-      overflowY="scroll"
+      overflowY="auto"
     >
       <Text
         as="h1"
@@ -52,22 +52,31 @@ function Panel() {
       >
         Histórico de Estados
       </Text>
-      {selectedEquipmentProvider?.selectedEquipmentId
-        ? statesHistory?.map((stateHistory, index) => {
-            const stateInfo = getStateInfo(stateHistory.equipmentStateId);
+      {selectedEquipmentProvider?.selectedEquipmentId ? (
+        statesHistory?.map((stateHistory, index) => {
+          const stateInfo = getStateInfo(stateHistory.equipmentStateId);
 
-            const formattedDate = new Date(stateHistory.date).toLocaleString(
-              "pt-BR"
-            );
+          const formattedDate = new Date(stateHistory.date).toLocaleString(
+            "pt-BR"
+          );
 
-            return (
-              <Box key={index} borderBottom="1px solid black" p="2">
-                <Text as="span">Data: {formattedDate}</Text>
-                <Text as="p">Estado: {stateInfo?.name}</Text>
-              </Box>
-            );
-          })
-        : "There are nothing"}
+          return (
+            <Box key={index} borderBottom="1px solid black" p="2">
+              <Text as="span">Data: {formattedDate}</Text>
+              <Text as="p">
+                Estado:{" "}
+                <Text as="span" color={stateInfo?.color}>
+                  {stateInfo?.name}
+                </Text>
+              </Text>
+            </Box>
+          );
+        })
+      ) : (
+        <Text alignSelf="center" mt="3">
+          Selecione algum ponto
+        </Text>
+      )}
     </Box>
   );
 }

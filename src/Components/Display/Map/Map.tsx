@@ -78,9 +78,11 @@ function Map() {
               ]}
               eventHandlers={{
                 click: () => {
-                  selectedEquipmentIdProvider?.setSelectedEquipmentId(
-                    equipment.equipmentId
-                  );
+                  selectedEquipmentIdProvider?.selectedEquipmentId
+                    ? selectedEquipmentIdProvider?.setSelectedEquipmentId("")
+                    : selectedEquipmentIdProvider?.setSelectedEquipmentId(
+                        equipment.equipmentId
+                      );
                 },
               }}
             >

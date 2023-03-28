@@ -16,7 +16,6 @@ export const EquipmentsStateHistoryContext = createContext<
 >([]);
 
 export function EquipmentsStateHistoryProvider({ children }: IProps) {
-  const [equipmentId, setEquipmentId] = useState<string>("");
   const [equipmentsStateHistory, setEquipmentsStateHistory] = useState<
     IEquipmentsStateHistory[]
   >([]);

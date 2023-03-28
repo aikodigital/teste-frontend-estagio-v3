@@ -10,7 +10,7 @@ interface Props {
 
 export const ScrollAreaComp: React.FC<Props> = ({ components, isChild }) => {
  
-  const scrollTo = 0;
+  /* const scrollTo = 0;
 
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -21,14 +21,14 @@ export const ScrollAreaComp: React.FC<Props> = ({ components, isChild }) => {
         element.scrollIntoView({ behavior: "smooth" });
       }
     }
-  }, []);
+  }, []); */
 
   return (
     <ScrollArea.Root className="ScrollAreaRoot">
       <ScrollArea.Viewport
         className={isChild ? "ScrollAreaChild" : "ScrollAreaViewport"}
       >
-        <div ref={scrollRef}>
+        <div /* ref={scrollRef} */>
           {components.map((component, index) => (
             <React.Fragment key={index}>{component}</React.Fragment>
           ))}

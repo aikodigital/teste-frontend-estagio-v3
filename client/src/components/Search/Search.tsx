@@ -1,8 +1,13 @@
 import React, { useState } from "react";
-import { TextInput } from "../Input/Input";
+import { Select } from "../Select/Select";
 import { PopoverComp } from "../PopOver/PopOver";
 
-export const Search = () => {
+
+interface SearchProps {
+  options: string[];
+}
+
+export const Search: React.FC<SearchProps> = ({ options }) => {
   const [text, setText] = useState("");
 
   const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -11,9 +16,10 @@ export const Search = () => {
 
   return (
     <div className="search">
-      <TextInput
+      <Select
         placeholder="Search..."
-        value={text}
+        options={options}
+        //@ts-ignore
         onChange={handleTextChange}
       />
       <PopoverComp />

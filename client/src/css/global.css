@@ -16,9 +16,9 @@
   border-bottom: 1px solid rgb(156, 156, 156);
 }
 
-input[type=text] {
+select {
   color: rgb(85, 84, 84);
-  height: 1.8rem;
+  height: 2.6rem;
   background-color: rgb(209, 208, 208);
   width: 100%;
   padding: 5px;
@@ -29,7 +29,7 @@ input[type=text] {
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.096);
 }
 
-input:focus {
+select:focus {
   outline: none;
 }
 
@@ -44,7 +44,6 @@ button {
 }
 
 .card {
-  width: 250px;
   display: flex;
   flex-direction: column;
   margin: 22px;
@@ -68,6 +67,16 @@ button {
   /* push accordion to the bottom of the card content */
 }
 
+@media screen and (min-width: 1501px) {
+  .card {
+    width: 330px;
+  }
+}
+@media screen and (max-width: 1500px) {
+  .card {
+    width: 250px;
+  }
+}
 .ScrollAreaViewport {
   border-radius: inherit;
   margin-bottom: 2rem;
@@ -351,7 +360,6 @@ h3 {
 .AccordionItem:focus-within {
   position: relative;
   z-index: 1;
-  box-shadow: 0 0 0 2px black;
 }
 
 .AccordionHeader {
@@ -557,6 +565,42 @@ h3 {
   margin: 0px 10px 0px 10px !important;
   font-weight: 600;
   font-size: 0.9rem;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-bottom: 1px solid rgb(156, 156, 156);
+}
+
+select {
+  color: rgb(85, 84, 84);
+  height: 2.6rem;
+  background-color: rgb(209, 208, 208);
+  width: 100%;
+  padding: 5px;
+  border: 2px solid rgb(156, 156, 156);
+  border-radius: 5px;
+  font-size: 14px;
+  margin-right: 10px;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.096);
+}
+
+select:focus {
+  outline: none;
+}
+
+button {
+  padding: 5px 20px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 body {

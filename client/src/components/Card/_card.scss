@@ -1,5 +1,4 @@
 .card {
-  width: 250px;
   display: flex;
   flex-direction: column;
   margin: 22px;
@@ -21,4 +20,21 @@
   flex-direction: column;
   justify-content: flex-end;
   /* push accordion to the bottom of the card content */
+}
+
+
+@media screen and (min-width: 1501px) {
+  .card {
+    width: 330px;
+
+  }
+
+}
+
+@media screen and (max-width: 1500px) {
+  .card {
+    width: 250px;
+
+  }
+
 }

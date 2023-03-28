@@ -1,10 +1,11 @@
 import { Equipament } from "../../class/Equipment";
 import { Card } from "../Card/Card";
 import { ScrollAreaComp } from "../Scroll/Scroll";
-import { Search } from "../Search/Search";
 import { Select } from "../Select/Select";
 
 import { useState } from 'react';
+import { StateEnum } from "../../class/State";
+import { TypeEnum } from "../../class/EquipmentType";
 
 interface SidebarProps {
   equipments: Equipament[];
@@ -30,9 +31,27 @@ export const Sidebar: React.FC<SidebarProps> = ({equipments}) => {
     ));
   }
 
+  const statesArray = [
+    StateEnum.Working,
+    StateEnum.Idle,
+    StateEnum.Maintenance,
+  ];
+  
+  const modelsArray = [
+    TypeEnum.CargoTruck,
+    TypeEnum.Harvester,
+    TypeEnum.Claw,
+  ];
+ 
+  
+
   return (
     <div className="sidebar">
-      <Select placeholder="Select equipment" options={NamesArray} onChange={handleSelectChange} />
+      <div className="search">
+        <Select placeholder="Select equipment" options={NamesArray} onChange={handleSelectChange} />
+        <Select  placeholder={"Model:"}  options={modelsArray} onChange={handleSelectChange} selectType={"model"}  />
+        <Select placeholder={"State:"}  options={statesArray} onChange={handleSelectChange} selectType={"state"}   />
+      </div>
       <ScrollAreaComp components={componentsArray} isChild={false} />
     </div>
   );

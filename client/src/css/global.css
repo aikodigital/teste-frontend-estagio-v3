@@ -16,33 +16,6 @@
   border-bottom: 1px solid rgb(156, 156, 156);
 }
 
-select {
-  color: rgb(85, 84, 84);
-  height: 2.6rem;
-  background-color: rgb(209, 208, 208);
-  width: 100%;
-  padding: 5px;
-  border: 2px solid rgb(156, 156, 156);
-  border-radius: 5px;
-  font-size: 14px;
-  margin-right: 10px;
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.096);
-}
-
-select:focus {
-  outline: none;
-}
-
-button {
-  padding: 5px 20px;
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
-}
-
 .card {
   display: flex;
   flex-direction: column;
@@ -74,7 +47,7 @@ button {
 }
 @media screen and (max-width: 1500px) {
   .card {
-    width: 250px;
+    width: 320px;
   }
 }
 .ScrollAreaViewport {
@@ -106,18 +79,6 @@ button {
   /* disable browser handling of all panning and zooming gestures on touch devices */
   touch-action: none;
   padding: 2px;
-}
-
-.funnel {
-  color: rgb(102, 101, 101);
-  border: 2px solid rgb(156, 156, 156);
-  border-radius: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.096);
-}
-.funnel:hover {
-  cursor: pointer;
 }
 
 /* reset */
@@ -567,40 +528,27 @@ h3 {
   font-size: 0.9rem;
 }
 
-.search {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  padding: 15px;
-  border-bottom: 1px solid rgb(156, 156, 156);
-}
-
 select {
   color: rgb(85, 84, 84);
   height: 2.6rem;
   background-color: rgb(209, 208, 208);
-  width: 100%;
   padding: 5px;
   border: 2px solid rgb(156, 156, 156);
   border-radius: 5px;
-  font-size: 14px;
-  margin-right: 10px;
+  font-size: 15px;
+  font-weight: 600;
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.096);
+  padding-left: 10px;
 }
 
 select:focus {
   outline: none;
 }
 
-button {
-  padding: 5px 20px;
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
+.icon {
+  max-width: 80px;
+  background-color: rgb(194, 193, 193);
+  border: 2px dashed;
 }
 
 body {
@@ -639,7 +587,7 @@ body {
 }
 @media screen and (max-width: 1500px) {
   .container {
-    grid-template-columns: 22% 78%;
+    grid-template-columns: 27% 73%;
     /* for smaller screens, make columns 25% and 75% */
   }
 }/*# sourceMappingURL=global.css.map */

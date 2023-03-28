@@ -1,9 +1,7 @@
 //@import "../components/Map/Map";
 @import "../components/Sidebar/sidebar";
-@import "../components/Search/search";
 @import "../components/Card/card";
 @import "../components/Scroll/scroll";
-@import "../components/Search/funnel";
 @import "../components/PopOver/popover";
 @import "../components/FilterPannel/filterpannel";
 @import "../components/Checkbox/checkbox";
@@ -57,7 +55,7 @@ body {
 
 @media screen and (max-width: 1500px) {
   .container {
-    grid-template-columns: 22% 78%;
+    grid-template-columns: 27% 73%;
     /* for smaller screens, make columns 25% and 75% */
   }
 }

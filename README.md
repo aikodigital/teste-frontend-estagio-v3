@@ -230,6 +230,7 @@ No "App.tsx", todos os equipamentos são passados para os componentes "sidebar" 
 - ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
 
 - Radix-UI Components (https://www.radix-ui.com/)
+- Phospor-Icons icons (https://phosphoricons.com/)
 
 ### Instalação e inicialização do projeto
 ```

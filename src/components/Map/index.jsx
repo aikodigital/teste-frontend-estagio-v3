@@ -7,6 +7,7 @@ import { Icon } from 'leaflet';
 import { useMap } from 'react-leaflet';
 import './Map.css';
 
+console.log(eqState)
 const Map = (props) => {
   const position = props.position;
   const zoom = props.zoom;
@@ -21,19 +22,23 @@ const Map = (props) => {
   
   const equipments = props.equipments;
   const markers = equipments.map(equipment => {
+    console.log(equipment.modelName)
+
     const state = eqState.filter(state => {
       if (state.id === equipment.lastState().equipmentStateId) {
         return state;
       }
     })[0].name;
 
-    const coordinates = equipment.lastPosition();
+    const model = equipment.modelName;
 
+    const coordinates = equipment.lastPosition();
+    console.log(`./${model}_${state}.svg`)
     const icon = new Icon({
-      iconUrl: `./marker_${state}.svg`,
-      iconSize: [25, 41],
-      iconAnchor: [12, 41],
-      popupAnchor: [0, -41],
+      iconUrl: `./${model}_${state}.svg`,
+      iconSize: [75, 75],
+      iconAnchor: [32, 60],
+      popupAnchor: [0, -75],
       className: `${state}`,
 
     })

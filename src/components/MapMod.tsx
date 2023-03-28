@@ -13,7 +13,7 @@ import { ModalContext } from '../context/ModalContext';
 import { Equipment, getAllEquipment, getIconByModelName } from '../utils/api';
 
 interface Props {
-  trace: number;
+  trace?: number;
   equipments: Equipment[];
   modal?: boolean;
 }
@@ -37,7 +37,7 @@ function MapMod({ trace = 1, equipments, modal }: Props) {
         const lastPosition = positionHistory[0];
         const polyline = positionHistory
           .map((position) => [position.lat, position.lon])
-          .splice(0, trace) as [number, number][];
+          .slice(0, trace) as [number, number][];
         return (
           <Fragment key={equipment.id}>
             <Polyline

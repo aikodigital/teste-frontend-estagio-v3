@@ -17,7 +17,9 @@ export type Equipment = (typeof equipment)[0] & {
   gain: number;
 };
 
-export function getAllEquipment(): Equipment[] {
+export function getAllEquipment(
+  start: number | undefined = undefined,
+): Equipment[] {
   return equipment.map((e) => {
     const model = getEquipmentModelById(e.equipmentModelId);
     const states = getStatesByEquipmentId(e.id);
@@ -34,8 +36,8 @@ export function getAllEquipment(): Equipment[] {
     return {
       ...e,
       model,
-      states,
-      positions,
+      states: start ? states.slice(start) : states,
+      positions: start ? positions.slice(start) : positions,
       productivity,
       gain,
     };

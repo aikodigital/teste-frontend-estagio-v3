@@ -226,7 +226,7 @@ Para realizar a entrega do teste você deve:
 
 - Radix-UI Components (https://www.radix-ui.com/)
 
-## Instalação e inicialização do projeto
+### Instalação e inicialização do projeto
 ```
 git clone
 cd client

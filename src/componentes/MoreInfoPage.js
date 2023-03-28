@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+
+import jsPDF from "jspdf";
+import "jspdf-autotable";
+import Papa from 'papaparse';
+
 import "../style/MoreInfoPage.css";
 import closeButton from "../img/close.svg";
 
@@ -108,6 +113,69 @@ function MoreInfoPage({
         setPage(page - 1);
     }
 
+    function handleDownloadCSV() {
+        const equipmentName = getEquipmentName(id);
+        const date = new Date().toLocaleDateString().replace('///g', '-');
+        // const title = `${equipmentName} - ${id}`;
+        const fileName = `historico_ - _${equipmentName}_-_${id}_-_${date}.csv`;
+        const rows = equipmentStateHistory
+            .find((item) => item.equipmentId === id)
+            .states.map((state, i) => [
+                i,
+                getListStates(state),
+                getNameState(state.equipmentStateId).name,
+            ]);
+
+        const csvRows = [
+            ["Index", "Data e Hora", "Estado"],
+            ...rows
+        ]
+
+        const csvString = Papa.unparse(csvRows, {
+            encoding: "UTF-8"
+        });
+
+        const csvBlob = new Blob(["\ufeff", csvString], { type: "text/csv;charset=UTF-8" });
+
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(csvBlob);
+        link.download = fileName;
+        link.click();
+    }
+
+    function handleDownloadPDF() {
+        const equipmentName = getEquipmentName(id);
+        const date = new Date().toLocaleDateString().replace(/\//g, '-');
+        const fileName = `historico_-_${equipmentName}_-_${date}`;
+        const title = `${equipmentName} - ${id}`;
+
+        const rows = equipmentStateHistory
+            .find((item) => item.equipmentId === id)
+            .states.map((state, i) => [
+                i,
+                getListStates(state),
+                getNameState(state.equipmentStateId).name,
+            ]);
+
+        const doc = new jsPDF();
+
+        doc.text(
+            40,
+            8,
+            title
+        )
+
+        doc.autoTable({
+            head: [["Index", "Data e Hora", "Estado"]],
+            body: rows,
+            theme: "grid",
+            showHead: "everyPage",
+            tableId: title
+        });
+
+        doc.save(fileName);
+    }
+
     return (
         <div className="moreInfoPage-container">
             <div className="moreInfoPage">
@@ -143,6 +211,11 @@ function MoreInfoPage({
 
                 <h2 className="title-font-color">Histórico</h2>
                 <div className="history-container">
+                    <div className="download-buttons">
+                        <button onClick={handleDownloadCSV}>Download CSV</button>
+                        <button onClick={handleDownloadPDF}>Download PDF</button>
+                    </div>
+
                     {listHistory()}
                     <div className="pagination-container">
                         {page !== 1 && (

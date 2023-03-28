@@ -96,7 +96,6 @@ function Filter(filter) {
         } 
         
     })
-    console.log(marcadores.filter(Boolean))
     return marcadores.filter(Boolean)
 }
 export default Filter;

@@ -13,7 +13,7 @@ function App() {
     return (
       
     <div className="App">
-      <div className='logo'>
+      <div className='cabecalho'>
         <img src={logo} alt='logo' className='logoimg'/>
         
         <Select />

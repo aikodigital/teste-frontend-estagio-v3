@@ -29,18 +29,21 @@ function Map2(props){
         if (s.equipmentId === props.equipmentId) {
             var cont=0;
             s.positions.forEach((position) => {
-                const teste = Object.keys(position.date)
-                if ((cont-teste.length)>(13*3)) {
+                let data1= new Date(position.date);
+                let data2= new Date("2021-02-25T09:00:00.000Z");
+                if ((data1.getTime())>(data2.getTime())) {
                     allPositions[position.date] = [position.lat, position.lon];   
                 }
                 cont++;
+
             });
         }
     });
-
     //encontre o nome dos states
     const equipmentStateNames = {};
-    equipmentState.forEach((equipmentState) => {equipmentStateNames[equipmentState.id] = equipmentState.name;});
+    equipmentState.forEach((equipmentState) => {
+        equipmentStateNames[equipmentState.id] = equipmentState.name;
+    });
     
     // cria uma tabela com todo histórico de estados do props.equipmentId
     const rows = Object.entries(allStates).reverse().map(([date, equipmentStateId]) => (
@@ -71,16 +74,29 @@ function Map2(props){
             equipmentModelName = equipmentModel.name;//nome do modelo
         }
     })
-    // define o icone
+
+    //defini icones que ficam mais escuros quanto mais recente a posição
+    const allDates = Object.entries(allPositions).reverse().map(([date]) => (
+        {date}
+    ));
     const iconMapping = {"Caminhão de carga": FaTruck,"Harvester": GiCircularSawblade,"Garra traçadora": TbBackhoe};
-    var iconehist = L.divIcon({
-        className: '',
-        html: ReactDOMServer.renderToString(React.createElement(iconMapping[equipmentModelName], { color: 'black', size: 20 })),
-        iconSize: [20, 20]            
+    const icones= {};
+    var cont="0";
+    allDates.forEach((def) => {
+        var cor=parseInt('1e1e1e', 16)+parseInt(cont, 16);
+        icones[def.date]=L.divIcon({
+            className: '',
+            html: ReactDOMServer.renderToString(React.createElement(iconMapping[equipmentModelName], { color: cor.toString(16), size: 20 })),
+            iconSize: [20, 20]            
+        })
+        cont=(parseInt(cont, 16)+parseInt("0f0f0f", 16)).toString(16)
+        
     })
+
+
     // cria todos os markers das posições do props.equipmentId
     const markers = Object.entries(allPositions).map(([date, position]) => (
-        <Marker key={date} position={position} icon={iconehist}>
+        <Marker key={date} position={position} icon={icones[date]}>
             <Popup>
                 <h4>{new Date(date).toLocaleString('pt-BR', {timeZone: 'America/Sao_Paulo', hour12: false, year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'})}</h4>
             </Popup>
@@ -96,15 +112,14 @@ function Map2(props){
 
     return(
     <div className='mapa2' style={{width:'100%', height:'90vh', position: 'relative'}}>
-        <MapContainer center={props.marker.props.position} zoom={11} style={{ height: '90%', width: '100%' }}>
+        <MapContainer center={positions[positions.length-1]} zoom={11} style={{ height: '90%', width: '100%' }}>
             <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution="Map data &copy; <a href='https://www.openstreetmap.org/'>OpenStreetMap</a> contributors"
             />
-            {props.marker}
+
             {markers}
-            <Polyline pathOptions={{ color: 'red' }} positions={positions}>
-                {/* <PolylineDecorator patterns={[{ offset: 0, repeat: 10, symbol: L.Symbol.arrowHead({ pixelSize: 15, pathOptions: { color: 'black', fillOpacity: 1 } }) }]} /> */}
+            <Polyline pathOptions={{ color: "#333333", dashArray:'10, 5', lineCap: 'triangle', weight: '5' }} positions={positions}>
             </Polyline> 
         </MapContainer>
         <div className='tabelainfo'>

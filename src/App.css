@@ -1,24 +1,27 @@
-.logoimg {
-    height: 9vh;
-}
-
+/* configura a div em que o mapa será colocado */
 .mapa-completo{
     height: 90vh;
     width: 100%;    
 }
-
-.logo{
-    height: 10vh;
+/* configura a */
+.cabecalho{
+    height: 9vh;
     display: flex;
     column-count: 2;
-    column-gap: 20vw;
+    column-gap: 5vw;
     align-items: center;
+    justify-content: space-around;
+    border-bottom: 1px solid #021373;
 }
+.logoimg {
+    height: 6vh;
+}
+
 .filter{
-    height: 10vh;
+    height: 9vh;
     display: flex;
     column-count: 2;
-    column-gap: 10px;
+    column-gap: 8px;
     align-items: center;
     font-family: 'Roboto', sans-serif;
     color:#021373;

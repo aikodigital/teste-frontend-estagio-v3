@@ -11,8 +11,6 @@ import {RiCloseCircleLine} from 'react-icons/ri'
 import { FaTruck } from 'react-icons/fa';
 import { TbBackhoe } from 'react-icons/tb';
 import { GiCircularSawblade } from 'react-icons/gi';
-import 'leaflet-polylinedecorator';
-import { PolylineDecorator } from 'leaflet-polylinedecorator';
 
 function Map2(props){
     //encontra todas os estados do props.equipmentId

@@ -2,6 +2,7 @@
 .infos {
     border: 0;
     padding: 10px 15px;
+    border-radius: 10px;
 }
 .infos:hover{
     background-color: beige;
@@ -81,3 +82,4 @@ tbody td {
     font-size: 3.5em;
     color:#0BD904;
 }
+/* configura os markers de histórico  */

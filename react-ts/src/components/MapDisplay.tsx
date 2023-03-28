@@ -37,7 +37,7 @@ export default function MapDisplay(props: any) {
 
   return (
     <MapContainer
-      center={posicoes[posicoes.length - 1]}
+      center={posicoes[0]}
       zoom={13}
       scrollWheelZoom={false}
       style={{ height: "400px" }}

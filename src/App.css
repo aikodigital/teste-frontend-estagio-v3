@@ -1,9 +1,58 @@
 .logoimg {
     height: 9vh;
 }
+
 .mapa-completo{
     height: 90vh;
-    width: 100%;
-    
+    width: 100%;    
 }
+
+.logo{
+    height: 10vh;
+    display: flex;
+    column-count: 2;
+    column-gap: 20vw;
+    align-items: center;
+}
+.filter{
+    height: 10vh;
+    display: flex;
+    column-count: 2;
+    column-gap: 10px;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    color:#021373;
+}
+
+select {
+    background-color: transparent;
+    border: 1px solid #021373;
+    padding: 8px;
+    font-size: 16px;
+    width:20vw;
+    cursor: pointer;
+    color:#021373;
+}
+
+select:hover{
+    background-color: #02137356;
+}  
+
+select:focus {
+    outline: none;
+    border-color: #0BD904;
+    color:#0BD904;
+}
+
+select:focus option {
+    color:#0BD904;
+}
+
+  
+select option {
+    background-color: white;
+    border: 1px solid #0BD904; 
+     
+}
+
 

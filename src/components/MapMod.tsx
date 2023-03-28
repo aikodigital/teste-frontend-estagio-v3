@@ -10,7 +10,7 @@ import {
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { ModalContext } from '../context/ModalContext';
-import { Equipment, getIconByModelName } from '../utils/api';
+import { Equipment, getAllEquipment, getIconByModelName } from '../utils/api';
 
 interface Props {
   trace: number;
@@ -19,7 +19,7 @@ interface Props {
 }
 
 function MapMod({ trace = 1, equipments, modal }: Props) {
-  const lastPosition = equipments[0].positions[0];
+  const lastPosition = getAllEquipment()[0].positions[0];
   const { openModal } = useContext(ModalContext);
   return (
     <MapContainer

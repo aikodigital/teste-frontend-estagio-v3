@@ -212,6 +212,9 @@ Para realizar a entrega do teste você deve:
 
 # Teste para Front-end Aiko Digital
 
+*Deploy* 
+https://aiko-frontend.onrender.com/
+
 ## Descrição
 A classe "Equipment" é instanciada de acordo com os valores obtidos nos arquivos.JSON, gerando objetos para casa equipamento. Classes auxiliares para as entidades "Position" e "State" também são criadas, e casa equipamento contém um array de dadas classes.
 No "App.tsx", todos os equipamentos são passados para os componentes "sidebar" e "map"

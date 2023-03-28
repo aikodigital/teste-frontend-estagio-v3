@@ -1,8 +1,23 @@
-var latitude = -19.126536;
-var longitude = -45.947756;
+// Declaração das variáveis globais
+let equipmentData = {};
+let equipmentModelData = {};
+let equipmentPositionHistoryData = {};
+let equipmentStateHistoryData = {};
+let equipmentStateData = {};
 
-const mymap = L.map("map").setView([latitude, longitude], 13);
+let filteredEquipmentIds = [];
+let selectedEquipmentId = null;
 
+// Definição das constantes
+const OPERATING_STATE_ID = 1;
+
+const OPERATING_COLOR = "#00FF00";
+const MAINTENANCE_COLOR = "#FF0000";
+
+// Inicialização do mapa
+const mymap = L.map("map").setView([-19.126536, -45.947756], 13);
+
+// Adição da camada de mapa
 L.tileLayer(
   "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
   {
@@ -18,13 +33,7 @@ L.tileLayer(
   }
 ).addTo(mymap);
 
-// Load equipment data and state
-let equipmentData = {};
-let equipmentModelData = {};
-let equipmentPositionHistoryData = {};
-let equipmentStateHistoryData = {};
-let equipmentStateData = {};
-
+// Funções de carregamento de dados
 function loadData(url, callback) {
   fetch(url)
     .then(response => response.json())
@@ -34,7 +43,7 @@ function loadData(url, callback) {
     .catch(error => console.log(error));
 }
 
-function loadDataAndMarkers() {
+function loadAllData() {
   loadData("data/equipmentModel.json", data => {
     data.forEach(equipmentModel => {
       equipmentModelData[equipmentModel.id] = equipmentModel;
@@ -57,38 +66,20 @@ function loadDataAndMarkers() {
             }
             equipmentPositionHistoryData[equipmentPositionHistory.equipmentId].push(equipmentPositionHistory);
           });
-        }); // adicionado parêntese aqui            
-          loadData("data/equipmentStateHistory.json", data => {
-            data.forEach(equipmentStateHistory => {
-              if (equipmentStateHistoryData[equipmentStateHistory.equipmentId] === undefined) {
-                equipmentStateHistoryData[equipmentStateHistory.equipmentId] = [];
-              }
-              equipmentStateHistoryData[equipmentStateHistory.equipmentId].push(equipmentStateHistory);
-            });
-      
-            // Add markers to the map
-            for (const equipmentId in equipmentData) {
-              const equipment = equipmentData[equipmentId];
-              const equipmentPositionHistory = equipmentPositionHistoryData[equipmentId][0];
-              const equipmentStateHistory = equipmentStateHistoryData[equipmentId][0];
-              const equipmentModel = equipmentModelData[equipment.modelId];
-              const equipmentState = equipmentStateData[equipmentStateHistory.stateId];
-      
-              const marker = L.marker([equipmentPositionHistory.latitude, equipmentPositionHistory.longitude]).addTo(mymap);
-      
-              marker.bindPopup(`<b>${equipmentModel.name}</b><br>
-                                <b>ID:</b> ${equipment.id}<br>
-                                <b>State:</b> ${equipmentState.name}<br>
-                                <b>Latitude:</b> ${equipmentPositionHistory.latitude}<br>
-                                <b>Longitude:</b> ${equipmentPositionHistory.longitude}<br>
-                                <b>Altitude:</b> ${equipmentPositionHistory.altitude}<br>
-                                <b>Timestamp:</b> ${equipmentPositionHistory.timestamp}`);
-      
-            }
-          });
         });
-      });
-      });
-      }
-      
-      loadDataAndMarkers();
+
+        loadData("data/equipmentStateHistory.json", data => {
+          data.forEach(equipmentStateHistory => {
+            if (equipmentStateHistoryData[equipmentStateHistory.equipmentId] === undefined) {
+              equipmentStateHistoryData[equipmentStateHistory.equipmentId] = [];
+            }
+            equipmentStateHistoryData[equipmentStateHistory.equipmentId].push(equipmentStateHistory);
+          });
+
+      // Chamada da função para filtrar os equipamentos
+      filterEquipment();
+    });
+  });
+});
+});
+}

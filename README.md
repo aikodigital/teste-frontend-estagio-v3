@@ -207,3 +207,48 @@ Para realizar a entrega do teste você deve:
 * Faça um commit da sua branch com a implementação do teste.
   
 * Realize o pull request da sua branch nesse repositório.
+
+<hr>
+
+# Documentação
+
+![AppPrint](img/aplicacao.png)
+
+## Como Usar
+
+Para usar o programa, primeiramente clone o repositório na sua máquina local, e depois use:
+```
+cd react-ts
+npm install
+npm run dev
+```
+
+e abra o link do localhost mostrado no console (ex: http://127.0.0.1:5173/).
+
+## Sobre a Aplicação
+
+
+
+### Tecnologias
+
+A aplicação foi desenvolvida utilizando:
+- React
+- Vite (para criar o projeto React)
+- TypeScript
+- Tailwind
+- Leaftlet
+- Helmet (utilizado apenas para criar o Head da aplicacão em `App.tsx`)
+
+### Componentes
+
+O programa foi dividido em diversos componentes, encontrados na pasta **/components**, sendo eles:
+- Lista (`List.tsx`)
+- Elemento da Lista (`ListItem.tsx`)
+- Popup (aparece ao clicar em algum elemento da lista, `Popup.tsx`)
+- Componente do Mapa (`MapDisplay.tsx`)
+
+### Funcionamento
+
+O aplicativo consome informações dos JSONs disponibilizados para o teste, trata esses dados, e apresenta-os de acordo com os requisitos especificados.
+
+O programa renderiza todas as informações em uma página (SPA), que é alterada de acordo com os comandos do usuário para mostrar os dados desejados, todos os items da lista são carregados juntamente ao loading da página, fazendo assim com que não existe um loading ao abrir os elementos da lista.

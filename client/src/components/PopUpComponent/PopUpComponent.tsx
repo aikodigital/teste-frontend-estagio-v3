@@ -12,7 +12,7 @@ interface PopUpProps {
 export const PopUpComponent: React.FC<PopUpProps> = ({ equipment }) => {
   return (
     <Popup offset={[10, -35]}>
-      <AlertDialog/>
+      <AlertDialog equipment={equipment} />
       <InnerCard equipment={equipment} />
     </Popup>
   );

@@ -1,7 +1,20 @@
-import { ClockCounterClockwise } from "@phosphor-icons/react";
+//@ts-nocheck
+import { ClockCounterClockwise, XSquare } from "@phosphor-icons/react";
 import * as Dialog from "@radix-ui/react-dialog";
+import { Equipament } from "../../class/Equipment";
+import { PositionComp } from "../PositionComp/PositionComp";
+import { ScrollAreaComp } from "../Scroll/Scroll";
 
-export const AlertDialog = () => {
+
+interface AlertProps {
+  equipment: Equipament;
+}
+
+export const AlertDialog : React.FC<AlertProps> = ({ equipment }) => {
+
+  const positionComps = equipment.states.map((state) => (
+    <PositionComp position={state.positionDateInfo()} key={state.id} />
+  ));
  
   return (
     <Dialog.Root >
@@ -12,11 +25,11 @@ export const AlertDialog = () => {
       <Dialog.Portal>
         <Dialog.Overlay className="DialogOverlay" />
         <Dialog.Content className="DialogContent">
-          <Dialog.Title className="DialogTitle">Add A Todo</Dialog.Title>
+        <ScrollAreaComp components={positionComps} isChild={false} />
+        
+          <Dialog.Title className="DialogTitle"></Dialog.Title>
           <Dialog.Close asChild>
-            <button className="IconButton" aria-label="Close">
-              X
-            </button>
+            <XSquare size={32} weight="bold" className="closeButton" />
           </Dialog.Close>
         </Dialog.Content>
       </Dialog.Portal>

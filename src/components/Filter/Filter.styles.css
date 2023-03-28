@@ -1,0 +1,17 @@
+.filterContainer {
+  position: absolute;
+  display: flex;
+  z-index: 999;
+  min-height: 55px;
+  padding: 16px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  left: 0;
+  right: 0;
+}
+
+.filterSelectContainer {
+  width: 500px;
+}

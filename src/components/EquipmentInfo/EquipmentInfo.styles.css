@@ -1,0 +1,15 @@
+.equipmentName {
+  margin-bottom: 8px;
+}
+
+.equipmentId h4 {
+  margin-bottom: 4px;
+}
+
+.equipmentId p {
+  margin: 0;
+}
+
+.lastPosition p {
+  margin: 4px;
+}

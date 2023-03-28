@@ -1,0 +1,37 @@
+.modal-overlay {
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: #ffffff;
+  border: 1px solid #bebebe;
+  border-radius: 2px;
+  padding: 16px;
+  height: 80vh;
+  width: 50vw;
+  position: relative;
+}
+
+.modal h2 {
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.closeModalContainer {
+  text-align: right;
+  margin-bottom: 8px;
+}
+
+.modal h3 {
+  text-align: center;
+  margin: 8px;
+}

@@ -1,0 +1,9 @@
+.statusContainerDescription {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 25px;
+  border-radius: 12.5px;
+  margin: 16px auto;
+}

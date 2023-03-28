@@ -1,7 +1,7 @@
 import './History.css'
 import { eqState, descendingOrder } from "../../entities/equipment";
 
-const History = ({ equipment }) => {
+const History = ({equipment}) => {
 
     if (equipment == null){
         return <div></div>;
@@ -19,7 +19,7 @@ const History = ({ equipment }) => {
 
     return (
         <>
-                    <h3>histórico de estado do equimento:</h3>
+                    <h3 >histórico de estado do equimento:</h3>
                 <div className='container state-history'>
                     {stateHistory}
                 </div>

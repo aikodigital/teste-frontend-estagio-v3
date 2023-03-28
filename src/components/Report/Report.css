@@ -1,20 +1,20 @@
 .report{
     flex-direction: column;
-    background-color: white;
     height: fit-content;
+    border: 1px solid;
 }
 
 .report p{
     margin: 0;
 }
-
-.report-info{
-    flex-direction: column;
-}
 .report-position, .report-state, .report-equipment{
     flex-direction: column;
-    background-color: rgb(228, 228, 228);
 }
+
+.report-position:hover, .report-state:hover, .report-equipment:hover{
+    color: green;
+}
+
 .report__state-history{
     flex-direction: column;
     overflow-y: scroll;

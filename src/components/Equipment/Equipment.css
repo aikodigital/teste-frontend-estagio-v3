@@ -10,7 +10,7 @@
 
 .card:hover{
     cursor: pointer;
-    background-color: rgb(186, 223, 240);
+    background-color: rgba(83, 150, 133, 0.541);
 }
 
 .card:focus-visible {
@@ -18,21 +18,18 @@
 }
 
 .card h3{
-    font-size: .75em;
+    font-size: .9em;
+    
 }
 
 .card_name{
     font-size: .8em;
     grid-area: name;
+    background: none;
 }
 .card_model{
     grid-area: model;
-}
-.card_lat{
-    grid-area: lat;
-}
-.card_lon{
-    grid-area: lon;
+    background: none;
 }
 .card_state{
     display: block;

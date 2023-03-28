@@ -7,6 +7,11 @@ import { useState } from 'react';
 const SideMenu = (props) => {
 
     const [report, setReport] = useState(null);
+    const [history, setHistory] = useState(false);
+
+    const showHistory = () => {
+        history? setHistory(false): setHistory(true);
+    }
 
 
     
@@ -28,15 +33,15 @@ const SideMenu = (props) => {
 
     return (
         <>
-            <section className='container side-menuA'>
+        <section className='container side-menuA'>
                 <ul>
                     <li className='side-menu__title'>equipamentos:</li>
                     {listEquipments}
                 </ul>
                 <h2 className='side-menu__title'>relatório:</h2>
-                <Report equipment={report} />
+                <Report equipment={report} showHistory={showHistory} show={history}/>
             </section>
-            <section className='container side-menuB'>
+            <section style={{display: `${history? 'flex': 'none' }`}} className='container side-menuB'>
                 <History equipment = {report}/>
             </section>
         </>

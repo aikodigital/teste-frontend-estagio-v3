@@ -1,9 +1,10 @@
 import './Report.css'
 import { eqState, descendingOrder } from "../../entities/equipment";
+import Button from '../Button';
 
-const Report = ({ equipment }) => {
+const Report = props => {
 
-    console.log(equipment);
+    const equipment = props.equipment;
 
     if (equipment == null){
         return <li></li>;
@@ -72,30 +73,30 @@ const Report = ({ equipment }) => {
 
     const earning = calcEarning();
 
+    const buttonHistory = props.show? 'esconder': 'mostrar';
+
     return (
         <>
             <li className='container report'>
-                <div className='container report-info'>
                     <div className='container report-equipment'>
                     <h3 className='report-name'>Equipamento: {equipment.name}</h3>
                     <h3 className='report-model'>Tipo: {equipment.modelName}</h3>
                     </div>
 
                     <div className='container report-position'>
-                        <h4 className='report-coordinates'>Posição: lat:{lastPosition.lat} lon:{lastPosition.lon}</h4>
-                        <h3 className='report-position-updated'>atualizado em: {lastDatePosition}</h3>
+                        <h4 className='report-coordinates' 
+                        title={`atualizado em: ${lastDatePosition}`}>Posição: lat:{lastPosition.lat} lon:{lastPosition.lon}</h4>
                     </div>
                     <div className='cotainer report-state'>
-                        <h3 className='report-state'>Estado: {stateStatus.name}</h3>
-                        <h3 className='report-state-updated'>atualizado em: {lastDateState}</h3>
+                        <h3 className='report-state' title={`atualizado em: ${lastDateState}`} >Estado: {stateStatus.name}</h3>
                     </div>
                     <div className='cotainer report-data'>
                         <h3 className='report-data'>Produtividade: {productivity.toFixed(1)}%</h3>
                         <h3 className='report-data'>Ganho: R$ {formatMoneyBR(earning)}</h3>
                     </div>
-
-
-                </div>
+                    <div className='container report-buttons'>
+                        <p>histórico:<Button showHistory={props.showHistory} >{buttonHistory}</Button></p>
+                    </div>
             </li>
         </>
     )

@@ -22,7 +22,7 @@ export const Accordeon: React.FC<AccordeonProps> = ({ equipment }) => {
   return (
     <Accordion.Root className="AccordionRoot" type="single" collapsible>
       <Accordion.Item className="AccordionItem" value="item-1">
-        <AccordionTrigger>Position History</AccordionTrigger>
+        <AccordionTrigger>State History</AccordionTrigger>
         <AccordionContent>
           <ScrollAreaComp components={positionComps} isChild={true} />
         </AccordionContent>

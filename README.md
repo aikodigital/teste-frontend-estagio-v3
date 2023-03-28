@@ -237,6 +237,7 @@ A aplicação foi desenvolvida utilizando:
 - TypeScript
 - Tailwind
 - Leaftlet
+- ESLint
 - Helmet (utilizado apenas para criar o Head da aplicacão em `App.tsx`)
 
 ### Componentes

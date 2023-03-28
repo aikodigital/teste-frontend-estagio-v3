@@ -7,19 +7,22 @@ import { EquipmentsModelProvider } from "./Context/EquipmentsModelContext";
 import { EquipmentsStateProvider } from "./Context/EquipmentsState";
 import { EquipmentsStateHistoryProvider } from "./Context/EquipmentsStateHistory";
 import { EquipmentsPositionProvider } from "./Context/EquipmentsPositionContext";
+import { SelectedEquipmentIdProvider } from "./Context/SelectedEquipmentIdContext";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <EquipmentsProvider>
-    <EquipmentsModelProvider>
-      <EquipmentsPositionProvider>
-        <EquipmentsStateProvider>
-          <EquipmentsStateHistoryProvider>
-            <ChakraProvider>
-              <App />
-            </ChakraProvider>
-          </EquipmentsStateHistoryProvider>
-        </EquipmentsStateProvider>
-      </EquipmentsPositionProvider>
-    </EquipmentsModelProvider>
-  </EquipmentsProvider>
+  <SelectedEquipmentIdProvider>
+    <EquipmentsProvider>
+      <EquipmentsModelProvider>
+        <EquipmentsPositionProvider>
+          <EquipmentsStateProvider>
+            <EquipmentsStateHistoryProvider>
+              <ChakraProvider>
+                <App />
+              </ChakraProvider>
+            </EquipmentsStateHistoryProvider>
+          </EquipmentsStateProvider>
+        </EquipmentsPositionProvider>
+      </EquipmentsModelProvider>
+    </EquipmentsProvider>
+  </SelectedEquipmentIdProvider>
 );

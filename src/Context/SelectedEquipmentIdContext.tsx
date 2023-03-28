@@ -9,9 +9,8 @@ interface ISelectedEquipmentIdContext {
 export const SelectedEquipmentIdContext =
   createContext<ISelectedEquipmentIdContext | null>(null);
 
-export function EquipmentIdProvider({ children }: IProps) {
+export function SelectedEquipmentIdProvider({ children }: IProps) {
   const [selectedEquipmentId, setSelectedEquipmentId] = useState<string>("");
-
 
   return (
     <SelectedEquipmentIdContext.Provider

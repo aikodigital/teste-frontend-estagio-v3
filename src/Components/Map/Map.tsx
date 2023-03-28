@@ -11,7 +11,7 @@ function Map() {
   const equipmentsPositions = useContext(EquipmentsPositionContext);
   const equipmentsStateHistory = useContext(EquipmentsStateHistoryContext);
   const equipmentsState = useContext(EquipmentsStateContext);
-  const SelectedEquipmentId = useContext(SelectedEquipmentIdContext);
+  const selectedEquipmentId = useContext(SelectedEquipmentIdContext);
 
   const center: LatLngExpression = [-19.151801, -46.007759];
 
@@ -72,7 +72,7 @@ function Map() {
               ]}
               eventHandlers={{
                 click: () => {
-                  SelectedEquipmentId?.setSelectedEquipmentId(
+                  selectedEquipmentId?.setSelectedEquipmentId(
                     equipment.equipmentId
                   );
                 },

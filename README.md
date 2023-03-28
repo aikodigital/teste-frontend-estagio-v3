@@ -20,6 +20,9 @@ Esses requisitos são obrigatórios e devem ser desenvolvidos para a entrega do 
 
 * **Histórico de estados do equipamento**: Permitir a visualização do histórico de estados de um equipamento específico ao clicar sobre o equipamento.
 
+## Entrega do Teste
+### - [Deploy]()
+
 ## Dados
 
 Todos os dados que precisa para desenvolver os requisitos estão na pasta `data/` no formato `json` e são detalhados a seguir.

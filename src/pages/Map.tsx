@@ -22,23 +22,23 @@ function Map() {
 
   return (
     <>
-      <div className="h-[calc(100vh-(4.72rem+2.5rem))] w-screen">
-        <FilterBar
-          onSearch={setSearchQuery}
-          onStateFilter={setStateFilter}
-          onModelFilter={setModelFilter}
+      <FilterBar
+        onSearch={setSearchQuery}
+        onStateFilter={setStateFilter}
+        onModelFilter={setModelFilter}
+      />
+      <div className="border-b-2 border-t-2 border-slate-600 bg-slate-500">
+        <TimeLine
+          end={end}
+          start={start}
+          onChange={({ end, start }) => {
+            setEnd(end);
+            setStart(start);
+          }}
         />
-        <div className="border-b-2 border-t-2 border-slate-600 bg-slate-500">
-          <TimeLine
-            end={end}
-            start={start}
-            onChange={({ end, start }) => {
-              setEnd(end);
-              setStart(start);
-            }}
-          />
+        <div className="h-[calc(100vh-7.47rem)] w-screen">
+          <MapMod equipments={equipmentsFilter} trace={end - start} />
         </div>
-        <MapMod equipments={equipmentsFilter} trace={end - start} />
       </div>
     </>
   );

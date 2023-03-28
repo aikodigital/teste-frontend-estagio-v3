@@ -24,7 +24,7 @@ function SectionMap() {
     lat: locationEquipments[1].positions[refPos].lat,
     lng: locationEquipments[1].positions[refPos].lon,
   });
-  const [equip, setEquip] = useState([]);
+  const [allEquip, setAllEquip] = useState([]);
   const ZOOM_LEVEL = 8.5;
 
   const markerIcon = new L.Icon({
@@ -62,7 +62,7 @@ function SectionMap() {
       });
     }
 
-    setEquip(nameEquipment);
+    setAllEquip(nameEquipment);
     captureDatesAllEqps();
   }, []);
 
@@ -77,7 +77,7 @@ function SectionMap() {
             attribution={osm.maptiler.attribution}
           />
 
-          {equip.map((equip) => (
+          {allEquip.map((equip) => (
             <Marker
               position={[equip.position.lat, equip.position.lon]}
               icon={markerIcon}

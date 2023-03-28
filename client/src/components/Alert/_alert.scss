@@ -1,0 +1,68 @@
+.DialogOverlay {
+  backdrop-filter: blur(0.1rem);
+  position: fixed;
+  inset: 0;
+}
+
+.DialogContent {
+  background: rgba(8, 51, 94, 0.377);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(19.5px);
+  -webkit-backdrop-filter: blur(19.5px);
+
+  color: rgba(255, 255, 255, 0.822);
+  border-radius: 0.5rem;
+  border-radius: 6px;
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2.5rem;
+  animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.DialogContent:focus {
+  outline: none;
+}
+
+.DialogTitle {
+  margin: 0;
+  font-weight: 500;
+  font-size: 25px;
+}
+
+
+
+.IconButton {
+  font-family: inherit;
+  border-radius: 100%;
+  height: 25px;
+  width: 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.trigger {
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline ;
+  }
+
+  display: flex;
+  align-items: center;
+
+  p {
+    color: #575656;
+   
+    margin: 0px 10px 00px 10px !important;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+}

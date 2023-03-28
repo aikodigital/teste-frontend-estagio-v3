@@ -10,8 +10,8 @@ export default function App() {
     <AppContainer>
       <a href="https://aiko.digital"><img alt="aiko-logo" src={logo}/></a>
       <EquipmentsContainer>
-        {equipment.map(()=>(
-          <Equipamento />
+        {equipment.map((e)=>(
+          <Equipamento eqID={e.id} modelID={e.equipmentModelId} name={e.name}/>
         ))}
       </EquipmentsContainer>
     </AppContainer>
@@ -25,6 +25,8 @@ const AppContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 50px;
+  margin-bottom: 50px;
+  background-color: #003184;
   img{
     width: 260px;
     height: 129px;

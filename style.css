@@ -1,0 +1,413 @@
+body {
+
+    font-family: 'Poppins', sans-serif;
+    background-image: url(./bg.svg);
+    background-repeat: no-repeat;
+    
+    font-size: 15px;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    animation: backInDown 1s;
+}
+
+#BvHM {
+    margin: 7% 0 0 7%;
+}
+
+#divImgHm {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 25vw;
+    
+}
+#imgHome{
+    box-shadow: 0px 0px 30px -15px rgba(0, 0, 0, 1);
+    border-radius: 360px;
+}
+#contentImg {
+    display: flex;
+    flex-direction: column;
+    width: 23vw;
+    
+}
+
+#descImgHm {
+    text-align: center;
+    margin-top: 20px;
+    letter-spacing: 1px;
+}
+
+#divSelect {
+    margin: 0;
+    margin-left: 7%;
+}
+
+#selectCar {
+
+    font-weight: 600;
+    letter-spacing: 2px;
+    border-radius: 10px;
+    padding: 10px;
+
+}
+option{
+    font-weight: 600;
+    
+}
+#divMapTable {
+    animation: backInLeft 0.7s;
+    display: flex;
+    justify-content: space-around;
+padding-bottom: 10px;
+}
+
+#nameCar {
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 900;
+}
+
+#Pos {
+    width: 23vw;
+    padding: 30px;
+    box-shadow: 0px 0px 30px -10px rgba(0, 0, 0, 1);
+    border-radius: 25px;
+}
+
+.h2posTab {
+    text-align: center;
+}
+
+.dataFilter {
+    margin-bottom: 20px;
+}
+
+#map {
+    width: 100%;
+    height: 23vw    ;
+    box-shadow: 0px 0px 1px 0px rgb(0, 0, 0);
+    border-radius: 10px;
+}
+
+.btnPosTable {
+
+    padding: 10px 15px 10px 15px;
+    border-radius: 10px;
+    border: none;
+    background-color: #2d74f7;
+    margin-top: 10px;
+    font-weight: 800;
+    color: white;
+    width: 40%;
+    font-size: 13px;
+    cursor: pointer;
+}
+.btnPosTable:hover{
+    cursor: pointer;
+    background-color: #1900ff;
+}
+.divBTNS {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+
+#State {
+    width: 23vw;
+    padding: 30px;
+    box-shadow: 0px 0px 30px -10px rgba(0, 0, 0, 1);
+    border-radius: 25px;
+}
+
+td {
+    text-align: left;
+    padding: 20px;
+    border-bottom: 1px solid rgba(204, 188, 188, 0.356);
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: 600;
+    width: 50%;
+}
+.tdDate{
+    font-size: 0.9rem;
+}
+.tdStats{
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+th {
+    text-align: center;
+    padding: 10px;
+    background-color: #7d65e9;
+    width: 50%;
+}
+
+.table-wrapper {
+    width: 100%;
+    height: 23vw    ;
+    overflow-y: auto;
+}
+
+#dateFilter,
+#dateFilterEq {
+    padding: 5px;
+    border-radius: 7px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+
+@media(max-width:1600px) {
+    #map {
+        
+        height: 20vw ;
+        
+    }
+    .btnPosTable {
+        padding: 7px 10px 7px 10px;
+        margin-top: 15px; 
+    }
+    
+    .table-wrapper {
+        height: 20vw;
+    }
+}
+@media(max-width:1366px) {
+    body{
+        font-size: 12px;
+    }
+    #contentImg {
+        width: 27vw;
+    }
+    #map {
+        
+        height: 20vw ;
+        
+    }
+    .btnPosTable {
+        padding: 7px 10px 7px 10px;
+        margin-top: 15px; 
+    }
+    
+    .table-wrapper {
+        height: 20vw;
+    }
+    td {
+        
+       font-size: 12px;
+       
+    }
+    
+    th {
+        
+        font-size: 12px;
+        
+    }
+    .btnPosTable{
+        font-size: 11px;
+    }
+    #nameCar{
+        margin: 0;
+    }
+}
+
+@media(max-width:1280px) {
+    
+    #State {
+        width: 30vw;
+        
+    }
+    #Pos{
+        width: 30vw;
+        
+    }
+    .btnPosTable{
+        font-size: 10px;
+    }
+    
+}
+@media(max-width:1024px) {
+    #State {
+        width: 32vw;
+        
+    }
+    #Pos{
+        width: 32vw;
+        
+    }
+    #map {
+        
+        height: 28vw ;
+        
+    }
+    .table-wrapper {
+        height: 28vw;
+    }
+   
+    
+}
+
+
+@media(max-width:768px) {
+    
+    #contentImg {
+        margin-top: 15vh;
+        width: 35vw;
+        
+    }
+    #divImgHm {
+       margin: 0;
+        align-items: center;
+    }
+    #divMapTable {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    
+    }
+    #State {
+        width: 350px
+        
+    }
+    #Pos{
+        width: 350px;
+        margin: 30px 0px 30px 0px;
+    }
+    #map {
+        
+        height: 400px ;
+        
+    }
+    .table-wrapper {
+        height: 400px ;
+    }
+    
+}
+@media(max-width:675px) {
+    body{
+        background-image: url(./bgMobile.svg);
+        font-size: 11px;
+    }
+    #contentImg {
+        margin-top: 15vh;
+        width: 50vw;
+        
+    }
+    #selectCar{
+        padding: 5px;
+    }
+}
+
+    
+@media(max-width:500px) {
+    
+    #contentImg {
+        margin-top: 15vh;
+        width: 60vw;
+        
+    }
+   
+    #divMapTable {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    
+    }
+    #State {
+        width: 320px;
+        padding: 20px;
+    }
+    #Pos{
+        width: 320px;
+        margin: 30px 0px 30px 0px;
+        padding: 20px;
+    }
+    #map {
+        
+        height: 350px ;
+        
+    }
+    .table-wrapper {
+        height: 350px ;
+    }
+    
+}
+@media(max-width:400px) {
+    body{
+        font-size: 10px;
+    }
+    #selectCar{
+        padding: 5px;
+        font-weight: 600;
+    }
+    #contentImg {
+        margin-top: 10vh;
+        width: 70vw;
+        
+    }
+    #divMapTable {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    
+    }
+    #State {
+        width: 290px;
+        padding: 20px;
+    }
+    #Pos{
+        width: 290px;
+        
+        padding: 20px;
+    }
+    #map {
+        
+        height: 320px ;
+        
+    }
+    .table-wrapper {
+        height: 320px ;
+    }
+    #nameCar{
+        margin-top: 20px;
+    }
+}
+@media(max-width:360px) {
+    body{
+      
+        font-size: 8px;
+    }
+    #selectCar{
+        padding: 5px;
+        font-size: 8px;
+    }
+    #divMapTable {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    
+    }
+    #State {
+        width: 230px;
+        
+    }
+    #Pos{
+        width: 230px;
+        
+        
+    }
+    #map {
+        
+        height: 280px ;
+        
+    }
+    .table-wrapper {
+        height: 280px ;
+    }
+    #nameCar{
+        margin-top: 20px;
+    }
+}

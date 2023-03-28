@@ -1,5 +1,5 @@
 import { CheckFat, MapPinLine, Pause, Wrench } from "@phosphor-icons/react";
-import React from "react";
+import React, { useContext } from "react";
 import { Equipament } from "../../class/Equipment";
 import { EquipamentType } from "../../class/EquipmentType";
 import { State, StateEnum } from "../../class/State";
@@ -10,6 +10,9 @@ interface InnerProps {
 }
 
 export const InnerCard: React.FC<InnerProps> = ({ equipment }) => {
+  
+ 
+ 
   const state = equipment.getMostRecentState();
   const position = equipment.getMostRecentPosition();
 

@@ -1,15 +1,17 @@
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import * as ScrollArea from "@radix-ui/react-scroll-area";
 import { Card } from "../Card/Card";
+
 
 interface Props {
   components: React.ReactNode[];
   isChild: boolean;
 }
 
-const scrollTo = 6;
-
 export const ScrollAreaComp: React.FC<Props> = ({ components, isChild }) => {
+ 
+  const scrollTo = 0;
+
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

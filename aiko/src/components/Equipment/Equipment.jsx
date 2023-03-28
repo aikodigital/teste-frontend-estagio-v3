@@ -166,10 +166,7 @@ function Equipment() {
               center={[equipDates.position.lat, equipDates.position.lon]}
               zoom={ZOOM_LEVEL}
             >
-              <TileLayer
-                url={osm.maptiler.url}
-                attribution={osm.maptiler.attribution}
-              />
+              <TileLayer url={osm.maptiler.url} />
 
               <Marker
                 position={[equipDates.position.lat, equipDates.position.lon]}

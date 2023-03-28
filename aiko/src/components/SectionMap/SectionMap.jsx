@@ -72,10 +72,7 @@ function SectionMap() {
     <section className="section-map">
       <div className="conatainer-map">
         <MapContainer center={center} zoom={ZOOM_LEVEL}>
-          <TileLayer
-            url={osm.maptiler.url}
-            attribution={osm.maptiler.attribution}
-          />
+          <TileLayer url={osm.maptiler.url} />
 
           {allEquip.map((equip) => (
             <Marker

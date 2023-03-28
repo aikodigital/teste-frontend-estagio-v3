@@ -109,14 +109,15 @@
 
 .container-equip .map-container .map h1 {
   font-size: 90%;
+  margin-left: 55%;
 }
 
 .container-equip .map-container .map .leaflet-container {
   height: 60%;
-  width: 100%;
+  width: 67%;
   position: absolute;
   top: 24%;
-  left: 6%;
+  left: 22%;
 }
 
 @media (min-width: 768px) {

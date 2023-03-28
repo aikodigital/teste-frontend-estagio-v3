@@ -5,18 +5,12 @@ import "jspdf-autotable";
 import Papa from 'papaparse';
 
 import "../style/MoreInfoPage.css";
-import closeButton from "../img/close.svg";
 
-function MoreInfoPage({
-    id,
-    handleClose,
-    getEquipmentName,
-    getEquipmentLastState,
-    getEquipmentModelName,
-    getFormatedDate,
-    equipmentState,
-    equipmentStateHistory,
-}) {
+import closeButton from "../img/close.svg";
+import csvDown from "../img/csv.svg"
+import pdfDown from "../img/pdf.svg"
+
+function MoreInfoPage({ id, handleClose, getEquipmentName, getEquipmentLastState, getEquipmentModelName, getFormatedDate, equipmentState, equipmentStateHistory, }) {
     const [page, setPage] = useState(1);
     const perPage = 10;
 
@@ -187,20 +181,15 @@ function MoreInfoPage({
                 <h2 className="title-font-color">Informações do equipamento</h2>
                 <div className="allInfo-container">
                     <p className="base-data">
-                        {" "}
                         <span className="title-font-color indicator">Modelo: </span>
                         {getModel()}
                     </p>
                     <p className="base-data">
-                        {" "}
                         <span className="title-font-color indicator">Nome: </span>
                         {getName()}
                     </p>
                     <p className="base-data">
-                        {" "}
-                        <span className="title-font-color indicator">
-                            Última atualização:{" "}
-                        </span>
+                        <span className="title-font-color indicator">Última atualização:</span>
                         {getDate()}
                     </p>
                     <p className="base-data">
@@ -212,8 +201,14 @@ function MoreInfoPage({
                 <h2 className="title-font-color">Histórico</h2>
                 <div className="history-container">
                     <div className="download-buttons">
-                        <button onClick={handleDownloadCSV}>Download CSV</button>
-                        <button onClick={handleDownloadPDF}>Download PDF</button>
+                        <button className="pagination-button" onClick={handleDownloadCSV}>
+                            <img src={csvDown} alt="" />
+                            <span>Download CSV</span>
+                        </button>
+                        <button className="pagination-button" onClick={handleDownloadPDF}>
+                            <img src={pdfDown} alt="" />
+                            <span>Download PDF</span>
+                        </button>
                     </div>
 
                     {listHistory()}

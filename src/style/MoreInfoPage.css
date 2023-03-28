@@ -100,6 +100,25 @@
     transition: all 0.3s ease;
 }
 
+.download-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.download-buttons button {
+    display: flex;
+    align-items: center;
+    grid-area: 10px;
+}
+
+.download-buttons img {
+    max-width: 20px;
+    margin-right: 10px;
+}
+
 .pagination-button:hover {
     background-color: #f1f1f1;
 }
@@ -152,5 +171,24 @@
 
     .pagination-button {
         padding: 0.3rem 0.7rem;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .download-buttons button {
+        font-size: 0.6rem;
+        max-width: 30%;
+    }
+
+    .download-buttons img {
+        max-width: 30px;
+        margin-right: 5px;
+    }
+
+}
+
+@media screen and (max-width: 420px) {
+    .download-buttons button {
+        flex-direction: column;
     }
 }

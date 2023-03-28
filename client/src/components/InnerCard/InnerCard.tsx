@@ -27,7 +27,6 @@ export const InnerCard: React.FC<InnerProps> = ({ equipment }) => {
     hour12: false,
   });
 
-
   return (
     <div className="innerCard">
       <div className="header">
@@ -36,7 +35,7 @@ export const InnerCard: React.FC<InnerProps> = ({ equipment }) => {
           <h2>{equipment.equipName}</h2>
         </div>
 
-        {setStateIcon(state[2])}
+        {setStateIcon(state[2], false)}
       </div>
 
       <div className="body">

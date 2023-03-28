@@ -478,6 +478,20 @@ h3 {
   background-color: rgba(235, 233, 233, 0.651);
   transition: background-color 0.2s ease-in-out;
 }
+.positioncomp .state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.positioncomp .state p {
+  margin-left: 3px;
+  font-weight: 500;
+}
+.positioncomp .date {
+  padding-top: 1px;
+  font-weight: 700;
+  font-size: 0.82rem;
+}
 
 body {
   font-family: "Nunito", sans-serif;

@@ -1,4 +1,5 @@
 import React from 'react'
+import { setStateIcon } from '../../utils/setStateIcon';
 
 
 
@@ -20,8 +21,11 @@ export const PositionComp : React.FC<PositionProps> = ({ position }) => {
   
   return (
     <div className='positioncomp'>
-      <p className='state' >{position[1]}</p>
-      <p className='date' >{formattedDate}</p>
+      <div className='state' >
+        {setStateIcon(position[2], true)}
+        <p>{position[1]}</p>
+      </div>
+      <p className='date'>{formattedDate}</p>
     </div>
   )
 }

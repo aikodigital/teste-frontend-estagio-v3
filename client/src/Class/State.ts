@@ -9,7 +9,7 @@ export class State {
   private _stateName: string;
   private _date: string;
 
-  get typeId(): string {
+  get stateId(): string {
     return this._id;
   }
 

@@ -216,7 +216,9 @@ Para realizar a entrega do teste você deve:
 A classe "Equipment" é instanciada de acordo com os valores obtidos nos arquivos.JSON, gerando objetos para casa equipamento. Classes auxiliares para as entidades "Position" e "State" também são criadas, e casa equipamento contém um array de dadas classes.
 No "App.tsx", todos os equipamentos são passados para os componentes "sidebar" e "map"
 
-"sidebar" contém um campo de rolagem(radix scrollArea) que exibe um "card" com as informações(nome, modelo, estado etc) para cada equipamento. Cada "card" também inclui um "accordeon" que exibe uma outra scrollArea com o histórico de estados de cada equipamento
+"sidebar" contém um campo de rolagem(radix scrollArea) que exibe um "card" com as informações(nome, modelo, estado etc) para cada equipamento. Cada "card" também inclui um "accordeon" que exibe uma outra scrollArea com o histórico de estados de cada equipamento. No topo da sidebar existe 3 componentes "select", que podem ser utilizados para filtrar especificos equipamentos(por nome,modelo e estado atual).
+
+"map" é um componente do Leaflet, que exibe um mapa com as cordenadas indicadas. Para cada equipamento, um "marker" é criado no mapa. Cada marker tem um ícone e uma cor correspondente a seu modelo(caminhão de carga, garra traçadeira ou harverster) e estado(parado, trabalhando ou em manutenção). Ao clicar em um "marker" uma "popUp" aparece mostrando mais informações sobre o equipamento em questão, e a possibilidade de também ver o histórico de estados do equipamento
 
 
 ### Tecnologias utilizadas

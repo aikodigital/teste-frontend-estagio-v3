@@ -8,7 +8,7 @@ import MapPage from './pages/MapPage';
 
 const App = () => {
 
-  const [returnedValue, setReturnedValue] = useState<any>({});
+  const [returnedValue, setReturnedValue] = useState<any>([]);
   const [valueArray] = useState([]);
   const [equipmentStateValue, setEquipmentState] = useState('')
   const [stateName, setStateName] = useState('')
@@ -22,19 +22,36 @@ const App = () => {
   const [lastNameState, setLastName] = useState('')
 
   useEffect(() => {
-    render()
-  }, [])
-  
-  const render = () => {
+
     for (let key of equipments) {
       if(key.name === selectedValue) {
         setReturnedValue(key)
       }
     }
-  }
+    
+    const filteredHistory = equipmentStateHistory.filter(
+      (equipmentState) => equipmentState.equipmentId === Object.values(returnedValue)[0]
+    );
+
+    let lastState: any = '';
+
+    if (filteredHistory.length > 0 && filteredHistory[0].states) {
+      const states = filteredHistory[0].states;
+      if (states.length > 0) {
+        lastState = states[states.length - 1];
+      }
+    }
+  
+    for(let i = 0; i < equipmentState.length; i++) {
+      console.log(equipmentState[i].id)
+      if(equipmentState[i].id == lastState.equipmentStateId) {
+        console.log(equipmentState[i].name)
+        setLastName(equipmentState[i].name)
+      }
+    }
+  })
 
   const getEquipmentInfo = () => {
-    render()
     setSearchClicked(true)
     const equipmentId: any = Object.values(returnedValue)[0]
     const equipmentModelId: any = Object.values(returnedValue)[1]
@@ -45,7 +62,6 @@ const App = () => {
   }
 
   const getEquipmentStatus = (equipmentId: string) => {
-    console.log(equipmentId)
   };
   
 
@@ -150,11 +166,7 @@ const App = () => {
     <div>
       <h2 className='text-2xl'>Informações do equipamento:</h2>
       <p>Nome: <span className='text-[#2E80CC]'>{selectedValue}</span></p>
-      {stateName.length == 0 ?
-        <p>Status: <span className='text-[#CAB8FD]'>{lastNameState}</span></p>
-        :
-        <p>Status: <span className='text-[#CAB8FD]'>{lastNameState}</span></p>
-      }
+      <p>Status: <span className='text-[#CAB8FD]'>{lastNameState}</span></p>
       <h2 className='text-2xl'>Preço por estado:</h2>
       <p><span className='text-[#2ECC71]'>Operando:</span> {equipmentModelValue[0]} $</p>
       <p><span className='text-[#F1C40F]'>Parado:</span> {equipmentModelValue[1]} $</p>

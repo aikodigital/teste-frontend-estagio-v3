@@ -49,6 +49,27 @@ const Report = ({ equipment }) => {
         return (operando * total.operando) + (manutencao * total.manutencao) + (parado * total.parado);
     }
 
+    const formatMoneyBR = (value)=>{
+        const arrayValue = value.toFixed(2).split('');
+        arrayValue.splice(arrayValue.length -3, 1, ',');
+        const newArrayValue = [];
+        let countDigits = 0;
+        for (let i = arrayValue.length -1; i >= 0; i--){
+            if(i >= arrayValue.length -3){
+                newArrayValue.unshift(arrayValue[i]);
+            }
+            else{
+                newArrayValue.unshift(arrayValue[i]);
+                countDigits++;
+                if(countDigits % 3 == 0){
+                    newArrayValue.unshift('.')
+                }
+            }
+
+            }
+            return newArrayValue.join("")
+    }
+
     const earning = calcEarning();
 
     return (
@@ -70,7 +91,7 @@ const Report = ({ equipment }) => {
                     </div>
                     <div className='cotainer report-data'>
                         <h3 className='report-data'>Produtividade: {productivity.toFixed(1)}%</h3>
-                        <h3 className='report-data'>Ganho: R$ {earning.toFixed(2)}</h3>
+                        <h3 className='report-data'>Ganho: R$ {formatMoneyBR(earning)}</h3>
                     </div>
 
 

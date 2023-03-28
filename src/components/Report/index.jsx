@@ -1,30 +1,20 @@
 import './Report.css'
-import { eqState, descendingOrder } from "../../entities/equipment";
+import { eqState } from "../../entities/equipment";
 import Button from '../Button';
+import {AiOutlineInfoCircle} from 'react-icons/ai'
 
 const Report = props => {
 
     const equipment = props.equipment;
 
     if (equipment == null){
-        return <li></li>;
+        return <li>Selecione um equipamento para exibir suas informações aqui</li>;
     }
     const lastPosition = equipment.lastPosition();
     const lastState = equipment.lastState();
     const stateStatus = eqState.filter(state => state.id === lastState.equipmentStateId)[0];
     const lastDatePosition = equipment.showDate(lastPosition.date);
     const lastDateState = equipment.showDate(lastState.date);
-
-    
-    const stateHistory = equipment.stateHistory
-                            .sort(descendingOrder).map(state =>{
-                                return (
-                                    <p key={state.date}>
-                                        {equipment.showDate(state.date)}:&#160;
-                                        {equipment.showState(state.equipmentStateId)}
-                                    </p>
-                                )
-                            })
     
     const calcProductivity = (statesTotal = equipment.dayStatesTotal) =>{
         let totalOperation = 0
@@ -83,14 +73,19 @@ const Report = props => {
                     <h3 className='report-model'>Tipo: {equipment.modelName}</h3>
                     </div>
 
-                    <div className='container report-position'>
-                        <h4 className='report-coordinates' 
-                        title={`atualizado em: ${lastDatePosition}`}>Posição: lat:{lastPosition.lat} lon:{lastPosition.lon}</h4>
+                    <div className='container report-theme'>
+                        <h4 className='report-coordinates'>
+                            Posição: lat:{lastPosition.lat} lon:{lastPosition.lon}&#160;
+                            <span className='report-icon' title={`atualizado em: ${lastDatePosition}`}><AiOutlineInfoCircle/></span>
+                        </h4>
                     </div>
-                    <div className='cotainer report-state'>
-                        <h3 className='report-state' title={`atualizado em: ${lastDateState}`} >Estado: {stateStatus.name}</h3>
+                    <div className='cotainer report-theme'>
+                        <h3 className='report-state'>
+                            Estado: {stateStatus.name}&#160;
+                            <span className='report-icon' title={`atualizado em: ${lastDateState}`}><AiOutlineInfoCircle/></span>
+                            </h3>
                     </div>
-                    <div className='cotainer report-data'>
+                    <div className='cotainer report-theme'>
                         <h3 className='report-data'>Produtividade: {productivity.toFixed(1)}%</h3>
                         <h3 className='report-data'>Ganho: R$ {formatMoneyBR(earning)}</h3>
                     </div>

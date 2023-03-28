@@ -52,7 +52,7 @@ const Map = (props) => {
       </Marker>);
   })
   return (
-    <MapContainer center={[-19, -46]} zoom={11} scrollWheelZoom={false}>
+      <MapContainer center={[-19, -46]} zoom={11} scrollWheelZoom={false}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -60,6 +60,7 @@ const Map = (props) => {
       {markers}
       <SetPreview/>
     </MapContainer>
+    
   );
 }
 

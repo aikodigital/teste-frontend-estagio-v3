@@ -1,8 +1,14 @@
 .leaflet-container {
     width: 78vw;
-    height: 90vh;
-    border: .25em solid black;
+    height: 90.3vh;
+    border: 1px solid var(--mainBgColor);
 }
 
-.Parado, .Operando, .Manutenção{
+.leaflet-top, .leaflet-left{
+    background-color: white;
+}
+
+.leaflet-control-zoom-in span, .leaflet-control-zoom-out span {
+    background-color: white;
+    color: var(--mainBgColor);
 }

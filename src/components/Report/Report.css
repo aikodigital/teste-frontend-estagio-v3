@@ -7,12 +7,12 @@
 .report p{
     margin: 0;
 }
-.report-position, .report-state, .report-equipment{
+.report-equipment{
     flex-direction: column;
 }
 
-.report-position:hover, .report-state:hover, .report-equipment:hover{
-    color: green;
+.report-theme,.report-equipment{
+    border-bottom: 1px solid;
 }
 
 .report__state-history{

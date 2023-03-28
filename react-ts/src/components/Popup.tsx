@@ -5,7 +5,7 @@ import Modelo from "../../../data/equipmentModel.json";
 import HistEstados from "../../../data/equipmentStateHistory.json";
 import HistPosicao from "../../../data/equipmentPositionHistory.json";
 
-let estadosArr :string[] = []
+let estadosArr: string[] = [];
 
 const idMap = {
   "a7c53eb1-4f5e-4eba-9764-ad205d0891f9": 0,
@@ -17,11 +17,10 @@ const idMap = {
   "c79ef1de-92f3-4edd-bd55-553056640449": 6,
   "b7aaba00-13f7-44a0-8bf1-bc163afcf9d8": 7,
   "fe2a2e11-bfa6-46b6-990b-fd8175946b7e": 8,
-  "Ronaldinho" : 10 
 };
 
 function traduzEstado(estadoId: string) {
-  const estadoNoTimeFrame =  Estados.find((status) => status.id === estadoId);
+  const estadoNoTimeFrame = Estados.find((status) => status.id === estadoId);
   if (estadoNoTimeFrame?.name) {
     estadosArr.push(estadoNoTimeFrame.name);
     return estadoNoTimeFrame.name;
@@ -29,13 +28,13 @@ function traduzEstado(estadoId: string) {
   return "Estado não encontrado";
 }
 
-function formatDate(dateString : string) {
+function formatDate(dateString: string) {
   const date = new Date(dateString);
-  const day = date.getDate().toString().padStart(2, '0');
-  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const day = date.getDate().toString().padStart(2, "0");
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
   const year = date.getFullYear().toString();
-  const hours = date.getHours().toString().padStart(2, '0');
-  const minutes = date.getMinutes().toString().padStart(2, '0');
+  const hours = date.getHours().toString().padStart(2, "0");
+  const minutes = date.getMinutes().toString().padStart(2, "0");
   return `${day}/${month}/${year} ${hours}:${minutes}`;
 }
 
@@ -52,8 +51,6 @@ export default function Popup(props: any) {
       status.id ===
       HistEstados[equipmentIndex].states.slice(-1)[0].equipmentStateId
   );
-
-  
 
   useEffect(() => {
     const equipamentoId = props.equipamento.id;
@@ -98,7 +95,10 @@ export default function Popup(props: any) {
             {HistEstados[equipmentIndex].states.map((estado) => (
               <li className="text-base lg:text-lg">
                 <div className="">
-                  <p>{formatDate(estado.date)} - {traduzEstado(estado.equipmentStateId)}</p>
+                  <p>
+                    {formatDate(estado.date)} -{" "}
+                    {traduzEstado(estado.equipmentStateId)}
+                  </p>
                 </div>
               </li>
             ))}

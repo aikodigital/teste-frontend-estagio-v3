@@ -16,7 +16,7 @@ function App() {
         />
       </Helmet>
       <div className="App">
-        <List/>
+        <List />
       </div>
     </HelmetProvider>
   );

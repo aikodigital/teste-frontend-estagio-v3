@@ -114,13 +114,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ equipments }) => {
       setComponentsArray(equipCards);
     } else {
       setSelectedEquipment(null);
-      const equipCards = equipments.map((equipment) => (
-        <Card
-          key={equipment.equipId + equipment.typeId}
-          equipment={equipment}
-        />
-      ));
-      setComponentsArray(equipCards);
+      setComponentsArray([]);
     }
   };
 

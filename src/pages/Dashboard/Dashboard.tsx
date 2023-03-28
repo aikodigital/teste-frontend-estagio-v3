@@ -6,7 +6,12 @@ import equipmentModel from '../../data/equipmentModel.json';
 import equipmentPositionHistory from '../../data/equipmentPositionHistory.json'
 import MapPage from '../MapPage/MapPage';
 
-export default function Dashboard() {
+
+interface LandingProps {
+  setDashLoaded: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function Dashboard({ setDashLoaded }: LandingProps) {
 
     const [returnedValue, setReturnedValue] = useState<any>([]);
     const [valueArray] = useState([]);
@@ -56,6 +61,10 @@ export default function Dashboard() {
       }
       
     })
+
+    const setDashboard = () => {
+      setDashLoaded(false)
+    }
   
     const getEquipmentInfo = () => {
       setSearchClicked(true)
@@ -147,17 +156,23 @@ export default function Dashboard() {
       setSelectedLon(lon);
     }
   
-    return <div className='px-[190px]  bg-[#161616] text-white font-extrabold'>
-    <header className=''>
-      <h1 className='text-4xl text-white pt-[60px]'><span className='text-[#006404]'>Forest</span>Finder</h1>
-      <p>Your forest equipment geolocation app</p>
-    </header>
-    <main className='flex mt-[150px] justify-between'>
+    return <div className='px-[300px]  bg-[#161616] text-white font-extrabold'>
+    <header className='flex justify-between'>
       <div>
-      <h2>Equipments:</h2>
-      <select className="text-black h-[30px] w-[190px] my-5" onChange={(e) => 
-        setSelectedValue(e.target.value)
-        }>
+        <h1 className='text-4xl text-white pt-[60px]'><span className='text-[#006404]'>Forest</span>Finder</h1>
+        <p>Seu aplicativo de localização geográfica florestal</p>
+      </div>
+      <div className='pt-[60px] cursor-pointer'>
+        <span className="text-white p-[10px] ml-4 text-1xl rounded bg-[#006404] mt-2" onClick={setDashboard}>Sair</span>
+      </div>
+    </header>
+    <main className='flex mt-[120px] justify-between'>
+      <div>
+      <h2>Lista de equipamentos:</h2>
+      <select className="text-black h-[30px] w-[190px] my-5" onChange={(e) => {
+          setSelectedValue(e.target.value);
+          getEquipmentInfo();
+        }}>
       {equipments.map(item => (
           <option
           key={item.id} 
@@ -166,7 +181,7 @@ export default function Dashboard() {
           selected={item.name === selectedValue}>{item.name}</option>
         ))}
       </select>
-      <button onClick={getEquipmentInfo} className="block h-[50px] w-[190px] bg-[#006404] rounded text-white">Search</button>
+      <button onClick={getEquipmentInfo} className="block h-[50px] w-[190px] bg-[#006404] rounded text-white">Pesquisar</button>
       {searchClicked ?
       <div>
         <h2 className='text-2xl'>Informações do equipamento:</h2>
@@ -186,14 +201,14 @@ export default function Dashboard() {
             </li>
           ))}
         </ul>
-        <h2 className='text-2xl'>Posição mais recente do equipamento:</h2>
+        <h2 className='text-2xl'>Posiçôes mais recentes do equipamento:</h2>
         <ul>
           {equipmentPositionState.map((item,index) => (
             <li key={index}>
               <span className='text-[#2E80CC]'>Data:</span> {item['date']} {'\n'}
               <span className='text-[#2E80CC]'>Local:</span> {item['lat']} {'\n'} {item['lon']}
               {'\n'}
-              <button className="text-[#5AB0FF]"onClick={() => getGoogleMapPosition(item['lat'], item['lon'])}>Ver no mapa</button>
+              <button className="text-white p-[10px] ml-4 text-1xl rounded bg-[#006404] mt-2"onClick={() => getGoogleMapPosition(item['lat'], item['lon'])}>Ver no mapa</button>
             </li>
           ))}
         </ul>

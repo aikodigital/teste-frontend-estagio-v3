@@ -7,7 +7,7 @@ export default function App() {
 
   return <>
   {isDashLoaded ?
-    <Dashboard/>
+    <Dashboard setDashLoaded={setDashLoaded}/>
     :
     <Landing setDashLoaded={setDashLoaded}/>
   }

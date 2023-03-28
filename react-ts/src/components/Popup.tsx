@@ -28,16 +28,6 @@ function traslateState(stateID: string) {
   return "Estado não encontrado";
 }
 
-function formatDate(dateString: string): string {
-  const date = new Date(dateString);
-  return `${date.getDate().toString().padStart(2, "0")}/${(date.getMonth() + 1)
-    .toString()
-    .padStart(2, "0")}/${date.getFullYear().toString()} ${date
-    .getHours()
-    .toString()
-    .padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}`;
-}
-
 import MapDisplay from "./MapDisplay";
 
 export default function Popup(props: any) {
@@ -96,7 +86,11 @@ export default function Popup(props: any) {
               <li className="text-base lg:text-lg">
                 <div className="">
                   <p>
-                    {formatDate(estado.date)} -{" "}
+                    {new Intl.DateTimeFormat("pt-BR", {
+                      dateStyle: "short",
+                      timeStyle: "short",
+                      timeZone: "UTC",
+                    }).format(new Date(estado.date))} -{" "}
                     {traslateState(estado.equipmentStateId)}
                   </p>
                 </div>

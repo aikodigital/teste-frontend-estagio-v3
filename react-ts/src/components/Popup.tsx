@@ -71,8 +71,8 @@ export default function Popup(props: any) {
   return (
     <div className="z-40 w-full h-screen fixed top-0 left-0 grid place-items-center bg-transparent backdrop-blur-sm">
       <div className="z-50 bg- w-[90%] h-[90vh] rounded-xl bg-slate-800 flex flex-col snap-y overflow-scroll overflow-x-hidden">
-        <button onClick={() => props.setTrigger(false)}>
-          <div className="flex flex-row-reverse p-5">
+        <div className="flex flex-row-reverse p-5">
+          <button onClick={() => props.setTrigger(false)}>
             <svg
               className="fill-white"
               width="24"
@@ -81,8 +81,8 @@ export default function Popup(props: any) {
             >
               <path d="M12 11.293l10.293-10.293.707.707-10.293 10.293 10.293 10.293-.707.707-10.293-10.293-10.293 10.293-.707-.707 10.293-10.293-10.293-10.293.707-.707 10.293 10.293z" />
             </svg>
-          </div>
-        </button>
+          </button>
+        </div>
         <div className="w-full text-center grow">
           <MapDisplay posicoes={posicoes} estadosArr={estadosArr} />
         </div>

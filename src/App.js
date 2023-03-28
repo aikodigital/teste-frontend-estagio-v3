@@ -65,7 +65,7 @@ function App() {
       timeZone: "UTC",
     };
 
-    if (window.innerWidth <= 500) {
+    if (window.innerWidth <= 893) {
       options.month = "numeric";
       options.day = "2-digit";
       options.hour = "2-digit";

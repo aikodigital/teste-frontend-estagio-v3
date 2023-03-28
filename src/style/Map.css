@@ -16,7 +16,7 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 893px) {
     .map--container {
         margin: auto;
         width: 90vw;

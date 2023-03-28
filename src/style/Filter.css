@@ -140,9 +140,7 @@
     background-color: #ccc;
 }
 
-@media screen and (max-width: 1024px) {}
-
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 893px) {
     .--filter-container {
         display: flex;
         justify-content: center;

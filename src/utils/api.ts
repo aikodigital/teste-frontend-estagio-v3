@@ -9,6 +9,10 @@ import CargoTruck from '../assets/cargotruck.png';
 import Harvester from '../assets/harvester.png';
 import LogLoader from '../assets/logloader.png';
 
+import Operating from '../assets/operating.svg';
+import Stoped from '../assets/stoped.svg';
+import Maintenance from '../assets/maintenance.svg';
+
 export type Equipment = (typeof equipment)[0] & {
   model: (typeof equipmentModel)[0] | null;
   states: Array<(typeof equipmentState)[0] & { date: string }>;
@@ -130,6 +134,20 @@ export function getIconByModelName(name: string | undefined) {
       return LogLoader;
     default:
       return CargoTruck;
+  }
+}
+
+export function getStateIcon(id: string) {
+  const state = getEquipmentStateById(id);
+  switch (state?.name) {
+    case 'Operando':
+      return Operating;
+    case 'Parado':
+      return Stoped;
+    case 'Manutenção':
+      return Maintenance;
+    default:
+      return Operating;
   }
 }
 

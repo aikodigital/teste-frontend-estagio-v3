@@ -2,20 +2,20 @@ import React from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 
-const color = (estado: string) => {
-  if (estado === "Operando") {
+const color = (state: string) => {
+  if (state === "Operando") {
     return "#2ecc71";
   }
-  if (estado === "Parado") {
+  if (state === "Parado") {
     return "#f1c40f";
   }
-  if (estado === "Manutenção") {
+  if (state === "Manutenção") {
     return "#e74c3c";
   }
-};
+};  
 
 export default function MapDisplay(props: any) {
-  const posicoes = props.posicoes;
+  const positions = props.positions;
 
   const markerIconColor = (estado: string) =>
     L.icon({
@@ -37,7 +37,7 @@ export default function MapDisplay(props: any) {
 
   return (
     <MapContainer
-      center={posicoes[0]}
+      center={positions[0]}
       zoom={13}
       scrollWheelZoom={false}
       style={{ height: "400px" }}
@@ -46,10 +46,10 @@ export default function MapDisplay(props: any) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {posicoes.map((posicao: L.LatLngExpression, index: React.Key) => (
+      {positions.map((position: L.LatLngExpression, index: React.Key) => (
         <Marker
           key={index}
-          position={posicao}
+          position={position}
           icon={markerIconColor(props.estadosArr[index])}
         >
           <Popup>{props.estadosArr[index]}</Popup>

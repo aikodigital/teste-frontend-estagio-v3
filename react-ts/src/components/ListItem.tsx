@@ -10,12 +10,12 @@ export default function ListItem(props: any) {
         onClick={() => setPopupState(!PopupState)}
         className=" bg-slate-800 text-xl rounded-xl w-4/5 grid place-items-center min-h-[6rem] transform ease-in-out transition duration-700 hover:bg-slate-700"
       >
-        {props.equipamento.name}
+        {props.equipment.name}
       </button>
       <Popup
         trigger={PopupState}
         setTrigger={setPopupState}
-        equipamento={props.equipamento}
+        equipment={props.equipment}
       />
     </>
   );

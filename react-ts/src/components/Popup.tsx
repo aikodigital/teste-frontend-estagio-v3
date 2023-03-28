@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-import Estados from "../../../data/equipmentState.json";
+import States from "../../../data/equipmentState.json";
 import Modelo from "../../../data/equipmentModel.json";
-import HistEstados from "../../../data/equipmentStateHistory.json";
-import HistPosicao from "../../../data/equipmentPositionHistory.json";
+import StatesHistory from "../../../data/equipmentStateHistory.json";
+import PositionHistory from "../../../data/equipmentPositionHistory.json";
 
-let estadosArr: string[] = [];
+let statesArr: string[] = [];
 
 const idMap = {
   "a7c53eb1-4f5e-4eba-9764-ad205d0891f9": 0,
@@ -19,11 +19,11 @@ const idMap = {
   "fe2a2e11-bfa6-46b6-990b-fd8175946b7e": 8,
 };
 
-function traduzEstado(estadoId: string) {
-  const estadoNoTimeFrame = Estados.find((status) => status.id === estadoId);
-  if (estadoNoTimeFrame?.name) {
-    estadosArr.push(estadoNoTimeFrame.name);
-    return estadoNoTimeFrame.name;
+function traslateState(stateID: string) {
+  const stateOnTimeFrame = States.find((status) => status.id === stateID);
+  if (stateOnTimeFrame?.name) {
+    statesArr.push(stateOnTimeFrame.name);
+    return stateOnTimeFrame.name;
   }
   return "Estado não encontrado";
 }
@@ -41,32 +41,32 @@ function formatDate(dateString: string): string {
 import MapDisplay from "./MapDisplay";
 
 export default function Popup(props: any) {
-  const [posicoes, setPosicoes] = useState<
+  const [positions, setPositions] = useState<
     { lat: number | null; lon: number | null }[]
   >([]);
 
-  const equipmentIndex = idMap[props.equipamento.id as keyof typeof idMap];
-  const estadoAtual = Estados.find(
+  const equipmentIndex = idMap[props.equipment.id as keyof typeof idMap];
+  const estadoAtual = States.find(
     (status) =>
       status.id ===
-      HistEstados[equipmentIndex].states.slice(-1)[0].equipmentStateId
+      StatesHistory[equipmentIndex].states.slice(-1)[0].equipmentStateId
   );
 
   useEffect(() => {
-    const equipamentoId = props.equipamento.id;
+    const equipmentID = props.equipment.id;
 
-    const posicaoData = HistPosicao.find(
-      (data) => data.equipmentId === equipamentoId
+    const posicaoData = PositionHistory.find(
+      (data) => data.equipmentId === equipmentID
     );
 
     if (posicaoData) {
-      const posicoes = posicaoData.positions.map(({ lat, lon }) => ({
+      const positions = posicaoData.positions.map(({ lat, lon }) => ({
         lat: lat || null,
         lon: lon || null,
       }));
-      setPosicoes(posicoes);
+      setPositions(positions);
     }
-  }, [props.equipamento]);
+  }, [props.equipment]);
   if (!props.trigger) return null;
   return (
     <div className="z-40 w-full h-screen fixed top-0 left-0 grid place-items-center bg-transparent backdrop-blur-sm">
@@ -84,7 +84,7 @@ export default function Popup(props: any) {
           </button>
         </div>
         <div className="w-full text-center grow">
-          <MapDisplay posicoes={posicoes} estadosArr={estadosArr} />
+          <MapDisplay positions={positions} estadosArr={statesArr} />
         </div>
         <div className="w-full grid place-items-center text-xl pb-2">
           Estado Atual: {estadoAtual?.name}
@@ -92,12 +92,12 @@ export default function Popup(props: any) {
         <div className="w-full grid place-items-center text-xl">
           Historico de Estados
           <ul className="border-2 rounded-xl px-20 py-2 border-slate-600 list-decimal mb-5">
-            {HistEstados[equipmentIndex].states.map((estado) => (
+            {StatesHistory[equipmentIndex].states.map((estado) => (
               <li className="text-base lg:text-lg">
                 <div className="">
                   <p>
                     {formatDate(estado.date)} -{" "}
-                    {traduzEstado(estado.equipmentStateId)}
+                    {traslateState(estado.equipmentStateId)}
                   </p>
                 </div>
               </li>

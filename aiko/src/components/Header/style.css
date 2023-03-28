@@ -60,6 +60,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 @media (min-width: 768px) {
@@ -106,6 +107,6 @@
   }
 
   .search {
-    width: 30%;
+    width: 60%;
   }
 }

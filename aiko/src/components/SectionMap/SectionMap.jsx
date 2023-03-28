@@ -35,9 +35,10 @@ function SectionMap() {
     popupSize: [20, 30],
   });
 
+  let nameEqip = [...nameEquipment];
   useEffect(() => {
     function captureDatesAllEqps() {
-      nameEquipment.forEach((eqp) => {
+      nameEqip.forEach((eqp) => {
         // Adiciona a última posição
         locationEquipments.forEach((loc) => {
           const lastIndexPos = loc.positions.length - 1;
@@ -62,7 +63,7 @@ function SectionMap() {
       });
     }
 
-    setAllEquip(nameEquipment);
+    setAllEquip(nameEqip);
     captureDatesAllEqps();
   }, []);
 

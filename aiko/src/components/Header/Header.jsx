@@ -15,18 +15,20 @@ function Header() {
 
   function redirectToPagEquip(value) {
     console.log(nameEquip);
-    const textSearch = value.toUpperCase();
-    let findName = false;
-    nameEquip.forEach((equip) => {
-      if (equip.name == textSearch) {
-        findName = true;
-        navigate(`/equip/${equip.id}`);
-        setInputValue("");
-      }
-    });
+    if (value) {
+      const textSearch = value.toUpperCase();
+      let findName = false;
+      nameEquip.forEach((equip) => {
+        if (equip.name == textSearch) {
+          findName = true;
+          navigate(`/equip/${equip.id}`);
+          setInputValue("");
+        }
+      });
 
-    if (!findName) {
-      navigate(`/notFound`);
+      if (!findName) {
+        navigate(`/notFound`);
+      }
     }
   }
 

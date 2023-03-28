@@ -11,9 +11,10 @@ import { Link } from "react-router-dom";
 function Subtitle() {
   const [equip, setEquip] = useState([]);
 
+  let nameEquip = [...nameEquipment];
   useEffect(() => {
     function captureStatusEqps() {
-      nameEquipment.forEach((eqp) => {
+      nameEquip.forEach((eqp) => {
         statusHistory.forEach((history) => {
           if (history.equipmentId == eqp.id) {
             const lastIndexStatus = history.states.length - 1;
@@ -30,7 +31,7 @@ function Subtitle() {
       });
     }
 
-    setEquip(nameEquipment);
+    setEquip(nameEquip);
     captureStatusEqps();
   }, []);
 

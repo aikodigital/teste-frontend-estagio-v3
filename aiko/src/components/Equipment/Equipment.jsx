@@ -33,9 +33,10 @@ function Equipment() {
 
   L.Marker.prototype.options.icon = markerIcon;
 
+  let nameEquip = [...nameEquipment];
   useEffect(() => {
     function captureDatesEqps() {
-      nameEquipment.forEach((eqp) => {
+      nameEquip.forEach((eqp) => {
         // Adciona a localização
         locationEquipments.forEach((loc) => {
           // Captura a última posição no array de localização, no caso a mais atual
@@ -76,7 +77,7 @@ function Equipment() {
 
     // Captura o equipamento selecionado pelo usuário
     function getOneEquip(id) {
-      nameEquipment.forEach((equip) => {
+      nameEquip.forEach((equip) => {
         if (equip.id === id) {
           setEquipDates(equip);
         }

@@ -241,7 +241,7 @@ A aplicação foi desenvolvida utilizando:
 
 ### Componentes
 
-O programa foi dividido em diversos componentes, encontrados na pasta **/components**, sendo eles:
+O programa foi dividido em diversos componentes, encontrados na pasta `/components`, sendo eles:
 - Lista (`List.tsx`)
 - Elemento da Lista (`ListItem.tsx`)
 - Popup (aparece ao clicar em algum elemento da lista, `Popup.tsx`)

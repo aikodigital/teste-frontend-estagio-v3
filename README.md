@@ -212,7 +212,14 @@ Para realizar a entrega do teste você deve:
 
 # Teste para Front-end Aiko Digital
 
-## Instaloação
+## Descrição
+
+
+
+## Tecnologias utilizadas
+
+
+## Instalação e inicialização do projeto
 ```
 git clone
 cd client

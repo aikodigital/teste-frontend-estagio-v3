@@ -5,8 +5,9 @@ import { Icon } from 'leaflet';
 import './Map.css';
 
 const Map = (props) => {
-  const report = props.report!= null ? props.report.lastPosition() : {lat: -19, lon: -46};
-  const position = [report.lat, report.lon];
+  const reportCoordinates = props.report!= null ? props.report.lastPosition() : {lat: -19, lon: -46};
+
+  const position = [reportCoordinates.lat, reportCoordinates.lon];
   const zoom = props.zoom;
   const setReport= props.setReport;
 
@@ -26,6 +27,7 @@ const Map = (props) => {
     })[0].name;
 
     const model = equipment.modelName;
+    const selected = props.report != null && equipment.name == props.report.name? 'marker-selected': '';
 
     const coordinates = equipment.lastPosition();
     const icon = new Icon({
@@ -33,9 +35,7 @@ const Map = (props) => {
       iconSize: [75, 75],
       iconAnchor: [32, 60],
       popupAnchor: [0, -75],
-      className: `${equipment.id}`,
-      data: `${equipment.id}`,
-
+      className: `${equipment.id} ${selected}`,
     })
     
     return (

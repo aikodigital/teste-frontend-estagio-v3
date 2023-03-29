@@ -110,7 +110,6 @@ function MoreInfoPage({ id, handleClose, getEquipmentName, getEquipmentLastState
     function handleDownloadCSV() {
         const equipmentName = getEquipmentName(id);
         const date = new Date().toLocaleDateString().replace('///g', '-');
-        // const title = `${equipmentName} - ${id}`;
         const fileName = `historico_ - _${equipmentName}_-_${id}_-_${date}.csv`;
         const rows = equipmentStateHistory
             .find((item) => item.equipmentId === id)

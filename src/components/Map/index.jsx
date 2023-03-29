@@ -1,6 +1,6 @@
 import Button from '../Button';
 import { eqState } from '../../entities/equipment';
-import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, useMap, Popup } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import './Map.css';
 
@@ -15,14 +15,6 @@ const Map = (props) => {
 
     return ;
   }
-
-  /* function SetEquipment({children}){
-    const map = useMap();
-    map.addEventListener('click', () => setReport(children))
-  } */
-
-  
-  
   const equipments = props.equipments;
   const markers = equipments.map(equipment => {
     
@@ -40,7 +32,8 @@ const Map = (props) => {
       iconSize: [75, 75],
       iconAnchor: [32, 60],
       popupAnchor: [0, -75],
-      className: `${state}`,
+      className: `${equipment.id}`,
+      data: `${equipment.id}`,
 
     })
     
@@ -50,12 +43,26 @@ const Map = (props) => {
           key={equipment.id}
           position={[coordinates.lat, coordinates.lon]}
         >
+          <Popup key={equipment.id}>
+            <p>{equipment.name}</p>
+            <p>{equipment.modelName}</p>
+          </Popup>
         </Marker>
       );
 
   })
+
+  const onReport = e =>{
+    const target = e.target;
+    if(target.localName === 'img' && target.classList[0] === 'leaflet-marker-icon'){
+      const equipment = equipments.filter(eq => eq.id === target.classList[1])[0];
+      setReport(equipment);
+    }
+  }
+
   return (
-      <MapContainer center={[-19, -46]} zoom={11} scrollWheelZoom={false}>
+    <section onClick={onReport}>
+    <MapContainer center={[-19, -46]} zoom={11} scrollWheelZoom={false}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -63,7 +70,7 @@ const Map = (props) => {
       {markers}
       <SetPreview/>
     </MapContainer>
-    
+    </section>
   );
 }
 

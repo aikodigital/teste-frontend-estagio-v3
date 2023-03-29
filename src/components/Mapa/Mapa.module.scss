@@ -1,12 +1,31 @@
+body {
+  background-color: lightgray;
+}
+
 .mapDiv {
   display: flex;
   flex-direction: row;
 }
-
 
 .MapContainer {
   height: 500px;
   width: 1000px;
   margin: 5% 3%;
   
+}
+
+.tableContainer {
+  margin-top: 20px;
+}
+
+.tabelaCabeca {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  justify-content: space-around;
+}
+
+.linhaTabela {
+  display: flex;
+  flex-wrap: wrap;
 }

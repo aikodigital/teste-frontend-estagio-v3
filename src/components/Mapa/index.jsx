@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button} from '@mui/material';
 import histStates from '../../Utils/histEstados'
 import fullEquipment from '../../utils/obterDados'
 import style from './Mapa.module.scss'
@@ -46,28 +47,54 @@ return (
               <li><h3>Nome: {equipamento.name}</h3></li>
               <li><h3>Modelo: {equipamento.modelName}</h3></li>
               <li><h3>Estado atual: {equipamento.stateData.name}</h3></li>
-              <li>Id: <strong>{equipamento.id}</strong></li>
+              <li><h4>Id: {equipamento.id}</h4></li>
             </ul>
-            <button onClick={() => exibirHist(equipamento.id)}>Ver histórico completo</button>
+            <div>
+              <Button  
+              onClick={() => exibirHist(equipamento.id)}
+              variant="outlined"
+              color="info"
+              size='small'
+            >
+              Ver histórico completo
+            </Button>
+            </div>
+            
           </Popup>
         </Marker>
       ))}
     </MapContainer>
     <div>
       {historico && (
-      <div>
-        <div>
-          <h3>Histórico do equipamento: {historicoEstados[0].name}</h3>
-          <h3>Id: {historicoEstados[0].id}</h3>
-          <button onClick={() => setHistorico(false)}>Fechar Histórico</button>
-        </div>
-        {historicoEstados[0].historyStates.slice(0).reverse().map((history, index) => ( 
-          <div key={index}>
-            <h3>Data: <strong>{history.date}</strong></h3>
-            <h3>Estado: {history.status}</h3>
+        <TableContainer component={Paper} className={style.tableContainer}>
+          <div className={style.tabelaCabeca}>
+            <h3>Histórico de ({historicoEstados[0].name})</h3>
+          <Button 
+            variant="outlined" 
+            color="error"
+            size='small'
+            onClick={() => setHistorico(false)}
+          >
+            Fechar
+          </Button>
           </div>
-        ))}
-      </div>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Data</TableCell>
+                <TableCell>Estado</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {historicoEstados[0].historyStates.slice(0).reverse().map((history, index) => (
+                <TableRow key={index}>
+                  <TableCell>{history.date}</TableCell>
+                  <TableCell>{history.status}</TableCell>
+                </TableRow> 
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
     )}
     </div>
   </div>

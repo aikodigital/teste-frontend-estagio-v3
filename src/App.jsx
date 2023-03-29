@@ -1,4 +1,3 @@
-import './App.css'
 import Mapa from './components/Mapa'
 
 function App() {

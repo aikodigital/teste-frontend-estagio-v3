@@ -7,10 +7,7 @@ import { EquipmentsPositionContext } from "../../../Context/EquipmentsPositionCo
 import { EquipmentsStateContext } from "../../../Context/EquipmentsState";
 import { EquipmentsStateHistoryContext } from "../../../Context/EquipmentsStateHistory";
 import { EquipmentsModelContext } from "../../../Context/EquipmentsModelContext";
-import {
-  EquipmentsContext,
-  IEquipments,
-} from "../../../Context/EquipmentsContext";
+import { EquipmentsContext } from "../../../Context/EquipmentsContext";
 
 function Map() {
   const equipmentsPositionsProvider = useContext(EquipmentsPositionContext);
@@ -41,24 +38,27 @@ function Map() {
     popupAnchor: [0, -46],
   });
 
-  const hvIcon = new L.Icon({
+  const gtIcon = new L.Icon({
     iconUrl: "img/garra.png",
     iconSize: [35, 45],
     iconAnchor: [17, 46],
     popupAnchor: [0, -46],
   });
 
-  const gtIcon = new L.Icon({
+  const hvIcon = new L.Icon({
     iconUrl: "img/harvester.png",
     iconSize: [35, 45],
     iconAnchor: [17, 46],
     popupAnchor: [0, -46],
   });
 
+  const defaultIcon = new L.Icon.Default();
+
   const icons = {
     CA: caIcon,
     HV: hvIcon,
     GT: gtIcon,
+    default: defaultIcon,
   };
 
   function getEquipmentStatesHistory(equipmentId: string) {
@@ -101,14 +101,6 @@ function Map() {
 
     if (equipmentModel != null) {
       return equipmentModel[0];
-    }
-  }
-
-  function getIconCode(equipmentName: string) {
-    const iconCode = equipmentName.substring(0, 2);
-
-    if (iconCode) {
-      return iconCode;
     }
   }
 

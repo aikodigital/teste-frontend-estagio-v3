@@ -73,8 +73,8 @@ function Panel() {
           );
         })
       ) : (
-        <Text alignSelf="center" mt="3">
-          Selecione algum ponto
+        <Text as="h3" alignSelf="center" mt="3">
+          Selecione um equipamento
         </Text>
       )}
     </Box>

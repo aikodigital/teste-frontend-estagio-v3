@@ -78,7 +78,7 @@ function Map() {
               ]}
               eventHandlers={{
                 click: () => {
-                  selectedEquipmentIdProvider?.selectedEquipmentId
+                  selectedEquipmentIdProvider?.selectedEquipmentId == equipment.equipmentId
                     ? selectedEquipmentIdProvider?.setSelectedEquipmentId("")
                     : selectedEquipmentIdProvider?.setSelectedEquipmentId(
                         equipment.equipmentId

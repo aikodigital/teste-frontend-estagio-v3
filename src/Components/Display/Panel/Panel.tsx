@@ -37,7 +37,7 @@ function Panel() {
     <Box
       bg="#f1eee8"
       h="100vh"
-      w="25%"
+      w="20%"
       borderRight="1px solid black"
       display="flex"
       flexDirection="column"

@@ -53,7 +53,6 @@ return (
         </Marker>
       ))}
     </MapContainer>
-    <Button/>
     <div>
       {historico && (
       <div>

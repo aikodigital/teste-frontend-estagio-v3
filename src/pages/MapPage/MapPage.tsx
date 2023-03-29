@@ -2,11 +2,8 @@ import React, { useState } from 'react'
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 import './MapPage.css'
 
-export interface MapPageProps {
-
-}
-
 export default function MapPage(props: any) {
+    console.log(props)
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
         googleMapsApiKey: "AIzaSyCmeGwFqG1jjxNhjahMHArIS-LCyQRCPew"

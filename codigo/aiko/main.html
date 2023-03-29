@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Aiko Teste Estágio Frontend</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <!-- Leaflet-->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+        crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+        crossorigin=""></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="#page-top">Teste Estágio V3</a>
+                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#head">Mapa</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Equipamentos</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header id = "head" class="masthead bg-primary text-white text-center">
+            <div id = "map" class="container d-flex align-items-center flex-column" style = "height:280px;">
+                
+
+            </div>
+            <script>
+                var map = L.map('map').setView([-19.126536, -45.947756], 13);
+                L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                }).addTo(map);
+            </script>
+        </header>
+        <!-- Equipment Section-->
+        <section class="page-section portfolio" id="portfolio">
+            <div class="container">
+                <!-- Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Equipamentos</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-list-ul"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <div id="listEquip" class="list-group">
+                </div>
+            </div>
+            <script>
+                class Position{
+                    latitude;
+                    longitude;
+                    date;
+                    // constructor for position.json
+                    constructor(latitude, longitude, date){
+                        this.latitude = latitude;
+                        this.longitude = longitude;
+                        this.date = date;
+                    }
+                }
+    
+                class StateHistory{
+                    date;
+                    equipmentStateId;
+    
+                    // constructor for stateHistory
+                    constructor(date, equipmentStateId){
+                        this.date = date;
+                        this.equipmentStateId = equipmentStateId;
+                    }
+                }
+                // Class equipment
+                class Equipment {
+                    equipmentId;
+                    equipmentName;
+                    equipmentModelId;
+                    modelName;
+                    value;
+                    stateId;
+                    stateColor;
+                    stateName;
+                    positionList = [];
+                    stateHistoryList = [];
+    
+                    // constructor for equipment.json
+                    constructor(equipmentId, equipmentModelId, modelName){
+                        this.equipmentId = equipmentId;
+                        this.equipmentModelId = equipmentModelId;
+                        this.modelName = modelName;
+                    }
+                    
+                }
+                
+                // equipment list
+                var equipmentList = [];
+                // Get the information from the json files
+                fetch('data/equipment.json')
+                    .then(response => response.json())
+                    .then(equipObj => {
+                        for (var i = 0; i < equipObj.length; i++) {
+                            var equipment = new Equipment(equipObj[i].id, equipObj[i].equipmentModelId, equipObj[i].name);
+                            equipmentList.push(equipment);
+                        }
+                    });
+                
+                fetch('data/equipmentPositionHistory.json')
+                    .then(response => response.json())
+                    .then(equipObj => {
+                        for (var i = 0; i < equipObj.length; i++) {
+                            for (var j = 0; j < equipmentList.length; j++) {
+                                var equipment = equipmentList[j];
+                                if (equipment.equipmentId == equipObj[i].equipmentId){
+                                    for(var k = 0; k < equipObj[i].positions.length; k++){
+                                        var pos = new Position(equipObj[i].positions[k].lat, equipObj[i].positions[k].lon, equipObj[i].positions[k].date);
+                                        equipment.positionList.push(pos)
+                                    }
+                                }
+                            }
+                        }
+                    });
+
+                fetch('data/equipmentStateHistory.json')
+                    .then(response => response.json())
+                    .then(equipObj => {
+                        for (var i = 0; i < equipObj.length; i++) {
+                            for (var j = 0; j < equipmentList.length; j++) {
+                                var equipment = equipmentList[j];
+                                if (equipment.equipmentId == equipObj[i].equipmentId){
+                                    for(var k = 0; k < equipObj[i].states.length; k++){
+                                        var pos = new StateHistory(equipObj[i].states[k].date, equipObj[i].states[k].equipmentStateId);
+                                        equipment.stateHistoryList.push(pos)
+                                        if(k == equipObj[i].states.length - 1){
+                                            equipment.stateId = equipObj[i].states[k].equipmentStateId;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+
+                fetch('data/equipmentModel.json')
+                    .then(response => response.json())
+                    .then(equipObj => {
+                        for (var i = 0; i < equipObj.length; i++) {
+                            var model = equipObj[i];
+                            for (var j = 0; j < equipmentList.length; j++) {
+                                var equipment = equipmentList[j];
+                                if (equipment.equipmentModelId == model.id){
+                                    equipment.equipmentName = model.name;
+                                    for(var k = 0; k < model.hourlyEarnings.length; k++){
+                                        if(model.hourlyEarnings[k].equipmentStateId == equipment.stateId){
+                                            equipment.value = model.hourlyEarnings[k].value;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+
+                fetch('data/equipmentState.json')
+                    .then(response => response.json())
+                    .then(equipObj => {
+                        for (var i = 0; i < equipObj.length; i++) {
+                            var state = equipObj[i];
+                            for (var j = 0; j < equipmentList.length; j++) {
+                                var equipment = equipmentList[j];
+                                if (equipment.stateId == state.id){
+                                    equipment.stateName = state.name;
+                                    equipment.stateColor = state.color;
+                                }
+                            }
+                        }
+                        for (var i = 0; i < equipmentList.length; i++) {
+                            var equipment = equipmentList[i];
+                            var listItem = document.createElement("a");
+                            listItem.setAttribute("id", "equipamento");
+                            listItem.className = "list-group-item list-group-item-action flex-column align-items-start";
+                            listItem.innerHTML = "<div class='d-flex w-100 justify-content-between'><h5 class='mb-1'>" + equipment.equipmentName + "</h5><small>" + equipment.stateName + "</small></div><p class='mb-1'>Valor por hora: " + equipment.value + "</p><small>" + equipment.modelName + "</small>";
+                            document.getElementById("listEquip").appendChild(listItem);
+                            //mark on the map
+                            for (var k=0; k < equipment.positionList.length; k++){
+                                var pos = equipment.positionList[k];
+                                var marker = L.marker([pos.latitude, pos.longitude]).addTo(map);
+                                marker.bindPopup("<b>" + equipment.equipmentName + "</b><br>" + pos.date).openPopup();
+                            }
+                        }
+                    });
+            </script>
+        </section>
+        <!-- Footer-->
+        <footer class="footer text-center" id="contato">
+            <div class="container">
+                <div class="row">
+                    <!-- Footer Location-->
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">Contato</h4>
+                        <p class="lead mb-0">
+                            Pedro Heinrich Sales Pena
+                            <br>
+                            <a href="mailto: pedroheinri@gmail.com">pedroheinri@gmail.com</a>
+                            <br>
+                            Belo Horizonte, MG
+                        </p>
+                    </div>
+                    <!-- Footer Social Icons-->
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">Na web</h4>
+                        <a class="btn btn-outline-light btn-social mx-1" href="https://github.com/PedroHeinrichSP"><i class="fab fa-fw fa-github"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="https://www.linkedin.com/in/heinrichfeather/"><i class="fab fa-fw fa-linkedin-in"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="https://wa.me/5531988309642"><i class="fab fa-fw fa-whatsapp"></i></a>
+                    </div>
+                    <!-- Footer About Text-->
+                    <div class="col-lg-4">
+                        <h4 class="text-uppercase mb-4">Sobre mim</h4>
+                        <p class="lead mb-0">
+                            Sou um estudante de Ciência da Computação na PUC Minas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Copyright Section-->
+        <div class="copyright py-4 text-center text-white">
+            <div class="container"><small>Copyright &copy; Teste Estágio 2023</small></div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>

@@ -1,0 +1,16 @@
+@import '../../styles/variables';
+
+.navbar {
+    background-color: lightblue;
+    padding: 8px;
+
+    &__list {
+        display: flex;
+        justify-content: space-around;
+        list-style-type: none;
+        font-weight: bolder;
+        color: $tertiary-color;
+        font-size: 18px;
+    }
+
+}

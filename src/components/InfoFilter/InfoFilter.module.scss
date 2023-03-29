@@ -1,0 +1,17 @@
+@import '../../styles/variables.scss';
+
+.filter{
+    background-color: $light-color;
+    padding: 7px;
+    margin:  11px 0px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 4px $tertiary-color;
+    color: $secundary-color;
+    font-weight: 300;
+
+    &__select {
+        border: none;
+        width: 140px;
+        border-radius: 20px;
+    }
+}

@@ -1,0 +1,23 @@
+@import '../../styles/variables';
+
+.footer{
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    height: 150px;
+    color: white;
+    font-size: 18px;
+    background-image: linear-gradient(to Left,$primary-color , $secundary-color 46% );
+    &__images{
+        a{
+            width: 40px;
+            height: 40px;
+            margin: 0 10px;
+            img{
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
+
+}

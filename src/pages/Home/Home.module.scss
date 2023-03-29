@@ -1,0 +1,8 @@
+@import  '../../styles/variables.scss';
+
+.home{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: $bgcolor;
+}

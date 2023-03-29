@@ -1,0 +1,88 @@
+/* Botão dos popups do map */
+.infos {
+    border: 0;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+.infos:hover{
+    background-color: beige;
+    cursor: pointer;
+}
+/* define as propriedade da div mapa2*/
+.mapa2{
+    display: inline-block;
+    column-count: 2;
+    column-gap: 0px;
+}
+/* define as propriedade da div tabelainfo */
+.tabelainfo{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    overflow-x: hidden;
+    position: relative; 
+    font-family: 'Roboto', sans-serif;   
+    background-color: #e0e0e0;
+}
+.tabelainfo::-webkit-scrollbar {
+    width: 10px;
+    background-color: #0bd9047a;
+    border-radius: 10px;
+
+}
+.tabelainfo::-webkit-scrollbar-thumb {
+    background-color: #021373;
+    border-radius: 10px;
+}
+  
+table {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 5vh;
+}
+  
+thead th {
+    background-color: #0BD904;
+    color: #fff;
+    font-weight: bold;
+    text-align: left;
+    padding: 10px;
+    border-radius: 10px;
+}
+  
+tbody td {
+    background-color: #021373;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    width: 50%;
+}
+/* configura textos */
+.titulo{
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fff;
+}
+.idmap2{
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+}
+/* configura o botão close */
+.closeicon{
+    font-size: 3em;
+    color: #021373;
+    position: absolute;
+    top: 1%;
+    right: 5%;
+    cursor: pointer;
+
+}
+.closeicon:hover{
+    top:0%;
+    right: 4%;    
+    font-size: 3.5em;
+    color:#0BD904;
+}
+/* configura os markers de histórico  */

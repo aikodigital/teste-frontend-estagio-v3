@@ -1,5 +1,6 @@
 import React from 'react'
 import arvore from '../../img/arvore.png'
+import "animate.css";
 
 interface LandingProps {
   setDashLoaded: React.Dispatch<React.SetStateAction<boolean>>;
@@ -14,7 +15,7 @@ export default function Landing({ setDashLoaded }: LandingProps) {
   return (
     <div className='flex px-[190px] h-screen bg-[#161616] text-white font-extrabold'>
       <div>
-        <main className='px-[340px] pt-[335px]'>
+        <main className='px-[340px] pt-[335px] animate__animated animate__fadeIn animate__slow'>
           <h1 className='text-4xl mb-[90px]'><span className='text-[#006404]'>Forest</span>Finder</h1>
           <p className='text-3xl w-[350px]'>Centralize o controle de seus equipamentos</p>
           <p className='mt-[30px]'>De forma rápida e segura.</p>
@@ -22,7 +23,7 @@ export default function Landing({ setDashLoaded }: LandingProps) {
         </main>
       </div>
       <div>
-        <img src={arvore} className="mt-[335px]" alt="" />
+      <img src={arvore} className="mt-[335px] animate__animated animate__fadeIn animate__slow" alt="" />
       </div>
     </div>
   )

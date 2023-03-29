@@ -14,7 +14,11 @@ export default function MapPage(props: any) {
   return <div className='map'>
     {isLoaded ? (
     <GoogleMap
-      mapContainerStyle={{width: '100%', height: '60%'}}
+      mapContainerStyle={{
+        width: '100%',
+        height: '60%',
+        marginTop: '180px',
+      }}
       center={ {
           lat: props.lat, 
           lng: props.lon

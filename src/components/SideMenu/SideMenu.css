@@ -1,0 +1,12 @@
+.side-menuA, .side-menuB{
+    flex-direction: column;
+    width: 20vw;
+    height: 90vh;
+    flex-basis: 20em;
+}
+
+.side-menu__title{
+    font-size: 1.5em;
+    font-weight: 600;
+    font-family: 'Fira sans';
+}

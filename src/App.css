@@ -1,0 +1,16 @@
+.container{
+    display: flex;
+}
+
+.main{
+    justify-content: center;
+    margin: 0 5vh;
+}
+
+.header{
+    justify-content: center;
+}
+.header h2{
+    font-size: 48px;
+    font-family: 'Fira sans';
+}

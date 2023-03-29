@@ -1,0 +1,22 @@
+.map-container{
+    height: 90.3vh;
+    width: 70vw;
+    border: 1px solid var(--mainBgColor);
+}
+
+.leaflet-container{
+    width: 100%;
+}
+
+.leaflet-top, .leaflet-left{
+    background-color: white;
+}
+
+.leaflet-control-zoom-in span, .leaflet-control-zoom-out span {
+    background-color: white;
+    color: var(--mainBgColor);
+}
+
+.marker-selected {
+   background-color: rgba(127, 255, 255, 0.329);
+}

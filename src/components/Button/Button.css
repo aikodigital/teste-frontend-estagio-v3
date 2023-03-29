@@ -1,0 +1,10 @@
+.default-button{
+    background-color: var(--maincolor);
+    color: var(--mainBgColor);
+    font-family: 'Fira Sans';
+    font-weight: 600;
+}
+
+.default-button:hover{
+    filter: sepia(100%)
+}

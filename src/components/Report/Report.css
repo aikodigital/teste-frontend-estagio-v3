@@ -1,0 +1,26 @@
+.report{
+    flex-direction: column;
+    height: fit-content;
+    border: 1px solid;
+}
+
+.report p{
+    margin: 0;
+}
+.report-equipment{
+    flex-direction: column;
+}
+
+.report-theme,.report-equipment{
+    border-bottom: 1px solid;
+}
+
+.report__state-history{
+    flex-direction: column;
+    overflow-y: scroll;
+    position: relative;
+    bottom: -.45vh;
+}
+.report__state-history p{
+    text-transform: lowercase;
+}

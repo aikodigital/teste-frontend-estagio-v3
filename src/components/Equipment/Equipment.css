@@ -1,0 +1,47 @@
+.card{
+    display: grid;
+    border: 1px solid;
+    padding: .2vh 1vh;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-areas: 
+    'name name state'
+    'model model empty';
+}
+
+.card:hover{
+    cursor: pointer;
+    filter: sepia(70%);
+}
+
+.card_selected{
+    background-color: var(--maincolor);
+    color: var(--mainBgColor);
+}
+
+.card h3{
+    font-size: .9em;
+    
+}
+
+.card_name{
+    font-size: .8em;
+    grid-area: name;
+    background: none;
+}
+
+.card_name_selected, .card_model_selected{
+    color: var(--mainBgColor);
+    font-weight: 500;
+}
+
+.card_model{
+    grid-area: model;
+    background: none;
+}
+.card_state{
+    display: block;
+    width: 1em;
+    height: 1em;
+    grid-area: state;
+    justify-self: flex-end;
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<!-- GERAL -->
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,
+    initial-scale=1.0">
+    <title>Aiko</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+    <!-- leafletjs CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <script src="equipmentPositionHistory.json"></script>
+</head>
+
+<body id="bg-color">
+
+    <!-- BAR -->
+
+    <ul id="menu-geral">
+        <li><a href="index.html">Início</a></li>
+        <li><a>Sobre nós</a></li>
+        <li><a>Contato</a></li>
+        <li><a>Mais</a></li>
+        <img class="aiko" src="img/aiko.png">
+    </ul>
+
+    <script src="script2.js"></script>
+    <!-- PARTE 1 -->
+    <div class="card">
+        <div class="equipamentos">
+            <label for="equipments">Para começar, selecione o equipamento:</label>
+            <br><br>
+            <select id="equipment"></select>
+        </div>
+        <br><br>
+        <div id="equipmentDetails">
+            <div id="title"></div>
+        </div>
+        <div id="equipmentState"></div>
+    </div>
+    <div class="card2"><div id="map"></div></div> 
+    <div class="mapa-bg">
+
+
+    </div>
+    <script src="script.js"></script>
+    <div class="card">
+
+
+
+        <!-- JAVASCRIPT -->
+
+        <!-- leafletjs JavaScript -->
+        <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+            integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+
+        <script>
+            const map = L.map('map').setView([0, 0], 1);
+            const attribution =
+                '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+            const tiles = L.tileLayer(tileUrl, { attribution });
+            tiles.addTo(map);
+
+            getData();
+
+            async function getData() {
+                const responseA = await fetch('equipment.json');
+                const dataA = await responseA.json();
+
+                const responseB = await fetch('equipmentPositionHistory.json');
+                const dataB = await responseB.json();
+
+                const responseC = await fetch('equipmentState.json');
+                const dataC = await responseC.json();
+
+                const responseD = await fetch('equipmentModel.json');
+                const dataD = await responseD.json();
+
+                for (itemA of dataA) {
+                    const id = itemA.id;
+                    const itemB = dataB.find(obj => obj.equipmentId === id);
+
+                    if (itemB) {
+                        const position = itemB.positions[0];
+                        const name = itemA.name;
+
+                        L.marker([position.lat, position.lon]).addTo(map)
+                            .bindPopup(name)
+                            .openPopup();
+                    }
+                }
+            }
+        </script>
+
+
+</body>
+
+</html>

@@ -4,13 +4,13 @@ O ForestFinder é um aplicativo que permite aos usuários rastrear a localizaç�
 
 ## Funcionalidades
 
-- **Informações básicas do equipamento:** O aplicativo exibe informações básicas sobre o equipamento, como o nome, modelo, ano de fabricação e número de série.
+- **Informações básicas do equipamento:** O aplicativo exibe informações básicas sobre o equipamento, como o nome, status.
 
-- **Preço do equipamento em cada estado:** O usuário pode verificar o preço atual do equipamento em cada estado onde ele esteja disponível para venda.
+- **Preço do equipamento em cada estado:** O usuário pode verificar o preço atual do equipamento em cada estado e o lucro que ele gera por hora.
 
 - **Histórico de estados do equipamento:** O ForestFinder também exibe o histórico de estados pelos quais o equipamento passou, permitindo que o usuário saiba onde o equipamento esteve anteriormente e em que condições.
 
-- **Histórico de localização do equipamento:** Além disso, o aplicativo registra a localização do equipamento em tempo real e permite que o usuário visualize o histórico de localização por meio de um mapa interativo. Também há um botão de "localizar" que permite que o usuário veja a localização atual do equipamento.
+- **Histórico de localização do equipamento:** Além disso, o aplicativo registra a localização do equipamento em tempo real e permite que o usuário visualize o histórico de localização por meio de um mapa interativo. Também há um botão de "Ver no mapa" que permite que o usuário veja a localização atual do equipamento.
 
 ## Tecnologias utilizadas
 

@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Changa+One&display=swap');
+/*config geral*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+:root{
+    --green: #1cc180;
+    --light-green: #82d028;
+    --gray: #658390
+}
+
+body{
+    height: 100vh;
+}
+
+/* MAIN */
+
+main{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 15% 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:    "sidebar dashboard"
+}
+/* main => sidebar */
+
+.sidebar{
+    box-shadow: 30px 0px 70px rgba(0, 0, 0, 0.052);
+    grid-area: sidebar;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.sidebar h1{
+    width: 100%;
+    font-family: 'Changa One', cursive;
+    color: var(--light-green);
+    font-weight: 700;
+    font-size: 2.25rem;
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.16);
+    text-align: center;
+}
+
+.sidebar h1 span{
+    font-family: 'Changa One', cursive;
+    color: var(--green);
+}
+
+.profile {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.16);
+}
+
+.profile img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile span{
+    font-weight: 300;
+    color: var(--gray);
+}
+
+.sidebar-nav{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar-nav ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 3rem;
+}
+
+.sidebar-nav ul li{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: var(--gray);
+    font-weight: 500;
+    padding: 1rem;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-nav ul li:hover{
+    color: var(--light-green);
+    border-left: 3px solid var(--light-green);
+}
+
+.sidebar-nav ul li span{
+    margin-right: .5rem;
+}
+
+/* main => dashboard */
+
+.dashboard-wrapper{
+    background-color: #f5f3f3;
+    grid-area: dashboard;
+}
+
+.dashboard-wrapper h2{
+    padding: 6rem 3rem;
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.dashboard-wrapper h2 span{
+    font-size: 1.75rem;
+    padding-right: .5rem;
+    color: var(--light-green);
+}
+
+.card-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    gap: 1rem;
+}
+
+.card{
+    width: 100%;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0px 0px 25px rgba(128, 128, 128, 0.166);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--gray);
+    font-weight: 500;
+    opacity: 0;
+    animation: cardDrop 1s ease-out 300ms forwards;
+    flex-wrap: wrap;
+}
+
+.card:nth-child(2){
+    animation-delay: 400ms;
+}
+.card:nth-child(3){
+    animation-delay: 500ms;
+}
+.card:nth-child(4){
+    animation-delay: 600ms;
+}
+.card:nth-child(5){
+    animation-delay: 700ms;
+}
+.card:nth-child(6){
+    animation-delay: 800ms;
+}
+.card:nth-child(7){
+    animation-delay: 900ms;
+}
+.card:nth-child(8){
+    animation-delay: 1s;
+}
+.card:nth-child(9){
+    animation-delay: 1.1s;
+}
+
+.machine-info{
+    width: 400px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.machine-img{
+    width: 70px;
+    height: 70px;
+}
+
+.card-location{
+    display: flex;
+    flex-direction: column;
+}
+
+.card-btns button{
+    background-color: var(--light-green);
+    padding: .5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 90%;
+    transition: background-color 200ms;
+}
+
+.card-btns button:hover{
+    background-color: var(--green);
+}
+
+.card-state{
+    padding: .5rem;
+    width: 150px;
+    border-radius: 5px;
+    text-align: center;
+    color: black;
+}
+
+.Operando{
+    background-color: #2ecc71;
+}
+
+.Manutenção{
+    background-color: #e74c3c;
+}
+
+.Parado{
+    background-color: #f1c40f;
+}
+
+@keyframes cardDrop{
+    0%{
+        transform: translateY(-35px);
+        opacity: 0;
+    }
+
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+/* map */
+
+#map { 
+    height: 600px; 
+    width: 90%;
+}
+
+.popup{
+    text-align: center;
+}
+
+/* history */
+
+.history-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    border-radius: 5px;
+    padding: 1rem;
+    color: var(--gray);
+}
+
+.history-wrapper h3{
+    color: var(--green);
+    font-weight: 700;
+}
+
+.location{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    flex: 1;
+    max-height: 500px;
+    overflow: auto;
+    gap: 1.5rem;
+}
+
+.state{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    flex-direction: column;
+    align-items: center;
+    max-height: 500px;
+    overflow: auto;
+    gap: 1.5rem;
+}

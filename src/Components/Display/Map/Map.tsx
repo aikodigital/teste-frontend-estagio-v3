@@ -1,5 +1,5 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
-import { LatLngExpression } from "leaflet";
+import L, { LatLngExpression } from "leaflet";
 import { useContext } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { SelectedEquipmentIdContext } from "../../../Context/SelectedEquipmentIdContext";
@@ -7,7 +7,10 @@ import { EquipmentsPositionContext } from "../../../Context/EquipmentsPositionCo
 import { EquipmentsStateContext } from "../../../Context/EquipmentsState";
 import { EquipmentsStateHistoryContext } from "../../../Context/EquipmentsStateHistory";
 import { EquipmentsModelContext } from "../../../Context/EquipmentsModelContext";
-import { EquipmentsContext } from "../../../Context/EquipmentsContext";
+import {
+  EquipmentsContext,
+  IEquipments,
+} from "../../../Context/EquipmentsContext";
 
 function Map() {
   const equipmentsPositionsProvider = useContext(EquipmentsPositionContext);
@@ -30,6 +33,33 @@ function Map() {
       return filteredState[0];
     }
   }
+
+  const caIcon = new L.Icon({
+    iconUrl: "img/freightTruck.png",
+    iconSize: [35, 45],
+    iconAnchor: [17, 46],
+    popupAnchor: [0, -46],
+  });
+
+  const hvIcon = new L.Icon({
+    iconUrl: "img/garra.png",
+    iconSize: [35, 45],
+    iconAnchor: [17, 46],
+    popupAnchor: [0, -46],
+  });
+
+  const gtIcon = new L.Icon({
+    iconUrl: "img/harvester.png",
+    iconSize: [35, 45],
+    iconAnchor: [17, 46],
+    popupAnchor: [0, -46],
+  });
+
+  const icons = {
+    CA: caIcon,
+    HV: hvIcon,
+    GT: gtIcon,
+  };
 
   function getEquipmentStatesHistory(equipmentId: string) {
     const filteredEquipmentStatesHistory =
@@ -74,6 +104,14 @@ function Map() {
     }
   }
 
+  function getIconCode(equipmentName: string) {
+    const iconCode = equipmentName.substring(0, 2);
+
+    if (iconCode) {
+      return iconCode;
+    }
+  }
+
   return (
     <Box h="100vh" w="80%">
       <MapContainer
@@ -98,6 +136,8 @@ function Map() {
           );
           const equipment = getEquipment(equipmentPosition.equipmentId);
 
+          const iconCode = equipment?.name.substring(0, 2);
+
           return (
             <Marker
               key={equipmentStateHistory.equipmentId}
@@ -119,6 +159,7 @@ function Map() {
                       );
                 },
               }}
+              icon={icons[iconCode]}
             >
               <Popup>
                 <Flex direction="column" alignItems="center" p="0" m="0">

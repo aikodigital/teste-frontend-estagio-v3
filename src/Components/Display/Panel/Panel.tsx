@@ -1,5 +1,5 @@
 import { Box, Text } from "@chakra-ui/react";
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { EquipmentsStateContext } from "../../../Context/EquipmentsState";
 import { EquipmentsStateHistoryContext } from "../../../Context/EquipmentsStateHistory";
 import { SelectedEquipmentIdContext } from "../../../Context/SelectedEquipmentIdContext";
@@ -8,6 +8,10 @@ function Panel() {
   const StatesHistoryProvider = useContext(EquipmentsStateHistoryContext);
   const selectedEquipmentProvider = useContext(SelectedEquipmentIdContext);
   const equipmentsStateProvider = useContext(EquipmentsStateContext);
+
+  const statesHistory = selectedEquipmentProvider?.selectedEquipmentId
+    ? getStateHistory(selectedEquipmentProvider?.selectedEquipmentId)
+    : null;
 
   function getStateHistory(equipmentId: string) {
     const equipmentStates = StatesHistoryProvider.filter(
@@ -28,10 +32,6 @@ function Panel() {
       return filteredState[0];
     }
   }
-
-  const statesHistory = selectedEquipmentProvider?.selectedEquipmentId
-    ? getStateHistory(selectedEquipmentProvider?.selectedEquipmentId)
-    : null;
 
   return (
     <Box

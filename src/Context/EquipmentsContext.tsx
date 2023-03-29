@@ -1,6 +1,6 @@
 import { useState, useEffect, createContext } from "react";
 
-interface IEquipments {
+export interface IEquipments {
   id: string;
   equipmentModelId: string;
   name: string;

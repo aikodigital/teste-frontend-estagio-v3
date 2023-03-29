@@ -1,0 +1,311 @@
+@import url('https://fonts.googleapis.com/css2?family=KoHo:wght@200&display=swap');
+
+
+/** ---------- PARTE INDEX.HTML ---------- **/
+
+body {
+    background-color: #fff;
+    width: 1920px;
+    height: 1080px;
+}
+
+a{
+    text-decoration: none;
+    color: #3A491C;
+}
+
+* { 
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: inter;
+}
+
+
+/** NAV **/
+
+.aiko {
+    width: 70px;
+    padding-top: 10px;
+    margin-right: 20px;
+    float: right;
+}
+
+
+#menu-geral {
+    list-style: none;
+    justify-content: space-between;
+    background-color: #fff;
+    color: #3A491C;
+    font-size: 20px;
+}
+
+#menu-geral li{
+    display: inline-block;
+}
+
+#menu-geral li a{
+    padding: 20px;
+    display: inline-block;
+    text-decoration: none;
+    transition: all .6s;
+}
+
+#menu-geral li a:hover{
+     background-color: #EDFFEA;
+}
+
+
+/** PT01 **/
+
+#tittle{
+    letter-spacing: 10px;
+    color: #3A491C;
+    font-size: 20px;
+    margin-bottom: 20px;
+    margin-left: 160px;
+}
+
+.text1{
+    width: 500px;
+    font-size: 25px;
+    word-spacing: 10px;
+    line-height: 1.5;
+    margin-left: 70px;
+    float: left;
+    text-align: justify;
+    color: #3A491C;
+    display: inline-block;
+}
+
+/** ---- SERVIÇOS ---- **/
+
+.pt1 {
+    image-resolution: 40px;
+    background-image: url('img/road.png');
+    background-size: 40%;
+    background-position: 1150px 90px;
+    background-repeat: no-repeat;
+    padding: 200px;
+    background-attachment: fixed;
+    background-color: #EDFFEA;
+    height: 500px;
+}
+
+.servicos{
+    color: #3A491C;
+    display:inline-block;
+    margin-left: 1150px;
+    margin-top: -300px;
+    
+}
+
+.status{
+    font-family: KoHo;
+    font-size: 25px;
+    margin-left: 100px;
+    margin-top: -70px;  
+}
+
+img1{
+    padding: 130px;
+    margin-top: -20px;
+    padding-top: 100px;
+}
+
+.ferramentas{
+    font-family: KoHo;
+    font-size: 25px;
+    margin-left: 100px;
+    margin-top: -60px;
+}
+
+.img2{
+    padding-top: 50px;
+}
+
+.leaf{
+    font-family: KoHo;
+    font-size: 25px;
+    margin-left: 100px;
+    margin-top: -80px;
+}
+
+.img3{
+    padding-top: 50px;
+}
+
+
+/** ---------- PARTE 2 ---------- **/
+
+.pt2{
+    padding: 90px;
+    padding-left: 600px;
+    image-resolution: 40px;
+    background-image: url('img/ilustra1.png');
+    background-size: 25%;
+    background-position: 1450px -5px;
+    background-repeat: no-repeat;
+    background-attachment:local;
+    background-color: #fff;
+    height: 500px;
+}
+
+.text2{
+    font-size: 25px;
+    word-spacing: 10px;
+    line-height: 1.5;
+    margin-left: 120px;
+    text-align: justify;
+    color: #3A491C;
+    display: inline-block; 
+    width: 50%;
+}
+
+.bt1{
+    background-color: #889A66;
+    margin: 20px;
+    height: 46px;
+    width: 265px;
+    font-size: 15px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+}
+
+.bt{
+padding-left: 100px;
+}
+
+.ilustra{
+    padding-left: 740px;
+    float: left;
+    width: 50%;
+}
+
+.linkbt{
+    text-decoration: none;
+    color: #fff;
+}
+
+/** ---------- PARTE MAPA.HTML ---------- **/
+
+#bg-color {
+    background-color:#EDFFEA;
+}
+
+#map { 
+    width: 90%;
+    height: 60vh;
+    background-color: white;
+}
+
+#equipamento-title {
+    font-family: inter;
+    color: #3A491C;
+    letter-spacing: 10px;
+    padding: 10px;
+
+}
+
+/** ---------- PARTE MAPA.HTML ---------- **/
+
+.card {
+    background-color: #E0E1E1;
+    float: left;
+    width: 950px;
+    padding-left: 80px;
+    border-radius: 10px;
+    margin-top: 70px;
+    margin-left: 30px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card2 {
+    background-color: white;
+    box-shadow: 0 4px 8 px 0 rgba(0,0,0,0.2);
+    float: left;
+    width: 800px;
+    border-radius: 20px;
+    margin-top: 70px;
+    margin-left: 30px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.equipamentos{
+    color: grey;
+}
+
+.equipment {
+    font-family: inter;
+    color: #889A66;
+}
+
+#equipmentDetails {
+    background-color: white;
+    font-family: inter;
+    color: #889A66;
+    padding: 10px;
+    padding-left: -10px;
+    margin-left: -80px;
+    display: flex;
+    justify-content: center;
+}
+
+#equipmentState{
+    background-color: white;
+    font-family: inter;
+    color: #889A66;
+    padding: 10px;
+    padding-left: 100px;
+    margin-left: -80px;
+
+}
+
+/** ---------- INFO - CARD ---------- **/
+
+
+/** ---------- MEDIA - TAMANHO ---------- **/
+
+@media (max-width: 1660), (min-widt: 1050px) {
+    body {
+    background-color: #fff;
+    width: 1480px;
+    height: 1050px;
+}
+
+/** NAV -- MEDIA **/
+
+.aiko {
+    width: 70px;
+    padding-top: 10px;
+    margin-right: 20px;
+    float: right;
+}
+
+
+#menu-geral {
+    list-style: none;
+    justify-content: space-between;
+    background-color: #fff;
+    color: #3A491C;
+    font-size: 20px;
+}
+
+#menu-geral li{
+    display: inline-block;
+}
+
+#menu-geral li a{
+    padding: 20px;
+    display: inline-block;
+    text-decoration: none;
+    transition: all .6s;
+}
+
+#menu-geral li a:hover{
+     background-color: #EDFFEA;
+}
+
+
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="leaflet/leaflet.css">
+
+  <title>Monitoramento GPS</title>
+</head>
+
+<body>
+  <img src="img/aiko.png" alt="">
+  <div class="flex-container">
+    <div>
+      <main id="mapa"></main>
+      <div class="legenda-container">
+        <ul class="legenda" type="square">
+          LEGENDA:
+          <li>Caminhão de carga <span class="grey"></span></li>
+          <li>Harverster <span class="orange"></span></li>
+          <li>Garra Traçadora <span class="blue"></span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="historico-container">
+      <h1>Histórico de Status</h1>
+      <table class="historico-tabela">
+        <tr>
+          <th class="data">Data</th>
+          <th class="hora">Hora</th>
+          <th class="status">Status</th>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <script src="leaflet/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+
+ body {
+    height: 100vw;
+    height: 100vh;
+
+  }
+
+  #map {
+    height: 80%;
+    width: 90%;
+    margin: auto;
+  }
+  
+  
+   h1 {
+    color: rgb(243, 247, 244);
+  }

@@ -19,7 +19,7 @@ const History = ({equipment}) => {
 
     return (
         <>
-                    <h3 >histórico de estado do equimento:</h3>
+                    <h3 className='state-history__title' >histórico:</h3>
                 <div className='container state-history'>
                     {stateHistory}
                 </div>

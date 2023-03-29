@@ -10,7 +10,7 @@
 
 .card:hover{
     cursor: pointer;
-    background-color: rgba(83, 150, 133, 0.541);
+    filter: sepia(70%);
 }
 
 .card_selected{

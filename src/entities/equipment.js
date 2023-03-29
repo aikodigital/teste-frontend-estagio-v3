@@ -244,17 +244,17 @@ function calcHourStates(stateHistory) {
 
 const positions = equipments.map(equipment => equipment.lastPosition());
 
+
 const mediaLat = positions.map(p => p.lat).reduce((acc, next) => acc + next)/positions.length
-const medialon = positions.map(p => p.lon).reduce((acc, next) => acc + next)/positions.length
+const mediaLon = positions.map(p => p.lon).reduce((acc, next) => acc + next)/positions.length
 const zoomEquipment = 13;
 const zoomDefault = 11.5;
-
 export {
   equipments,
   eqState,
   descendingOrder,
   mediaLat,
-  medialon,
+  mediaLon,
   zoomEquipment,
   zoomDefault
 }

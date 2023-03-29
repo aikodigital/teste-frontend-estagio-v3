@@ -1,12 +1,12 @@
 import Button from '../Button';
-import { eqState, mediaLat, medialon, zoomDefault, zoomEquipment } from '../../entities/equipment';
+import { eqState, mediaLat, mediaLon, zoomDefault, zoomEquipment } from '../../entities/equipment';
 import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import './Map.css';
 
 const Map = (props) => {
   const reportCoordinates = props.report!= null ? props.report.lastPosition() 
-    : {lat: mediaLat, lon: medialon};
+    : {lat: mediaLat, lon: mediaLon};
 
   const position = [reportCoordinates.lat, reportCoordinates.lon];
   const zoom = props.report == null? zoomDefault : props.zoom;
@@ -69,7 +69,7 @@ const Map = (props) => {
 
   return (
     <section className='container map-container' onClick={onReport}>
-    <MapContainer center={[mediaLat, medialon]} zoom={zoom} scrollWheelZoom={false}>
+    <MapContainer center={[mediaLat, mediaLon]} zoom={zoom} scrollWheelZoom={false}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

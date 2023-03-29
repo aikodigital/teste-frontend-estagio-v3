@@ -27,7 +27,8 @@ const SideMenu = (props) => {
     const equipments = props.equipments;
 
     const listEquipments =  equipments
-                            .map( equipment => <Equipment 
+                            .map( equipment => <Equipment
+                                                    report={report}
                                                     key={equipment.id} 
                                                     equipment={equipment}
                                                     setEqPreview={setEqPreview}

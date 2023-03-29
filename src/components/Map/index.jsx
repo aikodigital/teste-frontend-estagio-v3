@@ -16,10 +16,10 @@ const Map = (props) => {
     return ;
   }
 
-  function SetEquipment({children}){
+  /* function SetEquipment({children}){
     const map = useMap();
     map.addEventListener('click', () => setReport(children))
-  }
+  } */
 
   
   
@@ -50,7 +50,6 @@ const Map = (props) => {
           key={equipment.id}
           position={[coordinates.lat, coordinates.lon]}
         >
-          <SetEquipment>{equipment}</SetEquipment>
         </Marker>
       );
 

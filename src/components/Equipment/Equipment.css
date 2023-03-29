@@ -13,8 +13,9 @@
     background-color: rgba(83, 150, 133, 0.541);
 }
 
-.card:focus-visible {
-    background-color: rgb(186, 223, 240);
+.card_selected{
+    background-color: var(--maincolor);
+    color: var(--mainBgColor);
 }
 
 .card h3{
@@ -27,6 +28,12 @@
     grid-area: name;
     background: none;
 }
+
+.card_name_selected, .card_model_selected{
+    color: var(--mainBgColor);
+    font-weight: 500;
+}
+
 .card_model{
     grid-area: model;
     background: none;

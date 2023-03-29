@@ -1,0 +1,29 @@
+#mapaStyle {
+  display: flexbox;
+  background-color: rgb(34, 34, 34);
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 40px 40px;
+  margin-top: 50 px;
+  text-align: center;
+}
+
+#mapaStyle h1 {
+  color: #125C30;
+  font-size: 24px;
+}
+
+.mapaSpace {
+  display: flexbox;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+#map {
+  height: 37rem;
+  width: 100%;
+}

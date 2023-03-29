@@ -1,14 +1,15 @@
 import Button from '../Button';
-import { eqState } from '../../entities/equipment';
+import { eqState, mediaLat, medialon, zoomDefault, zoomEquipment } from '../../entities/equipment';
 import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import './Map.css';
 
 const Map = (props) => {
-  const reportCoordinates = props.report!= null ? props.report.lastPosition() : {lat: -19, lon: -46};
+  const reportCoordinates = props.report!= null ? props.report.lastPosition() 
+    : {lat: mediaLat, lon: medialon};
 
   const position = [reportCoordinates.lat, reportCoordinates.lon];
-  const zoom = props.report == null? 11.5 : props.zoom;
+  const zoom = props.report == null? zoomDefault : props.zoom;
   const setReport= props.setReport;
 
   function SetPreview (){
@@ -56,15 +57,19 @@ const Map = (props) => {
       const equipment = equipments.filter(eq => eq.id === target.classList[1])[0];
       if(props.report==null || (props.report != null && props.report.id != equipment.id)){
         setReport(equipment);
+        props.setZoomIn(zoomEquipment)
       }else{
         setReport(null);
+        props.setZoomIn(zoomDefault)
       }
     }
   }
 
+  console.log(zoom)
+
   return (
     <section className='container map-container' onClick={onReport}>
-    <MapContainer center={[-19, -46]} zoom={11} scrollWheelZoom={false}>
+    <MapContainer center={[mediaLat, medialon]} zoom={zoom} scrollWheelZoom={false}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

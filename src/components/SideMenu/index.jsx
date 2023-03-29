@@ -3,6 +3,7 @@ import Report from '../Report';
 import History from '../History';
 import Equipment from '../Equipment';
 import { useState } from 'react';
+import { zoomDefault, zoomEquipment } from '../../entities/equipment';
 
 const SideMenu = (props) => {
     
@@ -17,10 +18,10 @@ const SideMenu = (props) => {
     
     const setEqPreview = (equipment) =>{
         if(report==null || (report != null && report.id != equipment.id)){
-            props.setZoomIn(13);
+            props.setZoomIn(zoomEquipment);
             setReport(equipment);
         }else{
-            props.setZoomIn(11.5);
+            props.setZoomIn(zoomDefault);
             setReport(null);
         }
     }

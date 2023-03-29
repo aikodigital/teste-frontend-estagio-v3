@@ -1,4 +1,4 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import { LatLngExpression } from "leaflet";
 import { useContext } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
@@ -31,16 +31,17 @@ function Map() {
     }
   }
 
-  function getEquipmentById(equipmentId: string) {
-    const filteredEquipmentStates = equipmentsStateHistoryProvider.filter(
-      (equipment) => equipment.equipmentId === equipmentId
-    );
+  function getEquipmentStatesHistory(equipmentId: string) {
+    const filteredEquipmentStatesHistory =
+      equipmentsStateHistoryProvider.filter(
+        (equipment) => equipment.equipmentId === equipmentId
+      );
 
-    return filteredEquipmentStates[0];
+    return filteredEquipmentStatesHistory[0];
   }
 
   function getStateByEquipmentId(equipmentId: string) {
-    const filteredEquipment = getEquipmentById(equipmentId);
+    const filteredEquipment = getEquipmentStatesHistory(equipmentId);
 
     if (filteredEquipment != null) {
       const equipmentStateId =
@@ -89,12 +90,17 @@ function Map() {
           const equipmentState = getStateByEquipmentId(
             equipmentPosition.equipmentId
           );
-          const equipment = getEquipmentById(equipmentPosition.equipmentId);
-          const equipmentModel = getEquipmentModel(equipmentPosition.equipmentId)
+          const equipmentStateHistory = getEquipmentStatesHistory(
+            equipmentPosition.equipmentId
+          );
+          const equipmentModel = getEquipmentModel(
+            equipmentPosition.equipmentId
+          );
+          const equipment = getEquipment(equipmentPosition.equipmentId);
 
           return (
             <Marker
-              key={equipment.equipmentId}
+              key={equipmentStateHistory.equipmentId}
               position={[
                 equipmentPosition.positions[
                   equipmentsPositionsProvider.length - 1
@@ -106,19 +112,23 @@ function Map() {
               eventHandlers={{
                 click: () => {
                   selectedEquipmentIdProvider?.selectedEquipmentId ==
-                  equipment.equipmentId
+                  equipmentStateHistory.equipmentId
                     ? selectedEquipmentIdProvider?.setSelectedEquipmentId("")
                     : selectedEquipmentIdProvider?.setSelectedEquipmentId(
-                        equipment.equipmentId
+                        equipmentStateHistory.equipmentId
                       );
                 },
               }}
             >
               <Popup>
-                <Text>{equipmentModel?.name}</Text>
-                <Text as="span" color={equipmentState?.color}>
-                  {equipmentState?.name}
-                </Text>
+                <Flex direction="column" alignItems="center" p="0" m="0">
+                  <Text>
+                    {equipmentModel?.name}: {equipment?.name}
+                  </Text>
+                  <Text as="span" color={equipmentState?.color}>
+                    {equipmentState?.name}
+                  </Text>
+                </Flex>
               </Popup>
             </Marker>
           );

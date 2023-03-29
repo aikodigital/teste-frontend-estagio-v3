@@ -170,7 +170,7 @@ export default function Dashboard({ setDashLoaded }: LandingProps) {
     <main className='animate__animated animate__fadeIn animate__slow flex mt-[80px] justify-between'>
       <div>
       <h2>Lista de equipamentos:</h2>
-      <select className="text-black h-[30px] w-[190px] my-5" onChange={(e) => {
+      <select defaultValue={selectedValue} className="text-black h-[30px] w-[190px] my-5" onChange={(e) => {
           setSelectedValue(e.target.value);
           getEquipmentInfo();
         }}>
@@ -179,7 +179,7 @@ export default function Dashboard({ setDashLoaded }: LandingProps) {
           key={item.id} 
           value={item.name} 
           className="text-black"
-          selected={item.name === selectedValue}>{item.name}</option>
+          >{item.name}</option>
         ))}
       </select>
       <button onClick={getEquipmentInfo} className="block h-[50px] w-[190px] bg-[#006404] rounded text-white">Pesquisar</button>

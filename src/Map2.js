@@ -123,16 +123,25 @@ function Map2(props){
             />
 
             {markers}
-            <Polyline pathOptions={{ color: "#333333", dashArray:'10, 5', lineCap: 'triangle', weight: '5' }} positions={positions}>
+            <Polyline pathOptions={{ color: "#333333", dashArray:'10, 5', lineCap: 'triangle', weight: '3' }} positions={positions}>
             </Polyline> 
         </MapContainer>
         < Legend2 iconeb={iconMapping[equipmentModelName]} nameb={equipmentModelName} />
         <div className='tabelainfo'>
-            <h1 className='titulo'>{equipmentName} - {equipmentModelName}</h1>
             <div className="closeicondiv" onClick={() => props.Retorna()}>
-            {<RiCloseCircleLine className="closeicon"/>}
+                {<RiCloseCircleLine className="closeicon"/>}
             </div>
-            <h4 className='idmap2'>Id do equipamento: {props.equipmentId}</h4>
+            <table style={{marginTop:'10vh'}}>
+                <thead>
+                <tr> 
+                    <th style={{backgroundColor:'black', textAlign:'center', }} colSpan={2}>
+                        <h1 className='titulo'>{equipmentName} - {equipmentModelName}</h1>
+                        <h4 className='idmap2'>Id do equipamento: {props.equipmentId}</h4>
+                    </th>
+                </tr>               
+                </thead>
+            </table>
+            
             < Produtiv allStates={allStates} equipmentStateNames={equipmentStateNames} equipmentModelId={equipmentModelId}/>
             <table>
                 <thead>

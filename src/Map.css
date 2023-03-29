@@ -22,11 +22,14 @@
     overflow-x: hidden;
     position: relative; 
     font-family: 'Roboto', sans-serif;   
+    background-color: #e0e0e0;
 }
 .tabelainfo::-webkit-scrollbar {
     width: 10px;
     background-color: #0bd9047a;
-  }
+    border-radius: 10px;
+
+}
 .tabelainfo::-webkit-scrollbar-thumb {
     background-color: #021373;
     border-radius: 10px;
@@ -35,7 +38,7 @@
 table {
     width: 90%;
     margin: 0 auto;
-    margin-bottom: 5vh;
+    margin-top: 5vh;
 }
   
 thead th {
@@ -44,7 +47,6 @@ thead th {
     font-weight: bold;
     text-align: left;
     padding: 10px;
-    border: 1px solid #F2F2F2;
     border-radius: 10px;
 }
   
@@ -53,22 +55,19 @@ tbody td {
     color: #fff;
     border-radius: 10px;
     padding: 10px;
-    border: 1px solid #F2F2F2;
     width: 50%;
 }
 /* configura textos */
 .titulo{
     margin: 0 auto;
     text-align: center;
-    margin-top: 5vh;
     margin-bottom: 20px;
-    color: #021373;
+    color: #fff;
 }
 .idmap2{
     margin: 0 auto;
     text-align: center;
-    margin-bottom: 5vh;
-    color: #021373;
+    color: #fff;
 }
 /* configura o botão close */
 .closeicon{

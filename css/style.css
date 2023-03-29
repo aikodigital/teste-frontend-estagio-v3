@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Josefin+Sans:wght@200;400&family=Nunito:wght@200;500&family=Roboto:wght@400;900&family=Russo+One&family=Sarala&family=VT323&display=swap');
+
+ 
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
+    text-align: center;
+    cursor: pointer;
+    
+}
+main{
+    display:flex;
+}
+
+.tracking-topics{
+    background: whitesmoke;
+    height: 100vh;
+    overflow: auto;
+    width: 30%;
+}
+
+.tracking-topics {
+    background: #ffffff;
+}
+
+.tracking-topics {
+    padding: 1rem;
+    
+}
+
+.tracking-topics ul.list{
+    padding: 0 1rem;
+    list-style-type: none;
+}
+
+.tracking-topics .store-item{
+    border-bottom: 2px solid #ee0b0b3a;
+    padding-bottom: 1rem;
+    margin: 1rem 0;
+}
+
+.tracking-topics li:last-child .store-item{
+    border: none;
+}
+
+.tracking-topics .store-item a{
+    color: #000000;
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.tracking-topics .store-item p{
+    color: #000000;
+    font-size: 15px;
+    padding: 15px;
+}
+
+#map{
+    width: 75%;
+    height: 100vh;
+}
+
+
+.leaflet-popup-content-wrapper{
+    padding: 0;
+    overflow: hidden;
+}
+
+.leaflet-popup-content-wrapper .leaflet-popup-content{
+    margin: 0;
+}
+
+.leaflet-popup-content-wrapper h4{
+    background: #f00c0c8e;
+    color: #000000;
+    font-size: 16px;
+    padding: 16px;
+}
+
+.leaflet-popup-content-wrapper p{
+    font-size: 14px;
+    margin-bottom: 14px;
+    padding: 0 16px;
+}

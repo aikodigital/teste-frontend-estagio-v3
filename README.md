@@ -253,3 +253,5 @@ O programa foi dividido em diversos componentes, encontrados na pasta `/componen
 O aplicativo consome informações dos JSONs disponibilizados para o teste, trata esses dados, e apresenta-os de acordo com os requisitos especificados.
 
 O programa renderiza todas as informações em uma página (SPA), que é alterada de acordo com os comandos do usuário para mostrar os dados desejados, todos os items da lista são carregados juntamente ao loading da página, fazendo assim com que não existe um loading ao abrir os elementos da lista.
+
+**PS: Gostaria de implementar mais funcionalidades além destas e deixar o código melhor documentado e escrito, porém como estou em semana de provas na faculdade, tem sido difícil conseguir tempo para tal, obrigado pela atenção**

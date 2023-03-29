@@ -16,12 +16,10 @@ import equipamentModel from '../../../data/equipmentModel.json'
 //ROUTER
 import { Link } from 'react-router-dom'
 
-
 //LIBS
 import uuid from 'react-uuid'
 
 function Mark(props){
-
 
     //Default Values
     let indexEquipmentStateHistory = 0
@@ -63,7 +61,6 @@ return(
                         </InfoContainer>
                         <List>
                             {   
-
                                 equipmentStateHistory[indexEquipmentStateHistory].states.map((element)=>{
 
                                     const index = equipamentState.findIndex((i)=> i.id === element.equipmentStateId )
@@ -82,7 +79,6 @@ return(
                             <h3>Produtividade do dia: {production.toFixed()}%</h3>
                             <h3>Ganho do dia: R${gain}</h3>
                     </DivPopup2>
-
             </DivPopup>
         </Popup>
     </Marker>  

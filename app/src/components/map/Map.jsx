@@ -1,23 +1,19 @@
-
 //MAP LIB
 import { MapContainer, TileLayer, Marker, Popup, ZoomControl } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-
 
 //DATA
 import equipament from '../../../data/equipment.json'
 import equipmentPositionHistory from '../../../data/equipmentPositionHistory.json'
 
-//Components
+//COMPONENTS
 import Mark from "./Mark";
 import Dashboard from "../dashboard/Dashboard";
 import iconsDefine from "../../utils/IconsDefine";
 import MapVerifyFunction from "../../utils/MapVerifyFunction";
 import EquipamentStatesHours from "../../utils/EquipamentStatesHours";
 
-
 function Map(){
-
 
 return(
     <div>

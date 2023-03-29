@@ -20,8 +20,6 @@ function Header(){
     const [menu, setMenu] = useState(false)
     const [isMounted, setIsMounted] = useState(false);
     const [isOpen, setOpen] = useState(true)
-
-
     const mountedStyle = {
         animation: "inAnimation 250ms ease-in"
     }
@@ -30,13 +28,12 @@ function Header(){
         animation: "outAnimation 270ms ease-out",
         animationFillMode: "forwards"
     }
-
+    
     window.addEventListener('resize', () => {
         if(window.innerWidth > 480){
             setOpen(true)
         }
     })
-
 return(
     <>
         <BurgerContainer>

@@ -1,5 +1,4 @@
 //STYLES
-
 import {DashboardContainer, EquipamentCountContainer, EquipamentCountUl, EquipamentCountLi, Operando, Parado, Manutenção   } from './Styled'
 
 //DATA
@@ -10,7 +9,6 @@ import verifyStatesCount from '../../utils/verifyStatesCount'
 function Dashboard(props){
 return(
     <DashboardContainer>
-
         <EquipamentCountContainer>
             <EquipamentCountUl>
                 <EquipamentCountLi>
@@ -30,7 +28,6 @@ return(
                 </EquipamentCountLi>
             </EquipamentCountUl>
         </EquipamentCountContainer>
-
     </DashboardContainer>
 )
 }export default Dashboard

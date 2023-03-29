@@ -1,0 +1,34 @@
+{
+  "name": "projetoaiko",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/material": "^5.11.14",
+    "leaflet": "^1.9.3",
+    "moment": "^2.29.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.8.0",
+    "react-leaflet": "^4.2.1",
+    "react-select": "^5.7.2",
+    "sweetalert2": "^11.7.3",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/leaflet": "^1.9.3",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@types/react-leaflet": "^3.0.0",
+    "@types/react-select": "^5.0.1",
+    "@vitejs/plugin-react": "^2.1.0",
+    "vite": "^3.1.0"
+  }
+}

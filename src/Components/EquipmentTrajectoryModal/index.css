@@ -1,0 +1,67 @@
+.equipment-trajectory-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgb(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999999;
+}
+
+.equipment-trajectory-modal-container {
+  background: white;
+  padding: 32px;
+  border-radius: 8px;
+  width: 75%;
+  height: 75%;
+}
+
+.equipment-trajectory-modal .leaflet-container {
+  width: 100%;
+  height: 93%;
+  border-radius: 8px;
+}
+
+.equipment-trajectory-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #1d1d1d;
+  padding-bottom: 8px;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.equipment-trajectory-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 12px;
+}
+
+.trajectory-start, .trajectory-end {
+  color: #1d1d1d;
+  margin-right: 12px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.trajectory-start::before, .trajectory-end::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 100px;
+  margin-right: 5px;
+}
+
+.trajectory-start::before {
+  background-color: #CB2940;
+}
+
+.trajectory-end::before {
+  background-color: #FFD326;
+}

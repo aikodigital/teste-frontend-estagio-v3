@@ -1,35 +1,46 @@
-# ForestFinder - Aplicativo de Localização de Máquinas Florestais
+# Getting Started with Create React App
 
-O ForestFinder é um aplicativo que permite aos usuários rastrear a localização de máquinas florestais em tempo real, bem como obter informações básicas e de histórico do equipamento.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Funcionalidades
+## Available Scripts
 
-- **Informações básicas do equipamento:** O aplicativo exibe informações básicas sobre o equipamento, como o nome, modelo, ano de fabricação e número de série.
+In the project directory, you can run:
 
-- **Preço do equipamento em cada estado:** O usuário pode verificar o preço atual do equipamento em cada estado onde ele esteja disponível para venda.
+### `npm start`
 
-- **Histórico de estados do equipamento:** O ForestFinder também exibe o histórico de estados pelos quais o equipamento passou, permitindo que o usuário saiba onde o equipamento esteve anteriormente e em que condições.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-- **Histórico de localização do equipamento:** Além disso, o aplicativo registra a localização do equipamento em tempo real e permite que o usuário visualize o histórico de localização por meio de um mapa interativo. Também há um botão de "localizar" que permite que o usuário veja a localização atual do equipamento.
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-## Tecnologias utilizadas
+### `npm test`
 
-O ForestFinder foi desenvolvido usando as seguintes tecnologias:
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-- **React:** uma biblioteca JavaScript para construção de interfaces de usuário.
+### `npm run build`
 
-- **TypeScript:** uma extensão de linguagem para JavaScript que adiciona tipagem estática opcional.
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-- **Tailwind CSS:** uma estrutura de estilo CSS utilitária.
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-- **Google Maps API:** uma API de mapeamento que permite integrar mapas em aplicativos.
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-- **AnimateCSS:** uma biblioteca de animação CSS pronta para uso.
+### `npm run eject`
 
-## Design
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-O design do ForestFinder foi criado no Figma. Você pode acessar o projeto e verificar o layout e fluxo da aplicação clicando neste [link](https://www.figma.com/file/LPoPVXaXkBwfX3qNbCmkcw/Untitled?node-id=0-1&t=ZisgbdEuamLYcaDq-0).
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-## Contato
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-Se você tiver alguma dúvida ou sugestão, entre em contato comigo pelo meu [LinkedIn](https://www.linkedin.com/in/pedrofeitosa97/).
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).

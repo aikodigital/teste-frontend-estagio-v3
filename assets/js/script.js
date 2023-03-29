@@ -107,7 +107,7 @@ equipmentPositionHistory.map((history) => {
                                                 stateHistory.states.forEach(element => {
                                                     equipmentState.map((stateEquip) => {
                                                         model.hourlyEarnings.map((hourlyEarnings) => {
-                                                            if (element.equipmentStateId === state.id) {
+                                                            if (element.equipmentStateId === stateEquip.id) {
                                                                 let date = element.date
                                                                 let dateFormat = date.split('-')
                                                                 let day = dateFormat[2].substr(0, 2)

@@ -33,3 +33,6 @@ O design do ForestFinder foi criado no Figma. Você pode acessar o projeto e ver
 ## Contato
 
 Se você tiver alguma dúvida ou sugestão, entre em contato comigo pelo meu [LinkedIn](https://www.linkedin.com/in/pedrofeitosa97/).
+
+# Deploy Git Pages
+ https://pedrofeitosa97.github.io/teste-frontend-estagio-v3/

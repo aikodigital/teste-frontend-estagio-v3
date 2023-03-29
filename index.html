@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central de Equipamentos</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./img/aiko.png" type="image/icon type">
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+</head>
+
+<body>
+
+<!-- Cabeçalho simples -->
+    <header class="header">
+        <a href="index.html"><img src="./img/aiko.png" class="logo"></a>
+        <h1>Informações sobre os Equipamentos:</h1>
+    </header>
+
+<!-- Menu que mostra o histórico de estados dos equipamentos-->
+    <div id="buttons" class="menu">
+        <a class="btn-equip" id="a7c53eb1-4f5e-4eba-9764-ad205d0891f9">Equipamento 1</a>
+        <a class="btn-equip" id="1c7e9615-cc1c-4d72-8496-190fe5791c8b">Equipamento 2</a>
+        <a class="btn-equip" id="2b5796cb-21c1-480e-8886-4498ea593a65">Equipamento 3</a>
+        <a class="btn-equip" id="1d222cdc-01dd-4caa-8934-5351d3995cfb">Equipamento 4</a>
+        <a class="btn-equip" id="491b983b-950c-4a88-942d-487e99b92540">Equipamento 5</a>
+        <a class="btn-equip" id="39317fcb-79e7-4e7e-83dc-723a9b63633c">Equipamento 6</a>
+        <a class="btn-equip" id="c79ef1de-92f3-4edd-bd55-553056640449">Equipamento 7</a>
+        <a class="btn-equip" id="b7aaba00-13f7-44a0-8bf1-bc163afcf9d8">Equipamento 8</a>
+        <a class="btn-equip" id="fe2a2e11-bfa6-46b6-990b-fd8175946b7e">Equipamento 9</a>
+    </div>
+
+<!-- Mapa e histórico de estados -->
+    <div class="conteudo">
+        <div id="map">
+        </div>
+        <div id="hist-equip" class="container">
+        </div>
+    </div>
+
+<!-- Puxando o JavaScript -->
+    <script src="script.js"></script>
+</body>
+
+</html>

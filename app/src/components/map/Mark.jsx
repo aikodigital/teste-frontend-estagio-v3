@@ -33,11 +33,9 @@ function Mark(props){
 
     const equipamentModelIndex = equipamentModel.findIndex((i)=> i.id == props.modelId)
     const model = equipamentModel[equipamentModelIndex]
-    console.log(model)
 
     const gain = (props.statesHours.operate.hours * model.hourlyEarnings[0].value) + (props.statesHours.stop.hours * model.hourlyEarnings[1].value) + (props.statesHours.maintence.hours * model.hourlyEarnings[2].value) 
 
-    console.log('O ganhdo da maquina ' + model.name + ' foi de ' + gain)
 return(
 
     <Marker position={[props.lat, props.lon]}

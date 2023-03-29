@@ -15,7 +15,7 @@ export default function iconsDefine (name, state) {
         break;
 
       default:
-        console.log(Error);
+        console.log('Erro!');
       }
     }
 
@@ -34,7 +34,7 @@ export default function iconsDefine (name, state) {
         break;
 
       default:
-        console.log(`Sorry, we are out of ${expr}.`);
+        console.log('Erro!');
       }
     }
 
@@ -53,7 +53,7 @@ export default function iconsDefine (name, state) {
         break;
 
       default:
-        console.log(`Sorry, we are out of ${expr}.`);
+        console.log('Erro!');
       }
     }
 

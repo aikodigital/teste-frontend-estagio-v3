@@ -1,90 +1,81 @@
-import React from 'react'
-import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
-import Equipamentos from '../../../data/equipment.json'
-import ModeloEquipamentos from '../../../data/equipmentModel.json'
-import PosicaoDosEquipamentos from '../../../data/equipmentPositionHistory.json'
-import EstadoEquipamentos from '../../../data/equipmentState.json'
-import HistEstadoEqupamentos from '../../../data/equipmentStateHistory.json'
+import React, { useState } from 'react'
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import histStates from '../../Utils/histEstados'
+import fullEquipment from '../../utils/obterDados'
 
 const Mapa = () => {
 
-  const fullEquipment = []
+  const [historico, setHistorico] = useState(false);
+  const [historicoEstados, setHistoricoEstados] = useState(null);
 
-  Equipamentos.forEach(item => {
-    let Equipamentos = {}
+  function exibirHist(id) {
 
-    ModeloEquipamentos.forEach(equip => {
-      if (item.equipmentModelId === equip.id) {
-        Equipamentos = {
-          name: item.name,
-          modelName: equip.name,
-          mostRecentState: {},
-          stateData: {},
-          id: item.id,
-          modelId: item.equipmentModelId,
-          location: {},
-          historyState: [],
-          historyPosicion: []
-        }
-      }
-    })
-    HistEstadoEqupamentos.forEach(history => {
-      if (history.equipmentId === item.id) {
-        Equipamentos.historyState.push(history)
-        Equipamentos.mostRecentState = (history.states[history.states.length - 1])
+    setHistorico(true)
+
+    const histselect = []
+  
+    histStates.forEach(history => {
+      if (history.id === id) {
+        histselect.push(history)
       }
     })
 
-    PosicaoDosEquipamentos.forEach(history => {
-      if (history.equipmentId === item.id) {
-        Equipamentos.historyPosicion.push(history)
-        Equipamentos.location = (history.positions[history.positions.length - 1])
-      }
-    })
+    setHistoricoEstados(histselect)
 
-    const mostRecentStateId = Equipamentos.mostRecentState.equipmentStateId
+    return console.log(histselect);
+  }
 
-    EstadoEquipamentos.forEach(equipamento => {
-      if (equipamento.id === mostRecentStateId) {
-        Equipamentos.stateData = equipamento;
-      }
-    })
+  //console.log(fullEquipment)
 
-    fullEquipment.push(Equipamentos)
+  //console.log(histStates);
 
-    return fullEquipment.values
-  })
-
-  console.log(fullEquipment)
-
-  return (
-    <div className='mapDiv'>
-      <MapContainer
-        className='MapContainer'
-        center={[-19.192595, -46.061072]}
-        zoom={13}
-        scrollWheelZoom={true}
-        style={{ height: "500px", width: "1000px", display: 'flex' }}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        {fullEquipment.map(equipamento => (
-          <Marker
-            key={equipamento.id}
-            position={[equipamento.location.lat, equipamento.location.lon]}
-          >
-            <Popup>
-              <h3>{equipamento.name}</h3>
-              <h4>{equipamento.modelName}</h4>
-              <p>Estado atual do equipamento: {equipamento.stateData.name}</p>
-            </Popup>
-          </Marker>
+return (
+  <div className='mapDiv'>
+    <MapContainer
+      className='MapContainer'
+      center={[-19.192595, -46.061072]}
+      zoom={13}
+      scrollWheelZoom={true}
+      style={{ height: "500px", width: "1000px", display: 'flex' }}
+    >
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      {fullEquipment.map(equipamento => (
+        <Marker
+          key={equipamento.id}
+          position={[equipamento.location.lat, equipamento.location.lon]}
+        >
+          <Popup>
+            <h3>Nome: {equipamento.name}</h3>
+            <h4>Modelo: {equipamento.modelName}</h4>
+            <h5><strong>{equipamento.id}</strong></h5>
+            <p>Estado atual: {equipamento.stateData.name}</p>
+            <button onClick={() => exibirHist(equipamento.id)}>Ver histórico completo</button>
+          </Popup>
+        </Marker>
+      ))}
+    </MapContainer>
+    <div>
+      {historico && (
+      <div>
+        <div>
+          <h3>Histórico do equipamento {historicoEstados[0].name}</h3>
+          <h3>Id: {historicoEstados[0].id}</h3>
+          <button onClick={() => setHistorico(false)}>Fechar Histórico</button>
+        </div>
+        {historicoEstados[0].historyStates.slice(0).reverse().map((history, index) => (
+          <div key={index}>
+            <h3>Data: <strong>{history.date}</strong></h3>
+            <h3>Estado: {history.status}</h3>
+          </div>
         ))}
-      </MapContainer>
+      </div>
+    )}
     </div>
-  )
+  </div>
+)
 }
 
 export default Mapa

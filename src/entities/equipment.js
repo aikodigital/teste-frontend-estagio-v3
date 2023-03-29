@@ -10,8 +10,6 @@ const parado = 'baff9783-84e8-4e01-874b-6fd743b875ad'
 const manutencao = '03b2d446-e3ba-4c82-8dc2-a5611fea6e1f'
 const operando = '0808344c-454b-4c36-89e8-d7687e692d57'
 
-console.log(eqModel)
-
 class Equipment {
 
   constructor(name, id, modelId, modelName, hourlyEarnings, positionHistory, stateHistory) {
@@ -43,7 +41,8 @@ class Equipment {
     return position;
   }
 
-  findPositionAt(date) {
+  /* função a ser implementada para fazer histórico das posições */
+  /* findPositionAt(date) {
     const previousDate = this.positionHistory
       .map(position => position.date)
       .reduce((acc, next) => {
@@ -59,7 +58,7 @@ class Equipment {
     const position = this.positionHistory
       .filter(position => position.date == previousDate)[0];
     return position;
-  }
+  } */
 
   lastState() {
     const date = this.stateHistory

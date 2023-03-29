@@ -5,7 +5,8 @@ import { Icon } from 'leaflet';
 import './Map.css';
 
 const Map = (props) => {
-  const position = props.position;
+  const report = props.report!= null ? props.report.lastPosition() : {lat: -19, lon: -46};
+  const position = [report.lat, report.lon];
   const zoom = props.zoom;
   const setReport= props.setReport;
 
@@ -39,14 +40,11 @@ const Map = (props) => {
     
     return (
         <Marker
+          autoPanOnFocus={true}
           icon={icon}
           key={equipment.id}
           position={[coordinates.lat, coordinates.lon]}
         >
-          <Popup key={equipment.id}>
-            <p>{equipment.name}</p>
-            <p>{equipment.modelName}</p>
-          </Popup>
         </Marker>
       );
 
@@ -61,7 +59,7 @@ const Map = (props) => {
   }
 
   return (
-    <section onClick={onReport}>
+    <section className='container map-container' onClick={onReport}>
     <MapContainer center={[-19, -46]} zoom={11} scrollWheelZoom={false}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

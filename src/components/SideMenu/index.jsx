@@ -18,9 +18,7 @@ const SideMenu = (props) => {
 
     
     const setEqPreview = (equipment) =>{
-        const position = equipment.lastPosition();
         props.setZoomIn(13);
-        props.setPosition([position.lat, position.lon]);
         setReport(equipment);
     }
 

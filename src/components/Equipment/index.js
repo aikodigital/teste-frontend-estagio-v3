@@ -3,7 +3,6 @@ import { eqState } from '../../entities/equipment';
 
 const Equipment = (props) => {
     const equipment = props.equipment;
-    console.log(equipment.id);
     const color = eqState.filter(state => state.id === equipment.lastState().equipmentStateId)[0].color;
     const selected = equipment == props.report;
 

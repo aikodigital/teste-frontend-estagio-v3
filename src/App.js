@@ -22,7 +22,12 @@ function App() {
           setPosition={setPosition} 
           report={report} 
           setReport={setReport}/>
-        <Map equipments={equipments} zoom={zoomIn} position={position} setReport={setReport} />
+        <Map 
+          equipments={equipments} 
+          zoom={zoomIn} 
+          position={position} 
+          report={report} 
+          setReport={setReport} />
       </main>
     </>
   )

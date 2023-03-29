@@ -1,7 +1,11 @@
-.leaflet-container {
-    width: 78vw;
+.map-container{
     height: 90.3vh;
     border: 1px solid var(--mainBgColor);
+    width: 78vw;
+}
+
+.leaflet-container{
+    width: 78vw;
 }
 
 .leaflet-top, .leaflet-left{

@@ -36,7 +36,6 @@ const Report = props => {
         })
         
         const{operando, manutencao, parado} = equipment.hourlyEarnings;
-        console.log(operando,total.operando, manutencao, total.manutencao,parado , total.parado)
         return (operando * total.operando) + (manutencao * total.manutencao) + (parado * total.parado);
     }
 

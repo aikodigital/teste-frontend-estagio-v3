@@ -6,6 +6,8 @@ import { SelectedEquipmentIdContext } from "../../../Context/SelectedEquipmentId
 import { EquipmentsPositionContext } from "../../../Context/EquipmentsPositionContext";
 import { EquipmentsStateContext } from "../../../Context/EquipmentsState";
 import { EquipmentsStateHistoryContext } from "../../../Context/EquipmentsStateHistory";
+import { EquipmentsModelContext } from "../../../Context/EquipmentsModelContext";
+import { EquipmentsContext } from "../../../Context/EquipmentsContext";
 
 function Map() {
   const equipmentsPositionsProvider = useContext(EquipmentsPositionContext);
@@ -14,6 +16,8 @@ function Map() {
   );
   const equipmentsStateProvider = useContext(EquipmentsStateContext);
   const selectedEquipmentIdProvider = useContext(SelectedEquipmentIdContext);
+  const equipmentsModelProvider = useContext(EquipmentsModelContext);
+  const equipments = useContext(EquipmentsContext);
 
   const center: LatLngExpression = [-19.151801, -46.007759];
 
@@ -28,11 +32,11 @@ function Map() {
   }
 
   function getEquipmentById(equipmentId: string) {
-    const filteredEquipment = equipmentsStateHistoryProvider.filter(
+    const filteredEquipmentStates = equipmentsStateHistoryProvider.filter(
       (equipment) => equipment.equipmentId === equipmentId
     );
 
-    return filteredEquipment[0];
+    return filteredEquipmentStates[0];
   }
 
   function getStateByEquipmentId(equipmentId: string) {
@@ -44,6 +48,28 @@ function Map() {
           .equipmentStateId;
       const stateInfo = getStateInfo(equipmentStateId);
       return stateInfo;
+    }
+  }
+
+  function getEquipment(equipmentId: string) {
+    const filteredEquipment = equipments?.filter(
+      (equipment) => equipment.id === equipmentId
+    );
+
+    if (filteredEquipment != null) {
+      return filteredEquipment[0];
+    }
+  }
+
+  function getEquipmentModel(equipmentId: string) {
+    const filteredEquipment = getEquipment(equipmentId);
+
+    const equipmentModel = equipmentsModelProvider?.filter(
+      (equipment) => equipment.id == filteredEquipment?.equipmentModelId
+    );
+
+    if (equipmentModel != null) {
+      return equipmentModel[0];
     }
   }
 
@@ -64,6 +90,7 @@ function Map() {
             equipmentPosition.equipmentId
           );
           const equipment = getEquipmentById(equipmentPosition.equipmentId);
+          const equipmentModel = getEquipmentModel(equipmentPosition.equipmentId)
 
           return (
             <Marker
@@ -78,7 +105,8 @@ function Map() {
               ]}
               eventHandlers={{
                 click: () => {
-                  selectedEquipmentIdProvider?.selectedEquipmentId == equipment.equipmentId
+                  selectedEquipmentIdProvider?.selectedEquipmentId ==
+                  equipment.equipmentId
                     ? selectedEquipmentIdProvider?.setSelectedEquipmentId("")
                     : selectedEquipmentIdProvider?.setSelectedEquipmentId(
                         equipment.equipmentId
@@ -87,6 +115,7 @@ function Map() {
               }}
             >
               <Popup>
+                <Text>{equipmentModel?.name}</Text>
                 <Text as="span" color={equipmentState?.color}>
                   {equipmentState?.name}
                 </Text>

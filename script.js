@@ -1,3 +1,26 @@
+window.onload = fetch('./data/equipment.json')
+            .then(response => response.json())
+            .then(equipments => {
+              function CreateOp(){
+                const select = document.querySelector("#selectCar")
+                var option = document.createElement("option");
+                // Criando a primeira opção
+                option.text = 'Selecione um veículo';
+                select.add(option);
+              //Cria a quantidade de opções de acordo com o tamanho do equipment
+              for(let i = 0; i < equipments.length; i++){
+                var option = document.createElement("option");
+                option.value = i;
+                option.text = equipments[i].name;
+               
+                select.add(option);
+                }
+              }
+              CreateOp()
+                
+            }).catch(error => console.log(error))
+
+
 function Page(callback) {
   // Função para formatar as datas deixando no padrão do Brasil
   function formatDate(dataBR) {
@@ -60,6 +83,7 @@ function Page(callback) {
     .then(response => response.json())
     .then(data => {
       var equipment = data[callback];
+      
       fetch('./data/equipmentModel.json')
         .then(response => response.json())
         .then(model => {
@@ -69,7 +93,7 @@ function Page(callback) {
           fetch('./data/equipment.json')
             .then(response => response.json())
             .then(equipments => {
-
+             const eqp = equipments;
               // BLOCO DE CÓDIGOS PARA O MAPA 
 
               // Faz um filtro que identifica qual equipamento estamos usando a partir do const equipment = data[X];
@@ -88,7 +112,6 @@ function Page(callback) {
               const filteredPositions = equipment.positions.filter(position => position.date.startsWith(dateFilter.value));
               // Pega a primeira posição do mapa
               const FirstPosMap = equipment.positions[0];
-              console.log(FirstPosMap)
               // Adiciona o mapa
               const map = L.map('map').setView([FirstPosMap.lat, FirstPosMap.lon], 12);
 
@@ -236,6 +259,7 @@ function Page(callback) {
                     tableBody.innerHTML = ''; // Remove todas as linhas da tabela
                     CreateTable()// Cria a tabela novamente
                   });
+                  
 
                 });
 

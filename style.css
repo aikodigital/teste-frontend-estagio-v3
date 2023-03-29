@@ -1,7 +1,7 @@
 body {
 
     font-family: 'Poppins', sans-serif;
-    background-image: url(./bg.svg);
+    background-image: url(./assets/bg.svg);
     background-repeat: no-repeat;
     
     font-size: 15px;
@@ -44,18 +44,17 @@ body {
     margin-left: 7%;
 }
 
-#selectCar {
-
+#selectCar, option {
+    font-family: 'Poppins', sans-serif;
+    
     font-weight: 600;
     letter-spacing: 2px;
     border-radius: 10px;
     padding: 10px;
 
 }
-option{
-    font-weight: 600;
-    
-}
+
+
 #divMapTable {
     animation: backInLeft 0.7s;
     display: flex;
@@ -288,7 +287,7 @@ th {
 }
 @media(max-width:675px) {
     body{
-        background-image: url(./bgMobile.svg);
+        background-image: url(./assets/bgMobile.svg);
         font-size: 11px;
     }
     #contentImg {

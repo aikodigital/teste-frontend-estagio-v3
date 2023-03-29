@@ -16,9 +16,7 @@ function renderData(filtro) {
   data.equipmentPositionHistory.forEach(equipPosicao => {
     let equipStateHistorico = data.equipmentStateHistory.find(el => el.equipmentId == equipPosicao.equipmentId)
 
-    let equipPosicaoAtual = data.equipmentState.find(el => el.id == equipStateHistorico.states[equipStateHistorico.states.length - 1].equipmentStateId)
-
-    console.log(equipPosicaoAtual)
+    let equipStateAtual = data.equipmentState.find(el => el.id == equipStateHistorico.states[equipStateHistorico.states.length - 1].equipmentStateId)
 
     let equipamento = data.equipment.find(el => el.id == equipPosicao.equipmentId)
 
@@ -27,7 +25,7 @@ function renderData(filtro) {
     if (filtro) {
       switch (filtro.type) {
         case 'filtro':
-          if (filtro.value !== '' && equipPosicaoAtual.id !== filtro.value)
+          if (filtro.value !== '' && equipStateAtual.id !== filtro.value)
             return;
           break;
         case 'pesquisa':
@@ -43,11 +41,11 @@ function renderData(filtro) {
     }
 
     document.querySelector('.equipamentos-card').innerHTML += `
-      <li class="equipamentos-card-item" style="background-color: ${equipPosicaoAtual.color}">
+      <li class="equipamentos-card-item" style="background-color: ${equipStateAtual.color}">
       <h3 class="placa-elemento"> Equipamento: ${equipamento.name} </h3>
       <p class="modelo-elemento"> Modelo: ${equipModelo.name}</p>
-      <p class="estado-elemento"> Estado: ${equipPosicaoAtual.name} </p>
-      <button onclick="abrirModal('${equipPosicao.equipmentId}', '${equipPosicaoAtual.name}', '${equipamento.name}', '${equipModelo.name}' )">
+      <p class="estado-elemento"> Estado: ${equipStateAtual.name} </p>
+      <button onclick="abrirModal('${equipPosicao.equipmentId}', '${equipStateAtual.name}', '${equipamento.name}', '${equipModelo.name}' )">
         <span class="texto-estilo-2">Ver histórico</span>
       </button>
       </li>
@@ -69,13 +67,13 @@ function renderData(filtro) {
       elementoMarcador = L.marker([lat, lon], { icon: redIcon }).addTo(map)
     }
 
-    elementoMarcador.bindPopup(`Equipamento: ${equipamento.name} Estado: ${equipPosicaoAtual.name} `)
+    elementoMarcador.bindPopup(`Equipamento: ${equipamento.name} Estado: ${equipStateAtual.name} `)
     elementoMarcador.on('mouseover', function () {
       this.openPopup();
     });
 
     elementoMarcador.on('click', function () {
-      abrirModal(equipPosicao.equipmentId, equipPosicaoAtual.name, equipamento.name, equipModelo.name)
+      abrirModal(equipPosicao.equipmentId, equipStateAtual.name, equipamento.name, equipModelo.name)
     });
   });
 }

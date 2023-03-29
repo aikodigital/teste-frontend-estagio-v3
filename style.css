@@ -1,0 +1,126 @@
+body {
+  background-color: rgb(243, 242, 242);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  margin: 24px;
+}
+
+img {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 20px;
+  height: 52px;
+}
+
+.flex-container {
+  display: flex;
+  gap: 96px;
+}
+
+h1 {
+  margin: 0;
+}
+
+#mapa {
+  height: 400px;
+  width: 500px;
+  border: 2px solid rgb(75, 75, 75);
+  border-radius: 4px;
+}
+
+.legenda {
+  margin-top: 20px;
+}
+
+.legenda li {
+  padding: 4px;
+  margin-left: 32px;
+}
+
+.legenda li:first-child {
+  margin-top: 12px;
+}
+
+.legenda .blue {
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  margin-left: 4px;
+  border: 1px solid rgb(44, 44, 44);
+  background-color: #2981ca;
+  border-radius: 50%;
+}
+
+.legenda .grey {
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  margin-left: 4px;
+  border: 1px solid rgb(44, 44, 44);
+  background-color: #7a7a7a;
+  border-radius: 50%;
+}
+
+.legenda .orange {
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  margin-left: 4px;
+  border: 1px solid rgb(16, 16, 16);
+  background-color: #cb862c;
+  border-radius: 50%;
+}
+
+.popupOperando p::after {
+  content: "Operando";
+  color: rgb(17, 16, 16);
+  height: 100%;
+  width: 100%;
+  padding: 2px;
+  border-radius: 4px;
+  background-color: #2ecc71;
+}
+
+.popupManutencao p::after {
+  content: "Manutenção";
+  color: rgb(17, 16, 16);
+  height: 100%;
+  width: 100%;
+  padding: 2px;
+  border-radius: 4px;
+  background-color: #e74c3c;
+}
+
+.popupParado p::after {
+  content: "Parado";
+  color: rgb(17, 16, 16);
+  height: 100%;
+  width: 100%;
+  padding: 2px;
+  border-radius: 4px;
+  background-color: #f1c40f;
+}
+
+.historico-container {
+  margin-top: 20px;
+  max-height: 400px;
+  width: 550px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border: 2px solid rgb(75, 75, 75);
+  border-radius: 4px;
+  margin-top: 0;
+}
+
+.historico-tabela {
+  min-width: 100%;
+}
+
+th, td{
+  padding: 12px;
+}
+
+tr:nth-child(odd) {
+  background-color: rgb(218, 215, 215);
+}
+

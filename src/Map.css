@@ -33,10 +33,9 @@
 }
   
 table {
-    /* border-collapse: collapse; */
     width: 90%;
     margin: 0 auto;
-    margin-bottom: 10vh;
+    margin-bottom: 5vh;
 }
   
 thead th {
@@ -61,12 +60,15 @@ tbody td {
 .titulo{
     margin: 0 auto;
     text-align: center;
+    margin-top: 5vh;
     margin-bottom: 20px;
+    color: #021373;
 }
 .idmap2{
     margin: 0 auto;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 5vh;
+    color: #021373;
 }
 /* configura o botão close */
 .closeicon{

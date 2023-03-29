@@ -137,7 +137,7 @@ function Map2(props){
             <table>
                 <thead>
                 <tr> 
-                    <th style={{backgroundColor:'black', textAlign:'center'}} colSpan={2}>Período de calculo</th>
+                    <th style={{backgroundColor:'black', textAlign:'center'}} colSpan={2}>Período de Cálculo</th>
                 </tr>
                 <tr>
                     <th>Histórico</th>

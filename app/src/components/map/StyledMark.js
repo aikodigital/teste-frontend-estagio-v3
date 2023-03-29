@@ -29,7 +29,11 @@ font-weight: bold;
 export const ListDate = styled.li`
 `
 export const DivPopup = styled.div`
-width: 300px;
+
+    width: 600px;
+`
+export const DivPopup2 = styled.div`
+    width: 300px;
 `
 export const InfoContainer = styled.div`
 display: flex;

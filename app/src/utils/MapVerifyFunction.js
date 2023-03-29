@@ -1,8 +1,8 @@
 
-import equipmentPositionHistory from '../../../data/equipmentPositionHistory.json'
-import equipamentStateHistory from '../../../data/equipmentStateHistory.json'
-import equipmentModel from '../../../data/equipmentModel.json'
-import equipamentState from '../../../data/equipmentState.json'
+import equipmentPositionHistory from '../../data/equipmentPositionHistory.json'
+import equipamentStateHistory from '../../data/equipmentStateHistory.json'
+import equipmentModel from '../../data/equipmentModel.json'
+import equipamentState from '../../data/equipmentState.json'
 
 
 export default function MapVerifyFunction (item, indice){
@@ -13,7 +13,7 @@ export default function MapVerifyFunction (item, indice){
     const indexState = equipamentState.findIndex((i)=> i.id === lastStateId )
     const lastState = equipamentState[indexState].name
     const lastStateDate = equipamentStateHistory[indice].states[equipamentStateHistory[indice].states.length - 1].date
-    const index = equipmentModel.findIndex((i)=> i.id == item.equipmentModelId )
+    const index = equipmentModel.findIndex((i)=> i.id === item.equipmentModelId )
     const Name = equipmentModel[index].name
 
     const response = {

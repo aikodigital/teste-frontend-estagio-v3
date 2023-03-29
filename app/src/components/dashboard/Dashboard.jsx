@@ -5,7 +5,7 @@ import {DashboardContainer, EquipamentCountContainer, EquipamentCountUl, Equipam
 //DATA
 import equipament from '../../../data/equipment.json'
 import equipamentModel from '../../../data/equipmentModel.json'
-import verifyStatesCount from '../utils/verifyStatesCount'
+import verifyStatesCount from '../../utils/verifyStatesCount'
 
 function Dashboard(props){
 return(

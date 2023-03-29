@@ -11,14 +11,13 @@ import equipmentPositionHistory from '../../../data/equipmentPositionHistory.jso
 //Components
 import Mark from "./Mark";
 import Dashboard from "../dashboard/Dashboard";
-import iconsDefine from "../utils/IconsDefine";
-import MapVerifyFunction from "../utils/MapVerifyFunction";
-//import EquipamentProduction from "../utils/EquipamentProduction";
+import iconsDefine from "../../utils/IconsDefine";
+import MapVerifyFunction from "../../utils/MapVerifyFunction";
+import EquipamentStatesHours from "../../utils/EquipamentStatesHours";
 
 
 function Map(){
 
-  //EquipamentProduction("a7c53eb1-4f5e-4eba-9764-ad205d0891f9")
 
 return(
     <div>
@@ -29,8 +28,10 @@ return(
             equipament.map((item, indice)=>{
                 MapVerifyFunction(item, indice)
                 let icon = iconsDefine(MapVerifyFunction(item, indice).name, MapVerifyFunction(item, indice).lastState)
+                const statesHours = EquipamentStatesHours(item.id)
                 return(
                     <Mark
+                      modelId={item.equipmentModelId}
                       lastStateId={MapVerifyFunction(item, indice).lastStateId}
                       icon={icon}
                       lat={MapVerifyFunction(item, indice).lastPosition.lat}
@@ -41,6 +42,7 @@ return(
                       lastStateDate={MapVerifyFunction(item, indice).lastStateDate}
                       name={MapVerifyFunction(item, indice).name}
                       subName={item.name}
+                      statesHours={statesHours}
                     />
                 )
             })

@@ -1,6 +1,6 @@
 
-import equipmentStateHistory from '../../../data/equipmentStateHistory.json'
-import equipmentState from '../../../data/equipmentState.json'
+import equipmentStateHistory from '../../data/equipmentStateHistory.json'
+import equipmentState from '../../data/equipmentState.json'
 
 export default function verifyStatesCount(){
     let Operate = 0 

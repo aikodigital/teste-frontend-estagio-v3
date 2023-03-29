@@ -26,7 +26,8 @@ import Mark from "./Mark";
 import SpecificHeader from "../header/SpecificHeader";
 
 //UTILS AND FUNCTIONS 
-import iconsDefine from "../utils/IconsDefine";
+import iconsDefine from "../../utils/IconsDefine";
+import EquipamentStatesHours from "../../utils/EquipamentStatesHours";
 
 function SpecificMap(){
 
@@ -66,6 +67,9 @@ function SpecificMap(){
   //STATES
   const [linesIsVsible, SetLineIsVisible] = useState(false)
 
+
+  const modelId = equipament[equipamentIndex].equipmentModelId
+
 return(
     <div>
 
@@ -77,19 +81,18 @@ return(
         <ZoomControl position="topright" />
 
         <Mark 
+            modelId={modelId}
             lastStateId={lastStateId}
             icon={icon}
             lat={lastPosition.lat}
             lon={lastPosition.lon}
-
             id={id}
             key={id}
-
             lastState={lastStateName}
-            lastStateDate={lastStateDate}
-                      
+            lastStateDate={lastStateDate}      
             name={name}
             subName={equipament[equipamentIndex].name}
+            statesHours={EquipamentStatesHours(id)}
         />
 
         {linesIsVsible &&

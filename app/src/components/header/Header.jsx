@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom'
 //DATA
 import equipment from '../../../data/equipment.json'
 import equipmentModel from '../../../data/equipmentModel.json'
+import MapVerifyFunction from '../../utils/MapVerifyFunction'
 
 function Header(){
 
@@ -57,16 +58,13 @@ return(
                             onAnimationEnd={() => { if (!isMounted) setShowDiv(false);}}
                         >
                             <Ul>
-                                {equipment.map((element)=>{
-
-                                    const modelIndex = equipmentModel.findIndex((i) => i.id === element.equipmentModelId)
-                                    const name = equipmentModel[modelIndex].name
+                                {equipment.map((element, indice)=>{
                                     
                                     return(
                                             <Li key={element.id}>
                                                 <Link 
                                                     to={`/map/${element.id}`} 
-                                                >{element.name} | {name}</Link>
+                                                >{element.name} | {MapVerifyFunction(element,indice).name} </Link>
                                             </Li>
                                     )
                                 })}

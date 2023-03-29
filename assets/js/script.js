@@ -41,7 +41,9 @@ let harvesterIcon = L.icon({
     shadowAnchor: [4, 62],
     popupAnchor: [-3, -76]
 });
-
+let creditsMap =  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
 equipmentPositionHistory.map((history) => {
 
     let last = history.positions.length - 1
@@ -61,10 +63,6 @@ equipmentPositionHistory.map((history) => {
                             equipmentState.map((state) => {
 
                                 if (stateHistory.states[lastState].equipmentStateId === state.id) {
-
-                                    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                                    }).addTo(map);
 
                                     let date = history.positions[last].date
                                     let dateFormat = date.split('-')
@@ -90,7 +88,10 @@ equipmentPositionHistory.map((history) => {
                                         default:
                                             break;
                                     }
-                                    L.marker([history.positions[last].lat, history.positions[last].lon], {
+
+                                    let lastLatitude = history.positions[last].lat
+                                    let lastLongitude = history.positions[last].lon
+                                    L.marker([lastLatitude, lastLongitude], {
                                             icon: icon
                                         }).addTo(map)
                                         .bindPopup(`
@@ -101,8 +102,6 @@ equipmentPositionHistory.map((history) => {
                                                 `)
 
                                         .on('click', () => {
-
-
 
                                             function clickEquipment() {
                                                 stateHistory.states.forEach(element => {
@@ -121,18 +120,15 @@ equipmentPositionHistory.map((history) => {
                                                                 let seconds = time[2]
                                                                 if (stateEquip.id === hourlyEarnings.equipmentStateId) {
 
-                                                                    content.innerHTML += `
-                                                                <div class="history" >
-                                                                    <div class="state"> ${stateEquip.name} <span class="state-equipment" style= "background-color:${stateEquip.color}"></span></div>
-                                                                    <div class="value"><i class="fa-solid fa-dollar-sign"></i> Gerado por Hora <span>${hourlyEarnings.value}</span></div>
-                                                                    <div class="date"><i class="fa-regular fa-calendar-days"></i> ${day}/${month}/${year} </div>
-                                                                    <div class="hour"><i class="fa-regular fa-clock"></i> ${hours}:${minutes}:${seconds} </div>
-                                                                </div>
-                                                                
+                                                                content.innerHTML += `
+                                                                    <div class="history" >
+                                                                        <div class="state"> ${stateEquip.name} <span class="state-equipment" style= "background-color:${stateEquip.color}"></span></div>
+                                                                        <div class="value"><i class="fa-solid fa-dollar-sign"></i> Gerado por Hora <span>${hourlyEarnings.value}</span></div>
+                                                                        <div class="date"><i class="fa-regular fa-calendar-days"></i> ${day}/${month}/${year} </div>
+                                                                        <div class="hour"><i class="fa-regular fa-clock"></i> ${hours}:${minutes}:${seconds} </div>
+                                                                    </div>
                                                                     `
                                                                 }
-
-
                                                             }
                                                         })
                                                     })
@@ -146,7 +142,7 @@ equipmentPositionHistory.map((history) => {
                                             clickEquipment()
 
                                         })
-                                    var circle = L.circle([history.positions[last].lat, history.positions[last].lon], {
+                                    L.circle([lastLatitude, lastLongitude], {
                                         color: '#003184',
                                         fillColor: `${state.color}`,
                                         fillOpacity: 0.9,

@@ -6,12 +6,11 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
     scrollbar-width: thin;
-    scrollbar-color: #fff #F8F8FF;
+    scrollbar-color: #DCDCDC #F8F8FF;
     transition: 500ms;
 
 }
 
-/* Works on Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
     width: 10px;
 }
@@ -21,7 +20,7 @@
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: #fff;
+    background-color: #DCDCDC;
     border-radius: 20px;
     border: 3px solid #F8F8FF;
 }
@@ -149,9 +148,14 @@ body {
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 2px;
+    text-align: center;
     
 }
-
+.icons{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 .icons img {
     height: 50px;
     width: 40px;
@@ -247,6 +251,7 @@ body {
         width: 100vw;
         position: fixed;
         top: 0;
+        border-radius: 0;
     }
 
     #map {

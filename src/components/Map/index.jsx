@@ -1,6 +1,6 @@
 import Button from '../Button';
 import { eqState } from '../../entities/equipment';
-import { MapContainer, TileLayer, Marker, useMap, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import './Map.css';
 
@@ -8,7 +8,7 @@ const Map = (props) => {
   const reportCoordinates = props.report!= null ? props.report.lastPosition() : {lat: -19, lon: -46};
 
   const position = [reportCoordinates.lat, reportCoordinates.lon];
-  const zoom = props.zoom;
+  const zoom = props.report == null? 11.5 : props.zoom;
   const setReport= props.setReport;
 
   function SetPreview (){
@@ -54,7 +54,11 @@ const Map = (props) => {
     const target = e.target;
     if(target.localName === 'img' && target.classList[0] === 'leaflet-marker-icon'){
       const equipment = equipments.filter(eq => eq.id === target.classList[1])[0];
-      setReport(equipment);
+      if(props.report==null || (props.report != null && props.report.id != equipment.id)){
+        setReport(equipment);
+      }else{
+        setReport(null);
+      }
     }
   }
 

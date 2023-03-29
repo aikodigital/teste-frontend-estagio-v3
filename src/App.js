@@ -5,8 +5,6 @@ import './App.css';
 import { useState } from 'react';
 
 function App() {
-
-  const [position, setPosition] = useState([-19.1000, -46.1000]);
   const [zoomIn, setZoomIn] = useState(11.5);
   const [report, setReport] = useState(null);
 
@@ -19,13 +17,11 @@ function App() {
         <SideMenu 
           equipments={equipments} 
           setZoomIn={setZoomIn} 
-          setPosition={setPosition} 
           report={report} 
           setReport={setReport}/>
         <Map 
           equipments={equipments} 
           zoom={zoomIn} 
-          position={position} 
           report={report} 
           setReport={setReport} />
       </main>

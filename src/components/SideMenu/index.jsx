@@ -14,12 +14,15 @@ const SideMenu = (props) => {
     const showHistory = () => {
         history? setHistory(false): setHistory(true);
     }
-
-
     
     const setEqPreview = (equipment) =>{
-        props.setZoomIn(13);
-        setReport(equipment);
+        if(report==null || (report != null && report.id != equipment.id)){
+            props.setZoomIn(13);
+            setReport(equipment);
+        }else{
+            props.setZoomIn(11.5);
+            setReport(null);
+        }
     }
 
     const equipments = props.equipments;

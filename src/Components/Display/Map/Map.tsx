@@ -31,34 +31,26 @@ function Map() {
     }
   }
 
-  const caIcon = new L.Icon({
-    iconUrl: "img/freightTruck.png",
-    iconSize: [35, 45],
-    iconAnchor: [17, 46],
-    popupAnchor: [0, -46],
-  });
-
-  const gtIcon = new L.Icon({
-    iconUrl: "img/garra.png",
-    iconSize: [35, 45],
-    iconAnchor: [17, 46],
-    popupAnchor: [0, -46],
-  });
-
-  const hvIcon = new L.Icon({
-    iconUrl: "img/harvester.png",
-    iconSize: [35, 45],
-    iconAnchor: [17, 46],
-    popupAnchor: [0, -46],
-  });
-
-  const defaultIcon = new L.Icon.Default();
-
   const icons = {
-    CA: caIcon,
-    HV: hvIcon,
-    GT: gtIcon,
-    default: defaultIcon,
+    CA: new L.Icon({
+      iconUrl: "img/freightTruck.png",
+      iconSize: [35, 45],
+      iconAnchor: [17, 46],
+      popupAnchor: [0, -46],
+    }),
+    HV: new L.Icon({
+      iconUrl: "img/harvester.png",
+      iconSize: [35, 45],
+      iconAnchor: [17, 46],
+      popupAnchor: [0, -46],
+    }),
+    GT: new L.Icon({
+      iconUrl: "img/garra.png",
+      iconSize: [35, 45],
+      iconAnchor: [17, 46],
+      popupAnchor: [0, -46],
+    }),
+    default: new L.Icon.Default(),
   };
 
   function getEquipmentStatesHistory(equipmentId: string) {

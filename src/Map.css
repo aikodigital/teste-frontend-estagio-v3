@@ -17,7 +17,7 @@
 /* define as propriedade da div tabelainfo */
 .tabelainfo{
     width: 100%;
-    height: 90%;
+    height: 100%;
     overflow: auto;
     overflow-x: hidden;
     position: relative; 
@@ -36,6 +36,7 @@ table {
     /* border-collapse: collapse; */
     width: 90%;
     margin: 0 auto;
+    margin-bottom: 10vh;
 }
   
 thead th {
@@ -54,6 +55,7 @@ tbody td {
     border-radius: 10px;
     padding: 10px;
     border: 1px solid #F2F2F2;
+    width: 50%;
 }
 /* configura textos */
 .titulo{

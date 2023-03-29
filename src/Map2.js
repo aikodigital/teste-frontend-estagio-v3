@@ -11,6 +11,8 @@ import {RiCloseCircleLine} from 'react-icons/ri'
 import { FaTruck } from 'react-icons/fa';
 import { TbBackhoe } from 'react-icons/tb';
 import { GiCircularSawblade } from 'react-icons/gi';
+import Legend2 from './Legend2';
+import Produtiv from './Produtiv';
 
 function Map2(props){
     //encontra todas os estados do props.equipmentId
@@ -27,15 +29,12 @@ function Map2(props){
     const allPositions = {}; 
     equipmentPositionHistory.forEach((s) => {
         if (s.equipmentId === props.equipmentId) {
-            var cont=0;
             s.positions.forEach((position) => {
                 let data1= new Date(position.date);
-                let data2= new Date("2021-02-25T09:00:00.000Z");
+                let data2= new Date("2021-02-25T00:00:00.000Z");
                 if ((data1.getTime())>(data2.getTime())) {
                     allPositions[position.date] = [position.lat, position.lon];   
                 }
-                cont++;
-
             });
         }
     });
@@ -44,12 +43,17 @@ function Map2(props){
     equipmentState.forEach((equipmentState) => {
         equipmentStateNames[equipmentState.id] = equipmentState.name;
     });
+    //encontra a cor dos states
+    const equipmentStateColor = {};
+    equipmentState.forEach((equipmentState) => {
+        equipmentStateColor[equipmentState.id] = equipmentState.color;
+    });
     
     // cria uma tabela com todo histórico de estados do props.equipmentId
     const rows = Object.entries(allStates).reverse().map(([date, equipmentStateId]) => (
         <tr key={date}>
-        <td>{new Date(date).toLocaleString('pt-BR', {timeZone: 'America/Sao_Paulo', hour12: false, year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'})}</td>
-        <td>{equipmentStateNames[equipmentStateId]}</td>
+            <td >{new Date(date).toLocaleString('pt-BR', {timeZone: 'America/Sao_Paulo', hour12: false, year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'})}</td>
+            <td style={{backgroundColor:equipmentStateColor[equipmentStateId]}}>{equipmentStateNames[equipmentStateId]}</td>
         </tr>
     ));
 
@@ -112,7 +116,7 @@ function Map2(props){
 
     return(
     <div className='mapa2' style={{width:'100%', height:'90vh', position: 'relative'}}>
-        <MapContainer center={positions[positions.length-1]} zoom={11} style={{ height: '90%', width: '100%' }}>
+        <MapContainer center={positions[positions.length-1]} zoom={11} style={{ height: '100%', width: '100%' }}>
             <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution="Map data &copy; <a href='https://www.openstreetmap.org/'>OpenStreetMap</a> contributors"
@@ -122,18 +126,24 @@ function Map2(props){
             <Polyline pathOptions={{ color: "#333333", dashArray:'10, 5', lineCap: 'triangle', weight: '5' }} positions={positions}>
             </Polyline> 
         </MapContainer>
+        < Legend2 iconeb={iconMapping[equipmentModelName]} nameb={equipmentModelName} />
         <div className='tabelainfo'>
             <h1 className='titulo'>{equipmentName} - {equipmentModelName}</h1>
             <div className="closeicondiv" onClick={() => props.Retorna()}>
             {<RiCloseCircleLine className="closeicon"/>}
             </div>
             <h4 className='idmap2'>Id do equipamento: {props.equipmentId}</h4>
+            < Produtiv allStates={allStates} equipmentStateNames={equipmentStateNames} equipmentModelId={equipmentModelId}/>
             <table>
                 <thead>
+                <tr> 
+                    <th style={{backgroundColor:'black', textAlign:'center'}} colSpan={2}>Período de calculo</th>
+                </tr>
                 <tr>
                     <th>Histórico</th>
                     <th>Estado do equipamento</th>
                 </tr>
+                
                 </thead>
                 <tbody>{rows}</tbody>
             </table>

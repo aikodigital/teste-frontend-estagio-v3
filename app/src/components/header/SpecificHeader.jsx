@@ -1,6 +1,6 @@
 //STYLES
 import {BurgerContainer, HeaderContainer, LogoAiko, Button, Title} from './StyledHeader'
-import Logo from '../../../assets/aiko.png'
+import Logo from '../../../public/assets/aiko.png'
 import Hamburger from 'hamburger-react'
 
 //ROUTER

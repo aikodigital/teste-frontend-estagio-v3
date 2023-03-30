@@ -3,15 +3,15 @@ export default function iconsDefine (name, state) {
     const CA = (sate) => {
       switch(state){
         case 'Operando':
-        urlIcon = '../../../assets/icons/CA-OP.svg'
+        urlIcon = '../../public/icons/CA-OP.svg'
         break;
 
       case 'Parado':
-        urlIcon = '../../../assets/icons/CA-PA.svg'
+        urlIcon = '../../public/icons/CA-PA.svg'
         break;
 
       case 'Manutenção':
-        urlIcon = '../../../assets/icons/CA-MA.svg'
+        urlIcon = '../../public/icons/CA-MA.svg'
         break;
 
       default:
@@ -22,15 +22,15 @@ export default function iconsDefine (name, state) {
     const HA = (sate) => {
       switch(state){
         case 'Operando':
-        urlIcon = '../../../assets/icons/HA-OP.svg'
+        urlIcon = '../../public/icons/HA-OP.svg'
         break;
 
       case 'Parado':
-        urlIcon = '../../../assets/icons/HA-PA.svg'
+        urlIcon = '../../public/icons/HA-PA.svg'
         break;
 
       case 'Manutenção':
-        urlIcon = '../../../assets/icons/HA-MA.svg'
+        urlIcon = '../../public/icons/HA-MA.svg'
         break;
 
       default:
@@ -41,15 +41,15 @@ export default function iconsDefine (name, state) {
     const GT = (sate) => {
       switch(state){
         case 'Operando':
-        urlIcon = '../../../assets/icons/GT-OP.svg'
+        urlIcon = '../../public/icons/GT-OP.svg'
         break;
 
       case 'Parado':
-        urlIcon = '../../../assets/icons/GT-PA.svg'
+        urlIcon = '../../public/icons/GT-PA.svg'
         break;
 
       case 'Manutenção':
-        urlIcon = '../../../assets/icons/GT-MA.svg'
+        urlIcon = '../../public/icons/GT-MA.svg'
         break;
 
       default:

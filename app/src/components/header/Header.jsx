@@ -1,7 +1,7 @@
 //STYLES
 import './Styles.css'
 import { HeaderContainer, LogoAiko, Ul, Li, Button, Title, BurgerContainer} from './StyledHeader'
-import Logo from '../../../assets/aiko.png'
+import Logo from '../../../public/assets/aiko.png'
 import Hamburger from 'hamburger-react'
 
 //HOOKS

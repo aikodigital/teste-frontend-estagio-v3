@@ -21,3 +21,7 @@ Esse projeto gerencia os dados recolhidos de equipamentos utilizados em uma oper
 * Executar o projeto com o comando:
 `npm run dev`
 * O navegador deverá abrir com o endereço `http://localhost:5173/`
+
+### Preview da aplicação
+
+<img src="src\assets\preview.png" alt="imagem de trator"/>

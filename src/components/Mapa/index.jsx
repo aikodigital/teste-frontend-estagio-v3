@@ -1,8 +1,14 @@
 import React, { useState } from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button } from '@mui/material';
-import histStates from '../../Utils/histEstados'
+
+
+//Importações de Utils
 import fullEquipment from '../../Utils/obterDados'
+import histStates from '../../Utils/histEstados';
+import modeloIcone from '../../Utils/modeloIcone';
+
+//Estilo
 import style from './Mapa.module.scss'
 
 const Mapa = () => {
@@ -23,7 +29,7 @@ const Mapa = () => {
     })
 
     setHistoricoEstados(histselect)
-  }
+  } 
 
   return (
     <>
@@ -33,7 +39,7 @@ const Mapa = () => {
       <div className={style.mapDiv}>
         <MapContainer
           className={style.MapContainer}
-          center={[-19.192595, -46.061072]}
+          center={[-19.163073, -46.06338]}
           zoom={11}
           scrollWheelZoom={true}
         >
@@ -41,10 +47,14 @@ const Mapa = () => {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {fullEquipment.map(equipamento => (
+          {fullEquipment.map(equipamento => {
+            let icon = modeloIcone(equipamento.modelName)
+
+            return (
             <Marker
               key={equipamento.id}
               position={[equipamento.location.lat, equipamento.location.lon]}
+              icon={icon}
             >
               <Popup>
                 <ul>
@@ -63,10 +73,11 @@ const Mapa = () => {
                     Ver histórico completo
                   </Button>
                 </div>
-
               </Popup>
-            </Marker>
-          ))}
+            </Marker> 
+            )
+            })
+          }
         </MapContainer>
         <div>
           {historico && (
@@ -105,7 +116,7 @@ const Mapa = () => {
         </div>
       </div>
       <footer className={style.footer}>
-        <p>Criado e desenvolvido por: Vinicius Felipe</p>
+        <p>Criado e desenvolvido por Vinicius Felipe</p>
       </footer>
     </>
   )

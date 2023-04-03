@@ -48,7 +48,7 @@ const fullEquipment = []
 
     fullEquipment.push(Equipamentos)
 
-    return fullEquipment.values
+    return fullEquipment
   })
 
 export default fullEquipment;

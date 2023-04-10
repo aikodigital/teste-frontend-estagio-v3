@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Importando CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- AwesomeFonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <title>Aiko</title>
+</head>
+<body>
+    <main>
+        <section class="equipametos_dashboard">
+            <div class="dados">
+                <div class="dados_titulo">
+                    <h2>Informações gerais</h2>
+                </div>
+                <div class="graficos_donut">
+                    <div class="grafico_card">
+                        <canvas id="chartEquipamentos"></canvas>
+                        <div id="cards-equipamento" class="cards">
+
+                        </div>
+                    </div>
+                    <div class="grafico_card">
+                        <canvas id="chartEstados"></canvas>
+                        <div id="cards-estado" class="cards">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="equipamentos">
+                <div class="equipamentos_titulo">
+                    <h2>Lista dos Equipamentos</h2>
+                </div>
+                <div class="lista-equipamentos_filtros">
+                    <div class="equipamento_filtro">
+                        <input type="search" placeholder="Pesquise o equipamento" id="list_filter-search" class="equipamento_filtro filtro_barra-pesquisa">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                        <select name="" id="list_filter-estate" class="equipamento_filtro filtro-selecione">
+                            <option value="">Estado do Equipamento</option>
+                            <option value="Operando">Operando</option>
+                            <option value="Parado">Parado</option>
+                            <option value="Manutenção">Manutenção</option>
+                        </select>
+                        <select name="" id="list_filter-model" class="equipamento_filtro filtro-selecione">
+                            <option value="">Modelo</option>
+                            <option value="Caminhão de carga">Caminhão de carga</option>
+                            <option value="Harvester">Harvester</option>
+                            <option value="Garra traçadora">Garra traçadora</option>
+                        </select>
+                </div>
+                <div class="lista-equipamentos_exibicao">
+                    <table id="equipamentos">
+                        <tr>
+                            <th>Check</th>
+                            <th>Nome</th>
+                            <th>Estado</th>
+                            <th>Modelo</th>
+                            <th>Valor p/Hora</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="historico">
+                <div class="historico_titulo">
+                    <h2>Histórico dos equipamentos</h2>
+                </div>
+                <div class="historico_lista">
+                    <table id="historico-equipamento">
+                        <tr class="historico-cabecario">
+                            <th>Data</th>
+                            <th>Equipamento</th>
+                            <th>Estado</th>
+                            <th>Valor p/Hora</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+        </section>
+        <section class="mapa">
+            <div class="mapa_filtros">
+                <div class="mapa_filtro">
+                    <input type="search" placeholder="Pesquise o nome" id="map_filter-search" class="map_filter filtro_barra-pesquisa">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                    <select name="" id="map_filter-estate" class="map_filter filtro-selecione">
+                        <option value="">Estado do Equipamento</option>
+                        <option value="Operando">Operando</option>
+                        <option value="Parado">Parado</option>
+                        <option value="Manutenção">Manutenção</option>
+                    </select>
+                    <select name="" id="map_filter-model" class="map_filter filtro-selecione">
+                        <option value="">Modelo</option>
+                        <option value="Caminhão de carga">Caminhão de carga</option>
+                        <option value="Harvester">Harvester</option>
+                        <option value="Garra traçadora">Garra traçadora</option>
+                    </select>
+                </div>
+                    <div id="map"></div>
+
+        </section>
+    </main>
+
+    
+    <script src="js/main.js"></script>
+    <script src="js/exibirNaTela.js"></script>
+    <script src="js/filtros.js"></script>
+    <script src="js/historicoDeEstado.js"></script>
+    <script src="js/listaDeEquipamentos.js"></script>
+
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+    </script>
+
+</body>
+</html>

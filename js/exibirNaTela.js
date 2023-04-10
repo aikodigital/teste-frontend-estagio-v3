@@ -1,3 +1,92 @@
+/* pegando o ID dos canvas para exibir os graficos */
+const chartEstados = document.getElementById('chartEstados')
+const chartEquipamentos = document.getElementById('chartEquipamentos')
+
+/* Funcao para criar os graficos e os exibir, parametro importado ao final do listaDeEquipamentos.js */
+function criarDados(equipamento){
+
+    /* Array para receber a quantidade de cada tipo de estado */
+    const qntEquipamentosEstado = []
+    /* Array para receber cada modelo de equipamento */
+    const qntEquipamentos = []
+
+    /* Declarando arrays para receberem as quantidades de estados e modelos */
+    let OP = 0, PR = 0, MT = 0
+    let CA = 0, HV = 0, GT = 0
+    /* Para cada item na array equipamento */
+    equipamento.forEach(e => {
+        if (e.estadoAtual == "Operando") {/* Se o estado atual do equipamento for igual a Operando adicionar OP + 1 */
+            OP = OP + 1
+            
+        }else if(e.estadoAtual == "Parado"){ /* Se o estado atual do equipamento for igual a Parado adicionar PR + 1 */
+            PR = PR + 1
+            
+        }else if(e.estadoAtual == "Manutenção"){ /* Se o estado atual do equipamento for igual a Manutenção adicionar MT + 1 */
+            MT = MT + 1
+        }
+
+        if (e.modelo == "Caminhão de carga") {  /* Se o modelo do equipamento for igual a Caminhão de carga adicionar CA + 1 */
+            CA = CA + 1
+        }else if(e.modelo == "Harvester"){ /* Se o modelo do equipamento for igual a Harvester adicionar HV + 1 */
+            HV = HV + 1
+        }else if(e.modelo == "Garra traçadora"){ /* Se o modelo do equipamento for igual a Garra traçadora adicionar GT + 1 */
+            GT = GT + 1
+        }
+
+    })
+    
+    /* Adicionando na array os valores de cada equipamento para serem exibidas no grafico */
+    qntEquipamentos.push(CA,HV,GT)
+
+    /* Variavel para somar a quantidade de estados */
+    let equipamentoTotal = CA+HV+GT
+    let estadosTotais = OP+PR+MT
+
+    /* Adicionando as porcentagens a array para serem exibidas no grafico */
+    qntEquipamentosEstado.push(OP, PR, MT)
+    /* funcao para exibir os dados dos modelos */
+    exibirCardEquipamento(CA,HV,GT, equipamentoTotal)
+    /* funcao para exibir os dados dos estados */
+    exibirCardEstado(OP, PR, MT, estadosTotais)
+
+    /* Criando o gráfico de estados */
+    new Chart(chartEstados, {
+    type: 'pie',
+    responsive: true,
+    data: {
+        labels: ['Operando', 'Parado', 'Manutenção'],
+        datasets: [{
+          label: '# of Votes',
+          data: qntEquipamentosEstado ,
+          borderWidth: 1,
+          backgroundColor: ["#2ecc71", "#f1c40f", "#e74c3c"]
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true
+    }
+    })
+    /* Criando o gráfico de modelos */
+    new Chart(chartEquipamentos, {
+        type: 'pie',
+        data: {
+          labels: ['Caminhão de Carga', 'Harvester', 'Garra traçadora'],
+          datasets: [{
+            label: '# of Votes',
+            data: qntEquipamentos/* [12, 19, 3, 5, 2, 3] */,
+            borderWidth: 1,
+            backgroundColor: ["blue", "purple", "orange"]
+          }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true
+        }
+      })
+}
+
+
 /* Essa função irá exibir a lista dos equipamentos na tabela */
 function exibirListaNaTela(equipamentos){
     /* Pegando o Id da tabela para a exibição */
@@ -92,7 +181,6 @@ function exibirHistoricoEstado(listaHistorico){
             `
         })
     } 
-    console.log(listaHistorico)
 }
 
 /* Funcao para reiniciar a tabela do histórico */
@@ -109,11 +197,97 @@ tabelaDeHistorico.innerHTML = `
 </tr>
                         `
 }
+/* pegando o Id do card que ira exibir os dados dos modelos */
+const cards_equipamento = document.getElementById('cards-equipamento')
 
-const equipamentosTotalCard= document.getElementById('qntDeEquipamentos')
-const lucroTotalCard = document.getElementById('lucroDosEquipamentos')
+/* Funcao para exibir os dados dos modelos */
+function exibirCardEquipamento(caminhao, harvester, garra, equipamentoTotal){
+    /* Array para receber os dados */
+    let modelosParaExibicao = []
+    /* Para cada tipo de modelo */
+    modelos.forEach(e => {
+        if (e.name == "Caminhão de carga") {/* Se o nome do modelo for igual a Caminhao de Carga */
+            /* Atribuindo a cor para o caminhao de carga  */
+            e.color = "blue"
+            /* Atribuindo a quantidade de caminhao de carga */
+            e.quntModelo = caminhao
+            /* Atribuindo a porcentagem de caminhao de carga sobre a soma dos modelos totais */
+            e.porcentagem = 100*(caminhao / equipamentoTotal)
+        }else if(e.name == "Harvester"){/* Se o nome do modelo for igual a Harvester */
+            /* Atribuindo a cor para o Harvester  */
+            e.color = "purple"
+            /* Atribuindo a quantidade de Harvester */
+            e.quntModelo = harvester
+            /* Atribuindo a porcentagem de Harvester sobre a soma dos modelos totais */
+            e.porcentagem = 100*(harvester / equipamentoTotal)
+        }else if(e.name == "Garra traçadora"){ /* Se o nome do modelo for igual a Garra traçadora */
+        /* Atribuindo a cor para o Garra traçadora  */
+            e.color = "orange"
+            /* Atribuindo a quantidade de Garra traçadora */
+            e.quntModelo = garra
+            /* Atribuindo a porcentagem de Garra traçadora sobre a soma dos modelos totais */
+            e.porcentagem = 100*(garra / equipamentoTotal)
+        }
+        /* Adicionando os modelos a array modelosParaExibicao*/
+        modelosParaExibicao.push(e)
+    })
 
-function exibirNosCards(equipamentoTotal, lucroTotal){
-    equipamentosTotalCard.innerHTML = equipamentoTotal
-    lucroTotalCard.innerHTML = `R$${lucroTotal}`
+    /* Para cada modelosParaExibicao */
+    for (let a = 0; a < modelosParaExibicao.length; a++) {
+        /* Imprimindo os cards */
+        cards_equipamento.innerHTML += 
+        `
+        <div class="card_estado">
+            <h3 style="color:${modelosParaExibicao[a].color}">${modelosParaExibicao[a].name}</h3>
+            <h3>${modelosParaExibicao[a].quntModelo}</h3>
+            <p>Equivale a: ${modelosParaExibicao[a].porcentagem.toFixed(2)}%</p>
+        </div>
+        `
+        
+    }
+
+}
+/* pegando o Id do card que ira exibir os dados dos estados */
+const cards_estado = document.getElementById('cards-estado')
+
+/* Funcao para exibir os dados dos estados */
+function exibirCardEstado(operando, parado, manutencao, estadoTotal){
+    /* Array para receber os dados */
+    let estadosParaExibicao = []
+    /* Para cada tipo de estado */
+    estados.forEach(e => {
+        if (e.name == "Operando") {/* Se o nome do estado for igual a Operando */
+            /* Atribuindo a quantidade equipamentos de operando  */
+            e.quntEstado = operando
+            /* Atribuindo a porcentagem de caminhao de carga sobre a soma dos estados totais */
+            e.porcentagem = 100*(operando / estadoTotal)
+        }else if(e.name == "Parado"){ /* Se o nome do estado for igual a Parado */
+            /* Atribuindo a quantidade de equipamentos Parado */
+            e.quntEstado = parado
+            /* Atribuindo a porcentagem de caminhao de carga sobre a soma dos estados totais */
+            e.porcentagem = 100*(parado / estadoTotal)
+        }else if(e.name == "Manutenção"){ /* Se o nome do estado for igual a Manutenção */
+        /* Atribuindo a quantidade de equipamentos em manutencao */
+            e.quntEstado = manutencao
+            /* Atribuindo a porcentagem de Manutenção sobre a soma dos estados totais */
+            e.porcentagem = 100*(manutencao / estadoTotal)
+        }
+        /* Adicionando os estados a array estadosParaExibicao*/
+        estadosParaExibicao.push(e)
+    })
+
+    /* Para cada estadosParaExibicao */
+    for (let a = 0; a < estadosParaExibicao.length; a++) {
+        /* Imprimindo os cards */
+        cards_estado.innerHTML += 
+        `
+        <div class="card_estado">
+            <h3 style="color:${estadosParaExibicao[a].color}">${estadosParaExibicao[a].name}</h3>
+            <h3>${estadosParaExibicao[a].quntEstado}</h3>
+            <p>Equivale a: ${estadosParaExibicao[a].porcentagem.toFixed(2)}%</p>
+        </div>
+        `
+        
+    }
+
 }

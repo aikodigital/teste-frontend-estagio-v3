@@ -170,6 +170,8 @@ function pesquisarEquipamentoLista(){
             listaFiltrada.push(lista[i])
         }
     }
+    /* Funcao para reiniciar a tabela do histórico. (Essa funcao é para caso um equipamento tenha sido selecionado, ao trocar os filtros ele sair da exibicao do historico) */
+    limparHistorico()
     /* Funcao para exibir a lista na tela, enviando como parametro a lista filtrada */
     exibirListaNaTela(listaFiltrada)
 }

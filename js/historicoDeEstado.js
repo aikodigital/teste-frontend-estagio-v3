@@ -46,8 +46,3 @@ function selecionarHistorico(){
 /* Chamando função para exibir o historico atualizado */
     exibirHistoricoEstado(historicoTotal)
 }
-
-
-function filtrarHistorico(){
-    
-}

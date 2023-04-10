@@ -153,8 +153,11 @@ function adicionarEquipamentoAListaGlobal(){
         /* Adicionando cada item a array Lista */
         lista.push(items)
     }
-    /* Ao terminar todo o procedimento, rodar a função que ira mostrar os itens na tela */
+    /* Ao terminar todo o procedimento, chamar as funcoes */
+    /* Exibir a lista de equipamentos */
     exibirListaNaTela(lista)
+    /* Exibir os equipamentos no mapa */
     exibirListaNoMapa(lista)
-    criarGrafico(lista)
+    /* Exibir os dados em graficos */
+    criarDados(lista)
 }

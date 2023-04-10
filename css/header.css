@@ -1,0 +1,53 @@
+.header {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.nav-bar {
+  position: sticky;
+  z-index: 1001;
+  top: 0;
+  width: 100%;
+  background-color: #f1f1f1;
+}
+
+.header-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-menu a {
+  font-size: 1.125rem;
+  line-height: 1.3rem;
+  padding: 0px 10px;
+  margin-top: 5px;
+  text-decoration: none;
+  color: #125C30;
+  display: block;
+}
+
+.botao-home img {
+  margin: auto;
+  max-width: 60px;
+  padding: 0;
+}
+
+#filtro-mapa {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 20px;
+}
+
+#filtro-mapa label {
+  color: aliceblue;
+}

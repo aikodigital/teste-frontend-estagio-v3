@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aiko - Teste</title>
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body id="home">
+  <section class="nav-bar">
+    <header class="header">
+      <a class="botao-home" href="#home"> <img src="/img/aiko.png" alt="icon logo"> </a>
+      <ul class="header-menu">
+        <li> <a href="#mapaStyle"> Mapa </a> </li>
+        <li> <a href="#equipamentos"> Equipamentos </a></li>
+      </ul>
+    </header>
+  </section>
+
+  <section id="mapaStyle">
+    <div id="filtro-mapa">
+      <h1 class="tilulo-1">Mapa</h1>
+      <div>
+        <label for="">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Pesquisar..." id="pesquisa">
+        </label>
+        <label>Filtros:
+          <select id="filtro">
+            <option value="">Todos</option>
+            <option value="0808344c-454b-4c36-89e8-d7687e692d57">Operando</option>
+            <option value="baff9783-84e8-4e01-874b-6fd743b875ad">Parado</option>
+            <option value="03b2d446-e3ba-4c82-8dc2-a5611fea6e1f">Manutenção</option>
+          </select>
+        </label>
+      </div>
+    </div>
+    <div clas="mapaSpace">
+      <div id="map"></div>
+    </div>
+  </section>
+
+  <section id="equipamentos">
+    <div class="tilulo-1">
+      <h1>Equipamentos</h1>
+      <ul class="equipamentos-card">
+      </ul>
+    </div>
+  </section>
+
+  <footer class="rodape">
+    <p>Lucas de Carvalho Barbosa © 2023</p>
+  </footer>
+
+  <!-- html do Modal -->
+
+  <div class="modal">
+    <div class="modal-box">
+      <div class="modal-top-bar">
+        <h4 class="modal-title"></h4>
+        <button class="icon-btn close-modal"></button>
+      </div>
+      <div class="modal-content">
+        <div class="modal-modelo"></div>
+        <div class="modal-estado"></div>
+        <div class="modal-historico-titulo">Histórico de estado do equipamento:</div>
+        <div class="modal-historico"></div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+<script src="/js/modal.js"></script>
+<script src="/js/script.js"></script>
+
+</html>

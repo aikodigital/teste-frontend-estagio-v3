@@ -14,7 +14,7 @@ import equipamentmodel from '../equips/equipmentModel.json';
 let butonicon = new L.Icon({
     iconUrl: icon,
     iconShadow: iconShadow,
-    iconSize: [40, 35],
+    iconSize: [35, 35],
     iconAnchor: [22, 94],
     popupAnchor: [-3, -76]
     
@@ -98,11 +98,16 @@ function MapsPage(latlon,infoEstado,propiedade, modelo, infoequipamento ){
                        const nomemodelo = aux?.name;
  
                        
+
+                       
                                        
                    return(
                     <Marker position={[linha.positions.slice(-1)[0].lat,linha.positions.slice(-1)[0].lon]} icon={butonicon}>
                     <Popup>
+<<<<<<< HEAD
+=======
                         <span>Modelo:{nomemodelo}<br/></span>
+>>>>>>> 512e6ddd500f122e49ebe85b552e5996df6a85c4
                         <span>Maquina: {nomemaquina}<br/></span>
                         <span>ID:{equips} <br/></span>
                         <span>Estado: {stateName}<br/></span>

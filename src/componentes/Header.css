@@ -11,7 +11,7 @@ body{
    justify-content: space-between;              
   align-items: center; 
   display: flex;
-  border-bottom: solid 4px rgb(92, 92, 233); 
+  border-bottom: solid 4px rgb(32, 32, 211); 
   height: 150px;
   background-color: rgb(22, 20, 20);     
 }

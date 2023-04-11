@@ -61,7 +61,7 @@ let butonicon = new L.Icon({
     }[];
   } 
 
-function MapsPage(latlon,infoEstado,propiedade, modelo, infoequipamento ){
+function MapsPage(){
     const equipamento: latlon[] = positio.map(linha => {return linha});
     const estado: infoEstado[] = infoEstadomaquina.map(linha => {return linha});
     const equip: infoequipamento[] = infoequips.map(linha => {return linha});

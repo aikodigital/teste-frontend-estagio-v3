@@ -17,6 +17,7 @@ let butonicon = new L.Icon({
     iconSize: [40, 35],
     iconAnchor: [22, 94],
     popupAnchor: [-3, -76]
+    
 });
 
 

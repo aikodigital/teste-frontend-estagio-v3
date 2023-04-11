@@ -92,6 +92,11 @@ function MapsPage(latlon,infoEstado,propiedade, modelo, infoequipamento ){
                        let idequipamento =equip.find(info => info.id ===  statestory[index].equipmentId);
                        let nomemaquina = idequipamento?.name;
 
+
+                       const modelid = idequipamento?.equipmentModelId ;
+                       const aux =equipmodel.find(info => info.id === modelid);
+                       const nomemodelo = aux?.name;
+ 
                        
 
                        
@@ -99,6 +104,10 @@ function MapsPage(latlon,infoEstado,propiedade, modelo, infoequipamento ){
                    return(
                     <Marker position={[linha.positions.slice(-1)[0].lat,linha.positions.slice(-1)[0].lon]} icon={butonicon}>
                     <Popup>
+<<<<<<< HEAD
+=======
+                        <span>Modelo:{nomemodelo}<br/></span>
+>>>>>>> 512e6ddd500f122e49ebe85b552e5996df6a85c4
                         <span>Maquina: {nomemaquina}<br/></span>
                         <span>ID: {equips} <br/></span>
                         <span>Estado: {stateName}<br/></span>

@@ -44,6 +44,6 @@ npm run first-start
 
 Acesse o projeto em seu navegador através do endereço http://localhost:3000.
 
-Ou entre em https://ephemeral-pony-475e21.netlify.app, para visualizar a plataforma.
+Ou entre em https://logtracker.netlify.app, para visualizar a plataforma.
 
 

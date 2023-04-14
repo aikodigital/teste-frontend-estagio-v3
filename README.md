@@ -1,6 +1,10 @@
 # Teste Frontend estágio V3
 
-## O Desafio
+## Preview da aplicação
+
+<img src="src\assets\preview.png" alt="imagem de trator"/>
+
+### O Desafio
 Projeto desenvolvido para o Teste de Estágio Front-End da empresa Aiko.
 Esse projeto gerencia os dados recolhidos de equipamentos utilizados em uma operação florestal, possibilitando ver informações de posição, estado atual e histórico de estados dos equipamentos.
 
@@ -21,7 +25,3 @@ Esse projeto gerencia os dados recolhidos de equipamentos utilizados em uma oper
 * Executar o projeto com o comando:
 `npm run dev`
 * O navegador deverá abrir com o endereço `http://localhost:5173/`
-
-### Preview da aplicação
-
-<img src="src\assets\preview.png" alt="imagem de trator"/>

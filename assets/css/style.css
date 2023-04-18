@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #DCDCDC #F8F8FF;
+    transition: 500ms;
+
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #F8F8FF;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #DCDCDC;
+    border-radius: 20px;
+    border: 3px solid #F8F8FF;
+}
+
+body {
+    background-color: #F8F8FF;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+}
+
+.nav {
+    height: 100vh;
+    width: 30vw;
+    overflow-x: hidden;
+   
+}
+
+.nav .logo {
+    width: 30vw;
+    height: 100px;
+    background-color: #F8F8FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-radius: 0 0 0 50px;
+}
+.click-animation{
+    animation: mapClick 2s ease-in-out;
+}
+@keyframes mapClick {
+    0% {
+
+       height: 100vh;
+    }
+}
+.nav .logo img {
+    width: 100px;
+    animation: enter 2s ease-in-out;
+}
+
+@keyframes enter {
+    0% {
+
+        transform: translateY(-100px);
+    }
+}
+
+#map {
+    height: 100vh;
+    width: 70vw;
+    animation: map 2s ease-in-out;
+}
+@keyframes map {
+    0%{
+        transform: scale(1.1);
+    }
+}
+.color-state {
+    width: 100%;
+    height: 18px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    animation: pulse 4s infinite;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.content h2 {
+    color: #000;
+    font-size: 20px;
+    letter-spacing: 4px;
+    font-weight: 500;
+    width: 100%;
+    background-color: #DCDCDC;
+    animation: enter 1.5s ease-in-out;
+    z-index: -1;
+    text-align: center;
+    
+}
+
+.content p {
+    color: #fff;
+    font-size: 20px;
+    padding: 10px;
+    width: 100%;
+    background-color: #003184;
+    text-align: center;
+    z-index: -1;
+    animation: enter 1.5s ease-in-out;
+    text-transform: uppercase;
+}
+
+.content .info {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #003184;
+    margin-top: 50px;
+}
+
+.info h3 {
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    
+}
+.icons{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.icons img {
+    height: 50px;
+    width: 40px;
+    object-fit: cover;
+    margin: 10px;
+    animation: icon 4s infinite;
+    color: #267fca;
+}
+
+.history {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #F8F8FF;
+    border-bottom: 1px solid #1C1C1C;
+    padding: 10px;
+    animation: enterHistory 1.5s ease-in-out;
+    transition: 500ms;
+}
+@keyframes enterHistory {
+    0% {
+
+        transform: translateY(100px);
+    }
+}
+.history:hover {
+    transition: 500ms;
+    background-color: rgba(220,220,220, 0.5);
+}
+.history .state{
+    text-transform: uppercase;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+}
+.history .date,
+.history .value,
+.history .hour{
+    font-size: 15px;
+    color: #1C1C1C;
+}
+.equipment{
+    text-transform: uppercase;
+    text-align: center;
+}
+.location{
+    font-weight: 700;
+    font-size: 15px;
+    text-align: center;
+}
+.date-hour{
+    text-align: center;
+}
+.state-equipment{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    animation: pulse 4s infinite;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+@keyframes icon {
+    0% {
+        opacity: 0;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media (max-width:500px) {
+    .container {
+        width: 100vw;
+        flex-direction: column-reverse;
+    }
+
+    .nav {
+        width: 100vw;
+        height: 50vh;
+    }
+
+    .nav .logo {
+        width: 100vw;
+        position: fixed;
+        top: 0;
+        border-radius: 0;
+    }
+
+    #map {
+        position: fixed;
+        top: 100px;
+        height: 50vh;
+        width: 100vw;
+        border-radius: 0;
+        border: 0;
+    }
+    .content {
+        margin-top: 100px;
+    }
+}

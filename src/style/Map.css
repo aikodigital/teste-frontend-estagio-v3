@@ -1,0 +1,25 @@
+.map--container {
+    margin: auto;
+    width: 55vw;
+    height: 100vh;
+}
+
+.rounded {
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+    .map--container {
+        margin: auto;
+        width: 95vw;
+        height: 100vh;
+    }
+}
+
+@media screen and (max-width: 893px) {
+    .map--container {
+        margin: auto;
+        width: 90vw;
+        height: 100vh;
+    }
+}

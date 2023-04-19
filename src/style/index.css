@@ -1,0 +1,22 @@
+:root {
+  --primary-color: #101010;
+  --header-bckg-color: #1d1d1d;
+  --base-font-color: #5B5F7B;
+  --base-title-font-color: #2b2d38;
+}
+
+body {
+  background-color: var(--primary-color);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--base-font-color);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

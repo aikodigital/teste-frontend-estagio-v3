@@ -106,6 +106,7 @@ function MapsPage(){
                          <span>Nome: {nomemodelo}<br/></span>
                         <span>Maquina: {nomemaquina}<br/></span>
                         <span>ID: {equips} <br/></span>
+                        
                         <span>Estado: {stateName}<br/></span>
                         <span>Date: {equipsdate}<br/></span>                       
                     </Popup>

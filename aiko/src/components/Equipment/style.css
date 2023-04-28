@@ -112,12 +112,11 @@
 }
 
 .container-equip .map-container .map h1 {
-  font-size: 90%;
+  font-size: 1rem;
 }
 
 .container-equip .map-container .map .leaflet-container {
-  height: 60%;
-  max-height: 60%;
+  height: 120px;
   width: 90%;
   position: absolute;
   top: 24%;
@@ -192,6 +191,10 @@
 
   .container-equip .map-container .map h1 {
     font-size: 1.75rem;
+  }
+
+  .container-equip .map-container .map .leaflet-container {
+    height: 160px;
   }
 }
 

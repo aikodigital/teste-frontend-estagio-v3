@@ -9,11 +9,12 @@
 }
 
 .leaflet-container {
-  height: 70%;
-  width: 50%;
+  height: 90%;
+  width: 95%;
   position: absolute;
   top: 5%;
   left: 2%;
+  z-index: 0;
 }
 
 .section-map .legend .status {

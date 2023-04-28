@@ -93,7 +93,7 @@ function SectionMap() {
         </MapContainer>
       </div>
       <Subtitle />
-      <div className="legend">
+      {/* <div className="legend">
         <div>
           <ul className="list">
             <h4>Legenda:</h4>
@@ -127,7 +127,7 @@ function SectionMap() {
             </div>
           </ul>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }

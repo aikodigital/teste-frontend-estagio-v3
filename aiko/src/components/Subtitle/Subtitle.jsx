@@ -38,6 +38,39 @@ function Subtitle() {
   return (
     <aside className="subtitle">
       <p className="title">Equipamentos:</p>
+      <div className="information-legend">
+        <p className="title">Legenda:</p>
+        <div className="item-legend">
+          <span
+            className="point"
+            style={{
+              backgroundColor: `#2ecc71`,
+            }}
+          ></span>
+          Operando
+        </div>
+
+        <div className="item-legend">
+          <span
+            className="point"
+            style={{
+              backgroundColor: `#e74c3c`,
+            }}
+          ></span>
+          Manutenção
+        </div>
+
+        <div className="item-legend">
+          <span
+            className="point"
+            style={{
+              backgroundColor: `#f1c40f`,
+            }}
+          ></span>
+          Parado
+        </div>
+        <div className="line"></div>
+      </div>
       {equip.map((equip) => {
         return (
           <div className="information" key={equip.id}>

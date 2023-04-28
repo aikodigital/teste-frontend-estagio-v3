@@ -1,19 +1,20 @@
 .section-map {
   width: 100%;
   display: flex;
-  height: 88vh;
+  height: 80vh;
+  max-height: 80%;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-bottom: 1rem;
 }
 
 .leaflet-container {
-  height: 90%;
+  height: 80%;
+  max-height: 80%;
   width: 95%;
   position: absolute;
-  top: 5%;
+  top: 10%;
   left: 2%;
   z-index: 0;
 }

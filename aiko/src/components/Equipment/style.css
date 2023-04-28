@@ -47,24 +47,24 @@
   height: 40%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  padding: 1rem;
 }
 
 .container-equip .history h1 {
   font-size: 90%;
-  margin: 1rem 0;
+  margin-bottom: 1rem;
 }
 
 .container-equip .history .table {
   background: #fff;
   border-radius: 8px;
   height: 70%;
-  width: 60%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.5rem;
   overflow: scroll;
   position: relative;
 }
@@ -98,26 +98,28 @@
 .container-equip .map-container {
   display: flex;
   height: 45vh;
-  width: 90%;
+  width: 100%;
   position: relative;
 }
 
 .container-equip .map-container .map {
   margin: 1rem;
-  width: 80%;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
 }
 
 .container-equip .map-container .map h1 {
   font-size: 90%;
-  margin-left: 55%;
 }
 
 .container-equip .map-container .map .leaflet-container {
   height: 60%;
-  width: 67%;
+  max-height: 60%;
+  width: 90%;
   position: absolute;
   top: 24%;
-  left: 22%;
+  left: 5%;
 }
 
 @media (min-width: 768px) {

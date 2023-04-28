@@ -161,7 +161,7 @@ function Equipment() {
 
       <div className="map-container">
         <div className="map">
-          <h1>Mapa:</h1>
+          <h1>Localização do Equipamento:</h1>
           {equipDates.position ? (
             <MapContainer
               center={[equipDates.position.lat, equipDates.position.lon]}

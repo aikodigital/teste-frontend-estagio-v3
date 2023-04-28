@@ -1,5 +1,6 @@
 .container-equip {
   height: 90vh;
+  max-height: 90%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -98,6 +99,7 @@
 .container-equip .map-container {
   display: flex;
   height: 45vh;
+  max-height: 45%;
   width: 100%;
   position: relative;
 }
@@ -131,6 +133,18 @@
     font-size: 1.25rem;
   }
 
+  .container-equip .history {
+    align-items: center;
+  }
+
+  .container-equip .history .table {
+    width: 60%;
+  }
+
+  .container-equip .history .table table {
+    width: 90%;
+  }
+
   .container-equip .history .table table thead tr th {
     font-size: 1.25rem;
   }
@@ -140,11 +154,17 @@
   }
 
   .container-equip .map-container .map {
-    width: 90%;
+    width: 100%;
+    justify-content: center;
   }
 
   .container-equip .map-container .map h1 {
     font-size: 1.25rem;
+  }
+
+  .container-equip .map-container .map .leaflet-container {
+    width: 60%;
+    left: 20.5%;
   }
 }
 
@@ -168,10 +188,6 @@
 
   .container-equip .history .table table tbody tr td {
     font-size: 1.25rem;
-  }
-
-  .container-equip .map-container .map {
-    width: 90%;
   }
 
   .container-equip .map-container .map h1 {

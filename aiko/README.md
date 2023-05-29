@@ -6,7 +6,7 @@
 
 <br>
 
-Link: https://raphael-lima-aiko-teste.netlify.app
+Link para o projeto: https://raphael-lima-aiko-teste.netlify.app
 
 <br>
 

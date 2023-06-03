@@ -1,0 +1,112 @@
+.header {
+  background: #fff;
+  width: 100%;
+  height: 12vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+
+.header a {
+  height: 70%;
+  margin-left: 2%;
+}
+
+.header a img {
+  height: 100%;
+}
+
+.search {
+  background-color: #e0eeee;
+  border: solid 2px #5f9ea0;
+  border-radius: 10px;
+  width: 60%;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 2%;
+}
+
+.search svg {
+  height: 90%;
+  color: #000;
+  float: left;
+  margin-left: 0.25rem;
+}
+
+.search .txtSearch {
+  float: left;
+  background-color: transparent;
+  padding-left: 0.25rem;
+  font-size: 0.75rem;
+  border: none;
+  height: 100%;
+  width: 70%;
+  padding: 0.25rem;
+}
+
+.search button {
+  border: none;
+  float: right;
+  height: 100%;
+  border-radius: 0 7px 7px 0;
+  width: 30%;
+  font-weight: bold;
+  background: #5f9ea0;
+  font-size: 0.75rem;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .search .txtSearch {
+    font-size: 1rem;
+  }
+
+  .search button {
+    font-size: 1rem;
+  }
+
+  .search {
+    width: 40%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .search .txtSearch {
+    font-size: 1.5rem;
+  }
+
+  .search button {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .search .txtSearch {
+    font-size: 2rem;
+  }
+
+  .search button {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 2560px) {
+  .search .txtSearch {
+    font-size: 4rem;
+  }
+
+  .search button {
+    font-size: 4rem;
+  }
+
+  .search {
+    width: 60%;
+  }
+}

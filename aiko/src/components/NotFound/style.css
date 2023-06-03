@@ -1,0 +1,86 @@
+.container-notFound {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-notFound a {
+  background: #fff;
+  height: 15%;
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  color: #000;
+  font-size: 0.75rem;
+  transition: 0.5s;
+}
+
+.container-notFound a svg {
+  height: 100%;
+  color: #6ab7f5;
+}
+
+.container-notFound a:hover {
+  font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+  .container-notFound a {
+    width: 50%;
+    font-size: 1rem;
+  }
+
+  .container-notFound a:hover {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-notFound a {
+    height: 20%;
+    width: 50%;
+    font-size: 1.25rem;
+  }
+
+  .container-notFound a:hover {
+    font-size: 1.5rem;
+  }
+
+  .container-notFound a svg {
+    height: 60%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container-notFound a {
+    font-size: 1.5rem;
+  }
+
+  .container-notFound a:hover {
+    font-size: 1.75rem;
+  }
+
+  .container-notFound a svg {
+    height: 60%;
+  }
+}
+
+@media (min-width: 2560px) {
+  .container-notFound a {
+    font-size: 3rem;
+  }
+
+  .container-notFound a:hover {
+    font-size: 3.5rem;
+  }
+
+  .container-notFound a svg {
+    height: 60%;
+  }
+}

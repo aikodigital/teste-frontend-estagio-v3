@@ -1,0 +1,251 @@
+.container-equip {
+  height: 90vh;
+  max-height: 90%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.container-equip .title {
+  height: 15%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 1rem;
+}
+
+.container-equip .title h1 {
+  font-size: 90%;
+  margin-top: 1rem;
+}
+
+.container-equip .title p {
+  font-size: 80%;
+  width: 100%;
+}
+
+.container-equip .title a {
+  height: 55%;
+  width: 20%;
+  margin-top: -0.5rem;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.container-equip .title a svg {
+  height: 90%;
+  color: red;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: #dddddd;
+}
+
+.container-equip .history {
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.container-equip .history h1 {
+  font-size: 90%;
+  margin-bottom: 1rem;
+}
+
+.container-equip .history .table {
+  background: #fff;
+  border-radius: 8px;
+  height: 70%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: scroll;
+  position: relative;
+}
+
+.container-equip .history .table table {
+  margin: 0.5rem;
+  border: 1px solid #fff;
+  background: #6ab7f5;
+  position: absolute;
+  top: 5%;
+  width: 60%;
+  border-radius: 8px;
+}
+
+.container-equip .history .table table thead tr th {
+  padding: 0.25rem;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.container-equip .history .table table tbody tr td {
+  text-align: center;
+  padding: 0.25rem;
+  font-size: 0.75rem;
+}
+
+.container-equip .history .line {
+  margin-top: 0.75rem;
+}
+
+.container-equip .map-container {
+  display: flex;
+  height: 45vh;
+  max-height: 45%;
+  width: 100%;
+  position: relative;
+}
+
+.container-equip .map-container .map {
+  margin: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+}
+
+.container-equip .map-container .map h1 {
+  font-size: 1rem;
+}
+
+.container-equip .map-container .map .leaflet-container {
+  height: 120px;
+  width: 90%;
+  position: absolute;
+  top: 24%;
+  left: 5%;
+}
+
+@media (min-width: 768px) {
+  .container-equip .title p {
+    margin-top: 0.25rem;
+  }
+
+  .container-equip .history h1 {
+    font-size: 1.25rem;
+  }
+
+  .container-equip .history {
+    align-items: center;
+  }
+
+  .container-equip .history .table {
+    width: 60%;
+  }
+
+  .container-equip .history .table table {
+    width: 90%;
+  }
+
+  .container-equip .history .table table thead tr th {
+    font-size: 1.25rem;
+  }
+
+  .container-equip .history .table table tbody tr td {
+    font-size: 1rem;
+  }
+
+  .container-equip .map-container .map {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .container-equip .map-container .map h1 {
+    font-size: 1.25rem;
+  }
+
+  .container-equip .map-container .map .leaflet-container {
+    width: 60%;
+    left: 20.5%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-equip .title h1 {
+    font-size: 1.75rem;
+  }
+
+  .container-equip .title p {
+    margin-top: 0.25rem;
+    font-size: 1.25rem;
+  }
+
+  .container-equip .history h1 {
+    font-size: 1.75rem;
+  }
+
+  .container-equip .history .table table thead tr th {
+    font-size: 1.5rem;
+  }
+
+  .container-equip .history .table table tbody tr td {
+    font-size: 1.25rem;
+  }
+
+  .container-equip .map-container .map h1 {
+    font-size: 1.75rem;
+  }
+
+  .container-equip .map-container .map .leaflet-container {
+    height: 160px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container-equip .title h1 {
+    font-size: 2rem;
+  }
+
+  .container-equip .title p {
+    font-size: 1.5rem;
+  }
+
+  .container-equip .history h1 {
+    font-size: 2rem;
+  }
+
+  .container-equip .history .table table thead tr th {
+    font-size: 1.75rem;
+  }
+
+  .container-equip .history .table table tbody tr td {
+    font-size: 1.5rem;
+  }
+
+  .container-equip .map-container .map h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 2560px) {
+  .container-equip .title h1 {
+    font-size: 4rem;
+  }
+
+  .container-equip .title p {
+    font-size: 3.25rem;
+  }
+
+  .container-equip .history h1 {
+    font-size: 4rem;
+  }
+
+  .container-equip .history .table table thead tr th {
+    font-size: 3.5rem;
+  }
+
+  .container-equip .history .table table tbody tr td {
+    font-size: 3.25rem;
+  }
+
+  .container-equip .map-container .map h1 {
+    font-size: 4rem;
+  }
+}
